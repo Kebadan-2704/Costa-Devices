@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 80" fill="none">
+  <!-- Arrow C Icon -->
+  <path d="M10 40 L35 10 L55 10 L30 40 L55 70 L35 70 Z" fill="#1a1a1a"/>
+  <path d="M25 40 L50 10 L70 10 L45 40 L70 70 L50 70 Z" fill="#333"/>
+  <!-- COSTA Text -->
+  <text x="80" y="48" font-family="'Arial Black', 'Helvetica Neue', sans-serif" font-weight="900" font-size="42" fill="#1a1a1a" letter-spacing="2">COSTA</text>
+  <!-- DEVICES Text -->
+  <text x="195" y="68" font-family="'Arial', 'Helvetica Neue', sans-serif" font-weight="700" font-size="18" fill="#1a1a1a" letter-spacing="3">DEVICES</text>
+</svg>
