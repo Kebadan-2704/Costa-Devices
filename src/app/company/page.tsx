@@ -1,4 +1,3 @@
-"use client";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, Award, Clock, Users, Globe, Shield, MapPin, Mail, ExternalLink } from "lucide-react";

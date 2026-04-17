@@ -1,12 +1,10 @@
-"use client";
 import Link from "next/link";
 import { ArrowRight, Shield, ShieldCheck, CheckCircle2, ChevronDown, ChevronUp, Award } from "lucide-react";
 import ScrollReveal from "@/components/animations/ScrollReveal";
-import { CERTIFICATIONS, COUNTERFEIT_STEPS } from "@/lib/constants";
-import { useState } from "react";
+import CounterfeitAccordion from "@/components/ui/CounterfeitAccordion";
+import { CERTIFICATIONS } from "@/lib/constants";
 
 export default function QualityPage() {
-  const [expandedStep, setExpandedStep] = useState<number | null>(null);
 
   return (
     <>
@@ -87,39 +85,7 @@ export default function QualityPage() {
             </div>
           </ScrollReveal>
 
-          <div className="space-y-3">
-            {COUNTERFEIT_STEPS.map((step, i) => (
-              <ScrollReveal key={step.step} delay={i * 0.06}>
-                <button
-                  onClick={() => setExpandedStep(expandedStep === step.step ? null : step.step)}
-                  className="w-full glass-card p-5 flex items-center gap-4 text-left group cursor-pointer"
-                  style={{ transform: "none" }}
-                  aria-expanded={expandedStep === step.step}
-                  aria-controls={`step-content-${step.step}`}
-                >
-                  <div className="w-10 h-10 rounded-xl bg-costa-green/10 flex items-center justify-center shrink-0 group-hover:bg-costa-green/20 transition-colors">
-                    <span className="font-mono text-sm font-bold text-costa-green">{String(step.step).padStart(2, "0")}</span>
-                  </div>
-                  <div className="flex-1">
-                    <h4 className="font-heading text-base font-semibold" style={{ color: "var(--text-primary)" }}>{step.title}</h4>
-                    <div
-                      id={`step-content-${step.step}`}
-                      className={`grid transition-[grid-template-rows,opacity] duration-300 ease-in-out ${expandedStep === step.step ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}
-                    >
-                      <div className="overflow-hidden">
-                        <p className="text-slate-600 dark:text-slate-400 text-sm mt-3 leading-relaxed">{step.description}</p>
-                      </div>
-                    </div>
-                  </div>
-                  {expandedStep === step.step ? (
-                    <ChevronUp size={18} className="text-costa-green shrink-0" />
-                  ) : (
-                    <ChevronDown size={18} className="text-text-muted shrink-0" />
-                  )}
-                </button>
-              </ScrollReveal>
-            ))}
-          </div>
+          <CounterfeitAccordion />
         </div>
       </section>
 

@@ -3,7 +3,8 @@ import Link from "next/link";
 import { ArrowRight, ArrowLeft, Upload, CheckCircle2, FileText, X } from "lucide-react";
 import ScrollReveal from "@/components/animations/ScrollReveal";
 import { PRODUCT_CATEGORIES, COMPANY } from "@/lib/constants";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
+import { useLocalStorage } from "@/hooks/useLocalStorage";
 import { toast } from "sonner";
 
 export default function RequestQuotePage() {
@@ -11,7 +12,11 @@ export default function RequestQuotePage() {
   const [submitted, setSubmitted] = useState<boolean | "submitting">(false);
   const [uploadedFile, setUploadedFile] = useState<File | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
-  const [formData, setFormData] = useState({
+  const [isMounted, setIsMounted] = useState(false);
+  
+  useEffect(() => setIsMounted(true), []);
+
+  const [formData, setFormData] = useLocalStorage("costa-rfq-payload", {
     name: "", company: "", email: "", phone: "",
     category: "", partNumbers: "", quantity: "", targetPrice: "",
     notes: "", timeline: "standard",
@@ -33,17 +38,36 @@ export default function RequestQuotePage() {
     }
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (!formData.name || !formData.email) {
       toast.error("Please fill in required contact fields (Step 1)");
       setStep(1);
       return;
     }
     setSubmitted("submitting");
-    setTimeout(() => {
+
+    try {
+      const payload = new FormData();
+      Object.entries(formData).forEach(([key, value]) => {
+        payload.append(key, value as string);
+      });
+      if (uploadedFile) {
+        payload.append("file", uploadedFile);
+      }
+
+      const res = await fetch("/api/quote", {
+        method: "POST",
+        body: payload,
+      });
+
+      if (!res.ok) throw new Error("Failed to submit RFQ");
+      
       setSubmitted(true);
-      toast.success("Quote request submitted! We'll respond within 24 hours.");
-    }, 2000); // Premium 2s animated processing state
+      toast.success("Quote request securely transmitted to our engineering team.");
+    } catch (error) {
+      toast.error("Server connection failed. Please try again.");
+      setSubmitted(false);
+    }
   };
 
   const nextStep = () => setStep((s) => Math.min(s + 1, 4));

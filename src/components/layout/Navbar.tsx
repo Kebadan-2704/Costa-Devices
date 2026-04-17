@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { NAV_LINKS, COMPANY } from "@/lib/constants";
 import { Menu, X, Phone, ArrowRight } from "lucide-react";
 import ThemeToggle from "@/components/ui/ThemeToggle";
+import PartSearchEngine from "@/components/ui/PartSearchEngine";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -103,6 +104,7 @@ export default function Navbar() {
               <Phone size={14} />
               <span className="font-mono text-xs font-medium">{COMPANY.phone}</span>
             </a>
+            <PartSearchEngine />
             <ThemeToggle />
             <Link
               href="/request-quote"
@@ -115,6 +117,7 @@ export default function Navbar() {
 
           {/* Mobile Right */}
           <div className="flex lg:hidden items-center gap-2">
+            <PartSearchEngine />
             <ThemeToggle />
             <button
               onClick={() => setMobileOpen(!mobileOpen)}

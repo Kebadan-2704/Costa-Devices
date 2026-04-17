@@ -344,6 +344,27 @@ export const CERTIFICATIONS = [
   },
 ];
 
+// -----------------------------------------
+// PART SEARCH ENGINE MOCK CATALOG
+// -----------------------------------------
+export const PART_CATALOG = [
+  { id: "p1", partNumber: "FWP-50B", manufacturer: "Eaton Bussmann", category: "High Speed Fuses", description: "50A 700V AC/DC High Speed Semiconductor Fuse", inStock: true },
+  { id: "p2", partNumber: "FWP-100B", manufacturer: "Eaton Bussmann", category: "High Speed Fuses", description: "100A 700V AC/DC High Speed Semiconductor Fuse", inStock: true },
+  { id: "p3", partNumber: "170M6013", manufacturer: "Eaton Bussmann", category: "Square Body Fuses", description: "900A 690V AC Square Body Fuse, DIN 43620", inStock: false },
+  { id: "p4", partNumber: "170M4012", manufacturer: "Eaton Bussmann", category: "Square Body Fuses", description: "500A 690V AC Square Body Fuse, Size 1", inStock: true },
+  { id: "p5", partNumber: "KTK-R-15", manufacturer: "Eaton Bussmann", category: "Class CC Fuses", description: "15A 600V AC Fast Acting Class CC Fuse", inStock: true },
+  { id: "p6", partNumber: "LP-CC-10", manufacturer: "Eaton Bussmann", category: "Class CC Fuses", description: "10A 600V AC Time Delay Class CC Fuse", inStock: true },
+  { id: "p7", partNumber: "S202-C16", manufacturer: "ABB", category: "Circuit Breakers", description: "16A 2-Pole C-Curve Miniature Circuit Breaker", inStock: true },
+  { id: "p8", partNumber: "Tmax XT1", manufacturer: "ABB", category: "Molded Case Breakers", description: "160A 3-Pole Molded Case Circuit Breaker", inStock: false },
+  { id: "p9", partNumber: "AF16-30-10-13", manufacturer: "ABB", category: "Contactors", description: "16A 3-Pole Contactor 100-250V AC/DC Coil", inStock: true },
+  { id: "p10", partNumber: "LC1D12M7", manufacturer: "Schneider Electric", category: "Contactors", description: "12A 3-Pole TeSys D Contactor, 220VAC Coil", inStock: true },
+  { id: "p11", partNumber: "GV2ME14", manufacturer: "Schneider Electric", category: "Motor Protection", description: "6-10A Motor Protection Circuit Breaker", inStock: true },
+  { id: "p12", partNumber: "CHM1DI-U", manufacturer: "Eaton Bussmann", category: "Fuse Holders", description: "30A 600V 1-Pole Modular Fuse Holder w/ Indicator", inStock: true },
+  { id: "p13", partNumber: "EV34A-400", manufacturer: "Eaton Bussmann", category: "EV Fuses", description: "400A 500V DC Electric Vehicle Battery Fuse", inStock: false },
+  { id: "p14", partNumber: "JJS-150", manufacturer: "Eaton Bussmann", category: "Class T Fuses", description: "150A 600V AC Fast-Acting Class T Fuse", inStock: true },
+  { id: "p15", partNumber: "V20-C", manufacturer: "OBO Bettermann", category: "Surge Protection", description: "Type 2 Surge Protection Device 40kA 280V", inStock: true },
+];
+
 export const TIMELINE = [
   { year: 2011, title: "Founded", description: "Established in India, focused on circuit protection distribution" },
   { year: 2013, title: "Authorized Distributor", description: "Became authorized Bussmann & Eaton Moeller distributor" },

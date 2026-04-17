@@ -11,17 +11,29 @@ export default function ContactPage() {
     name: "", company: "", email: "", phone: "", subject: "general", message: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.name || !formData.email || !formData.message) {
       toast.error("Please fill in all required fields");
       return;
     }
     setFormState("submitting");
-    setTimeout(() => {
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      
+      if (!res.ok) throw new Error("Failed to send");
+      
       setFormState("success");
-      toast.success("Message sent successfully! We'll respond within 24 hours.");
-    }, 1500);
+      toast.success("Message sent securely. Sales team notified.");
+    } catch (error) {
+      toast.error("Failed to connect to secure server.");
+      setFormState("idle");
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {

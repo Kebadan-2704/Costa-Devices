@@ -1,4 +1,3 @@
-"use client";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, Zap, CheckCircle2, PlugZap, Car, BatteryCharging, Gauge, Factory, Power } from "lucide-react";
