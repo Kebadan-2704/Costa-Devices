@@ -159,7 +159,7 @@ export default function Navbar() {
                   pathname === link.href ? "text-[#059669]" : "text-slate-900 dark:text-white"
                 }`}
                 style={{
-                  transitionDelay: mobileOpen ? \`\${0.15 + i * 0.05}s\` : "0s",
+                  transitionDelay: mobileOpen ? `${0.15 + i * 0.05}s` : "0s",
                   opacity: mobileOpen ? 1 : 0,
                   transform: mobileOpen ? "translateX(0)" : "translateX(-20px)",
                   transition: "all 0.5s cubic-bezier(0.4, 0, 0.2, 1)"
@@ -193,8 +193,8 @@ export default function Navbar() {
           </Link>
 
           <div className="flex flex-col gap-3 font-mono text-sm font-medium text-slate-600 dark:text-slate-400">
-            <a href={`mailto:\${COMPANY.email}`} className="hover:text-[#059669] transition-colors">{COMPANY.email}</a>
-            <a href={`tel:\${COMPANY.phone.replace(/[^0-9+]/g, '')}`} className="hover:text-[#059669] transition-colors">{COMPANY.phone}</a>
+            <a href={`mailto:${COMPANY.email}`} className="hover:text-[#059669] transition-colors">{COMPANY.email}</a>
+            <a href={`tel:${COMPANY.phone.replace(/[^0-9+]/g, '')}`} className="hover:text-[#059669] transition-colors">{COMPANY.phone}</a>
           </div>
         </div>
       </div>
