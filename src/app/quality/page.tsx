@@ -12,8 +12,8 @@ export default function QualityPage() {
     <>
       {/* Hero */}
       <section className="relative pt-40 pb-20 overflow-hidden" style={{ backgroundColor: "var(--bg-primary)" }}>
-        <div className="absolute inset-0 bg-gradient-to-b from-costa-green/5 to-transparent" />
-        <div className="absolute top-1/4 -right-32 w-[500px] h-[500px] rounded-full bg-costa-green/[3%] blur-[120px]" aria-hidden="true" />
+        <div className="absolute inset-0 bg-gradient-to-b from-slate-100 to-transparent dark:from-slate-900/50" />
+        <div className="absolute top-1/4 right-0 w-3/4 h-3/4 bg-gradient-to-bl from-[#059669]/5 to-transparent rounded-full blur-3xl opacity-50 pointer-events-none" aria-hidden="true" />
         <div className="max-w-[1400px] mx-auto px-6 relative z-10">
           <ScrollReveal>
             <p className="font-mono text-xs text-costa-green tracking-[0.2em] uppercase mb-4 flex items-center gap-2">
@@ -39,24 +39,34 @@ export default function QualityPage() {
             <h2 className="section-title mb-12">Internationally Recognized <span className="green-gradient-text">Certifications</span></h2>
           </ScrollReveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {CERTIFICATIONS.map((cert, i) => (
-              <ScrollReveal key={cert.id} delay={i * 0.15}>
-                <div className="glass-card p-8 h-full flex flex-col group">
-                  {/* Certificate Visual */}
-                  <div className="h-44 bg-gradient-to-br from-costa-green/10 to-transparent rounded-xl mb-6 flex items-center justify-center transition-colors" style={{ border: "1px solid var(--glass-border)" }}>
-                    <div className="text-center">
-                      <Shield size={48} className="text-costa-green/30 mx-auto mb-3 group-hover:text-costa-green/50 transition-colors" />
-                      <span className="font-mono text-lg font-bold text-costa-green">{cert.name}</span>
-                    </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
+            {CERTIFICATIONS.map((cert) => (
+              <ScrollReveal key={cert.id} delay={0.1}>
+                <div className="group bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 transition-all hover:shadow-xl hover:border-[#059669]/30 flex flex-col h-full relative cursor-pointer">
+                  {/* Top Badge Block */}
+                  <div className="bg-[#F0FDF4] dark:bg-[#059669]/10 rounded-xl p-8 flex flex-col items-center justify-center mb-6 transition-transform duration-500 group-hover:scale-[1.02]">
+                    <Shield size={40} strokeWidth={1.5} className="text-[#059669] mb-4" />
+                    <span className="font-heading font-bold text-[#059669] text-base tracking-wide">
+                      {cert.name}
+                    </span>
                   </div>
-                  <h3 className="font-heading text-lg font-semibold mb-2" style={{ color: "var(--text-primary)" }}>{cert.name}</h3>
-                  <p className="text-costa-green text-xs font-medium uppercase tracking-wider mb-3">{cert.fullName}</p>
-                  <p className="text-text-secondary text-sm leading-relaxed flex-1 mb-4">{cert.description}</p>
-                  <div className="flex items-center justify-between text-xs text-text-muted pt-4" style={{ borderTop: "1px solid var(--glass-border)" }}>
+                  
+                  {/* Content */}
+                  <div className="flex-1">
+                    <h3 className="font-heading font-bold text-base mb-2 text-slate-900 dark:text-white">{cert.name}</h3>
+                    <p className="text-[10px] font-bold text-[#059669] tracking-widest uppercase leading-snug mb-4">{cert.fullName}</p>
+                    <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-8">{cert.description}</p>
+                  </div>
+                  
+                  {/* Footer */}
+                  <div className="mt-auto flex items-center justify-between text-[#8ba39a] dark:text-slate-500 font-mono text-[10px] tracking-[0.15em] uppercase">
                     <span>{cert.entity}</span>
-                    <span className="font-mono">{cert.year}</span>
+                    <span>{cert.year}</span>
                   </div>
+
+                  {cert.pdf && (
+                    <a href={cert.pdf} target="_blank" rel="noopener noreferrer" className="absolute inset-0 z-10" aria-label={`View ${cert.name} PDF`} />
+                  )}
                 </div>
               </ScrollReveal>
             ))}
@@ -94,9 +104,11 @@ export default function QualityPage() {
                     <h4 className="font-heading text-base font-semibold" style={{ color: "var(--text-primary)" }}>{step.title}</h4>
                     <div
                       id={`step-content-${step.step}`}
-                      className={`overflow-hidden transition-all duration-300 ${expandedStep === step.step ? "max-h-20 mt-2" : "max-h-0"}`}
+                      className={`grid transition-[grid-template-rows,opacity] duration-300 ease-in-out ${expandedStep === step.step ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}
                     >
-                      <p className="text-text-secondary text-sm">{step.description}</p>
+                      <div className="overflow-hidden">
+                        <p className="text-slate-600 dark:text-slate-400 text-sm mt-3 leading-relaxed">{step.description}</p>
+                      </div>
                     </div>
                   </div>
                   {expandedStep === step.step ? (

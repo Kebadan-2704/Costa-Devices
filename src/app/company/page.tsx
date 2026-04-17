@@ -4,6 +4,7 @@ import Image from "next/image";
 import { ArrowRight, Award, Clock, Users, Globe, Shield, MapPin, Mail, ExternalLink } from "lucide-react";
 import ScrollReveal from "@/components/animations/ScrollReveal";
 import AnimatedCounter from "@/components/ui/AnimatedCounter";
+import WorldMap from "@/components/ui/WorldMap";
 import { COMPANY, TEAM, OFFICES, TIMELINE, STATS } from "@/lib/constants";
 
 export default function CompanyPage() {
@@ -99,12 +100,12 @@ export default function CompanyPage() {
             {TEAM.map((member, i) => (
               <ScrollReveal key={member.name} delay={i * 0.15}>
                 <div className="glass-card p-8 text-center group">
-                  <div className="w-24 h-24 rounded-full bg-gradient-to-br from-costa-green/20 to-transparent flex items-center justify-center mx-auto mb-5 group-hover:from-costa-green/30 transition-colors" style={{ border: "2px solid var(--glass-border)" }}>
-                    <span className="font-heading text-3xl font-bold text-costa-green">{member.name[0]}</span>
+                  <div className="w-24 h-24 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center mx-auto mb-6 transition-transform duration-500 group-hover:scale-110 shadow-sm border border-slate-200 dark:border-slate-700">
+                    <span className="font-heading text-3xl font-extrabold text-[#059669] tracking-tighter">{member.name[0]}</span>
                   </div>
-                  <h3 className="font-heading text-xl font-semibold mb-1" style={{ color: "var(--text-primary)" }}>{member.name}</h3>
-                  <p className="text-costa-green text-sm mb-3">{member.title}</p>
-                  <a href={`mailto:${member.email}`} className="text-text-muted text-sm hover:text-costa-green transition-colors flex items-center justify-center gap-2">
+                  <h3 className="font-heading text-xl font-bold mb-1 group-hover:text-[#059669] transition-colors" style={{ color: "var(--text-primary)" }}>{member.name}</h3>
+                  <p className="text-[#059669] text-xs font-bold uppercase tracking-widest mb-4">{member.title}</p>
+                  <a href={`mailto:${member.email}`} className="text-slate-500 hover:text-slate-800 dark:hover:text-white transition-colors flex items-center justify-center gap-2 text-sm font-medium">
                     <Mail size={14} /> {member.email}
                   </a>
                 </div>
@@ -135,6 +136,12 @@ export default function CompanyPage() {
               <h2 className="section-title">Our <span className="text-text-secondary">Global Offices</span></h2>
             </div>
           </ScrollReveal>
+
+          <div className="mb-16">
+            <ScrollReveal delay={0.1}>
+              <WorldMap />
+            </ScrollReveal>
+          </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {OFFICES.map((office, i) => (

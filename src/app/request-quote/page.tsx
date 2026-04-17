@@ -8,7 +8,7 @@ import { toast } from "sonner";
 
 export default function RequestQuotePage() {
   const [step, setStep] = useState(1);
-  const [submitted, setSubmitted] = useState(false);
+  const [submitted, setSubmitted] = useState<boolean | "submitting">(false);
   const [uploadedFile, setUploadedFile] = useState<File | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [formData, setFormData] = useState({
@@ -39,8 +39,11 @@ export default function RequestQuotePage() {
       setStep(1);
       return;
     }
-    setSubmitted(true);
-    toast.success("Quote request submitted! We'll respond within 24 hours.");
+    setSubmitted("submitting");
+    setTimeout(() => {
+      setSubmitted(true);
+      toast.success("Quote request submitted! We'll respond within 24 hours.");
+    }, 2000); // Premium 2s animated processing state
   };
 
   const nextStep = () => setStep((s) => Math.min(s + 1, 4));
@@ -52,26 +55,41 @@ export default function RequestQuotePage() {
     color: "var(--text-primary)",
   };
 
-  if (submitted) {
+  if (submitted === true || submitted === "submitting") {
     return (
       <section className="min-h-screen flex items-center justify-center px-6" style={{ backgroundColor: "var(--bg-primary)" }}>
-        <div className="glass-card p-12 text-center max-w-lg">
-          <CheckCircle2 size={64} className="text-costa-green mx-auto mb-6" />
-          <h2 className="font-heading text-3xl font-bold mb-4" style={{ color: "var(--text-primary)" }}>Quote Request Submitted!</h2>
-          <p className="text-text-secondary mb-4">
-            Thank you for your request. Our team will review your requirements and get back to you within 24 hours.
-          </p>
-          <div className="glass-card p-4 inline-block mb-8" style={{ transform: "none" }}>
-            <p className="text-xs text-text-muted">Reference Number</p>
-            <p className="font-mono text-lg text-costa-green font-bold">
-              RFQ-{Math.random().toString(36).substring(2, 8).toUpperCase()}
-            </p>
-          </div>
-          <div className="flex flex-col gap-3">
-            <Link href="/" className="btn-primary justify-center">
-              Back to Home <ArrowRight size={16} />
-            </Link>
-          </div>
+        <div className="glass-card p-12 text-center max-w-lg w-full flex flex-col items-center justify-center min-h-[400px] transition-all duration-700">
+          {submitted === "submitting" ? (
+            <div className="flex flex-col items-center animate-in fade-in zoom-in duration-500">
+              <div className="w-16 h-16 mb-8 relative">
+                <div className="absolute inset-0 rounded-full border-4 border-slate-100 dark:border-slate-800" />
+                <div className="absolute inset-0 rounded-full border-4 border-[#059669] border-t-transparent animate-spin" />
+              </div>
+              <h2 className="font-heading text-2xl font-bold mb-3" style={{ color: "var(--text-primary)" }}>Processing Request</h2>
+              <p className="text-text-secondary">Securely transmitting your BOM and RFQ configuration...</p>
+            </div>
+          ) : (
+            <div className="animate-in fade-in zoom-in duration-500">
+              <div className="w-20 h-20 bg-[#F0FDF4] dark:bg-emerald-900/20 rounded-full flex items-center justify-center mx-auto mb-6 shadow-sm border border-emerald-100 dark:border-emerald-900/50">
+                <CheckCircle2 size={40} className="text-[#059669]" />
+              </div>
+              <h2 className="font-heading text-3xl font-bold mb-4" style={{ color: "var(--text-primary)" }}>Quote Request Submitted</h2>
+              <p className="text-text-secondary mb-6">
+                Our global engineering team is reviewing your requirements. Expect a full proposal within 24 hours.
+              </p>
+              <div className="bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800 p-4 rounded-xl inline-block mb-8">
+                <p className="text-xs text-slate-500 font-bold uppercase tracking-widest mb-1">Secure Reference ID</p>
+                <p className="font-mono text-xl text-[#059669] font-bold tracking-wider">
+                  RFQ-{Math.random().toString(36).substring(2, 8).toUpperCase()}
+                </p>
+              </div>
+              <div className="block">
+                <Link href="/" className="btn-primary inline-flex justify-center px-8">
+                  Return to Dashboard <ArrowRight size={16} />
+                </Link>
+              </div>
+            </div>
+          )}
         </div>
       </section>
     );

@@ -85,7 +85,7 @@ export default function RootLayout({
         </a>
         <ScrollProgress />
         <Navbar />
-        <main id="main-content" className="pt-[80px]">{children}</main>
+        <main id="main-content" className="relative">{children}</main>
         <Footer />
         <ScrollToTop />
         <WhatsAppButton />

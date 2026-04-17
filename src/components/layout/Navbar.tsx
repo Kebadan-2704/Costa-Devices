@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { NAV_LINKS, COMPANY } from "@/lib/constants";
 import { Menu, X, Phone, ArrowRight } from "lucide-react";
@@ -40,41 +41,37 @@ export default function Navbar() {
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 ${
-          hidden && !mobileOpen ? "-translate-y-full" : "translate-y-0"
-        } backdrop-blur-xl ${
+        className={`sticky top-0 z-[100] transition-colors duration-300 backdrop-blur-md ${
           scrolled
-            ? "border-b"
+            ? "border-b border-gray-200/20"
             : ""
         }`}
         style={{
-          height: 80,
-          backgroundColor: scrolled ? "var(--nav-bg)" : "var(--nav-bg)",
-          borderColor: scrolled ? "var(--glass-border)" : "transparent",
+          minHeight: 80,
+          backgroundColor: "var(--bg-primary)",
         }}
       >
-        <div className="max-w-[1400px] mx-auto px-6 h-full flex items-center justify-between">
+        <div className="max-w-[1400px] mx-auto px-6 h-20 flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 group">
-            <div className="relative">
-              <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M18 2L6 10V26L18 34L30 26V10L18 2Z" fill="url(#logo-gradient)" opacity="0.9"/>
-                <path d="M12 14L18 10L24 14V22L18 26L12 22V14Z" fill="var(--bg-primary)"/>
-                <path d="M18 10L24 14L18 18L12 14L18 10Z" fill="var(--brand-green)" opacity="0.7"/>
+          <Link href="/" className="flex items-center gap-3 md:gap-4 group">
+            <div className="relative flex-shrink-0">
+              <svg viewBox="0 0 75 80" width="46" height="46" fill="none" xmlns="http://www.w3.org/2000/svg" className="transform group-hover:scale-105 transition-transform duration-300">
                 <defs>
-                  <linearGradient id="logo-gradient" x1="6" y1="2" x2="30" y2="34">
-                    <stop stopColor="var(--brand-green)"/>
-                    <stop offset="1" stopColor="var(--brand-green-light)"/>
+                  <linearGradient id="logoGreenGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style={{ stopColor: "#059669" }}/>
+                    <stop offset="100%" style={{ stopColor: "#34D399" }}/>
                   </linearGradient>
                 </defs>
+                <path d="M10 40 L35 10 L55 10 L30 40 L55 70 L35 70 Z" fill="url(#logoGreenGrad)"/>
+                <path d="M25 40 L50 10 L70 10 L45 40 L70 70 L50 70 Z" fill="url(#logoGreenGrad)" opacity="0.7"/>
               </svg>
             </div>
             <div className="flex flex-col">
-              <span className="font-heading text-lg font-bold leading-none tracking-wide" style={{ color: "var(--text-primary)" }}>
-                COSTA
+              <span className="font-heading text-xl md:text-2xl font-extrabold leading-none tracking-tight text-slate-900 dark:text-white">
+                COSTA DEVICES
               </span>
-              <span className="font-heading text-[10px] font-medium leading-none tracking-[0.2em]" style={{ color: "var(--brand-green)" }}>
-                DEVICES
+              <span className="font-mono text-[9px] md:text-[11px] font-bold leading-none tracking-[0.25em] text-emerald-600 dark:text-emerald-400 mt-1 uppercase">
+                Electric Ltd
               </span>
             </div>
           </Link>
@@ -101,10 +98,10 @@ export default function Navbar() {
           <div className="hidden lg:flex items-center gap-6">
             <a
               href={`tel:${COMPANY.phone}`}
-              className="flex items-center gap-2 text-sm text-text-secondary hover:text-text-primary transition-colors"
+              className="flex items-center gap-2 text-sm text-text-secondary hover:text-text-primary transition-colors whitespace-nowrap"
             >
               <Phone size={14} />
-              <span className="font-mono text-xs">{COMPANY.phone}</span>
+              <span className="font-mono text-xs font-medium">{COMPANY.phone}</span>
             </a>
             <ThemeToggle />
             <Link

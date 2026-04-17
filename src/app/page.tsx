@@ -1,5 +1,3 @@
-"use client";
-import { useEffect, useRef, useCallback } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -10,86 +8,9 @@ import {
 import ScrollReveal from "@/components/animations/ScrollReveal";
 import AnimatedCounter from "@/components/ui/AnimatedCounter";
 import {
-  COMPANY, CLIENTS, BRANDS, SERVICES, INDUSTRIES,
-  PRODUCT_CATEGORIES, STATS, OFFICES, TESTIMONIALS
+  COMPANY, CLIENTS, DISTRIBUTOR_BRANDS, SERVICES, INDUSTRIES,
+  PRODUCT_CATEGORIES, STATS, OFFICES, TESTIMONIALS, CERTIFICATIONS
 } from "@/lib/constants";
-
-// ============================================
-// CIRCUIT BACKGROUND CANVAS
-// ============================================
-function CircuitBackground() {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-
-  const animate = useCallback(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
-
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-
-    const isLight = document.documentElement.getAttribute("data-theme") === "light";
-    const nodeColor = isLight ? "rgba(5, 150, 105, 0.25)" : "rgba(0, 200, 83, 0.3)";
-    const lineColor = isLight ? "rgba(5, 150, 105," : "rgba(0, 200, 83,";
-
-    const nodes: { x: number; y: number; vx: number; vy: number }[] = [];
-    const nodeCount = Math.min(Math.floor((canvas.width * canvas.height) / 25000), 80);
-
-    for (let i = 0; i < nodeCount; i++) {
-      nodes.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        vx: (Math.random() - 0.5) * 0.3,
-        vy: (Math.random() - 0.5) * 0.3,
-      });
-    }
-
-    let animId: number;
-    const draw = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      nodes.forEach((node) => {
-        node.x += node.vx;
-        node.y += node.vy;
-        if (node.x < 0 || node.x > canvas.width) node.vx *= -1;
-        if (node.y < 0 || node.y > canvas.height) node.vy *= -1;
-      });
-      for (let i = 0; i < nodes.length; i++) {
-        for (let j = i + 1; j < nodes.length; j++) {
-          const dx = nodes[i].x - nodes[j].x;
-          const dy = nodes[i].y - nodes[j].y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 150) {
-            ctx.beginPath();
-            ctx.moveTo(nodes[i].x, nodes[i].y);
-            ctx.lineTo(nodes[j].x, nodes[j].y);
-            ctx.strokeStyle = `${lineColor}${0.08 * (1 - dist / 150)})`;
-            ctx.lineWidth = 0.5;
-            ctx.stroke();
-          }
-        }
-      }
-      nodes.forEach((node) => {
-        ctx.beginPath();
-        ctx.arc(node.x, node.y, 1.5, 0, Math.PI * 2);
-        ctx.fillStyle = nodeColor;
-        ctx.fill();
-      });
-      animId = requestAnimationFrame(draw);
-    };
-    draw();
-    return () => cancelAnimationFrame(animId);
-  }, []);
-
-  useEffect(() => {
-    const cleanup = animate();
-    const handleResize = () => animate();
-    window.addEventListener("resize", handleResize);
-    return () => { cleanup?.(); window.removeEventListener("resize", handleResize); };
-  }, [animate]);
-
-  return <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" aria-hidden="true" />;
-}
 
 // ============================================
 // ICON MAPS
@@ -111,16 +32,15 @@ export default function HomePage() {
   return (
     <>
       {/* ===== HERO SECTION ===== */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        <CircuitBackground />
-        <div className="absolute inset-0 z-[1]">
-          <Image src="/images/hero/hero-products.png" alt="Industrial electrical components" fill className="object-cover opacity-20" style={{ mixBlendMode: "luminosity" }} priority />
+      <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-[#0A0F1C]">
+        <div className="absolute inset-0 z-[1] opacity-70">
+          <Image src="/images/hero/hero-products.png" alt="Industrial electrical components" fill className="object-cover" priority />
         </div>
-        <div className="absolute inset-0 z-[2]" style={{ background: "var(--hero-overlay)" }} />
+        <div className="absolute inset-0 z-[2] bg-gradient-to-b from-[#0A0F1C]/60 via-[#0A0F1C]/40 to-white dark:to-[#0B1120]" />
 
         {/* Removed decorative glow orbs in favor of sharp MNC-level imagery */}
 
-        <div className="relative z-10 max-w-[1400px] mx-auto px-6 text-center pt-16 pb-20">
+        <div className="relative z-10 max-w-[1400px] mx-auto px-6 text-center pt-16 pb-20 text-white">
           {/* Badge */}
           <div className="hero-animate inline-flex items-center gap-3 px-5 py-2 rounded-full mb-12" style={{ border: "1px solid var(--glass-border)", background: "var(--glass-bg)", backdropFilter: "blur(12px)", animationDelay: "0.2s" }}>
             <span className="w-2 h-2 rounded-full bg-costa-green animate-pulse" />
@@ -128,13 +48,13 @@ export default function HomePage() {
           </div>
 
           {/* Headline */}
-          <h1 className="hero-animate font-heading text-[clamp(2.5rem,7vw,6rem)] font-bold leading-[1.05] mb-10 max-w-5xl mx-auto" style={{ animationDelay: "0.4s" }}>
+          <h1 className="hero-animate font-heading text-[clamp(2.5rem,7vw,6rem)] font-bold leading-[1.05] mb-10 max-w-5xl mx-auto text-white dark:text-white" style={{ animationDelay: "0.4s" }}>
             POWERING THE FUTURE OF{" "}
             <span className="green-gradient-text">ELECTRIC MOBILITY</span>
           </h1>
 
           {/* Subheadline */}
-          <p className="hero-animate text-text-secondary text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed" style={{ animationDelay: "0.6s" }}>
+          <p className="hero-animate text-slate-200 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed" style={{ animationDelay: "0.6s" }}>
             {COMPANY.description}
           </p>
 
@@ -283,17 +203,74 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ===== BRAND MARQUEE ===== */}
-      <section className="py-16 overflow-hidden" style={{ backgroundColor: "var(--bg-secondary)", borderTop: "1px solid var(--glass-border)", borderBottom: "1px solid var(--glass-border)" }}>
-        <p className="text-center font-mono text-[10px] text-text-muted tracking-[0.3em] uppercase mb-10">Authorized Distributor For</p>
-        <div className="marquee-container flex items-center h-auto py-4">
-          <div className="marquee-content gap-12 px-8 items-center">
-            {[...BRANDS, ...BRANDS].map((brand, i) => (
-              <div key={`${brand.name}-${i}`} className="px-8 py-5 rounded-xl flex items-center justify-center min-w-[200px]" style={{ border: "1px solid var(--glass-border)", background: "var(--bg-primary)" }}>
-                <span className="font-heading text-xl font-bold uppercase tracking-[0.15em] opacity-60 hover:opacity-100 transition-opacity duration-300" style={{ color: "var(--text-primary)" }}>
-                  {brand.name}
-                </span>
+      {/* ===== 90+ BRAND MASSIVE MARQUEE ===== */}
+      <section className="py-20 overflow-hidden bg-white dark:bg-slate-900/50 border-y border-slate-200 dark:border-slate-800">
+        <div className="text-center mb-10">
+          <p className="font-mono text-sm tracking-[0.25em] text-slate-500 uppercase font-semibold">AUTHORIZED DISTRIBUTOR FOR</p>
+        </div>
+        
+        {/* Top Marquee (Moves Left) */}
+        <div className="marquee-container mb-6">
+          <div className="marquee-content shadow-sm">
+            {[...DISTRIBUTOR_BRANDS, ...DISTRIBUTOR_BRANDS].map((brand, i) => (
+              <div key={`brand-top-${i}`} className="brand-card">
+                {brand}
               </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Bottom Marquee (Moves Right) */}
+        <div className="marquee-container marquee-reverse">
+          <div className="marquee-content shadow-sm">
+            {[...DISTRIBUTOR_BRANDS, ...DISTRIBUTOR_BRANDS].reverse().map((brand, i) => (
+              <div key={`brand-bottom-${i}`} className="brand-card">
+                {brand}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ===== CERTIFICATIONS OVERHAUL ===== */}
+      <section className="py-24" style={{ backgroundColor: "var(--bg-primary)" }}>
+        <div className="max-w-[1400px] mx-auto px-6 text-center">
+          <ScrollReveal>
+            <h2 className="font-heading text-4xl font-extrabold mb-16 text-slate-900 dark:text-white">
+              Internationally Recognized <span className="text-[#059669]">Certifications</span>
+            </h2>
+          </ScrollReveal>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
+            {CERTIFICATIONS.map((cert) => (
+              <ScrollReveal key={cert.id} delay={0.1}>
+                <div className="group bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 transition-all hover:shadow-xl hover:border-[#059669]/30 flex flex-col h-full relative cursor-pointer">
+                  {/* Top Badge Block */}
+                  <div className="bg-[#F0FDF4] dark:bg-[#059669]/10 rounded-xl p-8 flex flex-col items-center justify-center mb-6 transition-transform duration-500 group-hover:scale-[1.02]">
+                    <Shield size={40} strokeWidth={1.5} className="text-[#059669] mb-4" />
+                    <span className="font-heading font-bold text-[#059669] text-base tracking-wide">
+                      {cert.name}
+                    </span>
+                  </div>
+                  
+                  {/* Content */}
+                  <div className="flex-1">
+                    <h3 className="font-heading font-bold text-base mb-2 text-slate-900 dark:text-white">{cert.name}</h3>
+                    <p className="text-[10px] font-bold text-[#059669] tracking-widest uppercase leading-snug mb-4">{cert.fullName}</p>
+                    <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-8">{cert.description}</p>
+                  </div>
+                  
+                  {/* Footer */}
+                  <div className="mt-auto flex items-center justify-between text-[#8ba39a] dark:text-slate-500 font-mono text-[10px] tracking-[0.15em] uppercase">
+                    <span>{cert.entity}</span>
+                    <span>{cert.year}</span>
+                  </div>
+
+                  {cert.pdf && (
+                    <a href={cert.pdf} target="_blank" rel="noopener noreferrer" className="absolute inset-0 z-10" aria-label={`View ${cert.name} PDF`} />
+                  )}
+                </div>
+              </ScrollReveal>
             ))}
           </div>
         </div>

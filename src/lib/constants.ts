@@ -100,6 +100,21 @@ export const BRANDS = [
   { name: "SNC", products: "Transformers", logo: "https://logo.clearbit.com/sncmanufacturing.com" },
 ];
 
+export const DISTRIBUTOR_BRANDS = [
+  "PKC Group", "Ohmite", "Kyocera", "Sensata Technologies", "KOA Speer Electronics", "Diodes Incorporated",
+  "IODE Corp", "Knowles", "Glenair", "Honeywell", "Chemi-Con", "Aptiv", "AirBorn", "Abracon", "SK hynix",
+  "Macronix", "Winbond", "Texas Instruments", "Fujitsu", "Walsin", "TE Connectivity", "Pulse", "TSMC",
+  "OSRAM", "Micro Commercial Components", "Coilcraft", "ROHM Semiconductor", "Nichicon", "KEL", "Bourns",
+  "CoreCentric Solutions", "Biosense Webster", "Lite-On", "Atmel", "Taiyo Yuden", "Fairchild Semiconductor",
+  "Semtech", "Quectel", "Cavli Wireless", "STMicroelectronics", "Infineon", "Micron", "Amphenol", "Eaton",
+  "Sawnics", "Delta", "Diotec Semiconductor", "Dialog Semiconductor", "Nexperia", "NEC", "JST", "TDK",
+  "Murata", "DBwave", "Skyworks", "Toshiba", "Renesas", "Altera", "Quantic Evans", "Panasonic", "NXP",
+  "NVIDIA", "Sunlord", "XP Power", "Vishay", "Yageo", "KEMET", "Allegro", "Molex", "Sumitomo",
+  "Analog Devices", "Omron", "Moschip", "Broadcom", "Qualcomm", "Xilinx", "Intel", "GigaDevice",
+  "HP Indigo", "Kaynes Technology", "Foxconn", "UNO Minda", "OLA", "Ather", "Mersen", "Littelfuse",
+  "Cooper Power", "HPS", "SNC", "ABB", "Schneider"
+];
+
 export const PRODUCT_CATEGORIES = [
   {
     id: "ev-protection",
@@ -304,6 +319,7 @@ export const CERTIFICATIONS = [
     entity: "COSTA DEVICES FZCO",
     year: 2024,
     image: "/images/certificates/as6081.jpg",
+    pdf: "/pdfs/AS 6081 OF EU COSTA DEVICES FZCO.pdf",
   },
   {
     id: "as9120b",
@@ -313,6 +329,7 @@ export const CERTIFICATIONS = [
     entity: "COSTA DEVICES FZCO",
     year: 2024,
     image: "/images/certificates/as9120b.jpg",
+    pdf: "/pdfs/AS 9120B OF EU COSTA DEVICES FZCO.pdf",
   },
   {
     id: "iso9001",
@@ -323,6 +340,7 @@ export const CERTIFICATIONS = [
     certificateNumber: "305025123070Q",
     year: 2023,
     image: "/images/certificates/iso9001.jpg",
+    pdf: "/pdfs/COSTA DEVICES FZCO ISO 9001-2015.pdf",
   },
 ];
 
