@@ -39,30 +39,29 @@ export default function IndustriesPage() {
         <section
           key={industry.id}
           id={industry.id}
-          className="section-padding"
-          style={{ backgroundColor: i % 2 === 0 ? "var(--bg-primary)" : "var(--bg-secondary)" }}
+          className={`section-padding border-b border-slate-200 dark:border-slate-800/50 ${i % 2 === 0 ? "bg-white dark:bg-[#0a0f12]" : "bg-slate-50 dark:bg-slate-900/40"}`}
         >
           <div className="max-w-[1400px] mx-auto">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
               <div className={i % 2 !== 0 ? "lg:order-2" : ""}>
                 <ScrollReveal>
-                  <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-costa-green/10 border border-costa-green/20 mb-6">
-                    <IndIcon size={14} className="text-costa-green" />
-                    <span className="text-costa-green text-xs font-semibold uppercase tracking-wider">{industry.title}</span>
+                  <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#F0FDF4] dark:bg-emerald-900/20 border border-emerald-100 dark:border-emerald-900/50 mb-6">
+                    <IndIcon size={14} className="text-[#059669]" />
+                    <span className="text-[#059669] text-xs font-bold uppercase tracking-widest">{industry.title}</span>
                   </div>
                 </ScrollReveal>
                 <ScrollReveal delay={0.1}>
-                  <h2 className="font-heading text-3xl md:text-4xl font-bold mb-3" style={{ color: "var(--text-primary)" }}>{industry.tagline}</h2>
+                  <h2 className="font-heading text-3xl md:text-4xl font-bold mb-3 text-slate-900 dark:text-white">{industry.tagline}</h2>
                 </ScrollReveal>
                 <ScrollReveal delay={0.15}>
-                  <p className="text-text-secondary text-lg leading-relaxed mb-8">{industry.description}</p>
+                  <p className="text-slate-600 dark:text-slate-400 text-lg leading-relaxed mb-8">{industry.description}</p>
                 </ScrollReveal>
                 <ScrollReveal delay={0.2}>
                   <div className="mb-8">
-                    <h4 className="font-heading text-sm font-semibold uppercase tracking-wider mb-4" style={{ color: "var(--text-primary)" }}>Key Products</h4>
+                    <h4 className="font-heading text-xs font-bold text-slate-900 dark:text-white uppercase tracking-[0.2em] mb-4">Key Architectures</h4>
                     <div className="flex flex-wrap gap-2">
                       {industry.products.map((p) => (
-                        <span key={p} className="text-sm px-4 py-2 rounded-lg text-text-secondary" style={{ background: "var(--card-tag-bg)", border: "1px solid var(--card-tag-border)" }}>
+                        <span key={p} className="text-xs font-bold px-4 py-2 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 shadow-sm">
                           {p}
                         </span>
                       ))}
@@ -72,12 +71,12 @@ export default function IndustriesPage() {
                 {industry.customers.length > 0 && (
                   <ScrollReveal delay={0.25}>
                     <div className="mb-8">
-                      <h4 className="font-heading text-sm font-semibold uppercase tracking-wider mb-4" style={{ color: "var(--text-primary)" }}>Key Customers</h4>
+                      <h4 className="font-heading text-xs font-bold text-slate-900 dark:text-white uppercase tracking-[0.2em] mb-4">Supported Partners</h4>
                       <div className="flex flex-wrap gap-3">
                         {industry.customers.map((c) => (
-                          <div key={c} className="flex items-center gap-2 px-4 py-2 rounded-lg bg-costa-green/5 border border-costa-green/20">
-                            <CheckCircle2 size={14} className="text-costa-green" />
-                            <span className="text-costa-green text-sm font-medium">{c}</span>
+                          <div key={c} className="flex items-center gap-2 px-4 py-2 rounded-lg bg-[#F0FDF4] dark:bg-emerald-900/10 border border-emerald-100 dark:border-emerald-900/40">
+                            <CheckCircle2 size={14} className="text-[#059669]" />
+                            <span className="text-[#059669] text-sm font-bold tracking-wide">{c}</span>
                           </div>
                         ))}
                       </div>
@@ -93,14 +92,14 @@ export default function IndustriesPage() {
 
               <div className={i % 2 !== 0 ? "lg:order-1" : ""}>
                 <ScrollReveal delay={0.1} direction={i % 2 === 0 ? "right" : "left"}>
-                  <div className="aspect-[4/3] rounded-2xl overflow-hidden relative group" style={{ border: "1px solid var(--glass-border)" }}>
+                  <div className="aspect-[4/3] rounded-3xl overflow-hidden relative group border-4 border-white dark:border-slate-800 shadow-2xl">
                     <Image
                       src={industry.image}
                       alt={industry.title}
                       fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-700"
+                      className="object-cover group-hover:scale-110 transition-transform duration-[2000ms] ease-out"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
                   </div>
                 </ScrollReveal>
               </div>

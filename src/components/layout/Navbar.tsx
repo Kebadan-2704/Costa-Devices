@@ -132,59 +132,69 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {/* Mobile Overlay */}
+      {/* Platinum Mobile Takeover */}
       <div
-        className={`fixed inset-0 z-[105] backdrop-blur-xl transition-all duration-500 lg:hidden ${
-          mobileOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+        className={`fixed inset-0 z-[105] bg-white/90 dark:bg-[#0a0f12]/95 backdrop-blur-2xl transition-all duration-700 lg:hidden flex flex-col justify-between ${
+          mobileOpen ? "opacity-100 pointer-events-auto translate-y-0" : "opacity-0 pointer-events-none -translate-y-4"
         }`}
-        style={{
-          backgroundColor: "var(--nav-bg)",
-        }}
       >
-        <div className="flex flex-col items-center justify-center h-full gap-8">
-          {NAV_LINKS.map((link, i) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className={`font-heading text-3xl font-bold transition-all duration-500 ${
-                pathname === link.href ? "text-costa-green" : "hover:text-costa-green"
-              }`}
-              style={{
-                transitionDelay: mobileOpen ? `${i * 0.05}s` : "0s",
-                opacity: mobileOpen ? 1 : 0,
-                transform: mobileOpen ? "translateY(0)" : "translateY(20px)",
-                color: pathname === link.href ? "var(--brand-green)" : "var(--text-primary)",
-              }}
-            >
-              {link.label}
-            </Link>
-          ))}
+        <div className="pt-32 px-8 flex flex-col gap-8 flex-1">
+          <div className="md:hidden mb-4" style={{ 
+            transitionDelay: mobileOpen ? "0.1s" : "0s", 
+            opacity: mobileOpen ? 1 : 0, 
+            transform: mobileOpen ? "translateY(0)" : "translateY(10px)",
+            transition: "all 0.5s cubic-bezier(0.4, 0, 0.2, 1)" 
+          }}>
+            <p className="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-[0.2em] mb-4">Quick Search</p>
+            <PartSearchEngine />
+          </div>
+
+          <nav className="flex flex-col gap-6">
+            {NAV_LINKS.map((link, i) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={() => setMobileOpen(false)}
+                className={`font-heading text-4xl sm:text-5xl font-black tracking-tight transition-all relative w-fit group ${
+                  pathname === link.href ? "text-[#059669]" : "text-slate-900 dark:text-white"
+                }`}
+                style={{
+                  transitionDelay: mobileOpen ? \`\${0.15 + i * 0.05}s\` : "0s",
+                  opacity: mobileOpen ? 1 : 0,
+                  transform: mobileOpen ? "translateX(0)" : "translateX(-20px)",
+                  transition: "all 0.5s cubic-bezier(0.4, 0, 0.2, 1)"
+                }}
+              >
+                {link.label}
+                <span className="absolute -bottom-2 left-0 w-0 h-1 bg-[#059669] transition-all duration-300 group-hover:w-full" />
+              </Link>
+            ))}
+          </nav>
+        </div>
+
+        <div 
+          className="pb-12 px-8"
+          style={{
+            transitionDelay: mobileOpen ? "0.4s" : "0s",
+            opacity: mobileOpen ? 1 : 0,
+            transform: mobileOpen ? "translateY(0)" : "translateY(20px)",
+            transition: "all 0.5s cubic-bezier(0.4, 0, 0.2, 1)"
+          }}
+        >
           <Link
             href="/request-quote"
-            className="btn-primary mt-4"
-            style={{
-              transitionDelay: mobileOpen ? "0.4s" : "0s",
-              opacity: mobileOpen ? 1 : 0,
-              transform: mobileOpen ? "translateY(0)" : "translateY(20px)",
-            }}
+            onClick={() => setMobileOpen(false)}
+            className="w-full flex items-center justify-between bg-[#059669] hover:bg-emerald-500 text-white p-6 rounded-2xl transition-colors group mb-8"
           >
-            Request Quote <ArrowRight size={16} />
+            <span className="font-heading text-xl font-bold">Request Quote</span>
+            <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center group-hover:translate-x-1 transition-transform">
+              <ArrowRight size={20} />
+            </div>
           </Link>
-          <div
-            className="flex flex-col items-center gap-2 mt-4 text-sm"
-            style={{
-              transitionDelay: mobileOpen ? "0.5s" : "0s",
-              opacity: mobileOpen ? 1 : 0,
-              transition: "all 0.5s",
-              color: "var(--text-muted)",
-            }}
-          >
-            <a href={`mailto:${COMPANY.email}`} className="hover:text-costa-green transition-colors">
-              {COMPANY.email}
-            </a>
-            <a href={`tel:${COMPANY.phone}`} className="hover:text-costa-green transition-colors">
-              {COMPANY.phone}
-            </a>
+
+          <div className="flex flex-col gap-3 font-mono text-sm font-medium text-slate-600 dark:text-slate-400">
+            <a href={`mailto:\${COMPANY.email}`} className="hover:text-[#059669] transition-colors">{COMPANY.email}</a>
+            <a href={`tel:\${COMPANY.phone.replace(/[^0-9+]/g, '')}`} className="hover:text-[#059669] transition-colors">{COMPANY.phone}</a>
           </div>
         </div>
       </div>
