@@ -1,12 +1,16 @@
 import type { Metadata } from "next";
-import { Inter, Space_Grotesk, JetBrains_Mono } from "next/font/google";
+import { Inter, Montserrat, Playfair_Display, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import ScrollProgress from "@/components/layout/ScrollProgress";
 import ScrollToTop from "@/components/layout/ScrollToTop";
 import WhatsAppButton from "@/components/ui/WhatsAppButton";
+import { ThemeProvider } from "@/components/ThemeProvider";
 import { Toaster } from "sonner";
+import PageTransition from "@/components/animations/PageTransition";
+import AnimatedGrid from "@/components/animations/AnimatedGrid";
+import CookieConsent from "@/components/ui/CookieConsent";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -14,10 +18,18 @@ const inter = Inter({
   display: "swap",
 });
 
-const spaceGrotesk = Space_Grotesk({
+const montserrat = Montserrat({
   subsets: ["latin"],
   variable: "--font-heading",
   display: "swap",
+  weight: ["400", "500", "600", "700", "800", "900"],
+});
+
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  variable: "--font-serif",
+  display: "swap",
+  style: ["normal", "italic"],
 });
 
 const jetbrainsMono = JetBrains_Mono({
@@ -60,49 +72,44 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable}`} suppressHydrationWarning>
+    <html lang="en" className={`${inter.variable} ${montserrat.variable} ${playfair.variable} ${jetbrainsMono.variable}`} suppressHydrationWarning>
       <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                try {
-                  var theme = localStorage.getItem('costa-theme');
-                  if (theme) {
-                    document.documentElement.setAttribute('data-theme', theme);
-                  } else if (window.matchMedia('(prefers-color-scheme: light)').matches) {
-                    document.documentElement.setAttribute('data-theme', 'light');
-                  }
-                } catch(e) {}
-              })();
-            `,
-          }}
-        />
+        {/* Cinematic Dark Mode enforced natively via CSS :root */}
       </head>
-      <body className="antialiased">
-        <a href="#main-content" className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[200] focus:px-4 focus:py-2 focus:rounded-lg focus:text-sm focus:font-semibold" style={{ background: "var(--brand-green)", color: "#fff" }}>
-          Skip to content
-        </a>
-        <ScrollProgress />
-        <Navbar />
-        <main id="main-content" className="relative">{children}</main>
-        <Footer />
-        <ScrollToTop />
-        <WhatsAppButton />
-        <Toaster
-          position="top-right"
-          toastOptions={{
-            style: {
-              background: "var(--bg-elevated)",
-              border: "1px solid var(--glass-border)",
-              color: "var(--text-primary)",
-            },
-          }}
-        />
+      <body className="antialiased bg-bg-primary transition-colors duration-500" suppressHydrationWarning>
+        <ThemeProvider attribute="class" defaultTheme="light" forcedTheme="light" enableSystem={false}>
+          <AnimatedGrid />
+          <a href="#main-content" className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[200] focus:px-4 focus:py-2 focus:rounded-lg focus:text-sm focus:font-semibold" style={{ background: "var(--brand-green)", color: "#fff" }}>
+            Skip to main content
+          </a>
+
+          <ScrollProgress />
+          <Navbar />
+          
+          <main id="main-content" className="flex-grow min-h-screen relative z-10">
+            <PageTransition>
+              {children}
+            </PageTransition>
+          </main>
+          
+          <Footer />
+          <ScrollToTop />
+          <WhatsAppButton />
+          
+          <Toaster 
+            position="bottom-right" 
+            toastOptions={{
+              style: {
+                background: 'var(--bg-elevated)',
+                color: 'var(--text-primary)',
+                border: '1px solid var(--glass-border)'
+              }
+            }}
+          />
+          <CookieConsent />
+        </ThemeProvider>
       </body>
     </html>
   );
 }
-
-
 

@@ -20,69 +20,82 @@ export default function ProductFilterGrid() {
 
   return (
     <>
-      <section style={{ backgroundColor: "var(--bg-primary)" }} className="pb-12">
-        <div className="max-w-[800px] mx-auto px-6">
+      <section className="bg-bg-primary pb-12 transition-colors duration-500">
+        <div className="max-w-[800px] mx-auto px-6 relative z-20">
           <ScrollReveal>
             <div className="relative">
-              <Search size={20} className="absolute left-5 top-1/2 -translate-y-1/2 text-slate-400" />
+              <Search size={20} className="absolute left-6 top-1/2 -translate-y-1/2 text-costa-green" />
               <input
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search by product name, category, or spec..."
-                className="w-full py-4 pl-14 pr-6 rounded-2xl focus:outline-none focus:ring-2 focus:ring-[#059669]/50 transition-all font-mono text-sm shadow-sm"
-                style={{
-                  backgroundColor: "var(--bg-tertiary)",
-                  border: "1px solid var(--input-border)",
-                  color: "var(--text-primary)",
-                }}
+                placeholder="Search global inventory..."
+                className="w-full py-6 pl-16 pr-6 bg-bg-secondary border border-glass-border text-text-primary font-mono focus:outline-none focus:border-costa-green transition-colors shadow-xl rounded-xl"
                 id="product-search"
               />
             </div>
-            <p className="text-center text-slate-500 dark:text-slate-400 text-sm mt-4 font-medium transition-colors">
-              Can't find your part number?{" "}
-              <Link href="/request-quote" className="text-[#059669] hover:text-emerald-500 transition-colors font-bold group">
-                Request global sourcing <span className="inline-block transition-transform group-hover:translate-x-1">&rarr;</span>
+            <div className="mt-4 flex items-center justify-between border-t border-glass-border pt-4 transition-colors duration-500">
+              <p className="font-mono text-[10px] text-text-muted uppercase tracking-widest">
+                Search via Part Number, Spec, or Category
+              </p>
+              <Link href="/request-quote" className="font-mono text-[10px] text-costa-green uppercase tracking-widest hover:text-text-primary transition-colors group flex items-center gap-2">
+                Launch Global Ping <span className="group-hover:translate-x-1 transition-transform">→</span>
               </Link>
-            </p>
+            </div>
           </ScrollReveal>
         </div>
       </section>
 
-      <section className="section-padding pt-0" style={{ backgroundColor: "var(--bg-primary)" }}>
-        <div className="max-w-[1400px] mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <section className="py-24 bg-bg-secondary border-t border-glass-border transition-colors duration-500">
+        <div className="max-w-[1600px] mx-auto px-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredCategories.map((cat, i) => (
-              <ScrollReveal key={cat.id} delay={i * 0.08}>
-                <div id={cat.id} className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden group h-full flex flex-col hover:shadow-xl hover:border-[#059669]/30 transition-all duration-500">
-                  <div className="h-52 relative overflow-hidden">
+              <ScrollReveal key={cat.id} delay={i * 0.05}>
+                <div id={cat.id} className="bg-bg-primary border border-glass-border group h-full flex flex-col hover:border-costa-green/50 transition-colors relative overflow-hidden rounded-2xl">
+                  <div className="absolute top-0 left-0 w-full h-1 bg-glass-border group-hover:bg-costa-green transition-colors duration-500 z-10 rounded-t-2xl" />
+                  
+                  <div className="h-64 relative overflow-hidden border-b border-glass-border">
                     <Image
                       src={cat.image}
                       alt={cat.title}
                       fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-700"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      className="object-cover opacity-60 dark:opacity-80 grayscale group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-[1500ms] ease-out"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/20 to-transparent" />
-                    <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#059669] to-emerald-400 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
-                    <div className="absolute top-4 right-4 px-3 py-1 rounded-full text-[10px] text-white font-mono bg-black/40 backdrop-blur-md border border-white/20">
-                      {cat.products.length} products
+                    <div className="absolute inset-0 bg-gradient-to-t from-bg-primary via-bg-primary/80 to-transparent transition-colors duration-500" />
+                    <div className="absolute top-4 right-4 px-3 py-1 bg-bg-secondary border border-glass-border font-mono text-[10px] text-costa-green font-bold tracking-widest uppercase transition-colors duration-500 rounded-lg">
+                      {cat.products.length} CLASSIFICATIONS
                     </div>
                   </div>
-                  <div className="p-6 flex-1 flex flex-col">
-                    <h3 className="font-heading text-xl font-bold mb-3 text-slate-900 dark:text-white group-hover:text-[#059669] transition-colors">
+                  
+                  <div className="p-8 flex-1 flex flex-col relative bg-bg-primary transition-colors duration-500">
+                    <h3 className="font-heading text-xl font-bold mb-3 text-text-primary tracking-tight group-hover:text-costa-green transition-colors duration-500">
                       {cat.title}
                     </h3>
-                    <p className="text-slate-600 dark:text-slate-400 text-sm mb-5 leading-relaxed flex-1">{cat.description}</p>
-                    <div className="flex flex-wrap gap-2 mb-6">
+                    <p className="text-text-secondary font-light text-sm mb-8 leading-relaxed flex-1 transition-colors duration-500">{cat.description}</p>
+                    
+                    <div className="flex flex-wrap gap-2 mb-8">
                       {cat.products.map((p) => (
-                        <span key={p} className="text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 group-hover:bg-emerald-50 dark:group-hover:bg-emerald-900/20 group-hover:text-[#059669] transition-colors border border-transparent group-hover:border-emerald-100 dark:group-hover:border-emerald-800">
+                        <span key={p} className="font-mono text-[10px] font-bold uppercase tracking-widest px-3 py-2 bg-bg-secondary border border-glass-border text-text-secondary group-hover:border-costa-green/20 transition-colors duration-500 rounded-lg">
                           {p}
                         </span>
                       ))}
                     </div>
-                    <Link href="/request-quote" className="text-[#059669] text-sm font-bold inline-flex items-center gap-2 hover:gap-3 transition-all mt-auto group/btn">
-                      Request Quote <ChevronRight size={14} className="group-hover/btn:text-emerald-500 delay-75" />
-                    </Link>
+                    
+                    <div className="flex items-center gap-4 border-t border-glass-border pt-6 mt-auto transition-colors duration-500">
+                      <Link href="/request-quote" className="group/btn flex items-center justify-between flex-1">
+                        <span className="font-mono text-[10px] text-text-primary font-bold tracking-widest uppercase group-hover/btn:text-costa-green transition-colors duration-500">
+                          Request Sourcing
+                        </span>
+                        <ChevronRight size={14} className="text-text-muted group-hover/btn:text-costa-green group-hover/btn:translate-x-1 transition-all" />
+                      </Link>
+                      <div className="w-px h-6 bg-glass-border" />
+                      <a href={`/datasheets/${cat.id}.pdf`} className="group/btn flex items-center justify-center shrink-0" title="Download Specification Datasheet">
+                        <span className="font-mono text-[10px] text-text-muted font-bold tracking-widest uppercase hover:text-costa-green transition-colors duration-500 flex items-center gap-1">
+                          Datasheet
+                        </span>
+                      </a>
+                    </div>
                   </div>
                 </div>
               </ScrollReveal>
@@ -90,14 +103,14 @@ export default function ProductFilterGrid() {
           </div>
 
           {filteredCategories.length === 0 && (
-            <div className="text-center py-20 animate-in fade-in zoom-in duration-500">
-              <div className="w-20 h-20 bg-slate-100 dark:bg-slate-800 rounded-full flex items-center justify-center mx-auto mb-6">
-                <Search size={32} className="text-slate-400" />
-              </div>
-              <p className="font-heading text-xl font-bold text-slate-900 dark:text-white mb-2">No components found for &ldquo;{searchQuery}&rdquo;</p>
-              <p className="text-slate-500 dark:text-slate-400 text-sm mb-6">Our global network can source any obsolete or allocated part.</p>
-              <Link href="/contact" className="btn-primary inline-flex">
-                Contact Global Sourcing
+            <div className="text-center py-32">
+              <Search size={48} className="mx-auto text-text-muted/30 mb-8 transition-colors duration-500" strokeWidth={1} />
+              <h3 className="font-heading text-3xl font-black text-text-primary tracking-tighter mb-4 transition-colors duration-500">NO HARDWARE LOCATED</h3>
+              <p className="text-text-secondary font-light max-w-md mx-auto mb-8 transition-colors duration-500">
+                Our active directory does not explicitly list &ldquo;{searchQuery}&rdquo;. We can source obsolete/allocated parts globally.
+              </p>
+              <Link href="/contact" className="btn-primary rounded-lg px-12 py-5 text-sm tracking-[0.15em]">
+                Ping Global Network
               </Link>
             </div>
           )}

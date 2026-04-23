@@ -4,53 +4,50 @@ export async function POST(request: Request) {
   try {
     const formData = await request.formData();
     
-    // Extract standard string fields
-    const payload: Record<string, string> = {};
-    for (const [key, value] of formData.entries()) {
-      if (typeof value === "string") {
-        payload[key] = value;
-      }
-    }
+    // Web3Forms Integration
+    // In production, set WEB3FORMS_ACCESS_KEY in your .env.local file
+    const accessKey = process.env.WEB3FORMS_ACCESS_KEY || "YOUR_WEB3FORMS_ACCESS_KEY_HERE";
+    formData.append("access_key", accessKey);
+    formData.append("subject", "New High-Value RFQ from Costa Devices Platform");
+    formData.append("from_name", "Costa Devices RFQ System");
     
-    // Extract file (BOM)
+    // Optional: Extract file meta for logging
     const file = formData.get("file") as File | null;
     let fileMeta = null;
-    
     if (file) {
-      // In production, we'd pipe this ArrayBuffer into S3, an email attachment, or AWS Textract
-      const buffer = await file.arrayBuffer();
-      fileMeta = {
-        name: file.name,
-        size: file.size,
-        type: file.type,
-        bytesReceived: buffer.byteLength,
-      };
+      fileMeta = { name: file.name, size: file.size, type: file.type };
     }
     
-    // Simulated Backend Transport (SMTP / CRM)
-    console.log("[SERVER START] Processing High-Value RFQ:");
-    console.log("[PAYLOAD]:", JSON.stringify(payload, null, 2));
-    if (fileMeta) {
-      console.log("[ATTACHMENT DETECTED]:", fileMeta);
+    console.log("[SERVER START] Dispatching RFQ to Web3Forms...");
+    if (fileMeta) console.log("[ATTACHMENT DETECTED]:", fileMeta);
+    
+    // Forward the exact FormData directly to Web3Forms
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      body: formData,
+      // Web3Forms requires no specific headers for FormData, browser/fetch handles the boundary
+    });
+    
+    const data = await response.json();
+    
+    if (!response.ok || !data.success) {
+      throw new Error(data.message || "Failed to submit to Web3Forms");
     }
     
-    // Secure processing delay matching our premium spinner
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    
-    console.log("[SERVER SUCCESS] RFQ injected into CRM pipeline.");
+    console.log("[SERVER SUCCESS] RFQ submitted to Web3Forms.");
     
     return NextResponse.json(
       { 
         success: true, 
-        message: "Quote captured securely",
+        message: "Quote captured securely and emailed.",
         reference: `RFQ-${Math.random().toString(36).substring(2, 8).toUpperCase()}`
       },
       { status: 200 }
     );
-  } catch (error) {
-    console.error("[SERVER ERROR] RFQ pipeline failed:", error);
+  } catch (error: any) {
+    console.error("[SERVER ERROR] RFQ pipeline failed:", error.message || error);
     return NextResponse.json(
-      { success: false, error: "Internal Server Error" },
+      { success: false, error: "Failed to dispatch email. Check Web3Forms API key." },
       { status: 500 }
     );
   }

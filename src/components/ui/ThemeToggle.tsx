@@ -1,38 +1,36 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useTheme } from "next-themes";
+import { useState, useEffect } from "react";
 import { Sun, Moon } from "lucide-react";
 
 export default function ThemeToggle() {
-  const [isDark, setIsDark] = useState(true);
+  const { theme, setTheme, resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
 
-  useEffect(() => {
-    const current = document.documentElement.getAttribute("data-theme");
-    setIsDark(current !== "light");
-  }, []);
+  useEffect(() => setMounted(true), []);
 
-  const toggleTheme = () => {
-    const next = isDark ? "light" : "dark";
-    setIsDark(!isDark);
-    document.documentElement.setAttribute("data-theme", next);
-    localStorage.setItem("costa-theme", next);
-  };
+  if (!mounted) {
+    return (
+      <div className="w-10 h-10 rounded-xl bg-bg-secondary border border-glass-border animate-pulse" />
+    );
+  }
+
+  const isDark = resolvedTheme === "dark";
 
   return (
     <button
-      onClick={toggleTheme}
-      className="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 cursor-pointer"
-      style={{
-        background: isDark ? "rgba(255,255,255,0.08)" : "rgba(15,23,42,0.08)",
-        border: `1px solid ${isDark ? "rgba(255,255,255,0.15)" : "rgba(15,23,42,0.12)"}`,
-      }}
-      aria-label={`Switch to ${isDark ? "light" : "dark"} mode`}
-      title={`Switch to ${isDark ? "light" : "dark"} mode`}
+      onClick={() => setTheme(isDark ? "light" : "dark")}
+      className="w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300 cursor-pointer overflow-hidden relative group border border-glass-border bg-bg-primary hover:bg-bg-secondary"
+      aria-label={isDark ? "Switch to Light Mode" : "Switch to Dark Mode"}
     >
-      {isDark ? (
-        <Sun size={18} className="text-yellow-400" />
-      ) : (
-        <Moon size={18} className="text-slate-600" />
-      )}
+      <div className="absolute inset-0 bg-gradient-to-tr from-transparent to-costa-green/5 opacity-0 group-hover:opacity-100 transition-opacity" />
+      <div className="relative z-10 transition-transform duration-300 group-hover:scale-110">
+        {isDark ? (
+          <Sun size={18} className="text-amber-400" />
+        ) : (
+          <Moon size={18} className="text-text-secondary" />
+        )}
+      </div>
     </button>
   );
 }

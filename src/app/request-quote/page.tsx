@@ -2,8 +2,8 @@
 import Link from "next/link";
 import { ArrowRight, ArrowLeft, Upload, CheckCircle2, FileText, X } from "lucide-react";
 import ScrollReveal from "@/components/animations/ScrollReveal";
-import { PRODUCT_CATEGORIES, COMPANY } from "@/lib/constants";
-import { useState, useRef, useEffect } from "react";
+import { PRODUCT_CATEGORIES } from "@/lib/constants";
+import { useState, useRef, useEffect, useMemo } from "react";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
 import { toast } from "sonner";
 
@@ -11,8 +11,11 @@ export default function RequestQuotePage() {
   const [step, setStep] = useState(1);
   const [submitted, setSubmitted] = useState<boolean | "submitting">(false);
   const [uploadedFile, setUploadedFile] = useState<File | null>(null);
+  const [isDragging, setIsDragging] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [isMounted, setIsMounted] = useState(false);
+  const [honeypot, setHoneypot] = useState("");
+  const rfqId = useMemo(() => `RFQ-${Date.now().toString(36).toUpperCase()}`, []);
   
   useEffect(() => setIsMounted(true), []);
 
@@ -30,17 +33,42 @@ export default function RequestQuotePage() {
     const file = e.target.files?.[0];
     if (file) {
       if (file.size > 10 * 1024 * 1024) {
-        toast.error("File size exceeds 10MB limit");
+        toast.error("Packet exceeds 10MB limit");
         return;
       }
       setUploadedFile(file);
-      toast.success(`File "${file.name}" attached successfully`);
+      toast.success(`Packet "${file.name}" attached successfully`);
+    }
+  };
+
+  const handleDragOver = (e: React.DragEvent) => {
+    e.preventDefault();
+    setIsDragging(true);
+  };
+
+  const handleDragLeave = (e: React.DragEvent) => {
+    e.preventDefault();
+    setIsDragging(false);
+  };
+
+  const handleDrop = (e: React.DragEvent) => {
+    e.preventDefault();
+    setIsDragging(false);
+    const file = e.dataTransfer.files?.[0];
+    if (file) {
+      if (file.size > 10 * 1024 * 1024) {
+        toast.error("Packet exceeds 10MB limit");
+        return;
+      }
+      setUploadedFile(file);
+      toast.success(`Packet "${file.name}" attached successfully`);
     }
   };
 
   const handleSubmit = async () => {
-    if (!formData.name || !formData.email) {
-      toast.error("Please fill in required contact fields (Step 1)");
+    if (honeypot) return; // spam bot caught
+    if (!formData.name || !formData.email || !formData.company || !formData.phone) {
+      toast.error("All contact fields are required (Step 1)");
       setStep(1);
       return;
     }
@@ -60,58 +88,58 @@ export default function RequestQuotePage() {
         body: payload,
       });
 
-      if (!res.ok) throw new Error("Failed to submit RFQ");
+      if (!res.ok) throw new Error("Transmission failed");
       
       setSubmitted(true);
-      toast.success("Quote request securely transmitted to our engineering team.");
+      toast.success("Packet received. Processing logic initiated.");
     } catch (error) {
-      toast.error("Server connection failed. Please try again.");
+      toast.error("Server connection failed. Retransmit.");
       setSubmitted(false);
     }
   };
 
-  const nextStep = () => setStep((s) => Math.min(s + 1, 4));
-  const prevStep = () => setStep((s) => Math.max(s - 1, 1));
-
-  const inputStyle = {
-    backgroundColor: "var(--input-bg)",
-    border: "1px solid var(--input-border)",
-    color: "var(--text-primary)",
+  const nextStep = () => {
+    if (step === 1) {
+      if (!formData.name || !formData.email || !formData.company || !formData.phone) {
+        toast.error("All contact fields are required (Step 1)");
+        return;
+      }
+    }
+    setStep((s) => Math.min(s + 1, 4));
   };
+  const prevStep = () => setStep((s) => Math.max(s - 1, 1));
 
   if (submitted === true || submitted === "submitting") {
     return (
-      <section className="min-h-screen flex items-center justify-center px-6" style={{ backgroundColor: "var(--bg-primary)" }}>
-        <div className="glass-card p-12 text-center max-w-lg w-full flex flex-col items-center justify-center min-h-[400px] transition-all duration-700">
+      <section className="min-h-screen flex items-center justify-center px-6 transition-colors duration-500">
+        <div className="bg-bg-secondary border border-glass-border p-12 text-center max-w-lg w-full flex flex-col items-center justify-center min-h-[400px] transition-colors duration-500 rounded-2xl">
           {submitted === "submitting" ? (
             <div className="flex flex-col items-center animate-in fade-in zoom-in duration-500">
               <div className="w-16 h-16 mb-8 relative">
-                <div className="absolute inset-0 rounded-full border-4 border-slate-100 dark:border-slate-800" />
-                <div className="absolute inset-0 rounded-full border-4 border-[#059669] border-t-transparent animate-spin" />
+                <div className="absolute inset-0 rounded-full border-4 border-glass-border transition-colors duration-500" />
+                <div className="absolute inset-0 rounded-full border-4 border-costa-green border-t-transparent animate-spin" />
               </div>
-              <h2 className="font-heading text-2xl font-bold mb-3" style={{ color: "var(--text-primary)" }}>Processing Request</h2>
-              <p className="text-text-secondary">Securely transmitting your BOM and RFQ configuration...</p>
+              <h2 className="font-heading text-2xl font-black mb-3 text-text-primary tracking-tighter transition-colors duration-500">SUBMITTING REQUEST</h2>
+              <p className="text-text-secondary font-light transition-colors duration-500">Submitting your requirements to our sales team...</p>
             </div>
           ) : (
-            <div className="animate-in fade-in zoom-in duration-500">
-              <div className="w-20 h-20 bg-[#F0FDF4] dark:bg-emerald-900/20 rounded-full flex items-center justify-center mx-auto mb-6 shadow-sm border border-emerald-100 dark:border-emerald-900/50">
-                <CheckCircle2 size={40} className="text-[#059669]" />
+            <div className="animate-in fade-in zoom-in duration-500 w-full">
+              <div className="w-20 h-20 bg-costa-green/10 border border-costa-green/20 rounded-full flex items-center justify-center mx-auto mb-8 shadow-sm transition-colors duration-500">
+                <CheckCircle2 size={40} className="text-costa-green" strokeWidth={1} />
               </div>
-              <h2 className="font-heading text-3xl font-bold mb-4" style={{ color: "var(--text-primary)" }}>Quote Request Submitted</h2>
-              <p className="text-text-secondary mb-6">
-                Our global engineering team is reviewing your requirements. Expect a full proposal within 24 hours.
+              <h2 className="font-heading text-3xl font-black mb-4 text-text-primary tracking-tighter transition-colors duration-500">REQUEST RECEIVED</h2>
+              <p className="text-text-secondary font-light mb-8 transition-colors duration-500">
+                Your RFQ has been submitted. Our team will contact you within 24 hours.
               </p>
-              <div className="bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800 p-4 rounded-xl inline-block mb-8">
-                <p className="text-xs text-slate-500 font-bold uppercase tracking-widest mb-1">Secure Reference ID</p>
-                <p className="font-mono text-xl text-[#059669] font-bold tracking-wider">
-                  RFQ-{Math.random().toString(36).substring(2, 8).toUpperCase()}
+              <div className="bg-bg-primary border border-glass-border p-6 inline-block w-full text-center mb-8 transition-colors duration-500 rounded-xl">
+                <p className="font-mono text-[10px] text-text-muted font-bold uppercase tracking-widest mb-2">Quote ID</p>
+                <p className="font-mono text-xl text-costa-green font-bold tracking-wider">
+                  {rfqId}
                 </p>
               </div>
-              <div className="block">
-                <Link href="/" className="btn-primary inline-flex justify-center px-8">
-                  Return to Dashboard <ArrowRight size={16} />
-                </Link>
-              </div>
+              <Link href="/" className="btn-primary rounded-lg w-full py-5 text-sm tracking-[0.15em] group">
+                <span className="flex items-center justify-center gap-3">Return to Homepage <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" /></span>
+              </Link>
             </div>
           )}
         </div>
@@ -120,237 +148,274 @@ export default function RequestQuotePage() {
   }
 
   return (
-    <>
-      <section className="relative pt-16 pb-20 overflow-hidden" style={{ backgroundColor: "var(--bg-primary)" }}>
-        <div className="absolute inset-0 bg-[var(--bg-secondary)]" />
-        <div className="absolute bottom-0 w-full h-px bg-gradient-to-r from-transparent via-[var(--glass-border)] to-transparent" />
+    <div className="min-h-screen text-text-secondary transition-colors duration-500">
+      <section className="relative pt-32 pb-20 overflow-hidden border-b border-glass-border transition-colors duration-500">
+        <div className="absolute inset-0 bg-gradient-to-b from-bg-secondary to-bg-primary transition-colors duration-500" />
         <div className="max-w-[1400px] mx-auto px-6 relative z-10">
           <ScrollReveal>
             <p className="font-mono text-xs text-costa-green tracking-[0.2em] uppercase mb-4 flex items-center gap-2">
               <span className="w-6 h-px bg-costa-green" />
               Home / Request Quote
             </p>
-            <h1 className="font-heading text-[clamp(2rem,5vw,3.5rem)] font-bold leading-tight mb-6" style={{ color: "var(--text-primary)" }}>
-              Request a <span className="green-gradient-text">Quote</span>
+            <h1 className="font-heading text-[clamp(2.5rem,6vw,4.5rem)] font-black leading-tight mb-6 text-text-primary tracking-tighter transition-colors duration-500">
+              COMPONENT <span className="text-costa-green">QUOTE</span>
             </h1>
-            <p className="text-text-secondary text-lg max-w-2xl leading-relaxed">
-              Fill out the form below and our team will get back to you within 24 hours with a competitive quote.
+            <p className="text-text-secondary text-lg max-w-2xl leading-relaxed font-light border-l-4 border-costa-green pl-6 mb-8 transition-colors duration-500">
+              Submit your requirements for a fast, competitive quote. Our systems cross-reference 5M+ inventory lines globally.
             </p>
           </ScrollReveal>
         </div>
       </section>
 
-      <section className="section-padding pt-0" style={{ backgroundColor: "var(--bg-primary)" }}>
-        <div className="max-w-[800px] mx-auto">
+      <section className="py-24 transition-colors duration-500">
+        <div className="max-w-[800px] mx-auto px-6">
           {/* Progress Bar */}
           <ScrollReveal>
-            <div className="flex items-center gap-2 mb-12">
+            <div className="flex items-center gap-2 mb-16 overflow-x-auto pb-4 hide-scrollbar">
               {[
                 { num: 1, label: "Contact" },
-                { num: 2, label: "Requirements" },
-                { num: 3, label: "Upload" },
-                { num: 4, label: "Details" },
-              ].map((s) => (
-                <div key={s.num} className="flex-1 flex items-center gap-2">
-                  <div className="flex flex-col items-center gap-2">
-                    <div className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold transition-all ${
-                      s.num <= step ? "bg-costa-green text-white shadow-lg shadow-costa-green/20" : "text-text-muted"
-                    }`} style={s.num > step ? { background: "var(--card-tag-bg)", border: "1px solid var(--input-border)" } : {}}>
-                      {s.num < step ? <CheckCircle2 size={18} /> : s.num}
-                    </div>
-                    <span className={`text-xs font-medium ${s.num <= step ? "text-costa-green" : "text-text-muted"}`}>{s.label}</span>
+                { num: 2, label: "Hardware" },
+                { num: 3, label: "Shipping" },
+                { num: 4, label: "Verify" },
+              ].map((s, idx) => (
+                <div key={s.num} className="flex items-center gap-2 shrink-0">
+                  <div className={`flex items-center gap-3 px-4 py-3 border rounded-lg transition-colors duration-500 ${
+                    step >= s.num
+                      ? "border-costa-green bg-costa-green/10 text-text-primary"
+                      : "border-glass-border bg-bg-secondary text-text-muted"
+                  }`}>
+                    <span className={`w-6 h-6 flex items-center justify-center font-mono text-xs font-bold rounded-md transition-colors duration-500 ${
+                      step >= s.num ? "bg-costa-green text-white" : "bg-bg-secondary border border-glass-border text-text-secondary"
+                    }`}>
+                      {step > s.num ? <CheckCircle2 size={12} /> : s.num}
+                    </span>
+                    <span className="font-mono text-[10px] uppercase tracking-widest font-bold hidden sm:inline-block">
+                      {s.label}
+                    </span>
                   </div>
-                  {s.num < 4 && <div className={`flex-1 h-px transition-colors ${s.num < step ? "bg-costa-green" : ""}`} style={s.num >= step ? { background: "var(--input-border)" } : {}} />}
+                  {idx < 3 && <div className={`w-8 h-px transition-colors duration-500 ${step > s.num ? "bg-costa-green" : "bg-glass-border"}`} />}
                 </div>
               ))}
             </div>
           </ScrollReveal>
 
-          <ScrollReveal>
-            <div className="glass-card p-12 md:p-16">
-              {/* Step 1: Contact */}
-              {step === 1 && (
-                <div className="animate-in fade-in slide-in-from-right-4 duration-500">
-                  <h3 className="font-heading text-2xl font-semibold mb-8" style={{ color: "var(--text-primary)" }}>Contact Information</h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div>
-                      <label htmlFor="rfq-name" className="text-text-muted text-sm font-medium mb-2 block">Full Name *</label>
-                      <input id="rfq-name" name="name" value={formData.name} onChange={handleChange} required className="w-full py-4 px-5 rounded-xl focus:outline-none focus:ring-2 focus:ring-costa-green/50 transition-all font-medium text-base" style={inputStyle} placeholder="John Doe" />
-                    </div>
-                    <div>
-                      <label htmlFor="rfq-company" className="text-text-muted text-sm font-medium mb-2 block">Company *</label>
-                      <input id="rfq-company" name="company" value={formData.company} onChange={handleChange} required className="w-full py-4 px-5 rounded-xl focus:outline-none focus:ring-2 focus:ring-costa-green/50 transition-all font-medium text-base" style={inputStyle} placeholder="Your Company" />
-                    </div>
-                    <div>
-                      <label htmlFor="rfq-email" className="text-text-muted text-sm font-medium mb-2 block">Email *</label>
-                      <input id="rfq-email" name="email" type="email" value={formData.email} onChange={handleChange} required className="w-full py-4 px-5 rounded-xl focus:outline-none focus:ring-2 focus:ring-costa-green/50 transition-all font-medium text-base" style={inputStyle} placeholder="john@company.com" />
-                    </div>
-                    <div>
-                      <label htmlFor="rfq-phone" className="text-text-muted text-sm font-medium mb-2 block">Phone</label>
-                      <input id="rfq-phone" name="phone" type="tel" value={formData.phone} onChange={handleChange} className="w-full py-4 px-5 rounded-xl focus:outline-none focus:ring-2 focus:ring-costa-green/50 transition-all font-medium text-base" style={inputStyle} placeholder="+91 XXXXXXXXXX" />
+          {/* Form Container */}
+          {isMounted && (
+            <ScrollReveal delay={0.1}>
+              <div className="bg-bg-secondary border border-glass-border p-8 sm:p-12 relative overflow-hidden transition-colors duration-500">
+                {/* Step 1: Contact Detail */}
+                {step === 1 && (
+                  <div className="animate-in slide-in-from-right-4 fade-in duration-500">
+                    <h2 className="font-heading text-2xl font-black mb-8 text-text-primary tracking-tighter transition-colors duration-500">CONTACT INFORMATION</h2>
+                    <div className="space-y-6">
+                      <div className="grid md:grid-cols-2 gap-6">
+                        <div>
+                          <label className="font-mono text-[10px] text-text-muted uppercase tracking-widest block mb-2">Your Name *</label>
+                          <input required name="name" value={formData.name} onChange={handleChange} className="w-full bg-bg-primary border border-glass-border text-text-primary font-mono text-sm p-4 focus:outline-none focus:border-costa-green transition-colors duration-500 shadow-sm dark:shadow-none" placeholder="Name" />
+                        </div>
+                        <div>
+                          <label className="font-mono text-[10px] text-text-muted uppercase tracking-widest block mb-2">Organization *</label>
+                          <input required name="company" value={formData.company} onChange={handleChange} className="w-full bg-bg-primary border border-glass-border text-text-primary font-mono text-sm p-4 focus:outline-none focus:border-costa-green transition-colors duration-500 shadow-sm dark:shadow-none" placeholder="Company Name" />
+                        </div>
+                      </div>
+                      <div className="grid md:grid-cols-2 gap-6">
+                        <div>
+                          <label className="font-mono text-[10px] text-text-muted uppercase tracking-widest block mb-2">Email Address *</label>
+                          <input required type="email" name="email" value={formData.email} onChange={handleChange} className="w-full bg-bg-primary border border-glass-border text-text-primary font-mono text-sm p-4 focus:outline-none focus:border-costa-green transition-colors duration-500 shadow-sm dark:shadow-none" placeholder="email@company.com" />
+                        </div>
+                        <div>
+                          <label className="font-mono text-[10px] text-text-muted uppercase tracking-widest block mb-2">Phone Number *</label>
+                          <input required type="tel" name="phone" value={formData.phone} onChange={handleChange} className="w-full bg-bg-primary border border-glass-border text-text-primary font-mono text-sm p-4 focus:outline-none focus:border-costa-green transition-colors duration-500 shadow-sm dark:shadow-none" placeholder="Phone Number" />
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
-              )}
+                )}
 
-              {/* Step 2: Requirements */}
-              {step === 2 && (
-                <div className="animate-in fade-in slide-in-from-right-4 duration-500">
-                  <h3 className="font-heading text-2xl font-semibold mb-8" style={{ color: "var(--text-primary)" }}>Requirement Details</h3>
-                  <div className="space-y-8">
-                    <div>
-                      <label htmlFor="rfq-category" className="text-text-muted text-sm font-medium mb-2 block">Product Category</label>
-                      <select id="rfq-category" name="category" value={formData.category} onChange={handleChange} className="w-full py-4 px-5 rounded-xl focus:outline-none focus:ring-2 focus:ring-costa-green/50 transition-all appearance-none cursor-pointer font-medium text-base" style={inputStyle}>
-                        <option value="">Select a category</option>
-                        {PRODUCT_CATEGORIES.map((cat) => (
-                          <option key={cat.id} value={cat.id}>{cat.title}</option>
+                {/* Step 2: Requirements */}
+                {step === 2 && (
+                  <div className="animate-in slide-in-from-right-4 fade-in duration-500">
+                    <h2 className="font-heading text-2xl font-black mb-8 text-text-primary tracking-tighter transition-colors duration-500">HARDWARE CLASSIFICATION</h2>
+                    <div className="space-y-6">
+                      <div>
+                        <label className="font-mono text-[10px] text-text-muted uppercase tracking-widest block mb-2">Hardware Category</label>
+                        <select name="category" value={formData.category} onChange={handleChange} className="w-full bg-bg-primary border border-glass-border text-text-primary font-mono text-sm p-4 focus:outline-none focus:border-costa-green transition-colors duration-500 cursor-pointer appearance-none shadow-sm dark:shadow-none">
+                          <option value="">Select Primary Classification...</option>
+                          {PRODUCT_CATEGORIES.map(cat => (
+                            <option key={cat.id} value={cat.title}>{cat.title}</option>
+                          ))}
+                          <option value="other">Other / Mixed Requirements</option>
+                        </select>
+                      </div>
+
+                      <div>
+                        <div className="flex justify-between items-center mb-2">
+                          <label className="font-mono text-[10px] text-text-muted uppercase tracking-widest block">Primary Part Numbers / Disti SKUs</label>
+                        </div>
+                        <textarea name="partNumbers" value={formData.partNumbers} onChange={handleChange} rows={4} className="w-full bg-bg-primary border border-glass-border text-text-primary font-mono text-sm p-4 focus:outline-none focus:border-costa-green transition-colors duration-500 resize-none shadow-sm dark:shadow-none" placeholder="e.g. 170M6814, JANTX1N4148UR-1" />
+                      </div>
+
+                      <div className="grid md:grid-cols-2 gap-6">
+                        <div>
+                          <label className="font-mono text-[10px] text-text-muted uppercase tracking-widest block mb-2">Volume Required</label>
+                          <input name="quantity" value={formData.quantity} onChange={handleChange} className="w-full bg-bg-primary border border-glass-border text-text-primary font-mono text-sm p-4 focus:outline-none focus:border-costa-green transition-colors duration-500 shadow-sm dark:shadow-none" placeholder="e.g. 5,000 pcs / mo" />
+                        </div>
+                        <div>
+                          <label className="font-mono text-[10px] text-text-muted uppercase tracking-widest block mb-2">Target Pricing (USD/INR)</label>
+                          <input name="targetPrice" value={formData.targetPrice} onChange={handleChange} className="w-full bg-bg-primary border border-glass-border text-text-primary font-mono text-sm p-4 focus:outline-none focus:border-costa-green transition-colors duration-500 shadow-sm dark:shadow-none" placeholder="Optional" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {/* Step 3: Logistics & Upload */}
+                {step === 3 && (
+                  <div className="animate-in slide-in-from-right-4 fade-in duration-500">
+                    <h2 className="font-heading text-2xl font-black mb-8 text-text-primary tracking-tighter transition-colors duration-500">SHIPPING & DELIVERY</h2>
+                    
+                    <div className="mb-8">
+                      <label className="font-mono text-[10px] text-text-muted uppercase tracking-widest block mb-4">Required Delivery Velocity</label>
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        {[
+                          { id: "urgent", label: "URGENT", desc: "AOG / Stock out. Under 48hrs." },
+                          { id: "standard", label: "STANDARD", desc: "1-2 Weeks Delivery" },
+                          { id: "scheduled", label: "SCHEDULED", desc: "Call-offs & Future Qtrs" }
+                        ].map((tl) => (
+                          <div 
+                            key={tl.id}
+                            onClick={() => setFormData({...formData, timeline: tl.id})}
+                            className={`p-4 border cursor-pointer transition-all duration-500 ${formData.timeline === tl.id ? "border-costa-green bg-costa-green/10" : "border-glass-border bg-bg-primary hover:border-costa-green/30 dark:hover:border-costa-green/30"}`}
+                          >
+                            <div className="flex items-center justify-between mb-2">
+                              <span className={`font-mono text-xs font-bold tracking-widest uppercase transition-colors duration-500 ${formData.timeline === tl.id ? "text-text-primary" : "text-text-muted"}`}>{tl.label}</span>
+                              <div className={`w-3 h-3 rounded-full flex items-center justify-center border transition-colors duration-500 ${formData.timeline === tl.id ? "border-costa-green" : "border-glass-border"}`}>
+                                {formData.timeline === tl.id && <div className="w-1.5 h-1.5 bg-costa-green rounded-full" />}
+                              </div>
+                            </div>
+                            <p className="text-[10px] text-text-muted">{tl.desc}</p>
+                          </div>
                         ))}
-                        <option value="other">Other</option>
-                      </select>
-                    </div>
-                    <div>
-                      <label htmlFor="rfq-parts" className="text-text-muted text-sm font-medium mb-2 block">Part Numbers / Components *</label>
-                      <textarea id="rfq-parts" name="partNumbers" value={formData.partNumbers} onChange={handleChange} rows={4} className="w-full py-4 px-5 rounded-xl focus:outline-none focus:ring-2 focus:ring-costa-green/50 transition-all resize-none font-medium text-base" style={inputStyle} placeholder="Enter part numbers, one per line..." />
-                    </div>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                      <div>
-                        <label htmlFor="rfq-qty" className="text-text-muted text-sm font-medium mb-2 block">Quantity</label>
-                        <input id="rfq-qty" name="quantity" value={formData.quantity} onChange={handleChange} className="w-full py-4 px-5 rounded-xl focus:outline-none focus:ring-2 focus:ring-costa-green/50 transition-all font-medium text-base" style={inputStyle} placeholder="100" />
                       </div>
-                      <div>
-                        <label htmlFor="rfq-price" className="text-text-muted text-sm font-medium mb-2 block">Target Price (Optional)</label>
-                        <input id="rfq-price" name="targetPrice" value={formData.targetPrice} onChange={handleChange} className="w-full py-4 px-5 rounded-xl focus:outline-none focus:ring-2 focus:ring-costa-green/50 transition-all font-medium text-base" style={inputStyle} placeholder="$X.XX" />
+                    </div>
+
+                    <div className="mb-8">
+                      <label className="font-mono text-[10px] text-text-muted uppercase tracking-widest block mb-4">Upload B.O.M. (Excel/PDF)</label>
+                      
+                      {!uploadedFile ? (
+                        <div 
+                          onClick={() => fileInputRef.current?.click()}
+                          onDragOver={handleDragOver}
+                          onDragLeave={handleDragLeave}
+                          onDrop={handleDrop}
+                          className={`border border-dashed p-8 text-center cursor-pointer transition-all duration-500 group shadow-sm dark:shadow-none ${
+                            isDragging ? "border-costa-green bg-costa-green/10" : "border-glass-border bg-bg-primary hover:border-costa-green hover:bg-costa-green/5"
+                          }`}
+                        >
+                          <Upload size={24} className={`mx-auto mb-4 transition-colors ${isDragging ? "text-costa-green" : "text-text-muted group-hover:text-costa-green"}`} />
+                          <p className="font-heading text-lg font-bold text-text-primary mb-1 tracking-tight transition-colors duration-500">
+                            {isDragging ? "Drop BOM File Here" : "Drag & Drop BOM File"}
+                          </p>
+                          <p className="text-xs text-text-muted font-mono">Excel, CSV, or PDF up to 10MB. Or click to browse.</p>
+                        </div>
+                      ) : (
+                        <div className="border border-costa-green bg-costa-green/10 p-6 flex justify-between items-center group transition-colors duration-500">
+                          <div className="flex items-center gap-4">
+                            <FileText className="text-costa-green" size={24} />
+                            <div>
+                              <p className="font-mono text-sm text-text-primary font-bold transition-colors duration-500">{uploadedFile.name}</p>
+                              <p className="text-xs text-costa-green font-mono">{(uploadedFile.size / 1024).toFixed(1)} KB</p>
+                            </div>
+                          </div>
+                          <button onClick={() => setUploadedFile(null)} className="text-text-muted hover:text-red-500 dark:hover:text-red-400 p-2 border border-glass-border hover:border-red-500 dark:hover:border-red-400 bg-bg-primary transition-colors shadow-sm dark:shadow-none">
+                            <X size={16} />
+                          </button>
+                        </div>
+                      )}
+                      
+                      <input type="file" ref={fileInputRef} onChange={handleFileChange} className="hidden" accept=".pdf,.doc,.docx,.xls,.xlsx,.csv,.zip" />
+                    </div>
+
+                    <div>
+                      <label className="font-mono text-[10px] text-text-muted uppercase tracking-widest block mb-2">Additional Notes</label>
+                      <textarea name="notes" value={formData.notes} onChange={handleChange} rows={3} className="w-full bg-bg-primary border border-glass-border text-text-primary font-mono text-sm p-4 focus:outline-none focus:border-costa-green transition-colors duration-500 resize-none shadow-sm dark:shadow-none" placeholder="Certifications required, target datecodes, etc." />
+                    </div>
+                  </div>
+                )}
+
+                {/* Step 4: Verification */}
+                {step === 4 && (
+                  <div className="animate-in slide-in-from-right-4 fade-in duration-500">
+                    <h2 className="font-heading text-2xl font-black mb-8 text-text-primary tracking-tighter transition-colors duration-500">REVIEW & SUBMIT</h2>
+                    
+                    <div className="bg-bg-primary border border-glass-border divide-y divide-glass-border mb-8 transition-colors duration-500 shadow-sm dark:shadow-none">
+                      <div className="p-6 flex flex-col md:flex-row md:justify-between md:items-center gap-4 group hover:bg-bg-secondary transition-colors duration-500">
+                        <div>
+                          <p className="font-mono text-[10px] text-text-muted uppercase tracking-widest mb-1">Contact Info</p>
+                          <p className="font-heading text-lg font-bold text-text-primary transition-colors duration-500">{formData.name}</p>
+                          <p className="text-sm font-mono text-costa-green">{formData.email}</p>
+                        </div>
+                        <button onClick={() => setStep(1)} className="font-mono text-[10px] text-text-muted uppercase hover:text-text-primary transition-colors duration-500">Edit</button>
+                      </div>
+                      
+                      <div className="p-6 flex flex-col md:flex-row md:justify-between md:items-center gap-4 group hover:bg-bg-secondary transition-colors duration-500">
+                        <div>
+                          <p className="font-mono text-[10px] text-text-muted uppercase tracking-widest mb-1">Hardware Request</p>
+                          {formData.partNumbers ? (
+                            <p className="font-mono text-sm text-text-primary mt-2 border-l-2 border-costa-green pl-3 whitespace-pre-line leading-relaxed overflow-hidden line-clamp-3 transition-colors duration-500">
+                              {formData.partNumbers}
+                            </p>
+                          ) : (
+                            <p className="font-mono text-sm text-text-muted">No manual SKUs specified.</p>
+                          )}
+                          <p className="text-xs text-text-muted mt-2 font-mono">Volume: {formData.quantity || 'TBD'} | Target: {formData.targetPrice || 'N/A'}</p>
+                        </div>
+                        <button onClick={() => setStep(2)} className="font-mono text-[10px] text-text-muted uppercase hover:text-text-primary transition-colors duration-500">Edit</button>
+                      </div>
+
+                      <div className="p-6 flex flex-col md:flex-row md:justify-between md:items-center gap-4 group hover:bg-bg-secondary transition-colors duration-500">
+                        <div>
+                          <p className="font-mono text-[10px] text-text-muted uppercase tracking-widest mb-1">Shipping Speed</p>
+                          <div className="flex items-center gap-2 mt-2">
+                            <span className="bg-costa-green/10 border border-costa-green/30 text-costa-green font-mono text-[10px] uppercase px-3 py-1 font-bold tracking-widest">
+                              {formData.timeline}
+                            </span>
+                            {uploadedFile && (
+                              <span className="bg-blue-50 dark:bg-blue-500/10 border border-blue-200 dark:border-blue-500/30 text-blue-600 dark:text-blue-400 font-mono text-[10px] uppercase px-3 py-1 font-bold tracking-widest flex items-center gap-1 transition-colors duration-500">
+                                <FileText size={10} /> File Attached
+                              </span>
+                            )}
+                          </div>
+                        </div>
+                        <button onClick={() => setStep(3)} className="font-mono text-[10px] text-text-muted uppercase hover:text-text-primary transition-colors duration-500">Edit</button>
                       </div>
                     </div>
                   </div>
-                </div>
-              )}
+                )}
 
-              {/* Step 3: Upload */}
-              {step === 3 && (
-                <div className="animate-in fade-in slide-in-from-right-4 duration-500">
-                  <h3 className="font-heading text-2xl font-semibold mb-8" style={{ color: "var(--text-primary)" }}>Upload BOM (Optional)</h3>
-                  <input
-                    ref={fileInputRef}
-                    type="file"
-                    accept=".xlsx,.csv,.pdf,.xls"
-                    onChange={handleFileChange}
-                    className="hidden"
-                    id="bom-upload"
-                    aria-label="Upload BOM file"
-                  />
-                  {uploadedFile ? (
-                    <div className="glass-card p-8 flex items-center gap-6" style={{ transform: "none" }}>
-                      <div className="w-16 h-16 rounded-2xl bg-costa-green/10 flex flex-col items-center justify-center shrink-0">
-                        <FileText size={32} className="text-costa-green" />
-                      </div>
-                      <div className="flex-1">
-                        <p className="font-heading font-medium text-lg mb-1" style={{ color: "var(--text-primary)" }}>{uploadedFile.name}</p>
-                        <p className="text-text-muted text-sm">{(uploadedFile.size / 1024).toFixed(1)} KB</p>
-                      </div>
-                      <button
-                        onClick={() => { setUploadedFile(null); if (fileInputRef.current) fileInputRef.current.value = ""; }}
-                        className="w-12 h-12 rounded-full flex items-center justify-center text-text-muted hover:text-white hover:bg-red-500/80 transition-all cursor-pointer"
-                        style={{ background: "var(--card-tag-bg)" }}
-                        aria-label="Remove file"
-                      >
-                        <X size={20} />
-                      </button>
-                    </div>
-                  ) : (
-                    <label
-                      htmlFor="bom-upload"
-                      className="block border-2 border-dashed rounded-3xl p-16 text-center transition-all cursor-pointer hover:bg-costa-green/5"
-                      style={{ borderColor: "var(--input-border)" }}
-                      onDragOver={(e) => { e.preventDefault(); e.currentTarget.style.borderColor = "var(--brand-green)"; e.currentTarget.style.backgroundColor = "rgba(0, 200, 83, 0.05)"; }}
-                      onDragLeave={(e) => { e.currentTarget.style.borderColor = "var(--input-border)"; e.currentTarget.style.backgroundColor = "transparent"; }}
-                      onDrop={(e) => {
-                        e.preventDefault();
-                        e.currentTarget.style.borderColor = "var(--input-border)";
-                        e.currentTarget.style.backgroundColor = "transparent";
-                        const file = e.dataTransfer.files[0];
-                        if (file) {
-                          if (file.size > 10 * 1024 * 1024) { toast.error("File size exceeds 10MB"); return; }
-                          setUploadedFile(file);
-                          toast.success(`File "${file.name}" attached`);
-                        }
-                      }}
-                    >
-                      <div className="w-20 h-20 rounded-full mx-auto mb-6 bg-costa-green/10 flex items-center justify-center">
-                        <Upload size={36} className="text-costa-green" />
-                      </div>
-                      <p className="font-heading text-xl font-medium mb-3" style={{ color: "var(--text-primary)" }}>Drag & drop your BOM file here</p>
-                      <p className="text-text-secondary text-base mb-6">or click to browse from your device</p>
-                      <div className="inline-flex gap-4">
-                        <span className="px-3 py-1 text-xs rounded-full bg-costa-green/10 text-costa-green">.xlsx</span>
-                        <span className="px-3 py-1 text-xs rounded-full bg-costa-green/10 text-costa-green">.csv</span>
-                        <span className="px-3 py-1 text-xs rounded-full bg-costa-green/10 text-costa-green">.pdf</span>
-                      </div>
-                    </label>
-                  )}
-                </div>
-              )}
-
-              {/* Step 4: Additional */}
-              {step === 4 && (
-                <div className="animate-in fade-in slide-in-from-right-4 duration-500">
-                  <h3 className="font-heading text-2xl font-semibold mb-8" style={{ color: "var(--text-primary)" }}>Additional Details</h3>
-                  <div className="space-y-8">
-                    <div>
-                      <label htmlFor="rfq-timeline" className="text-text-muted text-sm font-medium mb-2 block">Timeline</label>
-                      <select id="rfq-timeline" name="timeline" value={formData.timeline} onChange={handleChange} className="w-full py-4 px-5 rounded-xl focus:outline-none focus:ring-2 focus:ring-costa-green/50 transition-all appearance-none cursor-pointer font-medium text-base" style={inputStyle}>
-                        <option value="urgent">Urgent (24-48 hours)</option>
-                        <option value="standard">Standard (1-2 weeks)</option>
-                        <option value="flexible">Flexible (no rush)</option>
-                      </select>
-                    </div>
-                    <div>
-                      <label htmlFor="rfq-notes" className="text-text-muted text-sm font-medium mb-2 block">Additional Notes</label>
-                      <textarea id="rfq-notes" name="notes" value={formData.notes} onChange={handleChange} rows={5} className="w-full py-4 px-5 rounded-xl focus:outline-none focus:ring-2 focus:ring-costa-green/50 transition-all resize-none font-medium text-base" style={inputStyle} placeholder="Any other details or requirements..." />
-                    </div>
-                  </div>
-
-                  {/* Summary */}
-                  <div className="mt-10 p-6 rounded-2xl" style={{ background: "var(--bg-secondary)", border: "1px solid var(--glass-border)" }}>
-                    <h4 className="text-sm text-costa-green uppercase tracking-widest mb-5 font-bold flex items-center gap-2"><CheckCircle2 size={16} /> Summary</h4>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-base">
-                      {formData.name && <p className="text-text-primary"><span className="text-text-muted text-sm block mb-1">Name</span> {formData.name}</p>}
-                      {formData.email && <p className="text-text-primary"><span className="text-text-muted text-sm block mb-1">Email</span> {formData.email}</p>}
-                      {formData.company && <p className="text-text-primary"><span className="text-text-muted text-sm block mb-1">Company</span> {formData.company}</p>}
-                      {formData.partNumbers && <p className="text-text-primary"><span className="text-text-muted text-sm block mb-1">Parts</span> {formData.partNumbers.split("\n").length} item(s)</p>}
-                      {uploadedFile && <p className="text-text-primary"><span className="text-text-muted text-sm block mb-1">BOM Attached</span> {uploadedFile.name}</p>}
-                      <p className="text-text-primary"><span className="text-text-muted text-sm block mb-1">Timeline</span> <span className="capitalize">{formData.timeline}</span></p>
-                    </div>
-                  </div>
-                </div>
-              )}
-
-              {/* Navigation Buttons */}
-              <div className="flex items-center justify-between mt-8 pt-6" style={{ borderTop: "1px solid var(--glass-border)" }}>
-                {step > 1 ? (
-                  <button onClick={prevStep} className="btn-ghost !py-3 !px-6 text-sm">
+                {/* Navigation Buttons */}
+                <div className="flex items-center justify-between mt-12 pt-8 border-t border-glass-border transition-colors duration-500">
+                  <button 
+                    onClick={prevStep} 
+                    className={`font-mono text-xs font-bold uppercase tracking-widest flex items-center gap-3 transition-colors ${step === 1 ? "opacity-0 pointer-events-none" : "text-text-muted hover:text-text-primary"}`}
+                  >
                     <ArrowLeft size={14} /> Back
                   </button>
-                ) : (
-                  <div />
-                )}
-                {step < 4 ? (
-                  <button onClick={nextStep} className="btn-primary !py-3 !px-6 text-sm">
-                    Next <ArrowRight size={14} />
+
+                  <button 
+                    onClick={step === 4 ? handleSubmit : nextStep} 
+                    className="group flex items-center justify-center gap-4 bg-text-primary text-bg-primary px-8 py-4 font-bold text-sm tracking-widest uppercase hover:bg-text-secondary transition-colors"
+                  >
+                    {step === 4 ? "SUBMIT REQUEST" : "PROCEED"}
+                    <ArrowRight size={16} className={`transition-transform ${step !== 4 && "group-hover:translate-x-1"}`} />
                   </button>
-                ) : (
-                  <button onClick={handleSubmit} className="btn-primary !py-3 !px-8 text-sm">
-                    Submit Quote Request <ArrowRight size={14} />
-                  </button>
-                )}
+                </div>
               </div>
-            </div>
-          </ScrollReveal>
+            </ScrollReveal>
+          )}
         </div>
       </section>
-    </>
+    </div>
   );
 }
-
-
 

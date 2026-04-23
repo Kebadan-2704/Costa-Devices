@@ -29,41 +29,41 @@ export default function TermsPage() {
             <div className="space-y-8">
               {[
                 {
-                  title: "Acceptance of Terms",
-                  content: "By accessing and using the Costa Devices website and services, you agree to be bound by these Terms of Service. If you do not agree, please do not use our services."
+                  title: "1. Acceptance of Master Services Agreement (MSA)",
+                  content: "By accessing the Costa Devices B2B procurement platform or submitting a Request for Quote (RFQ), you agree to be bound by these Terms of Service. These terms constitute a legally binding Master Services Agreement between your enterprise and COSTA DEVICES FZCO (Dubai Silicon Oasis, UAE)."
                 },
                 {
-                  title: "Services",
-                  content: "Costa Devices Electric Ltd provides electronic component distribution, spot market sourcing, PCB design and assembly, and related technical services. All quotes provided are subject to availability and final confirmation."
+                  title: "2. Quotations, Pricing, and Market Volatility",
+                  content: "Due to the dynamic nature of the global semiconductor spot market, all quotations are valid for 24-48 hours unless explicitly stated otherwise in the RFQ response. Prices are subject to change based on factory allocation, currency fluctuations, and geopolitical supply chain impacts. No order is binding until a formal Purchase Order (PO) is accepted by our Dubai headquarters."
                 },
                 {
-                  title: "Quotations & Orders",
-                  content: "All quotations are valid for 7 days unless otherwise stated. Prices are subject to change based on market conditions. Orders are confirmed only upon written acceptance and payment terms agreement."
+                  title: "3. Compliance & End-Use Certification",
+                  content: "Costa Devices strictly adheres to international trade compliance laws. Buyers must not divert, re-export, or transfer components to embargoed nations or prohibited entities. By purchasing, you certify that the end-use of these components does not violate UAE, US (EAR/ITAR), or EU export control regulations."
                 },
                 {
-                  title: "Quality Guarantee",
-                  content: "All components distributed by Costa Devices undergo our AS 6081 certified inspection process. We guarantee the authenticity of every component we deliver. Any quality concerns must be reported within 30 days of delivery."
+                  title: "4. Quality Guarantee & Counterfeit Mitigation",
+                  content: "All components are subjected to our proprietary AS 6081 compliant 8-step counterfeit mitigation pipeline. We guarantee form, fit, and function for 12 months from the date of delivery. In the rare event of a failure, our liability is strictly limited to the replacement of the defective component or a refund of the purchase price, subject to independent laboratory verification."
                 },
                 {
-                  title: "Intellectual Property",
-                  content: "All content on this website, including text, graphics, logos, and software, is the property of Costa Devices Electric Ltd and protected by applicable intellectual property laws."
+                  title: "5. Shipping, Title, and Incoterms",
+                  content: "Unless otherwise specified, all international shipments are executed under EXW (Ex Works) or FCA (Free Carrier) Incoterms 2020. Title and risk of loss transfer to the buyer upon handover to the designated carrier (e.g., DHL, FedEx) at our Hong Kong, Dubai, or India logistics hubs."
                 },
                 {
-                  title: "Limitation of Liability",
-                  content: "Costa Devices shall not be liable for any indirect, incidental, or consequential damages arising from the use of our services. Our total liability shall not exceed the value of the specific order in question."
+                  title: "6. Limitation of Liability",
+                  content: "Under no circumstances shall Costa Devices FZCO be liable for indirect, incidental, punitive, or consequential damages, including but not limited to line-down costs, lost profits, or product recall expenses, arising from delayed delivery or component failure."
                 },
                 {
-                  title: "Governing Law",
-                  content: "These terms are governed by the laws of the United Arab Emirates. Any disputes shall be resolved through arbitration in Dubai, UAE."
+                  title: "7. Governing Law & Jurisdiction",
+                  content: "These terms shall be governed by and construed in accordance with the laws of the Dubai International Financial Centre (DIFC). Any dispute arising out of or in connection with these terms, including any question regarding their existence, validity, or termination, shall be referred to and finally resolved by arbitration under the Arbitration Rules of the DIFC-LCIA."
                 },
                 {
-                  title: "Contact",
-                  content: `For questions about these terms, contact us at ${COMPANY.email}.`
+                  title: "8. Corporate Inquiries",
+                  content: `For legal notices, enterprise distribution agreements, or compliance documentation requests, please direct correspondence to our legal department at ${COMPANY.email} or our physical headquarters in Dubai Silicon Oasis.`
                 },
               ].map((section) => (
                 <div key={section.title}>
-                  <h2 className="font-heading text-xl font-semibold mb-3" style={{ color: "var(--text-primary)" }}>{section.title}</h2>
-                  <p className="text-text-secondary leading-relaxed">{section.content}</p>
+                  <h2 className="font-heading text-xl font-bold mb-3 text-text-primary tracking-tight">{section.title}</h2>
+                  <p className="text-text-secondary leading-relaxed font-light">{section.content}</p>
                 </div>
               ))}
             </div>

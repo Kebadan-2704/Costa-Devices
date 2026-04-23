@@ -20,13 +20,7 @@ export default function WhatsAppButton() {
     <div className="fixed bottom-4 right-4 md:bottom-8 md:right-8 z-[90] flex flex-col items-end gap-2">
       {tooltip && (
         <div
-          className="px-4 py-2 rounded-xl text-sm font-medium shadow-lg"
-          style={{
-            background: "var(--glass-bg)",
-            border: "1px solid var(--glass-border)",
-            backdropFilter: "blur(20px)",
-            color: "var(--text-primary)",
-          }}
+          className="px-4 py-2 rounded-xl text-sm font-medium shadow-lg bg-bg-primary/80 backdrop-blur-md border border-glass-border text-text-primary"
         >
           <div className="flex items-center gap-2">
             <span>Chat with us on WhatsApp</span>
