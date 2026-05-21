@@ -465,11 +465,32 @@ export const STATS = [
 ];
 
 export const NAV_LINKS = [
+  { label: "Home", href: "/" },
+  { 
+    label: "Products", 
+    href: "#",
+    megaMenu: {
+      categories: [
+        { label: "Electronic Components", href: "/electronics" },
+        { label: "Electrical Components", href: "/electrical" }
+      ],
+      products: [
+        { label: "IC", href: "/electronics" },
+        { label: "Memory", href: "/electronics" },
+        { label: "CPU / HDD / LCD", href: "/electronics" }
+      ]
+    }
+  },
+  { label: "Services", href: "/#divisions" },
   { label: "Company", href: "/company" },
-  { label: "Electronics", href: "/electronics" },
-  { label: "Electrical", href: "/electrical" },
-  { label: "Quality", href: "/quality" },
-  { label: "Contact", href: "/contact" },
+  { 
+    label: "Quality", 
+    href: "/quality",
+    dropdown: [
+      { label: "Certifications", href: "/quality" },
+      { label: "Counterfeit", href: "/quality" }
+    ]
+  },
 ];
 
 export const COUNTERFEIT_STEPS = [

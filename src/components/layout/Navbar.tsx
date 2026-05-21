@@ -40,12 +40,12 @@ export default function Navbar() {
 
   return (
     <>
-      <div className="fixed top-4 md:top-6 left-0 right-0 z-[100] flex justify-center px-4 md:px-6 pointer-events-none">
+      <div className="fixed top-0 left-0 right-0 z-[100] flex justify-center pointer-events-none">
         <nav
-          className={`pointer-events-auto w-full max-w-[1400px] transition-all duration-500 backdrop-blur-2xl rounded-full border ${
+          className={`pointer-events-auto w-full transition-all duration-500 border-b ${
             scrolled
-              ? "border-glass-border shadow-[0_8px_30px_rgb(0,0,0,0.12)] py-2 md:py-3 px-4 md:px-6 bg-bg-primary/90 dark:bg-bg-primary/80"
-              : "border-glass-border/50 py-3 md:py-4 px-4 md:px-6 bg-bg-primary/50 dark:bg-bg-primary/40"
+              ? "border-glass-border shadow-sm py-3 px-6 bg-bg-primary/95"
+              : "border-glass-border/30 py-4 px-6 bg-bg-primary/80"
           }`}
         >
           <div className="flex items-center justify-between gap-4 md:gap-8 w-full">
@@ -75,19 +75,74 @@ export default function Navbar() {
 
           {/* Desktop Nav */}
           <div className="hidden lg:flex items-center gap-8">
-            {NAV_LINKS.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={`relative text-[13px] font-semibold tracking-wider uppercase transition-colors duration-300 py-1
-                  ${pathname === link.href ? "text-costa-green" : "text-text-secondary hover:text-text-primary"}
-                `}
-              >
-                {link.label}
-                {pathname === link.href && (
-                  <span className="absolute -bottom-1 left-0 right-0 h-[2px] bg-costa-green rounded-full" />
+            {NAV_LINKS.map((link: any) => (
+              <div key={link.label} className="group relative h-full flex items-center">
+                <Link
+                  href={link.href}
+                  className={`relative text-[13px] font-semibold tracking-wider uppercase transition-colors duration-300 py-2
+                    ${pathname === link.href ? "text-costa-green" : "text-text-secondary group-hover:text-costa-green"}
+                  `}
+                >
+                  {link.label}
+                  <span 
+                    className={`absolute bottom-0 left-0 right-0 h-[2px] bg-costa-green rounded-full transition-all duration-300 ${
+                      pathname === link.href 
+                        ? "opacity-100 scale-x-100" 
+                        : "opacity-0 scale-x-0 group-hover:opacity-100 group-hover:scale-x-100 origin-left"
+                    }`} 
+                  />
+                </Link>
+
+                {/* Invisible hover bridge */}
+                {(link.megaMenu || link.dropdown) && (
+                  <div className="absolute top-full left-0 w-full h-6" />
                 )}
-              </Link>
+
+                {/* Mega Menu */}
+                {link.megaMenu && (
+                  <div className="absolute top-[calc(100%+16px)] left-1/2 -translate-x-1/2 w-[650px] bg-bg-primary border border-glass-border shadow-sm opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-none z-50 flex overflow-hidden before:absolute before:-top-4 before:left-0 before:w-full before:h-4">
+                    <div className="w-[45%] p-8 bg-bg-secondary/50 border-r border-glass-border">
+                      <h4 className="font-mono text-[10px] text-text-muted font-bold tracking-[0.2em] uppercase mb-6">Categories</h4>
+                      <ul className="space-y-5">
+                        {link.megaMenu.categories.map((cat: any) => (
+                          <li key={cat.label}>
+                            <Link href={cat.href} className="font-heading font-black text-[13px] hover:text-costa-green transition-colors uppercase tracking-tight">
+                              {cat.label}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div className="w-[55%] p-8 bg-bg-primary">
+                      <h4 className="font-mono text-[10px] text-text-muted font-bold tracking-[0.2em] uppercase mb-6">Products</h4>
+                      <ul className="grid grid-cols-2 gap-y-5 gap-x-4">
+                        {link.megaMenu.products.map((prod: any) => (
+                          <li key={prod.label}>
+                            <Link href={prod.href} className="text-[12px] font-bold hover:text-costa-green transition-colors uppercase flex items-center gap-2">
+                              <span className="text-text-muted">&gt;</span> {prod.label}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                )}
+
+                {/* Simple Dropdown */}
+                {link.dropdown && (
+                  <div className="absolute top-[calc(100%+16px)] left-1/2 -translate-x-1/2 w-48 bg-bg-primary border border-glass-border shadow-sm opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-none z-50 overflow-hidden py-2 before:absolute before:-top-4 before:left-0 before:w-full before:h-4">
+                    <ul className="flex flex-col">
+                      {link.dropdown.map((item: any) => (
+                        <li key={item.label}>
+                          <Link href={item.href} className="block px-6 py-2.5 text-[13px] font-bold hover:bg-bg-secondary hover:text-costa-green transition-colors uppercase tracking-tight">
+                            {item.label}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </div>
             ))}
           </div>
 
@@ -98,7 +153,7 @@ export default function Navbar() {
             <MagneticButton>
               <Link
                 href="/request-quote"
-                className="btn-primary rounded-full text-[11px] !py-2.5 !px-5 whitespace-nowrap"
+                className="bg-costa-green text-bg-primary font-mono text-[11px] font-bold uppercase py-2.5 px-5 hover:bg-bg-secondary hover:text-costa-green transition-colors border border-transparent hover:border-costa-green flex items-center gap-2"
               >
                 Get Quote
                 <ArrowRight size={12} />
@@ -124,8 +179,8 @@ export default function Navbar() {
 
         {/* Mobile Menu Dropdown - Floating Panel */}
         <div
-          className={`fixed top-24 left-4 right-4 rounded-2xl bg-bg-primary/95 backdrop-blur-2xl border border-glass-border shadow-2xl lg:hidden transition-all duration-300 origin-top overflow-hidden pointer-events-auto z-[90] ${
-            mobileOpen ? "max-h-[80vh] opacity-100 py-6" : "max-h-0 opacity-0 py-0 border-transparent"
+          className={`fixed top-16 left-0 right-0 bg-bg-primary border-b border-glass-border lg:hidden transition-all duration-300 origin-top overflow-hidden pointer-events-auto z-[90] ${
+            mobileOpen ? "max-h-[100vh] opacity-100 py-6" : "max-h-0 opacity-0 py-0 border-transparent"
           }`}
         >
           <div className="px-6 flex flex-col gap-4">
@@ -152,7 +207,7 @@ export default function Navbar() {
               <Link
                 href="/request-quote"
                 onClick={() => setMobileOpen(false)}
-                className="btn-primary w-full text-center rounded-lg py-4"
+                className="bg-costa-green text-bg-primary font-mono text-sm font-bold uppercase py-4 text-center border border-transparent hover:bg-bg-secondary hover:text-costa-green hover:border-costa-green transition-colors w-full"
               >
                 Request Quote
               </Link>
