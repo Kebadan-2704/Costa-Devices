@@ -43,7 +43,7 @@ export default function Preloader() {
           key="preloader"
           initial={{ y: 0 }}
           exit={{ y: "-100%", opacity: 0 }}
-          transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
+          transition={{ duration: 0.8, ease: "easeInOut" }}
           className="fixed inset-0 z-[99999] bg-[#FAFAFA] flex flex-col items-center justify-center font-mono overflow-hidden"
         >
           {/* Brutalist Architectural Grid */}
