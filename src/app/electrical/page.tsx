@@ -6,7 +6,7 @@ import { BRANDS } from "@/lib/constants";
 
 export default function ElectricalPage() {
   return (
-    <div className="min-h-screen bg-bg-primary text-text-primary overflow-hidden pb-32">
+    <div className="min-h-screen bg-transparent text-text-primary overflow-hidden pb-32">
       {/* Hero Section */}
       <section className="relative pt-40 pb-20 overflow-hidden">
         <div className="absolute inset-0 z-0">

@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { NAV_LINKS, COMPANY } from "@/lib/constants";
 import { Menu, X, Phone, ArrowRight } from "lucide-react";
@@ -50,27 +51,14 @@ export default function Navbar() {
         >
           <div className="flex items-center justify-between gap-4 md:gap-8 w-full">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 md:gap-4 group">
-            <div className="relative flex-shrink-0">
-              <svg viewBox="0 0 75 80" width="42" height="42" fill="none" xmlns="http://www.w3.org/2000/svg" className="transform group-hover:scale-105 transition-transform duration-300">
-                <defs>
-                  <linearGradient id="logoGreenGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" style={{ stopColor: "var(--brand-green)" }}/>
-                    <stop offset="100%" style={{ stopColor: "var(--brand-green-light)" }}/>
-                  </linearGradient>
-                </defs>
-                <path d="M10 40 L35 10 L55 10 L30 40 L55 70 L35 70 Z" fill="url(#logoGreenGrad)"/>
-                <path d="M25 40 L50 10 L70 10 L45 40 L70 70 L50 70 Z" fill="url(#logoGreenGrad)" opacity="0.6"/>
-              </svg>
-            </div>
-            <div className="flex flex-col">
-              <span className="font-heading text-lg md:text-xl font-black leading-none tracking-tight text-text-primary">
-                COSTA DEVICES
-              </span>
-              <span className="font-mono text-[9px] md:text-[10px] font-bold leading-none tracking-[0.3em] text-costa-green mt-1 uppercase">
-                Electric Ltd
-              </span>
-            </div>
+          <Link href="/" className="flex items-center group relative h-14 w-[280px] md:h-16 md:w-[320px]">
+            <Image 
+              src="/logos/logo.png" 
+              alt="Costa Devices Logo" 
+              fill
+              className="object-contain object-left transform group-hover:scale-105 transition-transform duration-300"
+              priority
+            />
           </Link>
 
           {/* Desktop Nav */}

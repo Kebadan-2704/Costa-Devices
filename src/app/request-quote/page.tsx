@@ -9,7 +9,7 @@ export const metadata = {
 
 export default function RequestQuotePage() {
   return (
-    <div className="min-h-screen bg-bg-primary pt-[100px] flex flex-col">
+    <div className="min-h-screen pt-[100px] flex flex-col bg-transparent">
       <div className="flex-grow grid grid-cols-1 lg:grid-cols-2">
         
         {/* Left Side: Information & Trust Signals */}

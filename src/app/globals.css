@@ -35,9 +35,9 @@
    ============================================ */
 
 :root {
-  --brand-green: #0A8B46;
-  --brand-green-light: #1AAF5D;
-  --brand-green-dark: #076130;
+  --brand-green: #076130;
+  --brand-green-light: #0A8B46;
+  --brand-green-dark: #043e1f;
 
   --bg-primary: #FFFFFF;
   --bg-secondary: #FAFAFA;
@@ -82,12 +82,10 @@ html {
   scroll-padding-top: 100px;
 }
 
-/* Custom cursor: uncomment when a custom cursor component is built
+/* Custom cursor active on interactive elements to match the MagneticCursor */
 @media (pointer: fine) {
-  body { cursor: none; }
-  a, button, [role="button"], input, select, textarea { cursor: none; }
+  a, button, [role="button"] { cursor: none; }
 }
-*/
 
 body {
   font-family: var(--font-body);
@@ -574,6 +572,11 @@ body::before {
   background-size: 32px 32px;
 }
 
+/* Noise/Grain background */
+.noise-bg {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
 /* ============================================
    STAT COUNTER STYLES
    ============================================ */
@@ -621,5 +624,18 @@ body::before {
   border-radius: 50%;
   background-color: inherit;
   animation: radar-ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+.animate-radar-ping-alert {
+  position: relative;
+}
+
+.animate-radar-ping-alert::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background-color: inherit;
+  animation: radar-ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
 }
 

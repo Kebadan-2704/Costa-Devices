@@ -2,11 +2,12 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, ShieldCheck, Cpu, Zap, ArrowUpRight } from "lucide-react";
+import { ArrowRight, ShieldCheck, Cpu, Zap, ArrowUpRight, ArrowUp, CheckCircle2 } from "lucide-react";
 import { motion } from "framer-motion";
 import Marquee from "@/components/ui/Marquee";
 import AnimatedNumber from "@/components/ui/AnimatedNumber";
-import AnimatedHardware from "@/components/animations/AnimatedHardware";
+import WireframeGlobe from "@/components/animations/WireframeGlobe";
+import { playMechanicalClick } from "@/utils/audio";
 
 const fadeUpVariant = {
   hidden: { opacity: 0, y: 30 },
@@ -28,18 +29,18 @@ export default function HomePage() {
     <div className="min-h-screen bg-bg-primary text-text-primary overflow-hidden">
       
       {/* 1. HERO */}
-      <section className="relative pt-40 pb-20 md:pt-48 md:pb-32 overflow-hidden flex items-center min-h-[90vh]">
+      <section className="relative pt-32 pb-16 md:pt-36 md:pb-24 overflow-hidden flex items-center min-h-[90vh]">
         
-        {/* Massive 3D WebGL Background */}
-        <div className="absolute inset-0 z-0 opacity-40">
-          <AnimatedHardware />
-        </div>
-        {/* Mobile Gradient Mask for legibility */}
-        <div className="absolute inset-0 z-0 bg-gradient-to-b from-white via-white/80 to-transparent md:hidden pointer-events-none h-[70vh]"></div>
+        {/* High-End Wireframe Globe Background */}
+        <WireframeGlobe />
+
+        {/* Film Grain & Interactive Dot Grid Background */}
+        <div className="absolute inset-0 z-0 opacity-[0.15] pointer-events-none dot-grid"></div>
+        <div className="absolute inset-0 z-0 opacity-[0.04] pointer-events-none noise-bg mix-blend-multiply"></div>
 
         {/* Deep background ambient glow */}
         <motion.div 
-          className="absolute inset-0 rounded-full blur-[120px] opacity-20 z-0 pointer-events-none"
+          className="absolute inset-0 rounded-full blur-[150px] opacity-10 z-0 pointer-events-none"
           animate={{ 
             background: [
               "radial-gradient(circle at 80% 20%, #0A8B46 0%, transparent 40%)",
@@ -51,7 +52,7 @@ export default function HomePage() {
         />
 
         {/* Massive Background Typography Marquee */}
-        <div className="absolute top-[10%] left-0 w-full overflow-hidden opacity-[0.02] pointer-events-none select-none flex flex-col gap-8 z-0">
+        <div className="absolute top-[15%] left-0 w-full overflow-hidden opacity-[0.02] pointer-events-none select-none flex flex-col gap-8 z-0">
           <motion.div 
             className="whitespace-nowrap font-heading text-[15rem] md:text-[25rem] font-black leading-none tracking-tighter text-text-primary"
             animate={{ x: [0, -2000] }}
@@ -63,24 +64,22 @@ export default function HomePage() {
 
         <div className="relative z-10 w-full px-6 max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           
-          <div className="lg:col-span-7 flex flex-col items-start">
-            <div className="overflow-hidden mb-6">
-              <motion.h1 
-                initial={{ y: "100%" }}
-                animate={{ y: 0 }}
-                transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-                className="font-heading text-5xl md:text-6xl lg:text-[5rem] font-black text-text-primary leading-[1.02] tracking-tighter"
-              >
-                Mission-Critical <br/>
-                <span className="text-costa-green">Circuit Procurement.</span>
-              </motion.h1>
-            </div>
+          <div className="lg:col-span-7 flex flex-col items-start relative z-10">
+            <motion.h1 
+              initial={{ opacity: 0, y: 30, rotateZ: 2 }}
+              animate={{ opacity: 1, y: 0, rotateZ: 0 }}
+              transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+              className="font-heading text-[clamp(3.5rem,7vw,7.5rem)] font-black text-text-primary leading-[1.05] tracking-tight mb-4 origin-bottom-left"
+            >
+              Mission-Critical <br className="hidden md:block" />
+              <span className="text-costa-green">Circuit Procurement.</span>
+            </motion.h1>
             
             <motion.p 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1, delay: 0.4 }}
-              className="font-mono text-text-secondary text-sm md:text-base max-w-[550px] leading-[1.8] mb-12"
+              className="font-mono text-text-secondary text-sm md:text-base max-w-[550px] leading-[1.8] mb-8"
             >
               Securing obsolete and active high-voltage components for EV, Aerospace, and Industrial infrastructure. Sub-24h dispatch.
             </motion.p>
@@ -90,7 +89,11 @@ export default function HomePage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
             >
-              <Link href="/request-quote" className="group inline-flex items-center gap-3 bg-costa-green text-white font-mono text-sm font-bold uppercase py-5 px-10 hover:bg-costa-green-dark transition-all shadow-[0_10px_30px_rgba(10,139,70,0.2)] hover:shadow-[0_15px_40px_rgba(10,139,70,0.35)] rounded-sm">
+              <Link 
+                href="/request-quote" 
+                onMouseEnter={playMechanicalClick}
+                className="group inline-flex items-center gap-3 bg-costa-green text-white font-mono text-sm font-bold uppercase py-5 px-10 hover:bg-costa-green-dark transition-all shadow-[0_10px_30px_rgba(10,139,70,0.2)] hover:shadow-[0_15px_40px_rgba(10,139,70,0.35)] rounded-sm"
+              >
                 TRANSMIT BOM
                 <div className="w-5 h-5 rounded-full border border-white flex items-center justify-center group-hover:translate-x-1 transition-transform">
                   <ArrowRight size={12} strokeWidth={3} />
@@ -98,55 +101,75 @@ export default function HomePage() {
               </Link>
             </motion.div>
 
-            {/* Relocated Data Cards to sit below text instead of blocking the animation */}
-            <div className="flex flex-col sm:flex-row gap-6 mt-16 w-full max-w-[650px]">
-              
-              {/* Data Card 1 */}
-              <motion.div 
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                className="bg-white p-6 rounded-sm border border-black/10 flex-1 relative overflow-hidden"
-                whileHover={{ y: -4 }}
-              >
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="w-2 h-2 rounded-full bg-costa-green animate-radar-ping"></div>
-                  <span className="font-mono text-[10px] font-bold text-text-muted tracking-widest">LIVE INVENTORY</span>
-                </div>
-                <p className="font-heading text-4xl font-black text-text-primary tracking-tighter">1.2M<span className="text-costa-green">+</span></p>
-                <p className="mt-2 font-mono text-[10px] text-text-muted tracking-widest uppercase">Components verified & in stock</p>
-              </motion.div>
-
-              {/* Data Card 2 */}
-              <motion.div 
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1, delay: 1.0, ease: [0.16, 1, 0.3, 1] }}
-                className="bg-[#0A0A0A] text-white p-6 rounded-sm border border-white/10 flex-1"
-                whileHover={{ y: -4 }}
-              >
-                <div className="flex justify-between items-center mb-5 border-b border-white/10 pb-4">
-                  <span className="font-mono text-xs text-white/50">SUB-24H</span>
-                  <span className="font-mono text-xs font-bold text-costa-green">VERIFIED</span>
-                </div>
-                <div className="flex flex-col gap-3 font-mono text-xs">
-                  <div className="flex justify-between">
-                    <span className="text-white/60">Eaton Bussmann</span>
-                    <span>IN STOCK</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-white/60">Infineon IGBT</span>
-                    <span className="text-costa-green">SOURCING</span>
-                  </div>
-                </div>
-              </motion.div>
-
-            </div>
-
           </div>
 
-          {/* Empty right column to allow the 3D Gyroscope to shine unobstructed */}
-          <div className="lg:col-span-5 relative hidden md:block h-full pointer-events-none">
+          {/* Right Column: Data Boxes floating over the WebGL Globe */}
+          <div className="lg:col-span-5 relative hidden lg:flex flex-col gap-6 items-end justify-center pointer-events-auto">
+            {/* Data Card 1 */}
+            <motion.div 
+              initial={{ opacity: 0, x: 30, y: 0 }}
+              animate={{ opacity: 1, x: 0, y: [-8, 8, -8] }}
+              transition={{ 
+                opacity: { duration: 1, delay: 0.8, ease: [0.16, 1, 0.3, 1] },
+                x: { duration: 1, delay: 0.8, ease: [0.16, 1, 0.3, 1] },
+                y: { duration: 6, repeat: Infinity, ease: "easeInOut" }
+              }}
+              className="bg-white/95 backdrop-blur-sm p-6 rounded-sm border border-black/10 w-full max-w-[400px] shadow-2xl relative overflow-hidden group"
+              whileHover={{ scale: 1.02 }}
+            >
+              <motion.div 
+                className="absolute inset-0 bg-gradient-to-r from-transparent via-costa-green/10 to-transparent skew-x-[-20deg] w-[50%]"
+                animate={{ x: ["-200%", "400%"] }}
+                transition={{ duration: 3, repeat: Infinity, ease: "linear", repeatDelay: 1 }}
+              />
+              <div className="flex items-center gap-3 mb-3 relative z-10">
+                <div className="w-2 h-2 rounded-full bg-costa-green animate-radar-ping"></div>
+                <span className="font-mono text-[10px] font-bold text-text-muted tracking-widest">LIVE INVENTORY</span>
+              </div>
+              <p className="font-heading text-4xl font-black text-text-primary tracking-tighter relative z-10"><AnimatedNumber value={1.2} />M<span className="text-costa-green">+</span></p>
+              <p className="mt-2 font-mono text-[10px] text-text-muted tracking-widest uppercase relative z-10">Components verified & in stock</p>
+            </motion.div>
+
+            {/* Data Card 2 */}
+            <motion.div 
+              initial={{ opacity: 0, x: 30, y: 0 }}
+              animate={{ opacity: 1, x: 0, y: [8, -8, 8] }}
+              transition={{ 
+                opacity: { duration: 1, delay: 1.0, ease: [0.16, 1, 0.3, 1] },
+                x: { duration: 1, delay: 1.0, ease: [0.16, 1, 0.3, 1] },
+                y: { duration: 7, repeat: Infinity, ease: "easeInOut" }
+              }}
+              className="bg-[#0A0A0A]/95 backdrop-blur-sm text-white p-6 rounded-sm border border-white/10 w-full max-w-[400px] shadow-2xl mr-8 relative overflow-hidden group"
+              whileHover={{ scale: 1.02 }}
+            >
+              {/* Scanning laser line effect */}
+              <motion.div 
+                className="absolute left-0 right-0 h-[1px] bg-costa-green shadow-[0_0_8px_rgba(10,139,70,0.8)] opacity-0 group-hover:opacity-100 z-20"
+                animate={{ top: ["0%", "100%", "0%"] }}
+                transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+              />
+              
+              <div className="flex justify-between items-center mb-5 border-b border-white/10 pb-4 relative z-10">
+                <span className="font-mono text-xs text-white/50">SUB-24H</span>
+                <motion.span 
+                  animate={{ opacity: [0.4, 1, 0.4] }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                  className="font-mono text-xs font-bold text-costa-green"
+                >
+                  VERIFIED
+                </motion.span>
+              </div>
+              <div className="flex flex-col gap-3 font-mono text-xs relative z-10">
+                <div className="flex justify-between overflow-hidden">
+                  <span className="text-white/60">Eaton Bussmann</span>
+                  <span className="text-white">IN STOCK</span>
+                </div>
+                <div className="flex justify-between overflow-hidden">
+                  <span className="text-white/60">Infineon IGBT</span>
+                  <span className="text-costa-green animate-pulse">SOURCING</span>
+                </div>
+              </div>
+            </motion.div>
           </div>
           
         </div>
@@ -161,7 +184,7 @@ export default function HomePage() {
          >
             <Marquee speed="normal" direction="left" className="overflow-y-hidden">
                {["NVIDIA", "EATON", "INTEL", "TEXAS INSTRUMENTS", "STMICROELECTRONICS", "ABB", "SCHNEIDER"].map((brand, idx) => (
-                 <span key={idx} className="font-heading text-4xl md:text-5xl font-black uppercase tracking-widest px-16 text-transparent" style={{ WebkitTextStroke: '1.5px rgba(0,0,0,0.1)' }}>
+                 <span key={idx} className="font-heading text-4xl md:text-5xl font-black uppercase tracking-widest px-16 text-transparent transition-colors duration-300 hover:text-costa-green cursor-default" style={{ WebkitTextStroke: '1.5px #0A8B46' }}>
                    {brand}
                  </span>
                ))}
@@ -170,7 +193,7 @@ export default function HomePage() {
       </section>
 
       {/* 3. LIVE DATA TERMINAL (By the Numbers Upgrade) */}
-      <section className="py-24 bg-[#0A0A0A] border-y border-glass-border relative overflow-hidden">
+      <section className="py-24 bg-[#031c0e] border-y border-[#0A8B46]/30 relative overflow-hidden">
         
         {/* Terminal Background Scanning Effect */}
         <div className="absolute inset-0 opacity-10 pointer-events-none">
@@ -198,7 +221,7 @@ export default function HomePage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
-                className="bg-[#111111] border border-white/10 p-8 rounded-sm hover:border-costa-green/50 transition-colors group relative"
+                className="bg-[#062c17] border border-[#0A8B46]/20 p-8 rounded-sm hover:border-costa-green transition-colors group relative"
               >
                 {/* Terminal Corner Accents */}
                 <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-white/30"></div>
@@ -217,7 +240,7 @@ export default function HomePage() {
       </section>
 
       {/* 4. CAPABILITIES & INFRASTRUCTURE (BENTO GRID UPGRADE) */}
-      <section className="py-24 bg-bg-secondary border-b border-glass-border">
+      <section id="divisions" className="py-24 bg-bg-secondary border-b border-glass-border">
         <div className="max-w-[1400px] mx-auto px-6">
           <div className="mb-16 border-l-4 border-text-primary pl-6">
             <h2 className="font-heading text-[clamp(2.5rem,5vw,4rem)] font-black leading-none tracking-tighter uppercase">
@@ -332,8 +355,8 @@ export default function HomePage() {
                 transition={{ duration: 0.6, delay: i * 0.15 }}
                 className="group relative flex flex-col md:flex-row md:items-center gap-6 md:gap-12 py-8 border-b border-white/10 hover:border-costa-green/50 transition-colors"
               >
-                {/* Hover Glow */}
-                <div className="absolute inset-0 bg-gradient-to-r from-costa-green/0 via-costa-green/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                {/* Hover Highlight (Brutalist Block) */}
+                <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none border-l-2 border-transparent group-hover:border-costa-green"></div>
 
                 <div className="font-heading text-5xl md:text-7xl font-black text-white/10 group-hover:text-costa-green transition-colors duration-500 min-w-[120px]">
                   {step.num}
@@ -368,7 +391,7 @@ export default function HomePage() {
                 Mission Debrief
               </h2>
               <p className="font-mono text-sm mt-4 text-white/50 uppercase tracking-widest flex items-center gap-3">
-                <span className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></span>
+                <span className="w-2 h-2 bg-red-500 rounded-full animate-radar-ping-alert"></span>
                 CLASSIFIED AOG PROCUREMENT
               </p>
             </div>
@@ -381,11 +404,11 @@ export default function HomePage() {
             
             {/* The Dossier File */}
             <motion.div 
-              initial={{ rotateY: 10, x: -50, opacity: 0 }}
-              whileInView={{ rotateY: 0, x: 0, opacity: 1 }}
+              initial={{ x: -50, opacity: 0 }}
+              whileInView={{ x: 0, opacity: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-              className="lg:col-span-8 bg-[#111] border border-white/10 p-8 md:p-16 relative perspective-[1000px] group"
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              className="lg:col-span-8 bg-[#111] border border-white/10 p-8 md:p-16 relative group"
             >
               {/* Folder tab */}
               <div className="absolute top-0 left-0 -mt-[1px] -ml-[1px] bg-white text-black font-mono text-[10px] font-bold px-4 py-1 tracking-widest uppercase">
@@ -434,96 +457,24 @@ export default function HomePage() {
             Guaranteed response within 24h. Authorized distribution & global shortage sourcing.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
-            <Link href="/contact" className="bg-bg-primary text-text-primary font-mono text-sm font-bold uppercase py-5 px-10 hover:bg-bg-secondary transition-colors border-2 border-transparent hover:border-bg-primary">
+            <Link 
+              href="/contact" 
+              onMouseEnter={playMechanicalClick}
+              className="bg-bg-primary text-text-primary font-mono text-sm font-bold uppercase py-5 px-10 hover:bg-bg-secondary transition-colors border-2 border-transparent hover:border-bg-primary"
+            >
               Submit Requirements
             </Link>
-            <a href="mailto:sales@costadevices.com" className="bg-transparent text-bg-primary font-mono text-sm font-bold uppercase py-5 px-10 border-2 border-bg-primary hover:bg-bg-primary hover:text-text-primary transition-colors">
+            <a 
+              href="mailto:sales@costadevices.com" 
+              onMouseEnter={playMechanicalClick}
+              className="bg-transparent text-bg-primary font-mono text-sm font-bold uppercase py-5 px-10 border-2 border-bg-primary hover:bg-bg-primary hover:text-text-primary transition-colors"
+            >
               sales@costadevices.com
             </a>
           </div>
         </div>
       </section>
 
-      {/* 8. MEGA FOOTER */}
-      <MegaFooter />
-
     </div>
-  );
-}
-
-{/* MEGA FOOTER */}
-export function MegaFooter() {
-  return (
-    <footer className="bg-[#050A08] text-white pt-24 pb-12 border-t border-glass-border relative overflow-hidden">
-      
-      {/* Massive architectural typography background */}
-      <div className="absolute bottom-0 left-0 right-0 pointer-events-none opacity-5">
-        <p className="font-heading text-[15vw] font-black leading-none tracking-tighter text-center whitespace-nowrap" aria-hidden="true">COSTA DEVICES</p>
-      </div>
-
-      <div className="max-w-[1400px] mx-auto px-6 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-16 mb-24 border-b border-white/10 pb-16">
-          
-          <div className="md:col-span-5">
-            <Link href="/" className="font-heading text-3xl font-black tracking-tighter mb-6 flex items-center hover:opacity-80 transition-opacity">
-              <span className="text-costa-green mr-2">/</span> COSTA DEVICES
-            </Link>
-            <p className="font-mono text-sm text-white/50 leading-relaxed max-w-sm uppercase tracking-widest mb-8 mt-6">
-              Mission-critical circuit procurement. ISO 9001:2015 certified. AS6081 testing lab. AOG and Line-Down specialists since 2012.
-            </p>
-            <div className="flex gap-4">
-              <a href="https://linkedin.com/company/costadevices" target="_blank" rel="noopener noreferrer" className="w-10 h-10 border border-white/20 flex items-center justify-center hover:bg-costa-green hover:border-costa-green transition-colors" aria-label="LinkedIn">
-                <span className="font-mono text-xs font-bold">IN</span>
-              </a>
-              <a href="https://x.com/costadevices" target="_blank" rel="noopener noreferrer" className="w-10 h-10 border border-white/20 flex items-center justify-center hover:bg-costa-green hover:border-costa-green transition-colors" aria-label="X (Twitter)">
-                <span className="font-mono text-xs font-bold">X</span>
-              </a>
-            </div>
-          </div>
-
-          <div className="md:col-span-7 grid grid-cols-2 md:grid-cols-3 gap-8 font-mono text-sm uppercase tracking-widest">
-            <div>
-              <h4 className="text-white/30 font-bold mb-6">Operations</h4>
-              <ul className="flex flex-col gap-4 text-white/70">
-                <li><Link href="/services" className="hover:text-costa-green transition-colors">Global Sourcing</Link></li>
-                <li><Link href="/quality" className="hover:text-costa-green transition-colors">QA Lab / Testing</Link></li>
-                <li><Link href="/services#logistics" className="hover:text-costa-green transition-colors">Logistics</Link></li>
-                <li><Link href="/products" className="hover:text-costa-green transition-colors">Inventory</Link></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-white/30 font-bold mb-6">Corporate</h4>
-              <ul className="flex flex-col gap-4 text-white/70">
-                <li><Link href="/company" className="hover:text-costa-green transition-colors">About Us</Link></li>
-                <li><Link href="/quality" className="hover:text-costa-green transition-colors">Certifications</Link></li>
-                <li><Link href="/company#careers" className="hover:text-costa-green transition-colors">Careers</Link></li>
-                <li><Link href="/contact" className="hover:text-costa-green transition-colors">Contact</Link></li>
-              </ul>
-            </div>
-            <div className="col-span-2 md:col-span-1">
-              <h4 className="text-white/30 font-bold mb-6">Direct Comms</h4>
-              <ul className="flex flex-col gap-4 text-white/70">
-                <li><a href="tel:+18005550199" className="hover:text-costa-green transition-colors">+1 (800) 555-0199</a></li>
-                <li><a href="mailto:sales@costadevices.com" className="text-costa-green hover:text-white transition-colors">sales@costadevices.com</a></li>
-                <li className="mt-4 text-xs text-white/30 leading-relaxed">
-                  HQ: 10450 Innovation Dr<br/>
-                  Austin, TX 78759
-                </li>
-              </ul>
-            </div>
-          </div>
-
-        </div>
-
-        <div className="flex flex-col md:flex-row justify-between items-center font-mono text-[10px] text-white/30 uppercase tracking-widest">
-          <p>© {new Date().getFullYear()} Costa Devices Electric Ltd. All rights reserved.</p>
-          <div className="flex gap-6 mt-4 md:mt-0">
-            <Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
-            <Link href="/terms" className="hover:text-white transition-colors">Terms of Service</Link>
-            <Link href="/quality" className="hover:text-white transition-colors">ISO 9001:2015</Link>
-          </div>
-        </div>
-      </div>
-    </footer>
   );
 }

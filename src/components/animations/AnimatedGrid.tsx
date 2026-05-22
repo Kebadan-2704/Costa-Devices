@@ -3,37 +3,50 @@ import { motion } from "framer-motion";
 
 export default function AnimatedGrid() {
   return (
-    <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-      {/* Background ambient glow - Made much more vibrant */}
-      <div className="absolute inset-0 bg-gradient-to-br from-bg-primary via-bg-primary to-costa-green/15 dark:to-costa-green/20" />
-      <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-costa-green/10 dark:bg-costa-green/10 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/3" />
-      <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-costa-green/10 dark:bg-costa-green/10 rounded-full blur-[80px] translate-y-1/3 -translate-x-1/3" />
-
-      {/* Noise texture overlay for a matte, tactile feel */}
-      <div className="absolute inset-0 opacity-[0.03] mix-blend-overlay pointer-events-none" style={{ backgroundImage: "url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.85%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E')" }}></div>
-
-      {/* Grid pattern container with heavily reduced opacity for subtle architectural feel */}
-      <div className="absolute inset-0 opacity-[0.05]">
-        <motion.div
-          className="absolute inset-0 w-[200%] h-[200%]"
-          style={{
-            backgroundImage: "linear-gradient(90deg, var(--costa-green) 1px, transparent 1px), linear-gradient(var(--costa-green) 1px, transparent 1px)",
-            backgroundSize: "120px 120px"
-          }}
-          animate={{
-            x: [0, -80],
-            y: [0, -80]
-          }}
-          transition={{
-            duration: 15, // Slowed down significantly
-            repeat: Infinity,
-            ease: "linear"
-          }}
-        />
-      </div>
+    <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden bg-bg-primary">
       
-      {/* Soft overlay mask to fade out the grid at edges/bottom */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-bg-primary/20 to-bg-primary" />
+      {/* 1. Dynamic Ambient Orbs */}
+      <motion.div 
+        className="absolute top-0 right-0 w-[800px] h-[800px] bg-costa-green/20 rounded-full blur-[100px]"
+        animate={{ x: [100, -50, 100], y: [-100, 50, -100] }}
+        transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
+      />
+      
+      <motion.div 
+        className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-costa-green/15 rounded-full blur-[100px]"
+        animate={{ x: [-100, 50, -100], y: [100, -50, 100] }}
+        transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
+      />
+
+      <motion.div 
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-costa-green/10 rounded-full blur-[120px]"
+        animate={{ scale: [1, 1.2, 1], opacity: [0.5, 0.8, 0.5] }}
+        transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+      />
+
+      {/* 2. Topographical / Architectural Dot Grid */}
+      <div 
+        className="absolute inset-0 opacity-[0.25]"
+        style={{
+          backgroundImage: "radial-gradient(var(--brand-green) 1px, transparent 1px)",
+          backgroundSize: "40px 40px",
+          backgroundPosition: "0 0"
+        }}
+      />
+      
+      {/* 3. Horizontal Scanning Line */}
+      <motion.div 
+        className="absolute left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-costa-green/40 to-transparent"
+        animate={{ top: ["0%", "100%"] }}
+        transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+      />
+
+      {/* 4. Film Grain Noise Overlay */}
+      <div className="absolute inset-0 opacity-[0.04] mix-blend-multiply" style={{ backgroundImage: "url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.85%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E')" }}></div>
+
+      {/* Soft overlay mask to fade out the grid at the edges */}
+      <div className="absolute inset-0 bg-gradient-to-b from-bg-primary/40 via-transparent to-bg-primary" />
+      <div className="absolute inset-0 bg-gradient-to-r from-bg-primary/80 via-transparent to-bg-primary/80" />
     </div>
   );
 }

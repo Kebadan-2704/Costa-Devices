@@ -12,6 +12,7 @@ import { Toaster } from "sonner";
 import PageTransition from "@/components/animations/PageTransition";
 import AnimatedGrid from "@/components/animations/AnimatedGrid";
 import CookieConsent from "@/components/ui/CookieConsent";
+import Preloader from "@/components/ui/Preloader";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -64,6 +65,7 @@ export default function RootLayout({
         {/* Cinematic Dark Mode enforced natively via CSS :root */}
       </head>
       <body className="antialiased bg-bg-primary transition-colors duration-500 font-body" suppressHydrationWarning>
+        <Preloader />
         <SmoothScroll>
           <MagneticCursor />
           <AnimatedGrid />

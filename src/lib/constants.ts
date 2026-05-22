@@ -481,7 +481,7 @@ export const NAV_LINKS = [
       ]
     }
   },
-  { label: "Services", href: "/#divisions" },
+  { label: "Services", href: "/services" },
   { label: "Company", href: "/company" },
   { 
     label: "Quality", 

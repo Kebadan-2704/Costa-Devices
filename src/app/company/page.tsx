@@ -9,10 +9,10 @@ import { COMPANY, TEAM, OFFICES, TIMELINE, STATS } from "@/lib/constants";
 
 export default function CompanyPage() {
   return (
-    <div className="min-h-screen text-text-secondary transition-colors duration-500">
-      {/* Hero */}
+    <div className="min-h-screen bg-transparent text-text-primary overflow-hidden pb-32">
+      {/* Hero Section */}
       <section className="relative pt-32 pb-20 overflow-hidden border-b border-glass-border transition-colors duration-500">
-        <div className="absolute inset-0 bg-bg-secondary transition-colors duration-500" />
+        <div className="absolute inset-0 bg-transparent transition-colors duration-500" />
         <div className="max-w-[1400px] mx-auto px-6 relative z-10">
           <ScrollReveal>
             <p className="font-mono text-xs text-costa-green tracking-[0.2em] uppercase mb-4 flex items-center gap-2">

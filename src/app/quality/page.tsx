@@ -6,8 +6,8 @@ import { CERTIFICATIONS } from "@/lib/constants";
 
 export default function QualityPage() {
   return (
-    <div className="min-h-screen text-text-secondary transition-colors duration-500">
-      {/* Hero */}
+    <div className="min-h-screen bg-transparent text-text-primary overflow-hidden pb-32">
+      {/* Hero Section */}
       <section className="relative pt-32 pb-20 overflow-hidden border-b border-glass-border transition-colors duration-500">
         <div className="absolute inset-0 bg-gradient-to-b from-bg-secondary to-bg-primary transition-colors duration-500" />
         <div className="absolute top-1/4 right-0 w-3/4 h-3/4 bg-gradient-to-bl from-costa-green/5 to-transparent rounded-full blur-3xl pointer-events-none" aria-hidden="true" />
