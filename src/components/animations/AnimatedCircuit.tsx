@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { useEffect, useState } from "react";
 
 export default function AnimatedCircuit() {
@@ -12,7 +12,7 @@ export default function AnimatedCircuit() {
 
   if (!mounted) return null;
 
-  const draw = {
+  const draw: Variants = {
     hidden: { pathLength: 0, opacity: 0 },
     visible: (i: number) => {
       const delay = 0.5 + i * 0.3;
@@ -27,7 +27,7 @@ export default function AnimatedCircuit() {
     }
   };
 
-  const pulse = {
+  const pulse: Variants = {
     hidden: { scale: 0, opacity: 0 },
     visible: (i: number) => {
       const delay = 1 + i * 0.3;

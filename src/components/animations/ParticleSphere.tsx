@@ -70,7 +70,7 @@ export default function ParticleSphere() {
     <motion.div 
       initial={{ opacity: 0, scale: 0.8 }}
       animate={{ opacity: 0.5, scale: 1 }}
-      transition={{ duration: 2.5, ease: [0.16, 1, 0.3, 1] }}
+      transition={{ duration: 2.5, ease: "easeOut" }}
       className="absolute inset-0 z-0 pointer-events-none overflow-hidden mix-blend-multiply"
     >
       <div className="w-full h-full scale-[1.5] md:scale-[1.2] translate-y-12 md:translate-y-24 translate-x-0 md:translate-x-12">

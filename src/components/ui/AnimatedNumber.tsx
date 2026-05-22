@@ -31,7 +31,7 @@ export default function AnimatedNumber({
         const isFloat = value % 1 !== 0;
         ref.current.textContent = isFloat
           ? latest.toFixed(1)
-          : Intl.NumberFormat("en-US").format(latest.toFixed(0));
+          : Intl.NumberFormat("en-US").format(Math.round(latest));
       }
     });
   }, [springValue, value]);

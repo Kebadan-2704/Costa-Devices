@@ -8,7 +8,7 @@ import { motion } from "framer-motion";
 const Globe = dynamic(() => import("react-globe.gl"), { ssr: false });
 
 export default function AnimatedGlobe() {
-  const globeEl = useRef<any>();
+  const globeEl = useRef<any>(null);
   const [arcsData, setArcsData] = useState<any[]>([]);
   const [ringsData, setRingsData] = useState<any[]>([]);
 
@@ -52,7 +52,7 @@ export default function AnimatedGlobe() {
     <motion.div 
       initial={{ opacity: 0, scale: 0.8 }}
       animate={{ opacity: 0.3, scale: 1 }}
-      transition={{ duration: 2, ease: [0.16, 1, 0.3, 1] }}
+      transition={{ duration: 2, ease: "easeOut" }}
       className="absolute inset-0 z-0 pointer-events-none overflow-hidden flex items-center justify-center mix-blend-multiply md:mix-blend-normal"
     >
       <div className="scale-[1.8] md:scale-[1.2] translate-y-12">
