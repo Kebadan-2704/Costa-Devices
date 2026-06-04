@@ -2,6 +2,12 @@ import Link from "next/link";
 import { ArrowRight, Search, Globe, Package, Layers, Microscope, Wrench } from "lucide-react";
 import ScrollReveal from "@/components/animations/ScrollReveal";
 import { SERVICES } from "@/lib/constants";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Services — Global Supply Chain Solutions",
+  description: "End-to-end component procurement, rigorous AS6081 testing, and customized distribution models to secure production lines against global shortages.",
+};
 
 // Icon mapping helper
 const getIcon = (iconName: string) => {
@@ -59,7 +65,7 @@ export default function ServicesPage() {
                   muted
                   loop
                   playsInline
-                  preload="auto"
+                  preload="metadata"
                   className="w-full h-full object-cover pointer-events-none"
                 />
               </div>
@@ -115,6 +121,30 @@ export default function ServicesPage() {
               </ScrollReveal>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="relative py-32 overflow-hidden border-t border-glass-border">
+        <div className="absolute inset-0 bg-gradient-to-br from-[#1AAF5D] to-[#0D6B3D] z-0" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.15),transparent_70%)] z-0" />
+        <div className="absolute inset-0 opacity-[0.03] z-0 pointer-events-none" style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
+
+        <div className="max-w-[1000px] mx-auto px-6 relative z-10 text-center">
+          <ScrollReveal>
+            <h2 className="font-heading text-4xl md:text-5xl font-black mb-6 text-white tracking-tight">Need Supply Chain Support?</h2>
+            <p className="text-white/80 text-lg mb-12 max-w-2xl mx-auto font-medium leading-relaxed">
+              Submit your BOM or shortage list. Our global sourcing team will respond within 24 hours with availability and pricing.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link href="/request-quote" className="bg-white text-costa-green rounded-full px-12 py-5 font-bold inline-flex items-center gap-3 shadow-[0_20px_40px_rgba(0,0,0,0.2)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.3)] hover:-translate-y-1 hover:scale-105 transition-all duration-300">
+                Submit BOM <ArrowRight size={18} />
+              </Link>
+              <Link href="/contact" className="bg-transparent text-white border-2 border-white rounded-full px-12 py-5 font-bold inline-flex items-center gap-3 hover:bg-white hover:text-costa-green transition-all duration-300">
+                Contact Sales
+              </Link>
+            </div>
+          </ScrollReveal>
         </div>
       </section>
     </div>

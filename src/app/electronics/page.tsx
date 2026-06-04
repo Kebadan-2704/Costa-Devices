@@ -3,7 +3,15 @@ import Image from "next/image";
 import { ArrowRight, Cpu, Search, Layers, RefreshCcw } from "lucide-react";
 import ScrollReveal from "@/components/animations/ScrollReveal";
 import { MANUFACTURERS } from "@/lib/constants";
-import InteractiveEcosystem from "@/components/ui/InteractiveEcosystem";
+import dynamic from "next/dynamic";
+import type { Metadata } from "next";
+
+const InteractiveEcosystem = dynamic(() => import("@/components/ui/InteractiveEcosystem"));
+
+export const metadata: Metadata = {
+  title: "Electronic Components — Semiconductor Sourcing & PCB Design",
+  description: "Mission-critical semiconductor sourcing, PCB design engineering, and obsolete parts management. Trusted by Tier-1 OEMs across the EV, aerospace, and defense industries.",
+};
 
 export default function ElectronicsPage() {
   return (
@@ -57,7 +65,7 @@ export default function ElectronicsPage() {
                     muted
                     loop
                     playsInline
-                    preload="auto"
+                    preload="metadata"
                     className="w-full h-full object-cover mix-blend-luminosity opacity-80 group-hover:scale-105 transition-transform duration-[2s] pointer-events-none"
                   />
                 </div>
@@ -179,7 +187,7 @@ export default function ElectronicsPage() {
         <div className="max-w-[1400px] mx-auto px-6">
            <ScrollReveal>
              <div className="text-center mb-16">
-               <h2 className="font-heading text-sm font-bold tracking-[0.3em] text-costa-green uppercase mb-4">Our Eco system</h2>
+               <h2 className="font-heading text-sm font-bold tracking-[0.3em] text-costa-green uppercase mb-4">Our Ecosystem</h2>
                <h3 className="font-heading text-3xl md:text-4xl font-black text-text-primary tracking-tight">
                  TIER-1 SEMICONDUCTOR <span className="text-costa-green">NETWORK.</span>
                </h3>

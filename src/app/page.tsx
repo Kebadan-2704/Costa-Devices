@@ -71,7 +71,7 @@ export default function HomePage() {
               initial={{ opacity: 0, y: 30, rotateZ: 2 }}
               animate={{ opacity: 1, y: 0, rotateZ: 0 }}
               transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-              className="font-heading text-[clamp(3.5rem,7vw,7.5rem)] font-black text-text-primary leading-[1.05] tracking-tight mb-4 origin-bottom-left"
+              className="font-heading text-[clamp(2rem,10vw,7.5rem)] font-black text-text-primary leading-[1.05] tracking-tight mb-4 origin-bottom-left break-words"
             >
               Mission-Critical <br className="hidden md:block" />
               <span className="text-costa-green">Component</span> Procurement.
@@ -106,7 +106,7 @@ export default function HomePage() {
           </div>
 
           {/* Right Column: Data Boxes floating over the WebGL Globe */}
-          <div className="lg:col-span-5 relative hidden lg:flex flex-col gap-6 items-end justify-center pointer-events-auto">
+          <div className="lg:col-span-5 relative flex flex-col gap-4 lg:gap-6 items-center lg:items-end justify-center pointer-events-auto">
             {/* Data Card 1 */}
             <motion.div
               initial={{ opacity: 0, x: 30, y: 0 }}
@@ -116,7 +116,7 @@ export default function HomePage() {
                 x: { duration: 1, delay: 0.8, ease: [0.16, 1, 0.3, 1] },
                 y: { duration: 6, repeat: Infinity, ease: "easeInOut" }
               }}
-              className="bg-white/95 backdrop-blur-sm p-6 rounded-sm border border-black/10 w-full max-w-[400px] shadow-2xl relative overflow-hidden group"
+              className="bg-white/95 backdrop-blur-sm p-4 sm:p-6 rounded-sm border border-black/10 w-full max-w-[400px] shadow-2xl relative overflow-hidden group"
               whileHover={{ scale: 1.02 }}
             >
               <motion.div
@@ -141,7 +141,7 @@ export default function HomePage() {
                 x: { duration: 1, delay: 1.0, ease: [0.16, 1, 0.3, 1] },
                 y: { duration: 7, repeat: Infinity, ease: "easeInOut" }
               }}
-              className="bg-costa-green backdrop-blur-xl p-6 rounded-2xl border border-white/10 w-full max-w-[400px] shadow-[0_20px_50px_rgba(26,175,93,0.3)] mr-8 relative overflow-hidden group"
+              className="bg-costa-green backdrop-blur-xl p-4 sm:p-6 rounded-2xl border border-white/10 w-full max-w-[400px] shadow-[0_20px_50px_rgba(26,175,93,0.3)] lg:mr-8 relative overflow-hidden group"
               whileHover={{ scale: 1.02 }}
             >
               {/* Scanning laser line effect */}
@@ -243,7 +243,57 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 4. CAPABILITIES & INFRASTRUCTURE (BENTO GRID UPGRADE) */}
+      {/* 4. TESTIMONIALS & SOCIAL PROOF */}
+      <section className="py-24 bg-bg-primary border-b border-glass-border relative overflow-hidden">
+        <div className="absolute top-0 right-6 text-[10px] font-mono font-bold text-text-muted tracking-widest uppercase z-10 bg-bg-primary px-2">Client Trust</div>
+        <div className="max-w-[1400px] mx-auto px-6">
+          <div className="mb-16 border-l-4 border-costa-green pl-6 flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
+            <div>
+              <h2 className="font-heading text-[clamp(2.5rem,5vw,4rem)] font-black leading-none tracking-tighter uppercase text-text-primary">
+                TRUSTED <span className="text-costa-green">GLOBALLY</span>
+              </h2>
+              <p className="mt-4 text-text-secondary max-w-xl font-medium">Hear from engineering leads and procurement managers at top-tier OEMs who rely on Costa Devices for mission-critical sourcing.</p>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.1 }} className="bg-white border border-glass-border p-8 rounded-3xl shadow-sm hover:shadow-xl transition-all duration-300 relative group">
+              <div className="text-costa-green mb-6">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M14.017 21L16.439 14C16.439 14 15.228 14 14.808 14C12.75 14 12.181 12.585 12.181 10.923C12.181 9.261 13.596 8 15.257 8C16.918 8 18 9.261 18 10.923C18 12.585 15.228 21 15.228 21H14.017ZM6.017 21L8.439 14C8.439 14 7.228 14 6.808 14C4.75 14 4.181 12.585 4.181 10.923C4.181 9.261 5.596 8 7.257 8C8.918 8 10 9.261 10 10.923C10 12.585 7.228 21 7.228 21H6.017Z"/></svg>
+              </div>
+              <p className="text-text-primary font-medium mb-8 leading-relaxed">&ldquo;Costa Devices was able to secure 10,000 obsolete IGBT modules for our legacy wind turbine controllers when franchised distributors quoted a 52-week lead time. Their lab testing reports gave us 100% confidence.&rdquo;</p>
+              <div className="border-t border-black/5 pt-6 mt-auto">
+                <p className="font-bold text-sm text-text-primary">Sr. Procurement Manager</p>
+                <p className="text-xs text-text-muted uppercase tracking-wider mt-1">Renewable Energy OEM</p>
+              </div>
+            </motion.div>
+
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.2 }} className="bg-costa-green border border-costa-green p-8 rounded-3xl shadow-sm hover:shadow-[0_20px_40px_rgba(26,175,93,0.2)] transition-all duration-300 relative group transform md:-translate-y-4">
+              <div className="text-white mb-6 opacity-50">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M14.017 21L16.439 14C16.439 14 15.228 14 14.808 14C12.75 14 12.181 12.585 12.181 10.923C12.181 9.261 13.596 8 15.257 8C16.918 8 18 9.261 18 10.923C18 12.585 15.228 21 15.228 21H14.017ZM6.017 21L8.439 14C8.439 14 7.228 14 6.808 14C4.75 14 4.181 12.585 4.181 10.923C4.181 9.261 5.596 8 7.257 8C8.918 8 10 9.261 10 10.923C10 12.585 7.228 21 7.228 21H6.017Z"/></svg>
+              </div>
+              <p className="text-white font-medium mb-8 leading-relaxed text-lg">&ldquo;The level of technical expertise is unmatched. We needed a drop-in replacement for a critical Eaton Bussmann EV fuse for our new charger line. Costa provided the parts in 3 days with complete traceability.&rdquo;</p>
+              <div className="border-t border-white/20 pt-6 mt-auto">
+                <p className="font-bold text-sm text-white">Lead Hardware Engineer</p>
+                <p className="text-xs text-white/70 uppercase tracking-wider mt-1">EV Infrastructure</p>
+              </div>
+            </motion.div>
+
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.3 }} className="bg-white border border-glass-border p-8 rounded-3xl shadow-sm hover:shadow-xl transition-all duration-300 relative group">
+              <div className="text-costa-green mb-6">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M14.017 21L16.439 14C16.439 14 15.228 14 14.808 14C12.75 14 12.181 12.585 12.181 10.923C12.181 9.261 13.596 8 15.257 8C16.918 8 18 9.261 18 10.923C18 12.585 15.228 21 15.228 21H14.017ZM6.017 21L8.439 14C8.439 14 7.228 14 6.808 14C4.75 14 4.181 12.585 4.181 10.923C4.181 9.261 5.596 8 7.257 8C8.918 8 10 9.261 10 10.923C10 12.585 7.228 21 7.228 21H6.017Z"/></svg>
+              </div>
+              <p className="text-text-primary font-medium mb-8 leading-relaxed">&ldquo;Costa Devices has been our primary sourcing partner for 4 years. Their global network and strict anti-counterfeit protocols mean we never have to worry about line-down situations or quality failures in production.&rdquo;</p>
+              <div className="border-t border-black/5 pt-6 mt-auto">
+                <p className="font-bold text-sm text-text-primary">VP Operations</p>
+                <p className="text-xs text-text-muted uppercase tracking-wider mt-1">Aerospace Defense</p>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* 5. CAPABILITIES & INFRASTRUCTURE (BENTO GRID UPGRADE) */}
       <section id="divisions" className="py-24 bg-bg-secondary border-b border-glass-border">
         <div className="max-w-[1400px] mx-auto px-6">
           <div className="mb-16 border-l-4 border-text-primary pl-6">
@@ -511,11 +561,11 @@ export default function HomePage() {
               Submit Requirements
             </Link>
             <a
-              href="mailto:sales@costadevices.com"
+              href="mailto:info@costadevices.com"
               onMouseEnter={playMechanicalClick}
               className="bg-transparent text-bg-primary text-sm font-bold uppercase py-5 px-10 border-2 border-bg-primary hover:bg-bg-primary hover:text-text-primary transition-colors"
             >
-              sales@costadevices.com
+              info@costadevices.com
             </a>
           </div>
         </div>

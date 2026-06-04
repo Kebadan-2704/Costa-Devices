@@ -6,6 +6,12 @@ import GsapTimeline from "@/components/animations/GsapTimeline";
 import AnimatedCounter from "@/components/ui/AnimatedCounter";
 import WorldMap from "@/components/ui/WorldMap";
 import { COMPANY, TEAM, OFFICES, TIMELINE, STATS } from "@/lib/constants";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Company — 14+ Years of Global Operations",
+  description: "Costa Devices: 14+ years powering industries worldwide. ISO 9001:2015 certified global distributor for mission-critical electronic and electrical components.",
+};
 
 export default function CompanyPage() {
   return (
@@ -37,7 +43,7 @@ export default function CompanyPage() {
                   muted
                   loop
                   playsInline
-                  preload="auto"
+                  preload="metadata"
                   className="w-full h-full object-cover pointer-events-none"
                 />
               </div>
@@ -82,7 +88,7 @@ export default function CompanyPage() {
               <div className="bg-bg-secondary p-8 rounded-2xl border border-glass-border">
                 <Globe className="text-costa-green mb-4" size={32} />
                 <h4 className="font-heading font-bold text-xl mb-2">Global Reach</h4>
-                <p className="text-sm text-text-secondary">Local presence across 4 continents to navigate trade barriers.</p>
+                <p className="text-sm text-text-secondary">Strategic presence across the Middle East and Asia to navigate trade barriers.</p>
               </div>
             </ScrollReveal>
           </div>
@@ -280,7 +286,7 @@ export default function CompanyPage() {
             </ScrollReveal>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-[800px] mx-auto">
             {OFFICES.map((office, i) => (
               <ScrollReveal key={office.id} delay={i * 0.1}>
                 <div className="bg-bg-primary border border-glass-border p-8 text-center h-full group hover:border-costa-green/30 transition-all duration-700 rounded-2xl relative overflow-hidden hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(13,107,61,0.08)]">
@@ -290,11 +296,7 @@ export default function CompanyPage() {
                     <div>
                       <div className="w-16 h-16 mx-auto bg-bg-secondary border border-glass-border rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500 group-hover:border-costa-green/30 shadow-sm">
                         <img 
-                          src={`https://flagcdn.com/w80/${
-                            office.id === 'dubai' ? 'ae' : 
-                            office.id === 'india' ? 'in' : 
-                            office.id === 'hongkong' ? 'hk' : 'il'
-                          }.png`} 
+                          src={`https://flagcdn.com/w80/${office.id === 'dubai' ? 'ae' : 'in'}.png`} 
                           alt={office.country} 
                           className="w-8 h-auto rounded-[2px] grayscale group-hover:grayscale-0 transition-all" 
                         />

@@ -258,17 +258,46 @@ export default function Navbar() {
             {/* Nav Links */}
             <nav className="flex flex-col">
               {NAV_LINKS.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  onClick={() => setMobileOpen(false)}
-                  className={`text-lg font-semibold py-4 border-b border-black/5 transition-colors flex items-center justify-between ${
-                    pathname === link.href ? "text-costa-green" : "text-text-primary hover:text-costa-green"
-                  }`}
-                >
-                  {link.label}
-                  <ArrowRight size={16} className="text-text-muted" />
-                </Link>
+                <div key={link.label} className="flex flex-col border-b border-black/5">
+                  <Link
+                    href={link.href === "#" && link.megaMenu ? link.megaMenu.categories[0].href : link.href}
+                    onClick={() => setMobileOpen(false)}
+                    className={`text-lg font-semibold py-4 transition-colors flex items-center justify-between ${
+                      pathname === link.href ? "text-costa-green" : "text-text-primary hover:text-costa-green"
+                    }`}
+                  >
+                    {link.label}
+                    <ArrowRight size={16} className="text-text-muted" />
+                  </Link>
+                  {link.megaMenu && (
+                    <div className="flex flex-col pl-4 pb-4 gap-3 border-l-2 border-costa-green/20 ml-2">
+                      {link.megaMenu.categories.map((cat: any) => (
+                        <Link
+                          key={cat.label}
+                          href={cat.href}
+                          onClick={() => setMobileOpen(false)}
+                          className="text-sm font-semibold text-text-secondary hover:text-costa-green flex items-center justify-between"
+                        >
+                          {cat.label}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                  {link.dropdown && (
+                    <div className="flex flex-col pl-4 pb-4 gap-3 border-l-2 border-costa-green/20 ml-2">
+                      {link.dropdown.map((item: any) => (
+                        <Link
+                          key={item.label}
+                          href={item.href}
+                          onClick={() => setMobileOpen(false)}
+                          className="text-sm font-semibold text-text-secondary hover:text-costa-green flex items-center justify-between"
+                        >
+                          {item.label}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
               ))}
             </nav>
 

@@ -3,6 +3,12 @@ import { ArrowRight, ShieldCheck, CheckCircle2, Award } from "lucide-react";
 import ScrollReveal from "@/components/animations/ScrollReveal";
 import ProcessFlowchart from "@/components/ui/ProcessFlowchart";
 import { CERTIFICATIONS } from "@/lib/constants";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Quality — AS6081 & ISO 9001:2015 Certified",
+  description: "Uncompromising quality standards. AS 6081, AS 9120B, and ISO 9001:2015 certified. 8-step counterfeit detection pipeline with X-Ray and chemical decapsulation.",
+};
 
 export default function QualityPage() {
   return (
@@ -35,7 +41,7 @@ export default function QualityPage() {
                   muted
                   loop
                   playsInline
-                  preload="auto"
+                  preload="metadata"
                   className="w-full h-full object-cover pointer-events-none"
                 />
               </div>
@@ -126,7 +132,7 @@ export default function QualityPage() {
             <ScrollReveal delay={0.1}>
               <div className="bg-bg-primary border border-glass-border rounded-2xl overflow-hidden shadow-sm group hover:shadow-xl transition-all duration-500">
                 <div className="h-48 relative bg-black flex items-center justify-center overflow-hidden">
-                   <div className="absolute inset-0 z-0 opacity-50 group-hover:opacity-70 transition-opacity duration-700" style={{ backgroundImage: "url('/images/products/circuit-protection.png')", backgroundSize: 'cover', backgroundPosition: 'center' }} />
+                   <div className="absolute inset-0 z-0 opacity-50 group-hover:opacity-70 transition-opacity duration-700 bg-[linear-gradient(45deg,#000000,#0a1f10)]" />
                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-10" />
                    <p className="font-mono text-costa-green/60 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-5xl font-black tracking-tighter opacity-40 z-20 group-hover:scale-110 transition-transform duration-700">X-RAY</p>
                    <p className="relative z-20 font-heading font-bold text-white bottom-[-60px] text-lg">Real-Time X-Ray Inspection</p>
@@ -139,7 +145,7 @@ export default function QualityPage() {
             <ScrollReveal delay={0.2}>
               <div className="bg-bg-primary border border-glass-border rounded-2xl overflow-hidden shadow-sm group hover:shadow-xl transition-all duration-500">
                 <div className="h-48 relative bg-black flex items-center justify-center overflow-hidden">
-                   <div className="absolute inset-0 z-0 opacity-50 group-hover:opacity-70 transition-opacity duration-700" style={{ backgroundImage: "url('/images/products/industrial-fuses.png')", backgroundSize: 'cover', backgroundPosition: 'center' }} />
+                   <div className="absolute inset-0 z-0 opacity-50 group-hover:opacity-70 transition-opacity duration-700 bg-[linear-gradient(135deg,#000000,#0f2415)]" />
                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-10" />
                    <p className="font-mono text-costa-green/60 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-5xl font-black tracking-tighter opacity-40 z-20 group-hover:scale-110 transition-transform duration-700">DECAP</p>
                    <p className="relative z-20 font-heading font-bold text-white bottom-[-60px] text-lg">Chemical Decapsulation</p>
@@ -152,7 +158,7 @@ export default function QualityPage() {
             <ScrollReveal delay={0.3}>
               <div className="bg-bg-primary border border-glass-border rounded-2xl overflow-hidden shadow-sm group hover:shadow-xl transition-all duration-500">
                 <div className="h-48 relative bg-black flex items-center justify-center overflow-hidden">
-                   <div className="absolute inset-0 z-0 opacity-50 group-hover:opacity-70 transition-opacity duration-700" style={{ backgroundImage: "url('/images/products/automation.png')", backgroundSize: 'cover', backgroundPosition: 'center' }} />
+                   <div className="absolute inset-0 z-0 opacity-50 group-hover:opacity-70 transition-opacity duration-700 bg-[linear-gradient(225deg,#000000,#05170a)]" />
                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-10" />
                    <p className="font-mono text-costa-green/60 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-5xl font-black tracking-tighter opacity-40 z-20 group-hover:scale-110 transition-transform duration-700">SOLDER</p>
                    <p className="relative z-20 font-heading font-bold text-white bottom-[-60px] text-lg">Solderability Testing</p>

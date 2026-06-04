@@ -67,6 +67,45 @@ export default function RootLayout({
     <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable}`} data-scroll-behavior="smooth" suppressHydrationWarning>
       <head>
         {/* Cinematic Dark Mode enforced natively via CSS :root */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              name: "Costa Devices Electric Ltd",
+              alternateName: "Costa Devices",
+              url: "https://www.costadevices.com",
+              logo: "https://www.costadevices.com/logos/logo.png",
+              description: "Global distributor for mission-critical circuit protection, electronic components, and industrial automation. Authorized Eaton Bussmann, ABB & Schneider distributor.",
+              foundingDate: "2011",
+              contactPoint: [
+                {
+                  "@type": "ContactPoint",
+                  telephone: "+91-824-898-2286",
+                  contactType: "sales",
+                  email: "info@costadevices.com",
+                  areaServed: ["IN", "AE", "Global"],
+                  availableLanguage: ["English"],
+                },
+              ],
+              address: {
+                "@type": "PostalAddress",
+                streetAddress: "IFZA Property FZCO, Building A2, Dubai Silicon Oasis",
+                addressLocality: "Dubai",
+                addressCountry: "AE",
+              },
+              sameAs: [
+                "https://www.linkedin.com/company/costa-devices",
+              ],
+              hasCredential: [
+                { "@type": "EducationalOccupationalCredential", credentialCategory: "certification", name: "ISO 9001:2015" },
+                { "@type": "EducationalOccupationalCredential", credentialCategory: "certification", name: "AS 6081" },
+                { "@type": "EducationalOccupationalCredential", credentialCategory: "certification", name: "AS 9120B" },
+              ],
+            }),
+          }}
+        />
       </head>
       <body className="antialiased bg-bg-primary transition-colors duration-500 font-body" suppressHydrationWarning>
         <Preloader />
@@ -87,6 +126,7 @@ export default function RootLayout({
           
           <Footer />
           <WhatsAppButton />
+          <ScrollToTop />
           
           <Toaster 
             position="bottom-right" 

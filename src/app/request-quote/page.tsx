@@ -2,7 +2,6 @@
 
 import React, { useState, useRef, Suspense } from "react";
 import { UploadCloud, ShieldCheck, FileText, Lock, Cpu, CheckCircle2, Send, X } from "lucide-react";
-import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import { toast } from "sonner";
 
@@ -20,10 +19,14 @@ function RequestQuoteForm() {
   });
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [dragActive, setDragActive] = useState(false);
+  const [errors, setErrors] = useState({ name: "", email: "" });
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+    if (errors[e.target.name as keyof typeof errors]) {
+      setErrors({ ...errors, [e.target.name]: "" });
+    }
   };
 
   const handleDrag = (e: React.DragEvent) => {
@@ -63,23 +66,39 @@ function RequestQuoteForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.name || !formData.email) {
-      toast.error("Please fill in your name and email");
+    let hasError = false;
+    const newErrors = { name: "", email: "" };
+    
+    if (!formData.name) {
+      newErrors.name = "Operator Name is required.";
+      hasError = true;
+    }
+    if (!formData.email) {
+      newErrors.email = "Secure Comms (Email) is required.";
+      hasError = true;
+    }
+    
+    if (hasError) {
+      setErrors(newErrors);
+      toast.error("Please resolve the highlighted errors.");
       return;
     }
     setFormState("submitting");
 
     try {
+      const submitData = new FormData();
+      submitData.append("name", formData.name);
+      submitData.append("company", formData.company);
+      submitData.append("email", formData.email);
+      submitData.append("subject", "BOM / RFQ Submission");
+      submitData.append("message", `Timeline: ${formData.timeline}\n\nAdditional Notes:\n${formData.notes}`);
+      if (selectedFile) {
+        submitData.append("file", selectedFile);
+      }
+
       const res = await fetch("/api/contact", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: formData.name,
-          company: formData.company,
-          email: formData.email,
-          subject: "BOM / RFQ Submission",
-          message: `Timeline: ${formData.timeline}\n\nAdditional Notes:\n${formData.notes}\n\n${selectedFile ? `Attached File: ${selectedFile.name}` : "No file attached"}`,
-        }),
+        body: submitData,
       });
 
       if (!res.ok) throw new Error("Failed to send");
@@ -87,7 +106,7 @@ function RequestQuoteForm() {
       setFormState("success");
       toast.success("BOM submitted successfully. Our team will respond within 24 hours.");
     } catch {
-      toast.error("Failed to submit. Please try again or email sales@costadevices.com directly.");
+      toast.error("Failed to submit. Please try again or email info@costadevices.com directly.");
       setFormState("idle");
     }
   };
@@ -98,14 +117,11 @@ function RequestQuoteForm() {
         
         {/* Left Side: Information & Trust Signals */}
         <div className="bg-bg-secondary p-8 md:p-16 lg:p-24 flex flex-col justify-between relative overflow-hidden border-r border-glass-border">
-          {/* Subtle Industrial Background Image */}
+          {/* Subtle Industrial Background Pattern */}
           <div className="absolute inset-0 z-0">
-            <Image 
-              src="https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&w=1200&q=80" 
-              alt="Data Center" 
-              fill sizes="(max-width: 768px) 100vw, 50vw"
-              className="object-cover grayscale opacity-[0.03] mix-blend-multiply"
-            />
+            <div className="absolute inset-0 bg-[linear-gradient(#1AAF5D_1px,transparent_1px),linear-gradient(90deg,#1AAF5D_1px,transparent_1px)] bg-[size:40px_40px] opacity-[0.03]" />
+            <div className="absolute top-[10%] left-[20%] w-[400px] h-[400px] bg-costa-green/5 rounded-full blur-[100px]" />
+            <div className="absolute bottom-[10%] right-[10%] w-[300px] h-[300px] bg-costa-green/5 rounded-full blur-[80px]" />
           </div>
 
           <div className="relative z-10 max-w-[500px]">
@@ -152,7 +168,7 @@ function RequestQuoteForm() {
           <div className="relative z-10 mt-20 pt-8 border-t border-glass-border">
              <div className="font-mono text-[10px] text-text-muted uppercase tracking-widest">
                SUPPORT HOTLINE // <a href="tel:+918248982286" className="text-text-primary hover:text-costa-green font-bold">+91 824 898 2286</a><br/>
-               DIRECT INQUIRIES // <a href="mailto:sales@costadevices.com" className="text-text-primary hover:text-costa-green font-bold">SALES@COSTADEVICES.COM</a>
+               DIRECT INQUIRIES // <a href="mailto:info@costadevices.com" className="text-text-primary hover:text-costa-green font-bold">INFO@COSTADEVICES.COM</a>
              </div>
           </div>
         </div>
@@ -186,12 +202,13 @@ function RequestQuoteForm() {
               <div className="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-text-primary -translate-x-[2px] translate-y-[2px]"></div>
               <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-text-primary translate-x-[2px] translate-y-[2px]"></div>
 
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form onSubmit={handleSubmit} noValidate className="space-y-6">
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <label className="font-mono text-xs font-bold text-text-secondary uppercase tracking-widest">Operator Name *</label>
-                    <input type="text" name="name" value={formData.name} onChange={handleChange} required className="w-full bg-white border border-black/10 text-text-primary px-4 py-3 font-mono text-sm focus:border-costa-green focus:outline-none transition-colors" placeholder="JOHN DOE" />
+                    <input type="text" name="name" value={formData.name} onChange={handleChange} required className={`w-full bg-white border ${errors.name ? 'border-red-500' : 'border-black/10'} text-text-primary px-4 py-3 font-mono text-sm focus:border-costa-green focus:outline-none transition-colors`} placeholder="JOHN DOE" />
+                    {errors.name && <p className="text-red-500 text-xs font-mono mt-1">{errors.name}</p>}
                   </div>
                   <div className="space-y-2">
                     <label className="font-mono text-xs font-bold text-text-secondary uppercase tracking-widest">Organization ID</label>
@@ -202,7 +219,8 @@ function RequestQuoteForm() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <label className="font-mono text-xs font-bold text-text-secondary uppercase tracking-widest">Secure Comms (Email) *</label>
-                    <input type="email" name="email" value={formData.email} onChange={handleChange} required className="w-full bg-white border border-black/10 text-text-primary px-4 py-3 font-mono text-sm focus:border-costa-green focus:outline-none transition-colors" placeholder="J.DOE@COMPANY.COM" />
+                    <input type="email" name="email" value={formData.email} onChange={handleChange} required className={`w-full bg-white border ${errors.email ? 'border-red-500' : 'border-black/10'} text-text-primary px-4 py-3 font-mono text-sm focus:border-costa-green focus:outline-none transition-colors`} placeholder="J.DOE@COMPANY.COM" />
+                    {errors.email && <p className="text-red-500 text-xs font-mono mt-1">{errors.email}</p>}
                   </div>
                   <div className="space-y-2">
                     <label className="font-mono text-xs font-bold text-text-secondary uppercase tracking-widest">Target Timeline</label>

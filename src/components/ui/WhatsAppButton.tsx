@@ -7,7 +7,7 @@ export default function WhatsAppButton() {
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=Hi%20Costa%20Devices%2C%20I%27d%20like%20to%20inquire%20about%20your%20products.`;
 
   return (
-    <div className="fixed bottom-6 right-6 z-[90]">
+    <div className="fixed bottom-24 md:bottom-6 right-6 z-[90]">
       <a
         href={whatsappUrl}
         target="_blank"

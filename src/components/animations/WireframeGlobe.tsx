@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useMemo } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
+import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import * as THREE from "three";
 import { motion, useInView } from "framer-motion";
 
@@ -10,6 +10,9 @@ function ComplexGlobe() {
   const ring1Ref = useRef<THREE.Mesh>(null);
   const ring2Ref = useRef<THREE.Mesh>(null);
   const ring3Ref = useRef<THREE.Mesh>(null);
+
+  const { viewport } = useThree();
+  const isMobile = viewport.width < 7; // responsive breakpoint based on 3d viewport width
 
   // Generate random data nodes on the surface
   const nodes = useMemo(() => {
@@ -49,7 +52,7 @@ function ComplexGlobe() {
   });
 
   return (
-    <group ref={groupRef}>
+    <group ref={groupRef} scale={isMobile ? 0.75 : 1.15} position={[isMobile ? 0 : 2, isMobile ? -1 : 0, 0]}>
       {/* Inner solid core for occlusion and depth */}
       <mesh>
         <sphereGeometry args={[4.4, 64, 64]} />
@@ -100,17 +103,15 @@ export default function WireframeGlobe() {
   return (
     <motion.div 
       ref={containerRef}
-      initial={{ opacity: 0, scale: 0.95 }}
-      animate={{ opacity: 1, scale: 1 }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
       transition={{ duration: 2, ease: "easeOut" }}
       className="absolute inset-0 z-0 pointer-events-none overflow-hidden mix-blend-multiply"
     >
-      <div className="w-full h-full flex items-center justify-center scale-[0.9] md:scale-[1.2] translate-y-24 md:translate-y-24 md:translate-x-12">
         <Canvas camera={{ position: [0, 0, 11], fov: 50 }} frameloop={isInView ? "always" : "demand"}>
           <fog attach="fog" args={["#ffffff", 8, 16]} /> 
           <ComplexGlobe />
         </Canvas>
-      </div>
     </motion.div>
   );
 }

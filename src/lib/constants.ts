@@ -83,30 +83,6 @@ export const OFFICES = [
     timezone: "GMT+5:30",
     coordinates: { lat: 11.0168, lng: 76.9558 },
   },
-  {
-    id: "hongkong",
-    country: "Hong Kong",
-    flag: "🇭🇰",
-    city: "Hong Kong",
-    label: "Asia Pacific Hub",
-    address: "Hong Kong SAR, China",
-    phone: "+852 3008 5693",
-    email: "hk@costadevices.com",
-    timezone: "GMT+8",
-    coordinates: { lat: 22.3193, lng: 114.1694 },
-  },
-  {
-    id: "israel",
-    country: "Israel",
-    flag: "🇮🇱",
-    city: "Tel Aviv",
-    label: "Middle East Tech Hub",
-    address: "Tel Aviv, Israel",
-    phone: "+91 824 898 2286",
-    email: "il@costadevices.com",
-    timezone: "GMT+2",
-    coordinates: { lat: 32.0853, lng: 34.7818 },
-  },
 ];
 
 export const CLIENTS = [
@@ -475,7 +451,7 @@ export const NAV_LINKS = [
   { label: "Home", href: "/" },
   { 
     label: "Products", 
-    href: "#",
+    href: "/electronics",
     megaMenu: {
       categories: [
         { 

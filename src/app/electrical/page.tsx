@@ -4,6 +4,12 @@ import { ArrowRight, Zap, Shield, Battery, Grid, Download } from "lucide-react";
 import ScrollReveal from "@/components/animations/ScrollReveal";
 import { BRANDS } from "@/lib/constants";
 import BrandGrid from "@/components/ui/BrandGrid";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Electrical & Renewables — High-Voltage Circuit Protection",
+  description: "Authorized distributor of Eaton Bussmann, ABB & Schneider. High-voltage fuses, contactors, and relays for EV, solar energy, and industrial automation.",
+};
 
 export default function ElectricalPage() {
   return (
@@ -55,7 +61,7 @@ export default function ElectricalPage() {
                   muted
                   loop
                   playsInline
-                  preload="auto"
+                  preload="metadata"
                   className="w-full h-full object-cover pointer-events-none"
                 />
               </div>

@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowUpRight, ArrowUp, CheckCircle2 } from "lucide-react";
-import { COMPANY, CERTIFICATIONS } from "@/lib/constants";
+import { COMPANY, CERTIFICATIONS, OFFICES } from "@/lib/constants";
 
 export default function Footer() {
   const scrollToTop = () => {
@@ -47,6 +47,7 @@ export default function Footer() {
               <li><Link href="/services" className="hover:text-costa-green transition-colors">Services</Link></li>
               <li><Link href="/company" className="hover:text-costa-green transition-colors">Company</Link></li>
               <li><Link href="/quality" className="hover:text-costa-green transition-colors">Quality Policy</Link></li>
+              <li className="pt-2"><a href="/pdfs/costa-devices-linecard.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-costa-green transition-colors flex items-center gap-1.5 text-costa-green font-bold">Download Linecard <ArrowUpRight size={14} /></a></li>
             </ul>
           </div>
 
@@ -55,19 +56,14 @@ export default function Footer() {
             <h4 className="text-sm font-bold text-costa-green tracking-widest uppercase mb-8">
               Global HQ
             </h4>
-            <div className="mb-10">
-              <p className="text-base font-semibold leading-relaxed text-text-primary">
-                IFZA Property FZCO<br/>
-                Building A2, Dubai Silicon Oasis<br/>
-                Dubai, UAE
-              </p>
-            </div>
-            
-            <h4 className="text-[13px] font-bold text-text-muted tracking-widest uppercase mb-6">Regional Offices</h4>
+            <h4 className="text-[13px] font-bold text-text-muted tracking-widest uppercase mb-6">Our Offices</h4>
             <ul className="flex flex-col gap-4 text-base font-semibold text-text-primary">
-              <li className="flex items-center gap-3"><span className="w-1.5 h-1.5 rounded-full bg-costa-green"></span> Hong Kong</li>
-              <li className="flex items-center gap-3"><span className="w-1.5 h-1.5 rounded-full bg-costa-green"></span> Coimbatore, India</li>
-              <li className="flex items-center gap-3"><span className="w-1.5 h-1.5 rounded-full bg-costa-green"></span> Tel Aviv, Israel</li>
+              {OFFICES.map(office => (
+                <li key={office.id} className="flex items-center gap-3">
+                  <span className="w-1.5 h-1.5 rounded-full bg-costa-green"></span>
+                  {office.city}, {office.country}
+                </li>
+              ))}
             </ul>
           </div>
 
