@@ -14,6 +14,7 @@ export default function HeroVideoBackground() {
         loop
         muted
         playsInline
+        preload="auto"
         className="absolute min-w-full min-h-full object-cover opacity-40 grayscale mix-blend-luminosity"
         src="https://assets.mixkit.co/videos/preview/mixkit-abstract-technology-network-connection-lines-loop-27329-large.mp4"
       />

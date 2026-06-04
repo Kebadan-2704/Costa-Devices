@@ -57,7 +57,8 @@ export default function ElectronicsPage() {
                     muted
                     loop
                     playsInline
-                    className="w-full h-full object-cover pointer-events-none"
+                    preload="auto"
+                    className="w-full h-full object-cover mix-blend-luminosity opacity-80 group-hover:scale-105 transition-transform duration-[2s] pointer-events-none"
                   />
                 </div>
                 {/* Internal Gradient Overlay */}

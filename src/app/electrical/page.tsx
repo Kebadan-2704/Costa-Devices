@@ -55,6 +55,7 @@ export default function ElectricalPage() {
                   muted
                   loop
                   playsInline
+                  preload="auto"
                   className="w-full h-full object-cover pointer-events-none"
                 />
               </div>

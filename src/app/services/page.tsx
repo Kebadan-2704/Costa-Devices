@@ -54,11 +54,12 @@ export default function ServicesPage() {
             <div className="relative h-[400px] lg:h-[500px] w-full rounded-[3rem] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.15)] border-8 border-white group transform transition-transform duration-700 hover:scale-[1.01]">
               <div className="absolute inset-0 w-full h-full group-hover:scale-105 transition-transform duration-[2s] ease-out pointer-events-none">
                 <video 
-                  src="/videos/Business_Division_ELECTRONICS.mp4"
+                  src="/videos/Global_Operations_SUPPLY_CHAIN.mp4"
                   autoPlay
                   muted
                   loop
                   playsInline
+                  preload="auto"
                   className="w-full h-full object-cover pointer-events-none"
                 />
               </div>
