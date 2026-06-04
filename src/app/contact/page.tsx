@@ -49,8 +49,8 @@ export default function ContactPage() {
         <div className="absolute inset-0 bg-bg-secondary transition-colors duration-500" />
         <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-costa-green/5 to-transparent blur-[150px] pointer-events-none" aria-hidden="true" />
         
-        <div className="max-w-[1400px] mx-auto px-6 relative z-10">
-          <ScrollReveal>
+        <div className="max-w-[1400px] mx-auto px-6 relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          <ScrollReveal className="lg:col-span-6 relative z-20">
             <p className="font-mono text-xs text-costa-green tracking-[0.2em] uppercase mb-4 flex items-center gap-2">
               <span className="w-6 h-px bg-costa-green" />
               Home / Contact
@@ -62,6 +62,22 @@ export default function ContactPage() {
             <p className="text-text-secondary text-lg max-w-2xl leading-relaxed font-light border-l-4 border-costa-green pl-6 transition-colors duration-500">
               Our global team responds within 24 hours. Contact us for quotes, technical support, or enterprise partnership inquiries.
             </p>
+          </ScrollReveal>
+
+          <ScrollReveal delay={0.2} className="lg:col-span-6 relative">
+            <div className="relative h-[350px] lg:h-[450px] w-full rounded-[3rem] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.15)] border-8 border-white group transform transition-transform duration-700 hover:scale-[1.01]">
+              <div className="absolute inset-0 w-full h-full group-hover:scale-105 transition-transform duration-[2s] ease-out pointer-events-none">
+                <video 
+                  src="/videos/Home_Contact_CONTACT_SALES.mp4"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="auto"
+                  className="w-full h-full object-cover pointer-events-none"
+                />
+              </div>
+            </div>
           </ScrollReveal>
         </div>
       </section>
@@ -169,7 +185,6 @@ export default function ContactPage() {
                 <ScrollReveal key={office.id} delay={0.15 + i * 0.1}>
                   <div className="bg-bg-secondary border border-glass-border p-8 group hover:border-costa-green/50 transition-colors duration-500 rounded-2xl">
                     <div className="flex items-center gap-4 mb-6 pb-6 border-b border-glass-border transition-colors duration-500">
-                      <span className="text-2xl grayscale group-hover:grayscale-0 transition-all">{office.flag}</span>
                       <div>
                         <h4 className="font-heading text-lg font-black text-text-primary tracking-tighter transition-colors duration-500">{office.city.toUpperCase()} OFFICE</h4>
                         <span className="font-mono text-[10px] text-costa-green font-bold uppercase tracking-[0.2em]">{office.label}</span>
@@ -202,7 +217,7 @@ export default function ContactPage() {
         <ScrollReveal className="w-full">
           <div className="w-full h-[500px] relative grayscale hover:grayscale-0 transition-all duration-1000">
             <iframe 
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d115594.02022718105!2d55.28994522967677!3d25.124502573216857!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f643e9bd7fcf1%3A0x7d6a5c2f0d9154f9!2sDubai%20Silicon%20Oasis%2C%20Dubai%20-%20United%20Arab%20Emirates!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus" 
+              src="https://www.google.com/maps?q=Coimbatore&output=embed" 
               width="100%" 
               height="100%" 
               style={{ border: 0 }} 

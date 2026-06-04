@@ -510,6 +510,7 @@ export const NAV_LINKS = [
       { label: "Counterfeit", href: "/quality" }
     ]
   },
+  { label: "Contact", href: "/contact" },
 ];
 
 export const COUNTERFEIT_STEPS = [
