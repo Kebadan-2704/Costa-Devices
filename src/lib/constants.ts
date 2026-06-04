@@ -17,7 +17,7 @@ export const COMPANY = {
     "To be the world's most reliable power component supply chain partner — from electric vehicles to smart grids.",
   address: "IFZA Property FZCO, Building A2, Dubai Silicon Oasis, DDP, Dubai, UAE",
   email: "info@costadevices.com",
-  phone: "+971 4 501 8125",
+  phone: "+91 824 898 2286",
   whatsapp: "+918248982286",
   website: "https://www.costadevices.com",
   linkedin: "https://www.linkedin.com/company/costa-devices",
@@ -66,7 +66,7 @@ export const OFFICES = [
     city: "Dubai",
     label: "Global HQ",
     address: "IFZA Property FZCO, Building A2, Dubai Silicon Oasis, DDP, Dubai, UAE",
-    phone: "+971 4 501 8125",
+    phone: "+91 824 898 2286",
     email: "info@costadevices.com",
     timezone: "GMT+4",
     coordinates: { lat: 25.1173, lng: 55.3834 },
@@ -102,7 +102,7 @@ export const OFFICES = [
     city: "Tel Aviv",
     label: "Middle East Tech Hub",
     address: "Tel Aviv, Israel",
-    phone: "+971 4 501 8125",
+    phone: "+91 824 898 2286",
     email: "il@costadevices.com",
     timezone: "GMT+2",
     coordinates: { lat: 32.0853, lng: 34.7818 },
@@ -122,15 +122,22 @@ export const CLIENTS = [
 ];
 
 export const BRANDS = [
-  { name: "Eaton", products: "Breakers, Contactors, Relays, Buttons", logo: "/logos/eaton.svg" },
-  { name: "Eaton Bussmann", products: "Fuses (EV, Charger, Energy Storage, Industrial)", logo: "/logos/eaton-bussmann.svg" },
-  { name: "ABB", products: "VFDs, Breakers, Safety Relays, Contactors, Fuses", logo: "/logos/abb.svg" },
-  { name: "Schneider", products: "Breakers, Safety Relays, Contactors", logo: "/logos/schneider.svg" },
-  { name: "Littelfuse", products: "Fuses", logo: "/logos/littelfuse.svg" },
-  { name: "Mersen", products: "Fuses", logo: "/logos/mersen.svg" },
-  { name: "Cooper Power", products: "Fuse, Switch, Tap Changer, Bushing", logo: "/logos/cooper-power.svg" },
-  { name: "HPS", products: "Transformers", logo: "/logos/hps.svg" },
-  { name: "SNC", products: "Transformers", logo: "/logos/snc.svg" },
+  { name: "Eaton", products: "Breakers, Contactors, Relays, Buttons", logo: "/logos/eaton.svg", image: "/images/eaton.png", description: "Global power management" },
+  { name: "Eaton Bussmann", products: "Fuses (EV, Charger, Energy Storage)", logo: "/logos/eaton-bussmann.svg", image: "/images/eaton bussman.png", description: "Leading circuit protection" },
+  { name: "ABB", products: "VFDs, Breakers, Safety Relays, Contactors", logo: "/logos/abb.svg", image: "/images/ABB.png", description: "Electrification & automation" },
+  { name: "Schneider", products: "Breakers, Safety Relays, Contactors", logo: "/logos/schneider.svg", image: "/images/schneider.jpg", description: "Energy management" },
+  { name: "Littelfuse", products: "Fuses", logo: "/logos/littelfuse.svg", image: "/images/littlelfuse.png", description: "Circuit protection solutions" },
+  { name: "Mersen", products: "Fuses", logo: "/logos/mersen.svg", image: "/images/mersen.png", description: "Electrical power expertise" },
+  { name: "Cooper Power", products: "Fuse, Switch, Tap Changer, Bushing", logo: "/logos/cooper-power.svg", image: "/images/cooper power.png", description: "Smart grid solutions" },
+  { name: "HPS", products: "Transformers", logo: "/logos/hps.svg", image: "/images/hps.png", description: "Transformer manufacturing" },
+  { name: "SNC", products: "Transformers", logo: "/logos/snc.svg", image: "/images/snc.jpg", description: "Custom magnetics" },
+  { name: "Siemens", products: "Contactors, PLCs", logo: "", image: "/images/Siemens.png", description: "Industrial technology" },
+  { name: "Phoenix Contact", products: "Connectors, Relays", logo: "", image: "/images/Phoenix Contact.png", description: "Connection technology" },
+  { name: "Danfoss", products: "VFDs, Drives", logo: "", image: "/images/Danfoss.jpg", description: "Engineering tomorrow" },
+  { name: "TE Connectivity", products: "Connectors, Sensors", logo: "", image: "/images/te connectivity.jpg", description: "Sensors & connectivity" },
+  { name: "Omron", products: "Relays, Switches", logo: "", image: "/images/omron.png", description: "Automation & sensing" },
+  { name: "Panasonic", products: "Capacitors, Relays", logo: "", image: "/images/Panasonic.png", description: "Electronic components" },
+  { name: "Vishay", products: "Resistors, Diodes", logo: "", image: "/images/Vishay.png", description: "Discrete semiconductors" },
 ];
 
 export const DISTRIBUTOR_BRANDS = [
@@ -471,13 +478,25 @@ export const NAV_LINKS = [
     href: "#",
     megaMenu: {
       categories: [
-        { label: "Electronic Components", href: "/electronics" },
-        { label: "Electrical Components", href: "/electrical" }
-      ],
-      products: [
-        { label: "IC", href: "/electronics" },
-        { label: "Memory", href: "/electronics" },
-        { label: "CPU / HDD / LCD", href: "/electronics" }
+        { 
+          label: "Electronic Components", 
+          href: "/electronics",
+          products: [
+            { label: "IC", href: "/electronics" },
+            { label: "Memory", href: "/electronics" },
+            { label: "CPU / HDD / LCD", href: "/electronics" }
+          ]
+        },
+        { 
+          label: "Electrical Components", 
+          href: "/electrical",
+          products: [
+            { label: "Fuses", href: "/electrical" },
+            { label: "Contactors", href: "/electrical" },
+            { label: "Relays", href: "/electrical" },
+            { label: "Switches", href: "/electrical" }
+          ]
+        }
       ]
     }
   },

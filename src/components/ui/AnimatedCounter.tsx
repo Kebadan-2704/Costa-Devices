@@ -10,18 +10,11 @@ interface AnimatedCounterProps {
 }
 
 export default function AnimatedCounter({ value, suffix = "", decimals = 0, duration = 2, className = "" }: AnimatedCounterProps) {
-  const [count, setCount] = useState(value); // Start at final value for SSR
+  const [count, setCount] = useState(0); // Start at 0 on client
   const ref = useRef<HTMLSpanElement>(null);
   const hasAnimated = useRef(false);
-  const hasMounted = useRef(false);
 
   useEffect(() => {
-    if (hasMounted.current) return;
-    hasMounted.current = true;
-
-    // Reset to 0 on client for animation
-    setCount(0);
-
     const el = ref.current;
     if (!el) return;
 
@@ -32,9 +25,13 @@ export default function AnimatedCounter({ value, suffix = "", decimals = 0, dura
       const animate = (currentTime: number) => {
         const elapsed = (currentTime - startTime) / 1000;
         const progress = Math.min(elapsed / duration, 1);
-        const eased = 1 - Math.pow(1 - progress, 3);
+        const eased = 1 - Math.pow(1 - progress, 3); // easeOutCubic
         setCount(eased * value);
-        if (progress < 1) requestAnimationFrame(animate);
+        if (progress < 1) {
+          requestAnimationFrame(animate);
+        } else {
+          setCount(value); // ensure final value is exact
+        }
       };
       requestAnimationFrame(animate);
     };
@@ -51,10 +48,14 @@ export default function AnimatedCounter({ value, suffix = "", decimals = 0, dura
 
     observer.observe(el);
 
-    // Fallback: always start after 3s
+    // Fallback: always start after 3s if observer fails
     const timer = setTimeout(startAnimation, 3000);
 
-    return () => { observer.disconnect(); clearTimeout(timer); };
+    return () => { 
+      observer.disconnect(); 
+      clearTimeout(timer);
+      // We don't reset hasAnimated here, so it only animates once per full mount cycle.
+    };
   }, [value, duration]);
 
   return (

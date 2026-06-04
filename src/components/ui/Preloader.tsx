@@ -6,11 +6,11 @@ import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 
 const BOOT_MESSAGES = [
-  "SYSTEM_INITIALIZE()",
-  "LOADING_CORE_MODULES()",
-  "VERIFYING_INTEGRITY()",
-  "MOUNTING_DATABASES()",
-  "LINK_ESTABLISHED"
+  "Initializing...",
+  "Loading modules...",
+  "Verifying...",
+  "Connecting...",
+  "Ready"
 ];
 
 export default function Preloader() {
@@ -44,20 +44,20 @@ export default function Preloader() {
           initial={{ y: 0 }}
           exit={{ y: "-100%", opacity: 0 }}
           transition={{ duration: 0.8, ease: "easeInOut" }}
-          className="fixed inset-0 z-[99999] bg-[#FAFAFA] flex flex-col items-center justify-center font-mono overflow-hidden"
+          className="fixed inset-0 z-[99999] bg-[#FAFAFA] flex flex-col items-center justify-center overflow-hidden"
         >
           {/* Brutalist Architectural Grid */}
           <div 
             className="absolute inset-0 pointer-events-none opacity-[0.2]"
             style={{
-              backgroundImage: "linear-gradient(#0A8B46 1px, transparent 1px), linear-gradient(90deg, #0A8B46 1px, transparent 1px)",
+              backgroundImage: "linear-gradient(#1AAF5D 1px, transparent 1px), linear-gradient(90deg, #1AAF5D 1px, transparent 1px)",
               backgroundSize: "60px 60px"
             }}
           />
 
           {/* Active Scanner Line */}
           <motion.div 
-            className="absolute left-0 right-0 h-[2px] bg-costa-green shadow-[0_0_15px_#0A8B46] z-0"
+            className="absolute left-0 right-0 h-[2px] bg-costa-green shadow-[0_0_15px_#1AAF5D] z-0"
             initial={{ top: "-10%" }}
             animate={{ top: "110%" }}
             transition={{ duration: 1.2, ease: "linear" }}
@@ -81,7 +81,7 @@ export default function Preloader() {
               <Image 
                 src="/logos/logo.png" 
                 alt="Costa Devices Logo" 
-                fill
+                fill sizes="150px"
                 className="object-contain object-center"
                 priority
               />
@@ -92,7 +92,7 @@ export default function Preloader() {
               <div className="flex justify-between items-center w-full text-[11px] md:text-sm font-black tracking-widest uppercase text-black/80 mb-3 border-b border-black/10 pb-3">
                 <span className="flex items-center gap-2 text-costa-green">
                   <span className="w-2.5 h-2.5 bg-costa-green animate-pulse rounded-full" />
-                  SYS.TERMINAL.ONLINE
+                  SYSTEM ONLINE
                 </span>
                 <span>{BOOT_MESSAGES[messageIndex]}</span>
               </div>

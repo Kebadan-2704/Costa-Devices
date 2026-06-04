@@ -4,15 +4,11 @@ import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import SmoothScroll from "@/components/layout/SmoothScroll";
-import MagneticCursor from "@/components/ui/MagneticCursor";
 import ScrollProgress from "@/components/layout/ScrollProgress";
 import ScrollToTop from "@/components/layout/ScrollToTop";
 import WhatsAppButton from "@/components/ui/WhatsAppButton";
 import { Toaster } from "sonner";
-import PageTransition from "@/components/animations/PageTransition";
-import AnimatedGrid from "@/components/animations/AnimatedGrid";
 import CookieConsent from "@/components/ui/CookieConsent";
-import Preloader from "@/components/ui/Preloader";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -60,16 +56,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable}`} suppressHydrationWarning>
+    <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable}`} data-scroll-behavior="smooth" suppressHydrationWarning>
       <head>
         {/* Cinematic Dark Mode enforced natively via CSS :root */}
       </head>
       <body className="antialiased bg-bg-primary transition-colors duration-500 font-body" suppressHydrationWarning>
-        <Preloader />
         <SmoothScroll>
-          <MagneticCursor />
-          <AnimatedGrid />
-          
           {/* Global Matte Noise Overlay for Physical Texture */}
           <div className="pointer-events-none fixed inset-0 z-50 opacity-[0.02] dark:opacity-[0.04] mix-blend-multiply dark:mix-blend-screen" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }}></div>
           
@@ -81,13 +73,10 @@ export default function RootLayout({
           <Navbar />
           
           <main id="main-content" className="flex-grow min-h-screen relative z-10">
-            <PageTransition>
-              {children}
-            </PageTransition>
+            {children}
           </main>
           
           <Footer />
-          <ScrollToTop />
           <WhatsAppButton />
           
           <Toaster 

@@ -56,7 +56,7 @@ export default function InfiniteMarquee({
             >
               {logo ? (
                 <div className="relative w-32 h-12 grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300">
-                  <Image src={logo} alt={name} fill className="object-contain" unoptimized />
+                  <Image src={logo} alt={name} fill sizes="150px" className="object-contain" unoptimized />
                 </div>
               ) : (
                 <span className="font-heading text-lg md:text-2xl font-black text-text-muted group-hover:text-text-primary transition-colors duration-300 tracking-tighter">

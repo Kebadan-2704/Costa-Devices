@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowUpRight, ArrowUp, CheckCircle2 } from "lucide-react";
-import { COMPANY } from "@/lib/constants";
+import { COMPANY, CERTIFICATIONS } from "@/lib/constants";
 
 export default function Footer() {
   const scrollToTop = () => {
@@ -11,119 +11,122 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-white text-text-primary border-t border-black/10 relative overflow-hidden font-mono mt-32">
-      <div className="max-w-[1600px] mx-auto border-x border-black/10">
-        <div className="grid grid-cols-1 md:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-black/10">
+    <footer className="bg-white text-text-primary relative overflow-hidden border-t border-black/10">
+      <div className="max-w-[1500px] mx-auto px-8 pt-16 pb-8">
+        
+        {/* Main Footer Layout */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-16 mb-16">
           
-          {/* Column 1 */}
-          <div className="p-8 md:p-12 flex flex-col justify-between h-full min-h-[400px]">
-            <div>
-              <Link href="/" className="relative h-16 w-[320px] hover:opacity-80 transition-opacity">
-                <Image 
-                  src="/logos/logo.png" 
-                  alt="Costa Devices Logo" 
-                  fill
-                  className="object-contain object-left"
-                />
-              </Link>
-              <p className="text-sm text-text-secondary mt-8 max-w-[250px] leading-relaxed font-bold">
-                Powering The Future of Electric Mobility. Authorized global distributor.
-              </p>
-            </div>
-            <div className="mt-12">
-              <a href={COMPANY.linkedin} target="_blank" rel="noopener noreferrer" className="text-xs font-bold hover:text-costa-green transition-colors inline-flex items-center gap-2">
-                [LINKEDIN] <ArrowUpRight size={14} />
-              </a>
-            </div>
+          {/* Column 1: Brand & Bio (Spans 4) */}
+          <div className="md:col-span-12 lg:col-span-4 flex flex-col">
+            <Link href="/" className="relative block h-16 w-full max-w-[240px] hover:opacity-80 transition-opacity mb-8">
+              <Image 
+                src="/logos/logo.png" 
+                alt="Costa Devices Logo" 
+                fill
+                sizes="240px"
+                className="object-contain object-left"
+              />
+            </Link>
+            <p className="text-base text-text-secondary leading-relaxed max-w-[340px] mb-8 font-medium">
+              Powering The Future of Electric Mobility. Global distributor for mission-critical circuit protection, EV components, and industrial automation.
+            </p>
+            <a href={COMPANY.linkedin} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-text-primary hover:text-costa-green transition-all w-fit border border-black/10 bg-[#FAFAFA] px-8 py-4 rounded hover:border-costa-green/50 hover:bg-costa-green/5 shadow-sm">
+              Follow LinkedIn <ArrowUpRight size={16} />
+            </a>
           </div>
 
-          {/* Column 2 */}
-          <div className="p-8 md:p-12">
-            <div className="flex items-center gap-2 text-xs font-bold text-costa-green tracking-widest uppercase mb-12">
-              <div className="w-2 h-2 bg-costa-green"></div>
-              DIRECTORY
-            </div>
-            <ul className="flex flex-col gap-6 text-sm font-bold uppercase tracking-widest">
-              <li><Link href="/" className="hover:text-costa-green transition-colors flex items-center gap-2"><span className="text-text-muted">{'>'}</span> HOME</Link></li>
-              <li><Link href="/products" className="hover:text-costa-green transition-colors flex items-center gap-2"><span className="text-text-muted">{'>'}</span> PRODUCTS</Link></li>
-              <li><Link href="/services" className="hover:text-costa-green transition-colors flex items-center gap-2"><span className="text-text-muted">{'>'}</span> SERVICES</Link></li>
-              <li><Link href="/company" className="hover:text-costa-green transition-colors flex items-center gap-2"><span className="text-text-muted">{'>'}</span> COMPANY</Link></li>
-              <li><Link href="/quality" className="hover:text-costa-green transition-colors flex items-center gap-2"><span className="text-text-muted">{'>'}</span> QUALITY</Link></li>
+          {/* Column 2: Quick Links (Spans 2) */}
+          <div className="md:col-span-4 lg:col-span-2">
+            <h4 className="text-sm font-bold text-costa-green tracking-widest uppercase mb-8">
+              Directory
+            </h4>
+            <ul className="flex flex-col gap-5 text-base font-semibold text-text-primary">
+              <li><Link href="/" className="hover:text-costa-green transition-colors">Home</Link></li>
+              <li><Link href="/electrical" className="hover:text-costa-green transition-colors">Products</Link></li>
+              <li><Link href="/services" className="hover:text-costa-green transition-colors">Services</Link></li>
+              <li><Link href="/company" className="hover:text-costa-green transition-colors">Company</Link></li>
+              <li><Link href="/quality" className="hover:text-costa-green transition-colors">Quality Policy</Link></li>
             </ul>
           </div>
 
-          {/* Column 3 */}
-          <div className="p-8 md:p-12">
-            <div className="flex items-center gap-2 text-xs font-bold text-costa-green tracking-widest uppercase mb-12">
-              <div className="w-2 h-2 bg-costa-green"></div>
-              OPERATIONS
-            </div>
+          {/* Column 3: Global Presence (Spans 3) */}
+          <div className="md:col-span-4 lg:col-span-3">
+            <h4 className="text-sm font-bold text-costa-green tracking-widest uppercase mb-8">
+              Global HQ
+            </h4>
             <div className="mb-10">
-              <p className="text-[10px] text-text-muted uppercase tracking-widest mb-2 font-bold">HQ / DBX</p>
-              <p className="text-sm font-bold uppercase leading-relaxed max-w-[250px]">IFZA HQ (DUBAI) - BUILDING A2, SILICON OASIS</p>
-            </div>
-            <div>
-              <p className="text-[10px] text-text-muted uppercase tracking-widest mb-4 font-bold">GLOBAL OFFICES</p>
-              <ul className="flex flex-col gap-3 text-sm">
-                <li><span className="font-bold mr-2">[HKG]</span> Hong Kong</li>
-                <li><span className="font-bold mr-2">[IND]</span> Coimbatore</li>
-                <li><span className="font-bold mr-2">[ISR]</span> Tel Aviv</li>
-              </ul>
-            </div>
-          </div>
-
-          {/* Column 4 */}
-          <div className="p-8 md:p-12 relative flex flex-col justify-between h-full">
-            <div>
-              <div className="flex items-center gap-2 text-xs font-bold text-costa-green tracking-widest uppercase mb-12">
-                <div className="w-2 h-2 bg-costa-green"></div>
-                COMM LINK
-              </div>
-              <div className="mb-6">
-                <a href={`mailto:${COMPANY.email}`} className="text-lg font-bold hover:text-costa-green transition-colors">{COMPANY.email}</a>
-              </div>
-              <div>
-                <a href={`tel:${COMPANY.phone.replace(/[^0-9+]/g, '')}`} className="text-xl font-bold hover:text-costa-green transition-colors">{COMPANY.phone}</a>
-              </div>
+              <p className="text-base font-semibold leading-relaxed text-text-primary">
+                IFZA Property FZCO<br/>
+                Building A2, Dubai Silicon Oasis<br/>
+                Dubai, UAE
+              </p>
             </div>
             
-            <div className="mt-12 flex h-[86px]">
-              <div className="flex-1 flex flex-col">
-                <div className="flex-1 border border-black/10 border-b-0 p-3 flex items-center gap-3 text-xs font-bold uppercase">
-                  <CheckCircle2 size={14} className="text-costa-green" /> AS 9120B CERTIFIED
-                </div>
-                <div className="flex-1 border border-black/10 p-3 flex items-center gap-3 text-xs font-bold uppercase">
-                  <CheckCircle2 size={14} className="text-costa-green" /> ISO 9001:2015
-                </div>
-              </div>
-              <button onClick={scrollToTop} className="w-[50px] h-full border border-black/10 border-l-0 flex items-center justify-center hover:bg-black/5 transition-colors group cursor-pointer bg-white">
-                <ArrowUp size={20} className="group-hover:-translate-y-1 transition-transform" />
-              </button>
-            </div>
+            <h4 className="text-[13px] font-bold text-text-muted tracking-widest uppercase mb-6">Regional Offices</h4>
+            <ul className="flex flex-col gap-4 text-base font-semibold text-text-primary">
+              <li className="flex items-center gap-3"><span className="w-1.5 h-1.5 rounded-full bg-costa-green"></span> Hong Kong</li>
+              <li className="flex items-center gap-3"><span className="w-1.5 h-1.5 rounded-full bg-costa-green"></span> Coimbatore, India</li>
+              <li className="flex items-center gap-3"><span className="w-1.5 h-1.5 rounded-full bg-costa-green"></span> Tel Aviv, Israel</li>
+            </ul>
           </div>
 
+          {/* Column 4: Contact & Certifications (Spans 3) */}
+          <div className="md:col-span-4 lg:col-span-3 flex flex-col">
+            <h4 className="text-sm font-bold text-costa-green tracking-widest uppercase mb-8">
+              Direct Contact
+            </h4>
+            <div className="flex flex-col gap-2 mb-10">
+              <a href={`mailto:${COMPANY.email}`} className="text-base font-semibold text-text-secondary hover:text-costa-green transition-colors">
+                {COMPANY.email}
+              </a>
+              <a href={`tel:${COMPANY.phone.replace(/[^0-9+]/g, '')}`} className="text-2xl font-bold text-text-primary hover:text-costa-green transition-colors mt-1">
+                {COMPANY.phone}
+              </a>
+            </div>
+            
+            {/* Premium Light Theme Certification Badges */}
+            <h4 className="text-[13px] font-bold text-text-muted tracking-widest uppercase mb-5">Verified Quality</h4>
+            <div className="flex flex-col gap-4">
+              {CERTIFICATIONS.map(cert => (
+                <div key={cert.id} className="flex items-center gap-4 bg-white border border-black/10 p-4 rounded-xl hover:border-costa-green/30 hover:bg-costa-green/5 transition-all group shadow-sm">
+                  <div className="w-10 h-10 rounded-full bg-costa-green/10 flex items-center justify-center shrink-0 border border-costa-green/20 group-hover:bg-costa-green/20 transition-colors">
+                    <CheckCircle2 size={20} className="text-costa-green" />
+                  </div>
+                  <div>
+                    <p className="text-sm font-bold text-text-primary tracking-wider mb-1">{cert.name}</p>
+                    <div className="flex items-center gap-2">
+                      <div className="w-1.5 h-1.5 rounded-full bg-costa-green"></div>
+                      <p className="text-[10px] text-text-secondary font-mono uppercase tracking-widest font-bold">Verified Standard</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-black/10 p-6 md:px-12 flex flex-col md:flex-row justify-between items-center text-[10px] uppercase tracking-widest text-text-muted font-bold">
-          <p>SYS.COPYRIGHT © {new Date().getFullYear()} COSTA DEVICES FZCO.</p>
-          <div className="flex gap-6 mt-4 md:mt-0">
-            <Link href="/quality" className="hover:text-black transition-colors">QUALITY POLICY</Link>
-            <Link href="/privacy" className="hover:text-black transition-colors">PRIVACY</Link>
-            <Link href="/terms" className="hover:text-black transition-colors">TERMS</Link>
+        <div className="pt-8 border-t border-black/10 flex flex-col md:flex-row justify-between items-center gap-8 pb-10">
+          <div className="text-sm font-bold tracking-widest text-text-muted uppercase text-center md:text-left">
+            © {new Date().getFullYear()} Costa Devices FZCO. All Rights Reserved.
+          </div>
+          
+          <div className="flex items-center gap-8 text-sm font-bold text-text-muted uppercase tracking-widest">
+            <Link href="/privacy" className="hover:text-costa-green transition-colors">Privacy Policy</Link>
+            <Link href="/terms" className="hover:text-costa-green transition-colors">Terms of Service</Link>
+            
+            <button 
+              onClick={scrollToTop} 
+              className="w-12 h-12 ml-4 rounded-xl bg-white border border-black/10 hover:bg-costa-green hover:border-costa-green hover:text-white transition-all flex items-center justify-center group text-text-primary shadow-sm"
+              aria-label="Scroll to top"
+            >
+              <ArrowUp size={20} className="group-hover:text-white group-hover:-translate-y-1 transition-all" />
+            </button>
           </div>
         </div>
-      </div>
 
-      {/* Hovering SECURE CHANNEL tag */}
-      <div className="absolute bottom-20 right-10 border border-black text-xs font-bold uppercase bg-white p-4 hidden lg:flex flex-col gap-1 shadow-[4px_4px_0px_rgba(0,0,0,0.1)] z-50 hover:bg-black hover:text-white transition-colors cursor-default group">
-        <div className="text-[9px] text-text-muted group-hover:text-white/60 font-bold">SECURE CHANNEL</div>
-        <div className="flex items-center gap-2">
-          <div className="w-2 h-2 bg-costa-green"></div>
-          COMM LINK: ONLINE <span className="ml-2 animate-pulse">{'>_'}</span>
-        </div>
       </div>
-
     </footer>
   );
 }

@@ -16,29 +16,53 @@ const getIcon = (iconName: string) => {
   }
 };
 
+const bgImages = [
+  '/images/products/capacitors.png',
+  '/images/products/automation.png',
+  '/images/industries/power-distribution.png',
+  '/images/products/circuit-protection.png',
+  '/images/products/transformers.png',
+  '/images/products/industrial-fuses.png'
+];
+
 export default function ServicesPage() {
   return (
-    <div className="min-h-screen bg-transparent text-text-primary overflow-hidden pb-32">
+    <div className="min-h-screen bg-transparent text-text-primary overflow-hidden">
       {/* Hero Section */}
       <section className="relative pt-40 pb-20 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <div className="absolute top-[10%] left-[20%] w-[600px] h-[600px] rounded-full bg-costa-green/5 blur-[100px]" />
         </div>
-        <div className="max-w-[1400px] mx-auto px-6 relative z-10 text-center">
-          <ScrollReveal>
-            <div className="inline-flex items-center gap-3 px-4 py-2 bg-costa-green/10 border border-costa-green/20 rounded-full mb-8 mx-auto">
+        <div className="max-w-[1400px] mx-auto px-6 relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          <ScrollReveal className="lg:col-span-6 relative z-20">
+            <div className="inline-flex items-center gap-3 px-4 py-2 bg-costa-green/10 border border-costa-green/20 rounded-full mb-8">
               <span className="w-2 h-2 bg-costa-green rounded-full animate-pulse"></span>
               <span className="font-mono text-[10px] text-costa-green font-bold tracking-[0.2em] uppercase">
                 Global Operations
               </span>
             </div>
-            <h1 className="font-heading text-[clamp(2.5rem,5vw,5rem)] font-black leading-[1.05] tracking-tight mb-6">
+            <h1 className="font-heading text-[clamp(2.5rem,5vw,5rem)] font-black leading-[1.05] tracking-tight mb-6 text-text-primary">
               SUPPLY CHAIN <br />
               <span className="text-costa-green">SOLUTIONS.</span>
             </h1>
-            <p className="text-text-secondary text-lg max-w-2xl leading-relaxed mx-auto mb-10">
+            <p className="text-text-secondary text-lg max-w-2xl leading-relaxed mb-10">
               End-to-end component procurement, rigorous testing, and customized distribution models built to secure your production lines against global shortages.
             </p>
+          </ScrollReveal>
+
+          <ScrollReveal delay={0.2} className="lg:col-span-6 relative">
+            <div className="relative h-[400px] lg:h-[500px] w-full rounded-[3rem] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.15)] border-8 border-white group transform transition-transform duration-700 hover:scale-[1.01]">
+              <div className="absolute inset-0 w-full h-full group-hover:scale-105 transition-transform duration-[2s] ease-out pointer-events-none">
+                <video 
+                  src="/videos/Business_Division_ELECTRONICS.mp4"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  className="w-full h-full object-cover pointer-events-none"
+                />
+              </div>
+            </div>
           </ScrollReveal>
         </div>
       </section>
@@ -51,27 +75,29 @@ export default function ServicesPage() {
               <ScrollReveal key={service.id} delay={idx * 0.1}>
                 <div className="bg-white/95 backdrop-blur-md border border-glass-border p-10 flex flex-col h-full shadow-sm hover:shadow-2xl hover:border-costa-green/30 transition-all duration-500 group relative overflow-hidden">
                   
-                  {/* Hover Graphic */}
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-costa-green/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <div className="absolute inset-0 z-0 opacity-[0.1] group-hover:opacity-[0.2] transition-opacity duration-700 mix-blend-multiply" style={{ backgroundImage: `url('${bgImages[idx % bgImages.length]}')`, backgroundSize: 'cover', backgroundPosition: 'center' }}></div>
 
-                  <div className="w-16 h-16 rounded-sm border border-glass-border bg-bg-secondary flex items-center justify-center mb-8 text-costa-green group-hover:bg-costa-green group-hover:text-white group-hover:border-costa-green transition-all duration-300">
+                  {/* Hover Graphic */}
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-costa-green/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0"></div>
+
+                  <div className="relative z-10 w-16 h-16 rounded-sm border border-glass-border bg-bg-secondary flex items-center justify-center mb-8 text-costa-green group-hover:bg-costa-green group-hover:text-white group-hover:border-costa-green transition-all duration-300">
                     {getIcon(service.icon)}
                   </div>
                   
-                  <div className="font-mono text-[10px] text-text-muted font-bold tracking-widest uppercase mb-3">
-                    0{idx + 1} // {service.shortDesc}
+                  <div className="relative z-10 font-mono text-[10px] text-text-muted font-bold tracking-widest uppercase mb-3 bg-white/50 inline-block px-2 py-1 rounded backdrop-blur-sm">
+                    0{idx + 1} {"//"} {service.shortDesc}
                   </div>
                   
-                  <h3 className="font-heading text-2xl font-black mb-4 uppercase tracking-tight">
+                  <h3 className="relative z-10 font-heading text-2xl font-black mb-4 uppercase tracking-tight">
                     {service.title}
                   </h3>
                   
-                  <p className="text-text-secondary leading-relaxed text-sm mb-8 flex-grow">
+                  <p className="relative z-10 text-text-secondary leading-relaxed text-sm mb-8 flex-grow">
                     {service.description}
                   </p>
 
                   {/* Feature List */}
-                  <ul className="space-y-3 mb-8">
+                  <ul className="relative z-10 space-y-3 mb-8">
                     {service.features.map((feature, fIdx) => (
                       <li key={fIdx} className="flex items-center gap-3 font-mono text-[11px] text-text-primary uppercase tracking-widest">
                         <div className="w-1 h-1 bg-costa-green"></div>
@@ -80,7 +106,7 @@ export default function ServicesPage() {
                     ))}
                   </ul>
 
-                  <Link href="/request-quote" className="inline-flex items-center gap-2 font-mono text-xs font-bold text-costa-green uppercase tracking-widest group/link mt-auto pt-6 border-t border-glass-border">
+                  <Link href="/request-quote" className="relative z-10 inline-flex items-center gap-2 font-mono text-xs font-bold text-costa-green uppercase tracking-widest group/link mt-auto pt-6 border-t border-glass-border">
                     {service.cta}
                     <ArrowRight size={14} className="group-hover/link:translate-x-1 transition-transform" />
                   </Link>

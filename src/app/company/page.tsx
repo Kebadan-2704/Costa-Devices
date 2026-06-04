@@ -9,12 +9,12 @@ import { COMPANY, TEAM, OFFICES, TIMELINE, STATS } from "@/lib/constants";
 
 export default function CompanyPage() {
   return (
-    <div className="min-h-screen bg-transparent text-text-primary overflow-hidden pb-32">
+    <div className="min-h-screen bg-transparent text-text-primary overflow-hidden">
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 overflow-hidden border-b border-glass-border transition-colors duration-500">
         <div className="absolute inset-0 bg-transparent transition-colors duration-500" />
-        <div className="max-w-[1400px] mx-auto px-6 relative z-10">
-          <ScrollReveal>
+        <div className="max-w-[1400px] mx-auto px-6 relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          <ScrollReveal className="lg:col-span-6 relative z-20">
             <p className="font-mono text-xs text-costa-green tracking-[0.2em] uppercase mb-4 flex items-center gap-2">
               <span className="w-6 h-px bg-costa-green" />
               Home / Operations
@@ -26,6 +26,21 @@ export default function CompanyPage() {
             <p className="text-text-secondary text-lg max-w-2xl leading-relaxed font-light border-l-4 border-costa-green pl-6 mb-12 transition-colors duration-500">
               14+ years of powering industries worldwide. The silent engine behind the global EV and hardware transition.
             </p>
+          </ScrollReveal>
+          
+          <ScrollReveal delay={0.2} className="lg:col-span-6 relative">
+            <div className="relative h-[350px] lg:h-[450px] w-full rounded-[3rem] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.15)] border-8 border-white group transform transition-transform duration-700 hover:scale-[1.01]">
+              <div className="absolute inset-0 w-full h-full group-hover:scale-105 transition-transform duration-[2s] ease-out pointer-events-none">
+                <video 
+                  src="/videos/Home_Operations_GLOBAL_OPERA.mp4"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  className="w-full h-full object-cover pointer-events-none"
+                />
+              </div>
+            </div>
           </ScrollReveal>
         </div>
       </section>
@@ -80,22 +95,45 @@ export default function CompanyPage() {
             <h2 className="font-heading text-sm font-bold tracking-[0.3em] text-costa-green uppercase mb-4">Fulfillment SLA</h2>
             <h3 className="font-heading text-3xl md:text-5xl font-black text-text-primary tracking-tight transition-colors duration-500">WAREHOUSE <span className="green-gradient-text">SLA</span></h3>
           </div>
-          <div className="grid md:grid-cols-3 gap-px bg-glass-border border border-glass-border rounded-xl overflow-hidden">
-            <div className="bg-bg-primary p-10 group transition-colors duration-500">
-              <h4 className="font-mono text-4xl font-bold text-text-primary mb-2 group-hover:text-costa-green transition-colors">99.8%</h4>
-              <p className="font-heading text-sm font-bold text-costa-green uppercase tracking-widest mb-4">Pick Accuracy</p>
-              <p className="text-text-secondary font-light text-sm">Triple-verified outbound logistics ensuring zero-defect delivery pipelines.</p>
-            </div>
-            <div className="bg-bg-primary p-10 group transition-colors duration-500">
-              <h4 className="font-mono text-4xl font-bold text-text-primary mb-2 group-hover:text-costa-green transition-colors">&lt; 24h</h4>
-              <p className="font-heading text-sm font-bold text-costa-green uppercase tracking-widest mb-4">Dispatch Target</p>
-              <p className="text-text-secondary font-light text-sm">Orders received before 14:00 GST route directly to staging for same-day air freight.</p>
-            </div>
-            <div className="bg-bg-primary p-10 group transition-colors duration-500">
-              <h4 className="font-mono text-4xl font-bold text-text-primary mb-2 group-hover:text-costa-green transition-colors">Class 1</h4>
-              <p className="font-heading text-sm font-bold text-costa-green uppercase tracking-widest mb-4">ESD Safe Protocol</p>
-              <p className="text-text-secondary font-light text-sm">Strict ANSI/ESD S20.20 certified bagging and handling for all sensitive components.</p>
-            </div>
+          <div className="grid md:grid-cols-3 gap-8">
+            <ScrollReveal delay={0.1}>
+              <div className="bg-bg-primary border border-glass-border rounded-2xl p-10 relative overflow-hidden group hover:border-costa-green/30 transition-all duration-700 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(13,107,61,0.08)] h-full">
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-costa-green/10 via-costa-green/80 to-costa-green/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-20" />
+                <div className="relative z-20 flex flex-col h-full justify-between">
+                  <div>
+                    <h4 className="font-mono text-5xl md:text-6xl font-black text-text-primary mb-2 group-hover:text-costa-green transition-colors duration-500">99.8%</h4>
+                    <p className="font-heading text-xs md:text-sm font-bold text-costa-green uppercase tracking-[0.2em] mb-6">Pick Accuracy</p>
+                  </div>
+                  <p className="text-text-secondary font-light text-sm leading-relaxed border-l-2 border-glass-border pl-4 group-hover:border-costa-green transition-colors duration-500">Triple-verified outbound logistics ensuring zero-defect delivery pipelines.</p>
+                </div>
+              </div>
+            </ScrollReveal>
+            
+            <ScrollReveal delay={0.2}>
+              <div className="bg-bg-primary border border-glass-border rounded-2xl p-10 relative overflow-hidden group hover:border-costa-green/30 transition-all duration-700 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(13,107,61,0.08)] h-full">
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-costa-green/10 via-costa-green/80 to-costa-green/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-20" />
+                <div className="relative z-20 flex flex-col h-full justify-between">
+                  <div>
+                    <h4 className="font-mono text-5xl md:text-6xl font-black text-text-primary mb-2 group-hover:text-costa-green transition-colors duration-500">&lt; 24h</h4>
+                    <p className="font-heading text-xs md:text-sm font-bold text-costa-green uppercase tracking-[0.2em] mb-6">Dispatch Target</p>
+                  </div>
+                  <p className="text-text-secondary font-light text-sm leading-relaxed border-l-2 border-glass-border pl-4 group-hover:border-costa-green transition-colors duration-500">Orders received before 14:00 GST route directly to staging for same-day air freight.</p>
+                </div>
+              </div>
+            </ScrollReveal>
+            
+            <ScrollReveal delay={0.3}>
+              <div className="bg-bg-primary border border-glass-border rounded-2xl p-10 relative overflow-hidden group hover:border-costa-green/30 transition-all duration-700 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(13,107,61,0.08)] h-full">
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-costa-green/10 via-costa-green/80 to-costa-green/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-20" />
+                <div className="relative z-20 flex flex-col h-full justify-between">
+                  <div>
+                    <h4 className="font-mono text-5xl md:text-6xl font-black text-text-primary mb-2 group-hover:text-costa-green transition-colors duration-500">Class 1</h4>
+                    <p className="font-heading text-xs md:text-sm font-bold text-costa-green uppercase tracking-[0.2em] mb-6">ESD Safe Protocol</p>
+                  </div>
+                  <p className="text-text-secondary font-light text-sm leading-relaxed border-l-2 border-glass-border pl-4 group-hover:border-costa-green transition-colors duration-500">Strict ANSI/ESD S20.20 certified bagging and handling for all sensitive components.</p>
+                </div>
+              </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>
@@ -144,76 +182,44 @@ export default function CompanyPage() {
       <section className="py-24 border-b border-glass-border transition-colors duration-500">
         <div className="max-w-[800px] mx-auto px-6">
           <ScrollReveal>
-            <div className="text-center mb-16">
+            <div className="text-center mb-24">
               <h2 className="font-heading text-sm font-bold tracking-[0.3em] text-costa-green uppercase mb-4">Milestones</h2>
               <h3 className="font-heading text-3xl md:text-5xl font-black text-text-primary tracking-tight transition-colors duration-500">OPERATIONAL <span className="green-gradient-text">HISTORY</span></h3>
             </div>
           </ScrollReveal>
 
           <GsapTimeline>
-            {TIMELINE.map((item, i) => (
-              <div key={item.year} className="gsap-timeline-item relative pl-12 mb-12 last:mb-0 group">
-                <div className="gsap-timeline-dot absolute left-[16.5px] -translate-x-1/2 w-4 h-4 rounded-full bg-bg-primary border-2 border-costa-green transition-colors shadow-[0_0_15px_var(--brand-green-light)]" />
-                  <div className="font-mono text-2xl font-bold text-text-primary tracking-tight mb-2 transition-colors duration-500">{item.year}</div>
-                  <h4 className="font-heading text-lg font-bold text-costa-green mb-2 flex items-center gap-2">
-                    {item.title}
-                    {item.title.includes("ISO") && <Link href="/quality" className="text-[10px] font-mono tracking-widest uppercase border border-costa-green text-text-muted hover:text-white hover:bg-costa-green px-2 py-0.5 rounded-md transition-colors ml-2 hidden sm:block">View Certificate</Link>}
-                  </h4>
-                  <p className="text-text-secondary text-sm font-light transition-colors duration-500">{item.description}</p>
-              </div>
-            ))}
+            <div className="relative">
+              {/* Vertical Line */}
+              <div className="absolute left-[39px] top-0 bottom-0 w-[2px] bg-gradient-to-b from-costa-green via-costa-green/30 to-transparent" />
+
+              {TIMELINE.map((item, i) => (
+                <div key={item.year} className="gsap-timeline-item relative pl-28 mb-12 last:mb-0 group">
+                  {/* Node Dot */}
+                  <div className="gsap-timeline-dot absolute left-[32px] top-[24px] w-4 h-4 rounded-full bg-bg-primary border-2 border-costa-green shadow-[0_0_15px_rgba(13,107,61,0.5)] group-hover:scale-125 group-hover:bg-costa-green transition-all duration-500 z-10" />
+                  
+                  <div className="bg-bg-primary border border-glass-border p-8 rounded-2xl relative overflow-hidden group-hover:border-costa-green/30 transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_20px_40px_rgba(13,107,61,0.08)]">
+                    <div className="absolute inset-0 bg-gradient-to-br from-costa-green/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0" />
+                    
+                    <div className="relative z-10">
+                      <div className="font-mono text-3xl font-black text-text-primary tracking-tight mb-2 group-hover:text-costa-green transition-colors duration-500">
+                        {item.year}
+                      </div>
+                      <h4 className="font-heading text-lg font-bold text-costa-green mb-3 flex items-center gap-3">
+                        {item.title}
+                        {item.title.includes("ISO") && <Link href="/quality" className="text-[10px] font-mono tracking-widest uppercase border border-costa-green text-costa-green hover:text-white hover:bg-costa-green px-3 py-1 rounded-md transition-colors hidden sm:block">View Certificate</Link>}
+                      </h4>
+                      <p className="text-text-secondary text-sm font-light leading-relaxed">{item.description}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </GsapTimeline>
         </div>
       </section>
 
-      {/* Leadership */}
-      <section className="py-24 bg-bg-secondary border-b border-glass-border transition-colors duration-500">
-        <div className="max-w-[1400px] mx-auto px-6">
-          <ScrollReveal>
-            <div className="text-center mb-16">
-              <h2 className="font-heading text-sm font-bold tracking-[0.3em] text-costa-green uppercase mb-4">Leadership</h2>
-              <h3 className="font-heading text-3xl md:text-5xl font-black text-text-primary tracking-tight transition-colors duration-500">OUR <span className="green-gradient-text">TEAM</span></h3>
-            </div>
-          </ScrollReveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
-            {TEAM.map((member, i) => (
-              <ScrollReveal key={member.name} delay={i * 0.15}>
-                <div className="bg-bg-primary border border-glass-border p-8 text-center group hover:border-costa-green/30 transition-colors duration-500 rounded-2xl">
-                  <div className="w-24 h-24 rounded-2xl overflow-hidden mx-auto mb-6 transition-transform duration-500 group-hover:scale-105 border-2 border-costa-green/20 relative bg-costa-green/8">
-                    <Image src={member.image} alt={member.name} fill className="object-cover" sizes="96px" />
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <span className="font-heading text-3xl font-black text-costa-green tracking-tight">{member.name.split(' ').map(n => n[0]).join('')}</span>
-                    </div>
-                  </div>
-                  <h3 className="font-heading text-xl font-bold mb-1 text-text-primary transition-colors duration-500">{member.name}</h3>
-                  <p className="font-mono text-[10px] text-costa-green font-bold uppercase tracking-[0.2em] mb-3">{member.title}</p>
-                  <p className="text-text-secondary text-sm mb-4 font-light">{member.bio}</p>
-                  <div className="flex items-center justify-center gap-4">
-                    <a href={`mailto:${member.email}`} className="text-text-muted hover:text-costa-green transition-colors flex items-center gap-2 text-xs font-mono">
-                      <Mail size={12} /> {member.email}
-                    </a>
-                    <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="text-text-muted hover:text-costa-green transition-colors">
-                      <ExternalLink size={14} />
-                    </a>
-                  </div>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
-
-          <ScrollReveal delay={0.3}>
-            <div className="bg-bg-primary border border-glass-border p-8 mt-12 max-w-3xl mx-auto text-center border-l-4 border-l-costa-green transition-colors duration-500 rounded-xl">
-              <p className="text-sm md:text-base text-text-secondary font-light leading-relaxed transition-colors duration-500">
-                &ldquo;Our leadership brings decades of direct manufacturer experience from{" "}
-                <span className="text-text-primary font-bold transition-colors duration-500">Eaton Bussmann</span>,{" "}
-                <span className="text-text-primary font-bold transition-colors duration-500">TE Connectivity</span>, and{" "}
-                <span className="text-text-primary font-bold transition-colors duration-500">Molex</span>. We understand the hardware because we come from the factory floor.&rdquo;
-              </p>
-            </div>
-          </ScrollReveal>
-        </div>
-      </section>
 
       {/* ESG & Corporate Governance */}
       <section className="py-24 bg-white border-b border-glass-border">
@@ -267,23 +273,42 @@ export default function CompanyPage() {
             </div>
           </ScrollReveal>
 
-          <div className="mb-16">
+          <div className="mb-20">
             <ScrollReveal delay={0.1}>
               <WorldMap />
             </ScrollReveal>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {OFFICES.map((office, i) => (
               <ScrollReveal key={office.id} delay={i * 0.1}>
-                <div className="bg-bg-secondary border border-glass-border p-8 text-center h-full group hover:border-costa-green/30 transition-colors duration-500 rounded-xl">
-                  <span className="text-4xl mb-6 block grayscale group-hover:grayscale-0 transition-all">{office.flag}</span>
-                  <h3 className="font-heading text-2xl font-bold mb-2 text-text-primary tracking-tight transition-colors duration-500">{office.city.toUpperCase()}</h3>
-                  <span className="font-mono text-[10px] text-costa-green font-bold uppercase tracking-[0.2em] block mb-4">{office.label}</span>
-                  <p className="text-text-secondary text-sm mt-4 mb-4 font-light transition-colors duration-500">{office.address}</p>
-                  <div className="flex items-center justify-center gap-2 text-xs text-text-muted font-mono border-t border-glass-border pt-4 transition-colors duration-500">
-                    <Clock size={12} className="text-costa-green" />
-                    <span>{office.timezone}</span>
+                <div className="bg-bg-primary border border-glass-border p-8 text-center h-full group hover:border-costa-green/30 transition-all duration-700 rounded-2xl relative overflow-hidden hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(13,107,61,0.08)]">
+                  <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-costa-green/10 via-costa-green/80 to-costa-green/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-10" />
+
+                  <div className="relative z-10 flex flex-col h-full justify-between">
+                    <div>
+                      <div className="w-16 h-16 mx-auto bg-bg-secondary border border-glass-border rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500 group-hover:border-costa-green/30 shadow-sm">
+                        <img 
+                          src={`https://flagcdn.com/w80/${
+                            office.id === 'dubai' ? 'ae' : 
+                            office.id === 'india' ? 'in' : 
+                            office.id === 'hongkong' ? 'hk' : 'il'
+                          }.png`} 
+                          alt={office.country} 
+                          className="w-8 h-auto rounded-[2px] grayscale group-hover:grayscale-0 transition-all" 
+                        />
+                      </div>
+                      
+                      <h3 className="font-heading text-3xl font-black mb-2 text-text-primary tracking-tight">{office.city.toUpperCase()}</h3>
+                      <span className="font-mono text-[10px] text-costa-green font-bold uppercase tracking-[0.2em] block mb-6">{office.label}</span>
+                      
+                      <p className="text-text-secondary text-sm mt-4 mb-8 font-light h-[60px] line-clamp-3">{office.address}</p>
+                    </div>
+                    
+                    <div className="flex items-center justify-center gap-2 text-xs text-text-muted font-mono border-t border-glass-border pt-6 group-hover:text-costa-green transition-colors duration-500">
+                      <Clock size={14} className="text-costa-green/50 group-hover:text-costa-green transition-colors" />
+                      <span>{office.timezone}</span>
+                    </div>
                   </div>
                 </div>
               </ScrollReveal>
@@ -293,16 +318,18 @@ export default function CompanyPage() {
       </section>
 
       {/* Stats Board */}
-      <section className="py-16 bg-bg-secondary border-b border-glass-border transition-colors duration-500">
-        <div className="max-w-[1400px] mx-auto px-6">
-          <div className="grid grid-cols-2 md:grid-cols-6 gap-px bg-glass-border rounded-xl overflow-hidden transition-colors duration-500">
+      <section className="py-24 bg-bg-secondary border-b border-glass-border transition-colors duration-500">
+        <div className="max-w-[1400px] mx-auto px-6 relative z-10">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-y-12 gap-x-6 lg:gap-x-0 lg:divide-x divide-glass-border">
             {STATS.map((stat, i) => (
-              <div key={stat.label} className="bg-bg-primary p-8 text-center group transition-colors duration-500">
-                <div className="font-heading text-3xl md:text-4xl font-black text-text-primary tracking-tight mb-2 group-hover:text-costa-green transition-colors duration-500">
-                  <AnimatedCounter value={stat.value} suffix={stat.suffix} decimals={stat.decimals || 0} duration={2} />
+              <ScrollReveal key={stat.label} delay={i * 0.1}>
+                <div className="px-4 text-center group">
+                  <div className="font-mono text-5xl md:text-6xl font-black text-text-primary tracking-tight mb-4 group-hover:text-costa-green transition-colors duration-500">
+                    <AnimatedCounter value={stat.value} suffix={stat.suffix} decimals={stat.decimals || 0} duration={2.5} />
+                  </div>
+                  <div className="font-heading text-xs text-costa-green font-bold uppercase tracking-[0.2em]">{stat.label}</div>
                 </div>
-                <div className="font-mono text-[10px] text-text-muted uppercase tracking-widest">{stat.label}</div>
-              </div>
+              </ScrollReveal>
             ))}
           </div>
         </div>

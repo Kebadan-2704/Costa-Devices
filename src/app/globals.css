@@ -24,6 +24,14 @@
   --color-text-secondary: var(--text-secondary);
   --color-text-muted: var(--text-muted);
 
+  /* Glass/Border Colors */
+  --color-glass-bg: var(--glass-bg);
+  --color-glass-border: var(--glass-border);
+
+  /* Input Colors */
+  --color-input-bg: var(--input-bg);
+  --color-input-border: var(--input-border);
+
   /* Fonts */
   --font-heading: var(--font-body); /* Unified font */
   --font-body: var(--font-body);
@@ -35,9 +43,9 @@
    ============================================ */
 
 :root {
-  --brand-green: #076130;
-  --brand-green-light: #0A8B46;
-  --brand-green-dark: #043e1f;
+  --brand-green: #1AAF5D;
+  --brand-green-light: #2ED573;
+  --brand-green-dark: #0A8B46;
 
   --bg-primary: #FFFFFF;
   --bg-secondary: #FAFAFA;
@@ -82,10 +90,7 @@ html {
   scroll-padding-top: 100px;
 }
 
-/* Custom cursor active on interactive elements to match the MagneticCursor */
-@media (pointer: fine) {
-  a, button, [role="button"] { cursor: none; }
-}
+/* Normal cursor everywhere */
 
 body {
   font-family: var(--font-body);

@@ -14,7 +14,6 @@ const nextConfig: NextConfig = {
     ],
     dangerouslyAllowSVG: true,
   },
-  // @ts-ignore
   allowedDevOrigins: ['10.42.255.12'],
 };
 
