@@ -42,11 +42,11 @@ export default function BrandGrid() {
              <div className="absolute inset-0 bg-gradient-to-br from-costa-green/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-0" />
              
              {/* Logo Container */}
-             <div className="w-full h-[80px] relative z-10 flex items-center justify-center mb-4 transition-transform duration-500 group-hover:scale-110">
+             <div className="w-full h-[100px] relative z-10 flex items-center justify-center mb-4 transition-transform duration-500 group-hover:scale-110">
                <img 
                  src={encodeURI(brand.image)} 
                  alt={`${brand.name} logo`}
-                 className="max-w-[140px] max-h-[60px] object-contain mix-blend-multiply filter grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500"
+                 className="max-w-[160px] max-h-[80px] object-contain mix-blend-multiply filter opacity-100 transition-all duration-500"
                />
              </div>
              

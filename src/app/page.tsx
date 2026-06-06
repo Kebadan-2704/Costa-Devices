@@ -71,10 +71,10 @@ export default function HomePage() {
               initial={{ opacity: 0, y: 30, rotateZ: 2 }}
               animate={{ opacity: 1, y: 0, rotateZ: 0 }}
               transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-              className="font-heading text-[clamp(2rem,10vw,7.5rem)] font-black text-text-primary leading-[1.05] tracking-tight mb-4 origin-bottom-left break-words"
+              className="font-heading text-[clamp(2rem,7vw,7.5rem)] font-black text-text-primary leading-[1.05] tracking-tight mb-4 mt-6 origin-bottom-left break-words"
             >
-              Mission-Critical <br className="hidden md:block" />
-              <span className="text-costa-green">Component</span> Procurement.
+              <span className="whitespace-nowrap">Mission-Critical</span>{' '}
+              <span className="text-costa-green">Component</span> Distribution.
             </motion.h1>
 
             <motion.p
@@ -90,6 +90,7 @@ export default function HomePage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
+              className="flex flex-wrap gap-4"
             >
               <Link
                 href="/request-quote"
@@ -100,6 +101,14 @@ export default function HomePage() {
                 <div className="w-5 h-5 rounded-full border border-white flex items-center justify-center group-hover:translate-x-1 transition-transform">
                   <ArrowRight size={12} strokeWidth={3} />
                 </div>
+              </Link>
+              <Link
+                href="/contact"
+                onMouseEnter={playMechanicalClick}
+                className="group inline-flex items-center gap-3 bg-transparent text-text-primary text-sm font-bold uppercase py-5 px-10 border-2 border-glass-border hover:border-costa-green hover:text-costa-green transition-all rounded-sm"
+              >
+                CONTACT US
+                <ArrowRight size={14} strokeWidth={2.5} className="group-hover:translate-x-1 transition-transform" />
               </Link>
             </motion.div>
 
@@ -259,7 +268,7 @@ export default function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.1 }} className="bg-white border border-glass-border p-8 rounded-3xl shadow-sm hover:shadow-xl transition-all duration-300 relative group">
               <div className="text-costa-green mb-6">
-                <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M14.017 21L16.439 14C16.439 14 15.228 14 14.808 14C12.75 14 12.181 12.585 12.181 10.923C12.181 9.261 13.596 8 15.257 8C16.918 8 18 9.261 18 10.923C18 12.585 15.228 21 15.228 21H14.017ZM6.017 21L8.439 14C8.439 14 7.228 14 6.808 14C4.75 14 4.181 12.585 4.181 10.923C4.181 9.261 5.596 8 7.257 8C8.918 8 10 9.261 10 10.923C10 12.585 7.228 21 7.228 21H6.017Z"/></svg>
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M14.017 21L16.439 14C16.439 14 15.228 14 14.808 14C12.75 14 12.181 12.585 12.181 10.923C12.181 9.261 13.596 8 15.257 8C16.918 8 18 9.261 18 10.923C18 12.585 15.228 21 15.228 21H14.017ZM6.017 21L8.439 14C8.439 14 7.228 14 6.808 14C4.75 14 4.181 12.585 4.181 10.923C4.181 9.261 5.596 8 7.257 8C8.918 8 10 9.261 10 10.923C10 12.585 7.228 21 7.228 21H6.017Z" /></svg>
               </div>
               <p className="text-text-primary font-medium mb-8 leading-relaxed">&ldquo;Costa Devices was able to secure 10,000 obsolete IGBT modules for our legacy wind turbine controllers when franchised distributors quoted a 52-week lead time. Their lab testing reports gave us 100% confidence.&rdquo;</p>
               <div className="border-t border-black/5 pt-6 mt-auto">
@@ -270,7 +279,7 @@ export default function HomePage() {
 
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.2 }} className="bg-costa-green border border-costa-green p-8 rounded-3xl shadow-sm hover:shadow-[0_20px_40px_rgba(26,175,93,0.2)] transition-all duration-300 relative group transform md:-translate-y-4">
               <div className="text-white mb-6 opacity-50">
-                <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M14.017 21L16.439 14C16.439 14 15.228 14 14.808 14C12.75 14 12.181 12.585 12.181 10.923C12.181 9.261 13.596 8 15.257 8C16.918 8 18 9.261 18 10.923C18 12.585 15.228 21 15.228 21H14.017ZM6.017 21L8.439 14C8.439 14 7.228 14 6.808 14C4.75 14 4.181 12.585 4.181 10.923C4.181 9.261 5.596 8 7.257 8C8.918 8 10 9.261 10 10.923C10 12.585 7.228 21 7.228 21H6.017Z"/></svg>
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M14.017 21L16.439 14C16.439 14 15.228 14 14.808 14C12.75 14 12.181 12.585 12.181 10.923C12.181 9.261 13.596 8 15.257 8C16.918 8 18 9.261 18 10.923C18 12.585 15.228 21 15.228 21H14.017ZM6.017 21L8.439 14C8.439 14 7.228 14 6.808 14C4.75 14 4.181 12.585 4.181 10.923C4.181 9.261 5.596 8 7.257 8C8.918 8 10 9.261 10 10.923C10 12.585 7.228 21 7.228 21H6.017Z" /></svg>
               </div>
               <p className="text-white font-medium mb-8 leading-relaxed text-lg">&ldquo;The level of technical expertise is unmatched. We needed a drop-in replacement for a critical Eaton Bussmann EV fuse for our new charger line. Costa provided the parts in 3 days with complete traceability.&rdquo;</p>
               <div className="border-t border-white/20 pt-6 mt-auto">
@@ -281,7 +290,7 @@ export default function HomePage() {
 
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.3 }} className="bg-white border border-glass-border p-8 rounded-3xl shadow-sm hover:shadow-xl transition-all duration-300 relative group">
               <div className="text-costa-green mb-6">
-                <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M14.017 21L16.439 14C16.439 14 15.228 14 14.808 14C12.75 14 12.181 12.585 12.181 10.923C12.181 9.261 13.596 8 15.257 8C16.918 8 18 9.261 18 10.923C18 12.585 15.228 21 15.228 21H14.017ZM6.017 21L8.439 14C8.439 14 7.228 14 6.808 14C4.75 14 4.181 12.585 4.181 10.923C4.181 9.261 5.596 8 7.257 8C8.918 8 10 9.261 10 10.923C10 12.585 7.228 21 7.228 21H6.017Z"/></svg>
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M14.017 21L16.439 14C16.439 14 15.228 14 14.808 14C12.75 14 12.181 12.585 12.181 10.923C12.181 9.261 13.596 8 15.257 8C16.918 8 18 9.261 18 10.923C18 12.585 15.228 21 15.228 21H14.017ZM6.017 21L8.439 14C8.439 14 7.228 14 6.808 14C4.75 14 4.181 12.585 4.181 10.923C4.181 9.261 5.596 8 7.257 8C8.918 8 10 9.261 10 10.923C10 12.585 7.228 21 7.228 21H6.017Z" /></svg>
               </div>
               <p className="text-text-primary font-medium mb-8 leading-relaxed">&ldquo;Costa Devices has been our primary sourcing partner for 4 years. Their global network and strict anti-counterfeit protocols mean we never have to worry about line-down situations or quality failures in production.&rdquo;</p>
               <div className="border-t border-black/5 pt-6 mt-auto">
@@ -342,9 +351,9 @@ export default function HomePage() {
             >
               <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(26,175,93,0.15),transparent_70%)] group-hover:opacity-100 transition-opacity duration-700 z-0"></div>
               <div className="absolute inset-0 z-0 opacity-[0.2] group-hover:opacity-[0.35] transition-opacity duration-700 mix-blend-overlay" style={{ backgroundImage: "url('/images/products/transformers.png')", backgroundSize: 'cover', backgroundPosition: 'center' }}></div>
-              
+
               <div className="text-[11px] text-costa-green font-bold tracking-[0.2em] uppercase bg-black/20 backdrop-blur-sm px-4 py-1.5 rounded-full w-fit relative z-10 border border-costa-green/20">02 — QA LAB</div>
-              
+
               <div className="relative z-10 mt-auto">
                 <h3 className="font-heading text-3xl md:text-4xl font-black mb-4 tracking-tight text-white group-hover:-translate-y-2 transition-transform duration-300">Counterfeit Detection</h3>
                 <p className="text-xs text-white/80 font-medium leading-relaxed mb-2 group-hover:-translate-y-2 transition-transform duration-300 delay-75">
@@ -362,7 +371,7 @@ export default function HomePage() {
             >
               <div className="absolute inset-0 z-0 opacity-[0.2] group-hover:opacity-[0.35] transition-opacity duration-700 mix-blend-overlay" style={{ backgroundImage: "url('/images/industries/power-distribution.png')", backgroundSize: 'cover', backgroundPosition: 'center' }}></div>
               <div className="text-[11px] text-white font-bold tracking-[0.2em] uppercase bg-black/20 px-4 py-1.5 rounded-full w-fit backdrop-blur-md border border-white/10 relative z-10">03 — SPEED</div>
-              
+
               <div className="relative z-10 mt-auto">
                 <h3 className="font-heading text-3xl md:text-4xl font-black mb-4 tracking-tight group-hover:translate-x-2 transition-transform duration-300">Sub-24h Dispatch</h3>
                 <p className="text-sm text-white/90 font-medium leading-relaxed group-hover:translate-x-2 transition-transform duration-300 delay-75">
@@ -430,11 +439,11 @@ export default function HomePage() {
                 className="group relative flex flex-col md:flex-row md:items-center gap-6 md:gap-10 p-8 md:p-10 bg-white border border-black/5 rounded-3xl hover:border-costa-green/30 transition-all duration-300 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_15px_40px_rgb(0,0,0,0.08)] overflow-hidden cursor-pointer"
               >
                 {/* Background Image with varying transparency levels */}
-                <div 
+                <div
                   className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat transition-transform duration-700 group-hover:scale-105 pointer-events-none mix-blend-luminosity"
-                  style={{ 
+                  style={{
                     backgroundImage: 'url(/images/electronics-hero-bg.png)',
-                    opacity: 0.04 + (i * 0.04) 
+                    opacity: 0.04 + (i * 0.04)
                   }}
                 />
 
@@ -450,17 +459,17 @@ export default function HomePage() {
                 <div className="relative z-10 text-[11px] font-bold text-costa-green bg-costa-green/10 border border-costa-green/20 px-4 py-1.5 rounded-full w-fit tracking-widest">
                   PHASE {step.num}
                 </div>
-                
+
                 <div className="flex-1 relative z-10">
                   <h3 className="font-heading text-2xl md:text-3xl font-black mb-2 tracking-tight group-hover:translate-x-2 transition-transform duration-300 text-text-primary">{step.title}</h3>
                 </div>
-                
+
                 <div className="md:w-[450px] relative z-10">
                   <p className="text-sm text-text-secondary leading-relaxed font-medium group-hover:text-text-primary transition-colors duration-300">
                     {step.desc}
                   </p>
                 </div>
-                
+
                 <div className="flex w-12 h-12 rounded-full bg-black/5 border border-black/10 items-center justify-center group-hover:bg-costa-green group-hover:border-costa-green group-hover:shadow-[0_0_15px_rgba(26,175,93,0.4)] transition-all duration-300 shrink-0 relative z-10">
                   <ArrowRight size={20} className="text-black/50 group-hover:text-white transition-colors duration-300" />
                 </div>

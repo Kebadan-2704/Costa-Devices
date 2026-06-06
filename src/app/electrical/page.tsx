@@ -48,6 +48,9 @@ export default function ElectricalPage() {
               <Link href="/request-quote" className="btn-primary rounded-full px-8 py-4 text-sm font-bold inline-flex justify-center items-center gap-2 shadow-[0_8px_30px_rgb(26,175,93,0.3)] hover:shadow-[0_8px_30px_rgb(26,175,93,0.5)] transition-all hover:-translate-y-1">
                 Request a Quote <ArrowRight size={16} />
               </Link>
+              <Link href="/contact" className="rounded-full px-8 py-4 text-sm font-bold inline-flex justify-center items-center gap-2 border-2 border-glass-border text-text-primary hover:border-costa-green hover:text-costa-green transition-all hover:-translate-y-1">
+                Contact Us <ArrowRight size={16} />
+              </Link>
             </div>
           </ScrollReveal>
 

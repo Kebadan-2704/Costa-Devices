@@ -130,40 +130,40 @@ export default function QualityPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-24">
             <ScrollReveal delay={0.1}>
-              <div className="bg-bg-primary border border-glass-border rounded-2xl overflow-hidden shadow-sm group hover:shadow-xl transition-all duration-500">
-                <div className="h-48 relative bg-black flex items-center justify-center overflow-hidden">
-                   <div className="absolute inset-0 z-0 opacity-50 group-hover:opacity-70 transition-opacity duration-700 bg-[linear-gradient(45deg,#000000,#0a1f10)]" />
-                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-10" />
-                   <p className="font-mono text-costa-green/60 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-5xl font-black tracking-tighter opacity-40 z-20 group-hover:scale-110 transition-transform duration-700">X-RAY</p>
-                   <p className="relative z-20 font-heading font-bold text-white bottom-[-60px] text-lg">Real-Time X-Ray Inspection</p>
+              <div className="bg-bg-primary border border-glass-border rounded-2xl overflow-hidden shadow-sm group hover:shadow-xl transition-all duration-500 hover:-translate-y-1">
+                <div className="h-48 relative flex flex-col items-center justify-center overflow-hidden">
+                   <img src="/images/testing/x_ray.png" alt="X-Ray Inspection" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-[1.5s]" />
+                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-costa-green/20" />
+                   <p className="font-mono text-white/20 text-6xl font-black tracking-tighter z-10 group-hover:scale-110 transition-transform duration-700 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 mix-blend-overlay">X-RAY</p>
+                   <p className="font-heading font-bold text-white text-lg mt-12 z-10">Real-Time X-Ray Inspection</p>
                 </div>
-                <div className="p-6 bg-white border-t border-glass-border relative z-20">
+                <div className="p-6 bg-white border-t border-glass-border">
                   <p className="text-text-secondary text-sm">Validating die structures and wire bonds against manufacturer gold standards to detect counterfeits instantly.</p>
                 </div>
               </div>
             </ScrollReveal>
             <ScrollReveal delay={0.2}>
-              <div className="bg-bg-primary border border-glass-border rounded-2xl overflow-hidden shadow-sm group hover:shadow-xl transition-all duration-500">
-                <div className="h-48 relative bg-black flex items-center justify-center overflow-hidden">
-                   <div className="absolute inset-0 z-0 opacity-50 group-hover:opacity-70 transition-opacity duration-700 bg-[linear-gradient(135deg,#000000,#0f2415)]" />
-                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-10" />
-                   <p className="font-mono text-costa-green/60 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-5xl font-black tracking-tighter opacity-40 z-20 group-hover:scale-110 transition-transform duration-700">DECAP</p>
-                   <p className="relative z-20 font-heading font-bold text-white bottom-[-60px] text-lg">Chemical Decapsulation</p>
+              <div className="bg-bg-primary border border-glass-border rounded-2xl overflow-hidden shadow-sm group hover:shadow-xl transition-all duration-500 hover:-translate-y-1">
+                <div className="h-48 relative flex flex-col items-center justify-center overflow-hidden">
+                   <img src="/images/testing/decap.png" alt="Chemical Decapsulation" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-[1.5s]" />
+                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-costa-green/20" />
+                   <p className="font-mono text-white/20 text-6xl font-black tracking-tighter z-10 group-hover:scale-110 transition-transform duration-700 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 mix-blend-overlay">DECAP</p>
+                   <p className="font-heading font-bold text-white text-lg mt-12 z-10">Chemical Decapsulation</p>
                 </div>
-                <div className="p-6 bg-white border-t border-glass-border relative z-20">
+                <div className="p-6 bg-white border-t border-glass-border">
                   <p className="text-text-secondary text-sm">Acid-etching component surfaces to expose and verify the original silicon die topography and markings.</p>
                 </div>
               </div>
             </ScrollReveal>
             <ScrollReveal delay={0.3}>
-              <div className="bg-bg-primary border border-glass-border rounded-2xl overflow-hidden shadow-sm group hover:shadow-xl transition-all duration-500">
-                <div className="h-48 relative bg-black flex items-center justify-center overflow-hidden">
-                   <div className="absolute inset-0 z-0 opacity-50 group-hover:opacity-70 transition-opacity duration-700 bg-[linear-gradient(225deg,#000000,#05170a)]" />
-                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-10" />
-                   <p className="font-mono text-costa-green/60 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-5xl font-black tracking-tighter opacity-40 z-20 group-hover:scale-110 transition-transform duration-700">SOLDER</p>
-                   <p className="relative z-20 font-heading font-bold text-white bottom-[-60px] text-lg">Solderability Testing</p>
+              <div className="bg-bg-primary border border-glass-border rounded-2xl overflow-hidden shadow-sm group hover:shadow-xl transition-all duration-500 hover:-translate-y-1">
+                <div className="h-48 relative flex flex-col items-center justify-center overflow-hidden">
+                   <img src="/images/testing/solder.png" alt="Solderability Testing" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-[1.5s]" />
+                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-costa-green/20" />
+                   <p className="font-mono text-white/20 text-6xl font-black tracking-tighter z-10 group-hover:scale-110 transition-transform duration-700 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 mix-blend-overlay">SOLDER</p>
+                   <p className="font-heading font-bold text-white text-lg mt-12 z-10">Solderability Testing</p>
                 </div>
-                <div className="p-6 bg-white border-t border-glass-border relative z-20">
+                <div className="p-6 bg-white border-t border-glass-border">
                   <p className="text-text-secondary text-sm">J-STD-002 compliance testing to guarantee leads will accept solder flawlessly during your SMT process.</p>
                 </div>
               </div>

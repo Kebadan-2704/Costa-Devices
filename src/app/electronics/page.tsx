@@ -202,9 +202,14 @@ export default function ElectronicsPage() {
       <section className="py-24 text-center px-6">
         <ScrollReveal>
           <h2 className="font-heading text-3xl font-black mb-8">Need an electronic component quoted?</h2>
-          <Link href="/request-quote" className="btn-primary rounded-full px-10 py-4 font-bold inline-flex items-center gap-2 shadow-xl shadow-costa-green/20">
-            Send BOM / RFQ <ArrowRight size={18} />
-          </Link>
+          <div className="flex flex-wrap justify-center gap-4">
+            <Link href="/request-quote" className="btn-primary rounded-full px-10 py-4 font-bold inline-flex items-center gap-2 shadow-xl shadow-costa-green/20">
+              Send BOM / RFQ <ArrowRight size={18} />
+            </Link>
+            <Link href="/contact" className="rounded-full px-10 py-4 font-bold inline-flex items-center gap-2 border-2 border-glass-border text-text-primary hover:border-costa-green hover:text-costa-green transition-all">
+              Contact Sales <ArrowRight size={18} />
+            </Link>
+          </div>
         </ScrollReveal>
       </section>
     </div>

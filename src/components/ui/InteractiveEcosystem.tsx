@@ -12,7 +12,7 @@ const MANUFACTURER_DETAILS: Record<string, { desc: string, icon: any, color: str
   "Xilinx": { desc: "Inventor of the FPGA, programmable SoCs, and now part of AMD. Powering highly flexible, adaptive computing.", icon: Microchip, color: "bg-black", domain: "xilinx.com", localImage: "/images/xilinx.png" },
   "ROHM": { desc: "Global manufacturer of semiconductors, ICs, and passive components with a focus on power and analog.", icon: Factory, color: "bg-red-700", domain: "rohm.com", localImage: "/images/rohm.png" },
   "MCC": { desc: "Micro Commercial Components Corp. Supplier of high-quality discrete semiconductors to the consumer markets.", icon: Shield, color: "bg-blue-600", domain: "mccsemi.com", localImage: "/images/Mcc.png" },
-  "Allegro": { desc: "Global leader in power and sensing solutions for motion control and energy-efficient systems.", icon: Zap, color: "bg-red-500", domain: "allegromicro.com", localImage: "/images/allegro.jpg" },
+  "Allegro": { desc: "Global leader in power and sensing solutions for motion control and energy-efficient systems.", icon: Zap, color: "bg-red-500", domain: "allegromicro.com", localImage: "/images/allegro.png" },
   "Analog Devices": { desc: "Multinational semiconductor company specializing in data conversion, signal processing and power management.", icon: Microchip, color: "bg-blue-800", domain: "analog.com", localImage: "/images/analog devices.jpg" },
   "NXP": { desc: "Innovator in secure connectivity solutions for embedded applications, automotive, and IoT.", icon: Globe, color: "bg-orange-500", domain: "nxp.com", localImage: "/images/download.jpg" },
   "Altera": { desc: "Pioneer of programmable logic devices (PLDs) and FPGAs, now operating as a subsidiary of Intel.", icon: Cpu, color: "bg-blue-700", domain: "altera.com", localImage: "/images/altera.jpg" },
@@ -28,7 +28,7 @@ const MANUFACTURER_DETAILS: Record<string, { desc: string, icon: any, color: str
   "TSMC": { desc: "Taiwan Semiconductor Manufacturing Company. The world's most valuable semiconductor foundry.", icon: Microchip, color: "bg-red-600", domain: "tsmc.com", localImage: "/images/tsmc.jpg" },
   "NEC": { desc: "Multinational IT and electronics corporation providing network and sensor solutions.", icon: Globe, color: "bg-blue-800", domain: "nec.com", localImage: "/images/nec.png" },
   "MXIC": { desc: "Macronix International. Leading integrated device manufacturer in the non-volatile memory market.", icon: Shield, color: "bg-red-700", domain: "macronix.com", localImage: "/images/mxic.png" },
-  "TE Connectivity": { desc: "Designs and manufactures connectivity and sensor products for harsh environments.", icon: Factory, color: "bg-orange-500", domain: "te.com", localImage: "/images/te connectivity.jpg" },
+  "TE Connectivity": { desc: "Designs and manufactures connectivity and sensor products for harsh environments.", icon: Factory, color: "bg-orange-500", domain: "te.com", localImage: "/images/Te Conectivity.jpg" },
   "Broadcom": { desc: "Global technology leader that designs, develops and supplies semiconductor and infrastructure software solutions.", icon: Radio, color: "bg-red-600", domain: "broadcom.com", localImage: "/images/broadcom.png" },
   "Pulse": { desc: "Provider of electronic components for power, networking, and wireless communications.", icon: Zap, color: "bg-blue-500", domain: "pulseelectronics.com", localImage: "/images/pulse.png" },
 };
@@ -101,12 +101,12 @@ export default function InteractiveEcosystem() {
               {/* Subtle hover background effect */}
               <div className="absolute inset-0 bg-gradient-to-br from-costa-green/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               
-              <div className="w-full h-20 relative z-10 flex items-center justify-center filter grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500 group-hover:scale-125 px-2">
+              <div className="w-full h-20 relative z-10 flex items-center justify-center opacity-100 transition-all duration-500 group-hover:scale-110 px-3">
                 <BrandLogo 
                   brand={brand} 
                   details={details} 
-                  imgClassName="w-full h-full scale-[1.15]" 
-                  fallbackClassName="w-16 h-16 shrink-0" 
+                  imgClassName="max-w-[120px] max-h-[60px]" 
+                  fallbackClassName="w-14 h-14 shrink-0" 
                 />
               </div>
               <span className="font-heading font-black text-[11px] text-text-secondary text-center group-hover:text-costa-green transition-colors z-10 uppercase tracking-widest leading-tight">

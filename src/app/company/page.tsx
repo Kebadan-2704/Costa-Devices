@@ -286,7 +286,7 @@ export default function CompanyPage() {
             </ScrollReveal>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-[800px] mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {OFFICES.map((office, i) => (
               <ScrollReveal key={office.id} delay={i * 0.1}>
                 <div className="bg-bg-primary border border-glass-border p-8 text-center h-full group hover:border-costa-green/30 transition-all duration-700 rounded-2xl relative overflow-hidden hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(13,107,61,0.08)]">
@@ -296,16 +296,16 @@ export default function CompanyPage() {
                     <div>
                       <div className="w-16 h-16 mx-auto bg-bg-secondary border border-glass-border rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500 group-hover:border-costa-green/30 shadow-sm">
                         <img 
-                          src={`https://flagcdn.com/w80/${office.id === 'dubai' ? 'ae' : 'in'}.png`} 
+                          src={`https://flagcdn.com/w80/${office.id === 'dubai' ? 'ae' : office.id === 'india' ? 'in' : office.id === 'hongkong' ? 'hk' : 'il'}.png`} 
                           alt={office.country} 
                           className="w-8 h-auto rounded-[2px] grayscale group-hover:grayscale-0 transition-all" 
                         />
                       </div>
                       
-                      <h3 className="font-heading text-3xl font-black mb-2 text-text-primary tracking-tight">{office.city.toUpperCase()}</h3>
+                      <h3 className="font-heading text-2xl lg:text-3xl font-black mb-2 text-text-primary tracking-tight">{office.city.toUpperCase()}</h3>
                       <span className="font-mono text-[10px] text-costa-green font-bold uppercase tracking-[0.2em] block mb-6">{office.label}</span>
                       
-                      <p className="text-text-secondary text-sm mt-4 mb-8 font-light h-[60px] line-clamp-3">{office.address}</p>
+                      <p className="text-text-secondary text-sm mt-4 mb-8 font-light min-h-[60px] line-clamp-3">{office.address}</p>
                     </div>
                     
                     <div className="flex items-center justify-center gap-2 text-xs text-text-muted font-mono border-t border-glass-border pt-6 group-hover:text-costa-green transition-colors duration-500">
@@ -355,6 +355,9 @@ export default function CompanyPage() {
             <div className="flex flex-wrap justify-center gap-6">
               <Link href="/request-quote" className="btn-primary rounded-lg px-12 py-5 text-sm tracking-[0.15em] group relative overflow-hidden">
                 <span className="relative z-10 flex items-center gap-3 font-bold">Request Quote <ArrowRight size={18} className="group-hover:translate-x-2 transition-transform" /></span>
+              </Link>
+              <Link href="/contact" className="rounded-lg px-12 py-5 text-sm tracking-[0.15em] font-bold border-2 border-glass-border text-text-primary hover:border-costa-green hover:text-costa-green transition-all inline-flex items-center gap-3">
+                Contact Us <ArrowRight size={18} />
               </Link>
             </div>
           </ScrollReveal>

@@ -181,7 +181,7 @@ export default function ContactPage() {
                 </div>
               </ScrollReveal>
 
-              {OFFICES.map((office, i) => (
+              {OFFICES.filter(o => o.id === 'dubai' || o.id === 'india').map((office, i) => (
                 <ScrollReveal key={office.id} delay={0.15 + i * 0.1}>
                   <div className="bg-bg-secondary border border-glass-border p-8 group hover:border-costa-green/50 transition-colors duration-500 rounded-2xl">
                     <div className="flex items-center gap-4 mb-6 pb-6 border-b border-glass-border transition-colors duration-500">
