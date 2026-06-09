@@ -65,34 +65,36 @@ export default function ActivityTicker() {
   }, []);
 
   return (
-    <div className="w-full bg-[#0f172a] text-white border-b border-white/10 flex items-center h-9 relative z-40">
-      <div className="bg-costa-green text-black font-black text-[9px] tracking-widest uppercase h-full flex items-center px-4 flex-shrink-0 relative z-10 border-r border-black/10">
-        <span className="w-1.5 h-1.5 bg-black rounded-full animate-pulse mr-2"></span>
-        Live Feed
+    <div className="w-full bg-white text-gray-900 border-b border-gray-100 flex items-center h-11 relative z-40 shadow-sm">
+      <div className="h-full flex items-center px-4 flex-shrink-0 relative z-10 bg-white shadow-[4px_0_10px_rgba(0,0,0,0.03)] border-r border-gray-100">
+        <div className="flex items-center bg-gray-50 border border-gray-200 rounded-full px-3 py-1">
+          <span className="w-1.5 h-1.5 bg-costa-green rounded-full animate-pulse mr-2"></span>
+          <span className="text-[10px] font-black tracking-widest uppercase text-gray-800">Live Feed</span>
+        </div>
       </div>
       
       <div className="flex-1 overflow-hidden relative">
         {/* Left fade */}
-        <div className="absolute left-0 top-0 bottom-0 w-12 bg-gradient-to-r from-[#0f172a] to-transparent z-10"></div>
+        <div className="absolute left-0 top-0 bottom-0 w-12 bg-gradient-to-r from-white to-transparent z-10"></div>
         
         <Marquee speed="slow" direction="left" className="overflow-y-hidden">
           {events.map((event, idx) => (
             <div key={idx} className="flex items-center mx-6 gap-2">
               <span className="flex-shrink-0">{event.icon}</span>
-              <span className="text-[10px] font-medium tracking-wide text-gray-200 uppercase whitespace-nowrap">
+              <span className="text-[10px] font-bold tracking-wide text-gray-700 uppercase whitespace-nowrap">
                 {event.text}
               </span>
-              <span className="text-[9px] text-gray-500 font-bold ml-1">
+              <span className="text-[9px] text-gray-400 font-bold ml-1">
                 {event.time}
               </span>
               {/* Separator dot */}
-              <span className="w-1 h-1 bg-white/20 rounded-full ml-6"></span>
+              <span className="w-1 h-1 bg-gray-200 rounded-full ml-6"></span>
             </div>
           ))}
         </Marquee>
         
         {/* Right fade */}
-        <div className="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-[#0f172a] to-transparent z-10"></div>
+        <div className="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-white to-transparent z-10"></div>
       </div>
     </div>
   );
