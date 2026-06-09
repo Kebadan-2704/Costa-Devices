@@ -71,7 +71,7 @@ export default function MarketIntelligence() {
       </div>
 
       <div className="p-6 md:p-8">
-        <div className="grid grid-cols-4 gap-4 mb-4 px-4 text-[10px] font-bold text-gray-400 uppercase tracking-widest hidden md:grid">
+        <div className="grid grid-cols-1 md:grid-cols-[1.5fr_1fr_1fr_1fr] gap-4 mb-4 px-4 text-[10px] font-bold text-gray-400 uppercase tracking-widest hidden md:grid">
           <div className="col-span-1">Commodity</div>
           <div className="col-span-1">Avg Lead Time</div>
           <div className="col-span-1">Price Trend</div>
@@ -85,7 +85,7 @@ export default function MarketIntelligence() {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: idx * 0.1 }}
-              className="grid grid-cols-1 md:grid-cols-4 gap-4 items-center p-4 rounded-2xl hover:bg-gray-50 border border-transparent hover:border-gray-100 transition-all group"
+              className="grid grid-cols-1 md:grid-cols-[1.5fr_1fr_1fr_1fr] gap-4 items-center p-4 rounded-2xl hover:bg-gray-50 border border-transparent hover:border-gray-100 transition-all group"
             >
               {/* Category */}
               <div className="col-span-1 flex items-center gap-3">

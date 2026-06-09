@@ -67,10 +67,12 @@ export default function HomePage() {
     <div className="min-h-screen bg-bg-primary text-text-primary overflow-hidden" ref={containerRef}>
       
       {/* 0. LIVE ACTIVITY TICKER */}
-      <ActivityTicker />
+      <div className="pt-[72px] lg:pt-[88px]">
+        <ActivityTicker />
+      </div>
 
       {/* 1. HERO — Split Layout (Text Left, Premium Search Right) */}
-      <section className="relative w-full pt-24 pb-16 lg:pt-28 lg:pb-20 overflow-hidden border-b border-gray-100">
+      <section className="relative w-full py-16 lg:py-20 overflow-hidden border-b border-gray-100">
         
         {/* Stunning Animated Enterprise Background */}
         <TechBackground />
@@ -456,7 +458,7 @@ export default function HomePage() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 1, delay: 0.2 }}
-              className="relative h-[500px] rounded-3xl bg-black/40 border border-white/10 backdrop-blur-sm overflow-hidden"
+              className="relative h-[500px] rounded-3xl bg-[#080c17] border border-white/10 overflow-hidden"
             >
               <div className="absolute top-5 left-5 z-20 flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-costa-green animate-pulse"></span>

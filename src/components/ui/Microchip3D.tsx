@@ -103,7 +103,6 @@ export default function Microchip3D() {
         </PresentationControls>
 
         <ContactShadows position={[0, -1.5, 0]} opacity={0.4} scale={10} blur={2} far={4} />
-        <Environment preset="city" />
       </Canvas>
     </div>
   );
