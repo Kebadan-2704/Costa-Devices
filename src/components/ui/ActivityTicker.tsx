@@ -16,50 +16,45 @@ export default function ActivityTicker() {
   const [events, setEvents] = React.useState(LIVE_EVENTS);
 
   React.useEffect(() => {
-    // Generate AI Events endlessly using the provided API
-    const fetchAITickerEvent = async () => {
-      try {
-        const promptText = "Generate exactly one short, realistic supply chain alert for an electronics sourcing company. Like: 'RFQ Fulfilled: 2,500x Texas Instruments DSPs' or 'Market Alert: Lead Times Dropping'. Return ONLY the message string, no quotes or intro.";
-        const encodedPrompt = encodeURIComponent(promptText);
-        const res = await fetch(`https://chatbot.codexapi.workers.dev/?prompt=${encodedPrompt}&model=gpt-5.1`);
-        const data = await res.json();
-        
-        if (data && data.answer) {
-          const newText = data.answer.replace(/["*]/g, '').trim();
-          
-          // Assign a random icon based on keywords or randomly
-          const isPositive = newText.toLowerCase().includes('fulfilled') || newText.toLowerCase().includes('passed');
-          const isAlert = newText.toLowerCase().includes('alert') || newText.toLowerCase().includes('dropping');
-          
-          let icon = <Globe size={12} className="text-blue-500" />;
-          if (isPositive) icon = <CheckCircle2 size={12} className="text-costa-green" />;
-          else if (isAlert) icon = <TrendingUp size={12} className="text-emerald-500" />;
-          else icon = <Zap size={12} className="text-amber-500" />;
-          
-          const newEvent = {
-            icon,
-            text: newText,
-            time: "Just now"
-          };
-          
-          setEvents((prev) => {
-            // Age the previous events slightly
-            const agedEvents = prev.map(e => ({
-              ...e,
-              time: e.time === "Just now" ? "1m ago" : e.time
-            }));
-            return [newEvent, ...agedEvents].slice(0, 15);
-          });
-        }
-      } catch (err) {
-        console.error("Failed to generate AI ticker event:", err);
-      }
+    const PENDING_EVENTS = [
+      { text: "Just Sourced: 4,000x NXP Processors in Taiwan", type: "sourced" },
+      { text: "RFQ Fulfilled: 1,200x Analog Devices ADCs", type: "fulfilled" },
+      { text: "Market Alert: Automotive MCU Shortage Easing", type: "alert" },
+      { text: "New Supplier Onboarded: Tokyo, JP (AS6081)", type: "supplier" },
+      { text: "AOG Response: 120x Mil-Spec Relays shipped to LHR", type: "sourced" },
+      { text: "Quality Lab: 50,000x Capacitors Passed Inspection", type: "fulfilled" },
+      { text: "Just Sourced: 8,500x Broadcom Switches in USA", type: "sourced" },
+      { text: "Market Alert: Copper Prices Impacting Lead Times", type: "alert" },
+      { text: "RFQ Fulfilled: 300x Xilinx FPGAs Delivered", type: "fulfilled" }
+    ];
+
+    const generateLocalEvent = () => {
+      const randomEvent = PENDING_EVENTS[Math.floor(Math.random() * PENDING_EVENTS.length)];
+      
+      let icon = <Globe size={12} className="text-blue-500" />;
+      if (randomEvent.type === "fulfilled") icon = <CheckCircle2 size={12} className="text-costa-green" />;
+      else if (randomEvent.type === "alert") icon = <TrendingUp size={12} className="text-emerald-500" />;
+      else if (randomEvent.type === "sourced") icon = <Zap size={12} className="text-amber-500" />;
+      
+      const newEvent = {
+        icon,
+        text: randomEvent.text,
+        time: "Just now"
+      };
+      
+      setEvents((prev) => {
+        const agedEvents = prev.map(e => ({
+          ...e,
+          time: e.time === "Just now" ? "1m ago" : e.time
+        }));
+        return [newEvent, ...agedEvents].slice(0, 15);
+      });
     };
     
-    // Fetch a new AI generated event every 15 seconds
-    const intervalId = setInterval(fetchAITickerEvent, 15000);
-    // Fetch one immediately on mount after 2 seconds to not block UI load
-    setTimeout(fetchAITickerEvent, 2000);
+    // Generate a new local event every 15 seconds
+    const intervalId = setInterval(generateLocalEvent, 15000);
+    // Generate one immediately on mount after 2 seconds
+    setTimeout(generateLocalEvent, 2000);
     
     return () => clearInterval(intervalId);
   }, []);

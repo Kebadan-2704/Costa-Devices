@@ -82,10 +82,10 @@ export default function Footer() {
               Direct Contact
             </h4>
             <div className="flex flex-col gap-2 mb-10">
-              <a href={`mailto:${COMPANY.email}`} className="text-base font-semibold text-text-secondary hover:text-costa-green transition-colors">
+              <a href={`mailto:${COMPANY.email}`} className="text-base font-semibold text-text-secondary hover:text-costa-green transition-colors break-words">
                 {COMPANY.email}
               </a>
-              <a href={`tel:${COMPANY.phone.replace(/[^0-9+]/g, '')}`} className="text-2xl font-bold text-text-primary hover:text-costa-green transition-colors mt-1">
+              <a href={`tel:${COMPANY.phone.replace(/[^0-9+]/g, '')}`} className="text-xl md:text-2xl font-bold text-text-primary hover:text-costa-green transition-colors mt-1 whitespace-nowrap">
                 {COMPANY.phone}
               </a>
             </div>

@@ -66,7 +66,7 @@ export default function HomePage() {
     <div className="min-h-screen bg-bg-primary text-text-primary overflow-hidden" ref={containerRef}>
       
       {/* 1. HERO — Split Layout (Text Left, Premium Search Right) */}
-      <section className="relative w-full pt-[96px] pb-16 lg:pt-[120px] lg:pb-20 overflow-hidden border-b border-gray-100">
+      <section className="relative w-full pt-[130px] pb-4 lg:pt-[150px] lg:pb-8 overflow-hidden border-b border-gray-100">
         
         {/* Stunning Animated Enterprise Background */}
         <TechBackground />
@@ -81,7 +81,7 @@ export default function HomePage() {
               initial="hidden"
               animate="visible"
               variants={staggerContainer}
-              className="flex flex-col items-start text-left flex-shrink-0 lg:w-[52%]"
+              className="flex flex-col items-start text-left flex-shrink-0 lg:w-[45%]"
             >
               {/* Badge — slides down with a bounce */}
               <motion.div
@@ -96,29 +96,23 @@ export default function HomePage() {
 
               {/* Headline — each word animates in with blur+scale */}
               <h1 className="font-heading text-[clamp(3rem,5.5vw,5.2rem)] font-black leading-[1.0] tracking-tight text-[#0f172a] mb-6">
-                {['The', 'Enterprise'].map((word, i) => (
-                  <motion.span
-                    key={word}
-                    initial={{ opacity: 0, y: 40, filter: 'blur(12px)' }}
-                    animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-                    transition={{ delay: 0.15 + i * 0.1, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-                    className="inline-block mr-4"
-                  >
-                    {word}
-                  </motion.span>
-                ))}
+                <motion.span
+                  initial={{ opacity: 0, y: 40, filter: 'blur(12px)' }}
+                  animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                  transition={{ delay: 0.15, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+                  className="inline-block"
+                >
+                  Mission-Critical
+                </motion.span>
                 <br />
-                {['Standard', 'for'].map((word, i) => (
-                  <motion.span
-                    key={word}
-                    initial={{ opacity: 0, y: 40, filter: 'blur(12px)' }}
-                    animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-                    transition={{ delay: 0.35 + i * 0.1, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-                    className="inline-block mr-4"
-                  >
-                    {word}
-                  </motion.span>
-                ))}
+                <motion.span
+                  initial={{ opacity: 0, y: 40, filter: 'blur(12px)' }}
+                  animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                  transition={{ delay: 0.35, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+                  className="inline-block"
+                >
+                  Component
+                </motion.span>
                 <br />
                 <span className="relative inline-block mt-1">
                   <motion.span
@@ -127,7 +121,7 @@ export default function HomePage() {
                     transition={{ delay: 0.55, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
                     className="inline-block text-costa-green"
                   >
-                    Sourcing.
+                    Distribution.
                   </motion.span>
                   <motion.span
                     initial={{ scaleX: 0 }}
@@ -145,7 +139,7 @@ export default function HomePage() {
                 transition={{ delay: 0.7, duration: 0.8, ease: 'easeOut' }}
                 className="text-[#64748b] text-base md:text-lg font-normal leading-[1.75] max-w-lg mb-10"
               >
-                Direct access to 1B+ verified components. Avoid line-downs and secure obsolete parts globally with our algorithmic sourcing infrastructure.
+                Securing obsolete, Active & Passive electronic components, heavy electrical, active high-voltage components, Aerospace, and Industrial infrastructure. Sub-24h dispatch.
               </motion.p>
 
               {/* Trust indicators — each badge staggers in */}
@@ -173,242 +167,86 @@ export default function HomePage() {
                 initial={{ opacity: 0, y: 24 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 1.0, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-                className="mt-2 w-full max-w-md"
+                className="mt-2 w-full max-w-lg"
               >
                 <BOMUploadZone />
               </motion.div>
             </motion.div>
 
-            {/* ─── RIGHT COLUMN: Premium Search Console — FLOATING ─── */}
+            
+            {/* ─── RIGHT COLUMN: Video Dashboard ─── */}
             <motion.div
               initial={{ opacity: 0, x: 60, scale: 0.96 }}
               animate={{ opacity: 1, x: 0, scale: 1 }}
               transition={{ delay: 0.4, duration: 1, ease: [0.16, 1, 0.3, 1] }}
-              className="flex-shrink-0 lg:w-[44%] w-full relative"
+              className="flex-shrink-0 lg:w-[50%] w-full relative mt-12 lg:mt-0"
             >
-              {/* Perpetual floating animation wrapper */}
-              <motion.div
-                animate={{ y: [0, -14, 0] }}
-                transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
-              >
-                {/* Animated glow halo — pulses gently */}
-                <motion.div
-                  animate={{ opacity: [0.5, 0.9, 0.5], scale: [1, 1.05, 1] }}
-                  transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-                  className="absolute -inset-6 bg-gradient-to-br from-costa-green/20 via-emerald-300/15 to-teal-300/10 rounded-[3rem] blur-3xl"
-                ></motion.div>
+              {/* Soft shadow glow behind video */}
+              <div className="absolute -inset-4 bg-gradient-to-br from-costa-green/20 via-teal-500/10 to-emerald-500/20 rounded-[3rem] blur-3xl opacity-70"></div>
+              
+              <div className="relative w-full aspect-[4/3] rounded-[2rem] p-2 overflow-hidden border border-white/60 shadow-[0_40px_80px_-20px_rgba(0,0,0,0.2)] bg-white/40 backdrop-blur-2xl group flex flex-col">
+                
+                {/* UI Chrome Bar */}
+                <div className="flex items-center gap-1.5 px-4 py-3 opacity-90 absolute top-0 left-0 right-0 z-20 pointer-events-none">
+                  <div className="w-2.5 h-2.5 rounded-full bg-red-400/90 border border-red-500/20 shadow-inner"></div>
+                  <div className="w-2.5 h-2.5 rounded-full bg-amber-400/90 border border-amber-500/20 shadow-inner"></div>
+                  <div className="w-2.5 h-2.5 rounded-full bg-emerald-400/90 border border-emerald-500/20 shadow-inner"></div>
+                </div>
 
-                {/* Main Card */}
-                <div className="relative bg-white border border-gray-100 rounded-[2rem] shadow-[0_32px_80px_-12px_rgba(0,0,0,0.12),0_0_0_1px_rgba(26,175,93,0.06)] overflow-hidden">
+                <div className="relative w-full h-full rounded-[1.5rem] overflow-hidden bg-gray-900 shadow-inner mt-6">
+                  <video
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    className="absolute inset-0 w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-1000 ease-out"
+                  >
+                    <source src="/videos/Intro.mp4" type="video/mp4" />
+                  </video>
                   
-                  {/* Animated top accent bar — shimmer effect */}
-                  <div className="h-1 w-full bg-gradient-to-r from-costa-green via-emerald-400 to-teal-400 relative overflow-hidden">
-                    <motion.div
-                      animate={{ x: ['-100%', '200%'] }}
-                      transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut', repeatDelay: 1.5 }}
-                      className="absolute inset-0 bg-gradient-to-r from-transparent via-white/50 to-transparent"
-                    />
-                  </div>
-                  
-                  <div className="p-8 md:p-10">
-                    
-                    {/* Card Header */}
-                    <div className="flex items-center justify-between mb-7">
-                      <div className="flex items-center gap-3">
-                        {/* Icon with rotation on mount */}
-                        <motion.div
-                          initial={{ rotate: -15, scale: 0.7, opacity: 0 }}
-                          animate={{ rotate: 0, scale: 1, opacity: 1 }}
-                          transition={{ delay: 0.6, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                          className="w-10 h-10 rounded-xl bg-gradient-to-br from-costa-green to-emerald-500 flex items-center justify-center shadow-lg shadow-costa-green/30"
-                        >
-                          <Zap size={18} className="text-white" />
-                        </motion.div>
-                        <div>
-                          <p className="font-black text-[#0f172a] text-sm tracking-widest uppercase">Algorithmic Search</p>
-                          <div className="flex items-center gap-1.5 mt-0.5">
-                            <span className="w-1.5 h-1.5 rounded-full bg-costa-green animate-pulse"></span>
-                            {/* Animated live counter text */}
-                            <motion.span
-                              animate={{ opacity: [1, 0.5, 1] }}
-                              transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-                              className="text-[10px] font-bold text-costa-green uppercase tracking-[0.2em]"
-                            >
-                              Network Active · 1,402 Suppliers
-                            </motion.span>
-                          </div>
-                        </div>
-                      </div>
-                      {/* Animated signal bars — each bar animates independently */}
-                      <div className="flex items-end gap-1">
-                        {[3, 5, 7].map((h, i) => (
-                          <motion.div
-                            key={i}
-                            animate={{ scaleY: [1, 0.4, 1], opacity: [0.4, 1, 0.4] }}
-                            transition={{ duration: 1.2, delay: i * 0.2, repeat: Infinity, ease: 'easeInOut' }}
-                            style={{ height: `${h * 4}px`, transformOrigin: 'bottom' }}
-                            className={`w-1.5 rounded-full ${i === 2 ? 'bg-costa-green' : i === 1 ? 'bg-emerald-300' : 'bg-gray-200'}`}
-                          />
-                        ))}
-                      </div>
-                    </div>
+                  {/* Gradient overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-black/30 pointer-events-none"></div>
 
-                    {/* Search Input */}
-                    <motion.form
-                      initial={{ opacity: 0, y: 12 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.7, duration: 0.6 }}
-                      onSubmit={handleSearch}
-                      className="mb-3"
-                    >
-                      <div className="relative flex items-center bg-[#f8fafc] border-2 border-gray-100 rounded-xl px-4 py-3 mb-3 focus-within:border-costa-green focus-within:bg-white focus-within:shadow-[0_0_0_4px_rgba(26,175,93,0.08)] transition-all duration-200 group">
-                        <Search size={18} className="text-gray-400 mr-3 flex-shrink-0 group-focus-within:text-costa-green transition-colors" />
-                        <input 
-                          type="text" 
-                          value={searchQuery}
-                          onChange={(e) => setSearchQuery(e.target.value)}
-                          placeholder="Part number, manufacturer, or keyword..." 
-                          className="flex-1 bg-transparent border-none outline-none text-[#0f172a] text-base placeholder:text-[#94a3b8] placeholder:font-normal font-semibold"
-                        />
-                      </div>
-                      <motion.button
-                        whileHover={{ scale: 1.01 }}
-                        whileTap={{ scale: 0.98 }}
-                        type="submit"
-                        className="w-full flex items-center justify-center gap-2.5 bg-[#0f172a] text-white py-3.5 px-6 rounded-xl font-bold text-sm tracking-widest uppercase hover:bg-costa-green transition-all duration-300 shadow-xl shadow-gray-900/15 hover:shadow-costa-green/30 group"
-                      >
-                        <Search size={16} className="group-hover:scale-110 transition-transform" />
-                        Scan Global Inventory
-                      </motion.button>
-                    </motion.form>
-
-                    {/* Divider */}
-                    <div className="flex items-center gap-3 my-6">
-                      <div className="flex-1 h-px bg-gray-100"></div>
-                      <span className="text-[10px] font-bold text-gray-300 uppercase tracking-widest">Trending</span>
-                      <div className="flex-1 h-px bg-gray-100"></div>
-                    </div>
-
-                    {/* Trending Tags — each one staggers in */}
-                    <div className="flex flex-wrap gap-2">
-                      {[
-                        { label: 'Microcontrollers', count: '2.4M+' },
-                        { label: 'FPGAs', count: '180K+' },
-                        { label: 'Connectors', count: '4.1M+' },
-                        { label: 'IGBTs', count: '620K+' },
-                        { label: 'Capacitors', count: '8.2M+' },
-                      ].map((tag, i) => (
-                        <motion.button
-                          key={tag.label}
-                          initial={{ opacity: 0, scale: 0.85 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          transition={{ delay: 0.85 + i * 0.08, duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                          whileHover={{ scale: 1.05, y: -1 }}
-                          onClick={() => router.push(`/search?q=${tag.label}`)}
-                          className="group flex items-center gap-1.5 px-3 py-1.5 bg-gray-50 border border-gray-100 rounded-lg hover:bg-costa-green/5 hover:border-costa-green/30 cursor-pointer transition-all duration-200"
-                        >
-                          <span className="text-[11px] font-semibold text-[#64748b] group-hover:text-costa-green transition-colors">{tag.label}</span>
-                          <span className="text-[9px] font-bold text-gray-300 group-hover:text-costa-green/50 transition-colors">{tag.count}</span>
-                        </motion.button>
-                      ))}
-                    </div>
-
-                    {/* Bottom stat strip — each stat counts up */}
-                    <div className="mt-7 pt-5 border-t border-gray-100 grid grid-cols-3 gap-4">
-                      {[
-                        { value: '< 4h', label: 'RFQ Response' },
-                        { value: '99.99%', label: 'Uptime' },
-                        { value: '100%', label: 'Quality Pass' },
-                      ].map((stat, i) => (
-                        <motion.div
-                          key={stat.label}
-                          initial={{ opacity: 0, y: 10 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{ delay: 1.0 + i * 0.1, duration: 0.5 }}
-                          className="text-center"
-                        >
-                          <p className="font-black text-[#0f172a] text-lg tracking-tight">{stat.value}</p>
-                          <p className="text-[9px] font-bold text-[#94a3b8] uppercase tracking-widest mt-0.5">{stat.label}</p>
-                        </motion.div>
-                      ))}
-                    </div>
-
+                  {/* Live Feed Badge */}
+                  <div className="absolute bottom-5 left-5 z-10 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-[10px] font-bold text-white tracking-[0.2em] uppercase shadow-lg">
+                    <span className="w-1.5 h-1.5 rounded-full bg-red-400 animate-pulse"></span>
+                    Live Feed
                   </div>
                 </div>
-              </motion.div>
+              </div>
+
+              {/* Metrics Grid moved below the video */}
+              <div className="relative z-20 w-full mt-4">
+                <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 lg:gap-3">
+                  {[
+                    { label: "Global Uptime", value: "99.99%", desc: "Sourcing Network", icon: <Zap size={16} className="text-costa-green" /> },
+                    { label: "Avg. Turnaround", value: "< 4 Hrs", desc: "RFQ Response", icon: <Clock size={16} className="text-costa-green" /> },
+                    { label: "Active Suppliers", value: "1,402", desc: "Franchised", icon: <ArrowUpRight size={16} className="text-costa-green" /> },
+                    { label: "Quality Pass", value: "100%", desc: "AS6081 Inspected", icon: <ShieldCheck size={16} className="text-costa-green" /> }
+                  ].map((metric, i) => (
+                    <motion.div 
+                      key={i}
+                      initial={{ opacity: 0, y: 24 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.9 + i * 0.08, duration: 0.6, ease: "easeOut" }}
+                      className="bg-white border border-gray-100 rounded-[1rem] p-3 md:p-4 shadow-xl shadow-gray-900/5 hover:-translate-y-1 transition-all duration-300 group cursor-default"
+                    >
+                      <div className="flex items-center gap-2 mb-2">
+                        <div className="p-1 rounded-md bg-costa-green/8 border border-costa-green/10">
+                          {metric.icon}
+                        </div>
+                        <p className="text-[7px] text-gray-400 font-bold tracking-[0.1em] uppercase">{metric.label}</p>
+                      </div>
+                      <p className="font-heading text-lg md:text-xl font-black text-gray-900 tracking-tight mb-0.5 group-hover:text-costa-green transition-colors">{metric.value}</p>
+                      <p className="text-[8px] text-costa-green font-bold tracking-[0.15em] uppercase">{metric.desc}</p>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+
             </motion.div>
           </div>
 
-          {/* Floating Video Container */}
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.7, duration: 1, ease: "easeOut" }}
-            className="mt-24 relative max-w-6xl mx-auto"
-          >
-            {/* Soft shadow glow behind video */}
-            <div className="absolute -inset-2 bg-gradient-to-r from-costa-green/20 via-teal-500/15 to-emerald-500/20 rounded-[2.5rem] blur-2xl opacity-60"></div>
-            
-            <div className="relative w-full aspect-[16/9] md:aspect-[21/9] rounded-[2rem] overflow-hidden border border-gray-100 shadow-[0_40px_80px_-20px_rgba(0,0,0,0.2)] bg-gray-900 group">
-              <video
-                autoPlay
-                muted
-                loop
-                playsInline
-                className="absolute inset-0 w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-1000 ease-out"
-              >
-                <source src="/videos/Intro.mp4" type="video/mp4" />
-              </video>
-              
-              {/* Gradient overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/20 to-black/10"></div>
-
-              {/* Live Feed Badge */}
-              <div className="absolute top-5 left-5 md:top-7 md:left-7 z-10 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-black/30 backdrop-blur-md border border-white/10 text-[10px] font-bold text-white tracking-[0.2em] uppercase">
-                <span className="w-1.5 h-1.5 rounded-full bg-red-400 animate-pulse"></span>
-                Live Feed
-              </div>
-
-              {/* Trust Badges */}
-              <div className="absolute top-5 right-5 md:top-7 md:right-7 z-10 sm:flex gap-2 hidden">
-                {['AS6081', 'ISO 9001'].map((badge) => (
-                  <div key={badge} className="px-3 py-1.5 bg-black/30 backdrop-blur-md rounded-lg border border-white/10 flex items-center gap-1.5">
-                    <ShieldCheck size={12} className="text-costa-green" />
-                    <span className="text-[9px] font-bold text-white uppercase tracking-widest">{badge}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Metrics Grid overlapping the video container */}
-            <div className="relative z-20 max-w-5xl mx-auto -mt-8 md:-mt-14 px-4">
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
-                {[
-                  { label: "Global Uptime", value: "99.99%", desc: "Sourcing Network", icon: <Zap size={16} className="text-costa-green" /> },
-                  { label: "Avg. Turnaround", value: "< 4 Hrs", desc: "RFQ Response", icon: <Clock size={16} className="text-costa-green" /> },
-                  { label: "Active Suppliers", value: "1,402", desc: "Franchised", icon: <ArrowUpRight size={16} className="text-costa-green" /> },
-                  { label: "Quality Pass", value: "100%", desc: "AS6081 Inspected", icon: <ShieldCheck size={16} className="text-costa-green" /> }
-                ].map((metric, i) => (
-                  <motion.div 
-                    key={i}
-                    initial={{ opacity: 0, y: 24 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.9 + i * 0.08, duration: 0.6, ease: "easeOut" }}
-                    className="bg-white border border-gray-100 rounded-2xl p-4 md:p-5 shadow-xl shadow-gray-900/8 hover:-translate-y-1 transition-all duration-300 group cursor-default"
-                  >
-                    <div className="flex items-center gap-2 mb-2.5">
-                      <div className="p-1.5 rounded-lg bg-costa-green/8 border border-costa-green/10">
-                        {metric.icon}
-                      </div>
-                      <p className="text-[8px] text-gray-400 font-bold tracking-[0.15em] uppercase">{metric.label}</p>
-                    </div>
-                    <p className="font-heading text-2xl font-black text-gray-900 tracking-tight mb-0.5 group-hover:text-costa-green transition-colors">{metric.value}</p>
-                    <p className="text-[9px] text-costa-green font-bold tracking-widest uppercase">{metric.desc}</p>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-          </motion.div>
 
         </div>
       </section>
@@ -458,7 +296,11 @@ export default function HomePage() {
                 <span className="w-2 h-2 rounded-full bg-costa-green animate-pulse"></span>
                 <span className="text-[10px] text-gray-400 font-bold uppercase tracking-widest">Interactive 3D Model</span>
               </div>
-              <div className="absolute inset-0 z-10 pointer-events-auto">
+              <div className="absolute bottom-5 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/5 border border-black/10 opacity-60 pointer-events-none">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-gray-500"><path d="M5 9l7-7 7 7M5 15l7 7 7-7"/></svg>
+                <span className="text-[9px] text-gray-500 font-bold uppercase tracking-widest">Drag to Rotate</span>
+              </div>
+              <div className="absolute inset-0 z-10 cursor-grab active:cursor-grabbing pointer-events-auto">
                 <Microchip3D />
               </div>
             </motion.div>
@@ -591,10 +433,10 @@ export default function HomePage() {
 
       {/* 4. TESTIMONIALS & SOCIAL PROOF */}
       <section className="py-24 bg-white border-b border-gray-100 relative overflow-hidden">
-        <div className="absolute top-0 right-6 text-xs font-mono font-bold text-gray-300 tracking-widest uppercase z-10 bg-white px-2 py-2">Client Trust</div>
         <div className="max-w-[1400px] mx-auto px-6">
           <div className="mb-16 border-l-4 border-costa-green pl-6 flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
             <div>
+              <div className="text-xs font-mono font-bold text-gray-400 tracking-widest uppercase mb-4 inline-block bg-gray-50 px-3 py-1 rounded-full border border-gray-100">Client Trust</div>
               <h2 className="font-heading text-[clamp(2.5rem,5vw,4rem)] font-black leading-none tracking-tighter uppercase text-gray-900">
                 TRUSTED <span className="text-costa-green">GLOBALLY</span>
               </h2>

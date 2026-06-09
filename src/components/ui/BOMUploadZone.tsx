@@ -24,10 +24,10 @@ export default function BOMUploadZone() {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       onClick={handleFakeDrop}
-      className={`relative w-full max-w-md rounded-2xl border-2 border-dashed transition-all duration-300 cursor-pointer overflow-hidden ${
+      className={`relative w-full max-w-md rounded-3xl border border-white/40 bg-white/10 backdrop-blur-2xl transition-all duration-500 cursor-pointer overflow-hidden shadow-[0_8px_32px_0_rgba(31,38,135,0.07)] ${
         isHovered 
-          ? 'border-costa-green bg-white shadow-[0_10px_40px_rgba(26,175,93,0.12)]' 
-          : 'border-gray-200 bg-gray-50/50 hover:border-costa-green'
+          ? 'border-costa-green/50 bg-white/20 shadow-[0_12px_48px_rgba(26,175,93,0.15)]' 
+          : 'hover:border-white/60'
       }`}
     >
       {/* Background animated pulse when hovered */}
