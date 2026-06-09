@@ -65,8 +65,8 @@ export default function HomePage() {
   return (
     <div className="min-h-screen bg-bg-primary text-text-primary overflow-hidden" ref={containerRef}>
       
-      {/* Spacer for fixed Navbar + Ticker */}
-      <div className="pt-[116px] lg:pt-[132px]"></div>
+      {/* Spacer for fixed Navbar */}
+      <div className="pt-[72px] lg:pt-[88px]"></div>
 
       {/* 1. HERO — Split Layout (Text Left, Premium Search Right) */}
       <section className="relative w-full pt-6 pb-16 lg:pt-8 lg:pb-20 overflow-hidden border-b border-gray-100">
