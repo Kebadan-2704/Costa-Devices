@@ -26,19 +26,25 @@ export default function LogisticsGlobe() {
 
   useEffect(() => {
     if (isMounted) {
-      setTimeout(() => {
-        if (globeRef.current) {
+      // Keep checking for controls until they are ready
+      const checkControls = setInterval(() => {
+        if (globeRef.current && globeRef.current.controls) {
           try {
             const controls = globeRef.current.controls();
-            controls.autoRotate = true;
-            controls.autoRotateSpeed = 2.0;
-            controls.enableZoom = false;
-            globeRef.current.pointOfView({ lat: 20, lng: 0, altitude: 2.2 });
+            if (controls) {
+              controls.autoRotate = true;
+              controls.autoRotateSpeed = 2.0;
+              controls.enableZoom = false;
+              globeRef.current.pointOfView({ lat: 20, lng: 0, altitude: 2.2 });
+              clearInterval(checkControls); // Stop checking once successful
+            }
           } catch (e) {
             console.error("Error setting globe controls", e);
           }
         }
-      }, 500); // Short delay to ensure Three.js controls are initialized
+      }, 200);
+
+      return () => clearInterval(checkControls);
     }
   }, [isMounted]);
 
