@@ -35,10 +35,10 @@ export default function ProductFilterGrid() {
               />
             </div>
             <div className="mt-4 flex items-center justify-between border-t border-glass-border pt-4 transition-colors duration-500">
-              <p className="font-mono text-[10px] text-text-muted uppercase tracking-widest">
+              <p className="font-mono text-xs text-text-muted uppercase tracking-widest">
                 Search via Part Number, Spec, or Category
               </p>
-              <Link href="/request-quote" className="font-mono text-[10px] text-costa-green uppercase tracking-widest hover:text-text-primary transition-colors group flex items-center gap-2">
+              <Link href="/request-quote" className="font-mono text-xs text-costa-green uppercase tracking-widest hover:text-text-primary transition-colors group flex items-center gap-2">
                 Launch Global Ping <span className="group-hover:translate-x-1 transition-transform">→</span>
               </Link>
             </div>
@@ -63,7 +63,7 @@ export default function ProductFilterGrid() {
                       className="object-cover opacity-60 dark:opacity-80 grayscale group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-[1500ms] ease-out"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-bg-primary via-bg-primary/80 to-transparent transition-colors duration-500" />
-                    <div className="absolute top-4 right-4 px-3 py-1 bg-bg-secondary border border-glass-border font-mono text-[10px] text-costa-green font-bold tracking-widest uppercase transition-colors duration-500 rounded-lg">
+                    <div className="absolute top-4 right-4 px-3 py-1 bg-bg-secondary border border-glass-border font-mono text-xs text-costa-green font-bold tracking-widest uppercase transition-colors duration-500 rounded-lg">
                       {cat.products.length} CLASSIFICATIONS
                     </div>
                   </div>
@@ -76,7 +76,7 @@ export default function ProductFilterGrid() {
                     
                     <div className="flex flex-wrap gap-2 mb-8">
                       {cat.products.map((p) => (
-                        <span key={p} className="font-mono text-[10px] font-bold uppercase tracking-widest px-3 py-2 bg-bg-secondary border border-glass-border text-text-secondary group-hover:border-costa-green/20 transition-colors duration-500 rounded-lg">
+                        <span key={p} className="font-mono text-xs font-bold uppercase tracking-widest px-3 py-2 bg-bg-secondary border border-glass-border text-text-secondary group-hover:border-costa-green/20 transition-colors duration-500 rounded-lg">
                           {p}
                         </span>
                       ))}
@@ -84,14 +84,14 @@ export default function ProductFilterGrid() {
                     
                     <div className="flex items-center gap-4 border-t border-glass-border pt-6 mt-auto transition-colors duration-500">
                       <Link href="/request-quote" className="group/btn flex items-center justify-between flex-1">
-                        <span className="font-mono text-[10px] text-text-primary font-bold tracking-widest uppercase group-hover/btn:text-costa-green transition-colors duration-500">
+                        <span className="font-mono text-xs text-text-primary font-bold tracking-widest uppercase group-hover/btn:text-costa-green transition-colors duration-500">
                           Request Sourcing
                         </span>
                         <ChevronRight size={14} className="text-text-muted group-hover/btn:text-costa-green group-hover/btn:translate-x-1 transition-all" />
                       </Link>
                       <div className="w-px h-6 bg-glass-border" />
                       <a href={`/datasheets/${cat.id}.pdf`} className="group/btn flex items-center justify-center shrink-0" title="Download Specification Datasheet">
-                        <span className="font-mono text-[10px] text-text-muted font-bold tracking-widest uppercase hover:text-costa-green transition-colors duration-500 flex items-center gap-1">
+                        <span className="font-mono text-xs text-text-muted font-bold tracking-widest uppercase hover:text-costa-green transition-colors duration-500 flex items-center gap-1">
                           Datasheet
                         </span>
                       </a>
@@ -109,7 +109,7 @@ export default function ProductFilterGrid() {
               <p className="text-text-secondary font-light max-w-md mx-auto mb-8 transition-colors duration-500">
                 Our active directory does not explicitly list &ldquo;{searchQuery}&rdquo;. We can source obsolete/allocated parts globally.
               </p>
-              <Link href="/contact" className="btn-primary rounded-lg px-12 py-5 text-sm tracking-[0.15em]">
+              <Link href="/contact" className="rounded-lg bg-[#111111] text-white hover:bg-costa-green transition-colors rounded-lg px-12 py-5 text-sm tracking-[0.15em]">
                 Ping Global Network
               </Link>
             </div>

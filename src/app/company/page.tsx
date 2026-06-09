@@ -214,7 +214,7 @@ export default function CompanyPage() {
                       </div>
                       <h4 className="font-heading text-lg font-bold text-costa-green mb-3 flex items-center gap-3">
                         {item.title}
-                        {item.title.includes("ISO") && <Link href="/quality" className="text-[10px] font-mono tracking-widest uppercase border border-costa-green text-costa-green hover:text-white hover:bg-costa-green px-3 py-1 rounded-md transition-colors hidden sm:block">View Certificate</Link>}
+                        {item.title.includes("ISO") && <Link href="/quality" className="text-xs font-mono tracking-widest uppercase border border-costa-green text-costa-green hover:text-white hover:bg-costa-green px-3 py-1 rounded-md transition-colors hidden sm:block">View Certificate</Link>}
                       </h4>
                       <p className="text-text-secondary text-sm font-light leading-relaxed">{item.description}</p>
                     </div>
@@ -303,7 +303,7 @@ export default function CompanyPage() {
                       </div>
                       
                       <h3 className="font-heading text-2xl lg:text-3xl font-black mb-2 text-text-primary tracking-tight">{office.city.toUpperCase()}</h3>
-                      <span className="font-mono text-[10px] text-costa-green font-bold uppercase tracking-[0.2em] block mb-6">{office.label}</span>
+                      <span className="font-mono text-xs text-costa-green font-bold uppercase tracking-[0.2em] block mb-6">{office.label}</span>
                       
                       <p className="text-text-secondary text-sm mt-4 mb-8 font-light min-h-[60px] line-clamp-3">{office.address}</p>
                     </div>
@@ -353,7 +353,7 @@ export default function CompanyPage() {
               Join 50+ global clients who trust Costa Devices for mission-critical hardware logistics.
             </p>
             <div className="flex flex-wrap justify-center gap-6">
-              <Link href="/request-quote" className="btn-primary rounded-lg px-12 py-5 text-sm tracking-[0.15em] group relative overflow-hidden">
+              <Link href="/request-quote" className="rounded-lg bg-[#111111] text-white hover:bg-costa-green transition-colors rounded-lg px-12 py-5 text-sm tracking-[0.15em] group relative overflow-hidden">
                 <span className="relative z-10 flex items-center gap-3 font-bold">Request Quote <ArrowRight size={18} className="group-hover:translate-x-2 transition-transform" /></span>
               </Link>
               <Link href="/contact" className="rounded-lg px-12 py-5 text-sm tracking-[0.15em] font-bold border-2 border-glass-border text-text-primary hover:border-costa-green hover:text-costa-green transition-all inline-flex items-center gap-3">

@@ -12,9 +12,9 @@ const nextConfig: NextConfig = {
         hostname: "images.unsplash.com",
       },
     ],
-    dangerouslyAllowSVG: true,
   },
   allowedDevOrigins: ['10.42.255.12'],
+  devIndicators: false,
 };
 
 export default nextConfig;

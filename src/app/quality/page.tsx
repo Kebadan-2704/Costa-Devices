@@ -86,15 +86,15 @@ export default function QualityPage() {
                   {/* Content */}
                   <div className="p-8 pt-4 flex-1 relative z-10">
                     <h3 className="font-heading text-xl font-black text-text-primary tracking-tight mb-2 transition-colors duration-500">{cert.name}</h3>
-                    <p className="font-mono text-[10px] text-costa-green font-bold tracking-widest uppercase mb-4">{cert.fullName}</p>
+                    <p className="font-mono text-xs text-costa-green font-bold tracking-widest uppercase mb-4">{cert.fullName}</p>
                     <p className="text-text-secondary text-sm leading-relaxed transition-colors duration-500">{cert.description}</p>
                   </div>
                   
                   {/* Footer with visible CTA */}
                   <div className="p-6 bg-bg-secondary border-t border-glass-border flex items-center justify-between transition-colors duration-500 relative z-10">
                     <div className="flex items-center gap-4">
-                      <span className="font-mono text-[10px] text-text-muted uppercase tracking-widest">{cert.entity}</span>
-                      <span className="font-mono text-[10px] text-costa-green font-bold">{cert.year}</span>
+                      <span className="font-mono text-xs text-text-muted uppercase tracking-widest">{cert.entity}</span>
+                      <span className="font-mono text-xs text-costa-green font-bold">{cert.year}</span>
                     </div>
                     <span className="flex items-center gap-1.5 text-costa-green font-semibold text-xs group-hover:gap-2.5 transition-all duration-300">
                       View Certificate <ArrowRight size={14} className="transition-transform duration-300 group-hover:translate-x-1" />
@@ -213,7 +213,7 @@ export default function QualityPage() {
               Request our certification documents or discuss your quality requirements.
             </p>
             <div className="flex flex-wrap justify-center gap-6">
-              <Link href="/contact" className="btn-primary rounded-lg px-12 py-5 text-sm tracking-[0.15em] group relative overflow-hidden">
+              <Link href="/contact" className="rounded-lg bg-[#111111] text-white hover:bg-costa-green transition-colors rounded-lg px-12 py-5 text-sm tracking-[0.15em] group relative overflow-hidden">
                 <span className="relative z-10 flex items-center gap-3 font-bold">Request Certifications <ArrowRight size={18} className="group-hover:translate-x-2 transition-transform" /></span>
               </Link>
             </div>

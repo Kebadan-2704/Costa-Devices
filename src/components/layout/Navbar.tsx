@@ -88,14 +88,14 @@ export default function Navbar() {
                         {link.label}
                       </Link>
 
-                      {/* Invisible hover bridge */}
+                      {/* Invisible hover bridge — taller for reliable hover continuity */}
                       {(link.megaMenu || link.dropdown) && (
-                        <div className="absolute top-full left-0 w-full h-6" />
+                        <div className="absolute top-full left-0 w-full h-8" />
                       )}
 
                       {/* Premium Mega Menu */}
                       {link.megaMenu && (
-                        <div className="absolute top-[calc(100%+16px)] left-1/2 -translate-x-1/2 w-[600px] bg-white/95 backdrop-blur-xl border border-black/10 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 rounded-2xl overflow-hidden before:absolute before:-top-4 before:left-0 before:w-full before:h-4 origin-top group-hover:scale-100 scale-95">
+                        <div className="absolute top-[calc(100%+8px)] left-1/2 -translate-x-1/2 w-[600px] bg-white/95 backdrop-blur-xl border border-black/10 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 rounded-2xl overflow-hidden before:absolute before:-top-4 before:left-0 before:w-full before:h-4 origin-top group-hover:scale-100 scale-95">
                           <div className="grid grid-cols-2 p-4 gap-4 relative z-10">
                             {link.megaMenu.categories.map((cat: any) => (
                               <div key={cat.label} className="bg-[#FAFAFA] hover:bg-black/[0.03] transition-colors duration-300 rounded-xl p-6 border border-black/5 group/cat flex flex-col">
@@ -117,7 +117,7 @@ export default function Navbar() {
                                     </li>
                                   ))}
                                 </ul>
-                                <Link href={cat.href} className="mt-8 inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-widest text-text-muted hover:text-costa-green transition-colors w-max group/btn">
+                                <Link href={cat.href} className="mt-8 inline-flex items-center gap-1.5 text-sm font-bold uppercase tracking-widest text-text-muted hover:text-costa-green transition-colors w-max group/btn">
                                   View Catalog <ArrowRight size={12} className="group-hover/btn:translate-x-1 transition-transform" />
                                 </Link>
                               </div>
@@ -142,7 +142,7 @@ export default function Navbar() {
 
                       {/* Simple Dropdown */}
                       {link.dropdown && (
-                        <div className="absolute top-[calc(100%+16px)] left-1/2 -translate-x-1/2 w-[340px] bg-white/95 backdrop-blur-xl border border-black/10 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 rounded-2xl overflow-hidden before:absolute before:-top-4 before:left-0 before:w-full before:h-4 origin-top group-hover:scale-100 scale-95">
+                        <div className="absolute top-[calc(100%+8px)] left-1/2 -translate-x-1/2 w-[340px] bg-white/95 backdrop-blur-xl border border-black/10 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 rounded-2xl overflow-hidden before:absolute before:-top-4 before:left-0 before:w-full before:h-4 origin-top group-hover:scale-100 scale-95">
                           <div className="p-4">
                             <div className="bg-[#FAFAFA] hover:bg-black/[0.03] transition-colors duration-300 rounded-xl p-6 border border-black/5 flex flex-col">
                               <div className="flex items-center gap-4 mb-5">
@@ -163,7 +163,7 @@ export default function Navbar() {
                                   </li>
                                 ))}
                               </ul>
-                              <Link href={link.href} className="mt-8 inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-widest text-text-muted hover:text-costa-green transition-colors w-max group/btn">
+                              <Link href={link.href} className="mt-8 inline-flex items-center gap-1.5 text-sm font-bold uppercase tracking-widest text-text-muted hover:text-costa-green transition-colors w-max group/btn">
                                 View Details <ArrowRight size={12} className="group-hover/btn:translate-x-1 transition-transform" />
                               </Link>
                             </div>
@@ -171,14 +171,14 @@ export default function Navbar() {
                           
                           {/* Bottom Banner */}
                           <div className="bg-costa-green/5 border-t border-costa-green/10 p-4 px-6 flex items-center justify-between">
-                            <div className="text-[10px] sm:text-xs font-semibold text-costa-green flex items-center gap-2.5">
+                            <div className="text-xs sm:text-xs font-semibold text-costa-green flex items-center gap-2.5">
                               <span className="relative flex h-2 w-2">
                                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-costa-green opacity-75"></span>
                                 <span className="relative inline-flex rounded-full h-2 w-2 bg-costa-green"></span>
                               </span>
                               Global Sourcing
                             </div>
-                            <Link href="/request-quote" className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-text-primary hover:text-costa-green transition-colors flex items-center gap-1 shrink-0">
+                            <Link href="/request-quote" className="text-xs sm:text-xs font-bold uppercase tracking-wider text-text-primary hover:text-costa-green transition-colors flex items-center gap-1 shrink-0">
                               Get Quote <ArrowRight size={12} />
                             </Link>
                           </div>

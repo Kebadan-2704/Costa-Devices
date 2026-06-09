@@ -31,9 +31,17 @@ export default function Footer() {
             <p className="text-base text-text-secondary leading-relaxed max-w-[340px] mb-8 font-medium">
               Powering The Future of Electric Mobility. Global distributor for mission-critical circuit protection, EV components, and industrial automation.
             </p>
-            <a href={COMPANY.linkedin} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-text-primary hover:text-costa-green transition-all w-fit border border-black/10 bg-[#FAFAFA] px-8 py-4 rounded hover:border-costa-green/50 hover:bg-costa-green/5 shadow-sm">
+            <a href={COMPANY.linkedin} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-text-primary hover:text-costa-green transition-all w-fit border border-black/10 bg-[#FAFAFA] px-8 py-4 rounded-lg hover:border-costa-green/50 hover:bg-costa-green/5 shadow-sm">
               Follow LinkedIn <ArrowUpRight size={16} />
             </a>
+
+            <div className="mt-8 pt-8 border-t border-black/10 w-full max-w-[340px]">
+              <h4 className="text-xs font-bold text-text-primary tracking-widest uppercase mb-4">Market Insights Newsletter</h4>
+              <form className="flex flex-col gap-3" onSubmit={(e) => { e.preventDefault(); alert("Subscribed successfully!"); }}>
+                <input type="email" required placeholder="Enter work email..." className="w-full bg-[#FAFAFA] border border-black/10 px-4 py-3 rounded-lg text-sm outline-none focus:border-costa-green focus:bg-white transition-all placeholder:text-text-muted font-medium" />
+                <button type="submit" className="w-full bg-[#111] text-white font-bold uppercase tracking-widest text-xs px-4 py-3 rounded-lg hover:bg-costa-green transition-colors">Subscribe</button>
+              </form>
+            </div>
           </div>
 
           {/* Column 2: Quick Links (Spans 2) */}
@@ -43,7 +51,8 @@ export default function Footer() {
             </h4>
             <ul className="flex flex-col gap-5 text-base font-semibold text-text-primary">
               <li><Link href="/" className="hover:text-costa-green transition-colors">Home</Link></li>
-              <li><Link href="/electrical" className="hover:text-costa-green transition-colors">Products</Link></li>
+              <li><Link href="/active-components" className="hover:text-costa-green transition-colors">Active Components</Link></li>
+              <li><Link href="/passive-components" className="hover:text-costa-green transition-colors">Passive Components</Link></li>
               <li><Link href="/services" className="hover:text-costa-green transition-colors">Services</Link></li>
               <li><Link href="/company" className="hover:text-costa-green transition-colors">Company</Link></li>
               <li><Link href="/quality" className="hover:text-costa-green transition-colors">Quality Policy</Link></li>
@@ -93,7 +102,7 @@ export default function Footer() {
                     <p className="text-sm font-bold text-text-primary tracking-wider mb-1">{cert.name}</p>
                     <div className="flex items-center gap-2">
                       <div className="w-1.5 h-1.5 rounded-full bg-costa-green"></div>
-                      <p className="text-[10px] text-text-secondary font-mono uppercase tracking-widest font-bold">Verified Standard</p>
+                      <p className="text-xs text-text-secondary font-mono uppercase tracking-widest font-bold">Verified Standard</p>
                     </div>
                   </div>
                 </div>

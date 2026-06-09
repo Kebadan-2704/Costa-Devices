@@ -109,7 +109,7 @@ export default function InteractiveEcosystem() {
                   fallbackClassName="w-14 h-14 shrink-0" 
                 />
               </div>
-              <span className="font-heading font-black text-[11px] text-text-secondary text-center group-hover:text-costa-green transition-colors z-10 uppercase tracking-widest leading-tight">
+              <span className="font-heading font-black text-sm text-text-secondary text-center group-hover:text-costa-green transition-colors z-10 uppercase tracking-widest leading-tight">
                 {brand}
               </span>
             </motion.button>
@@ -160,7 +160,7 @@ export default function InteractiveEcosystem() {
                   </div>
                   <div>
                     <h3 className="font-heading text-3xl font-black text-text-primary tracking-tight mb-3">{selectedBrand}</h3>
-                    <div className="inline-flex items-center gap-2.5 px-4 py-1.5 bg-costa-green/10 text-costa-green text-[11px] font-bold uppercase tracking-[0.2em] rounded-full">
+                    <div className="inline-flex items-center gap-2.5 px-4 py-1.5 bg-costa-green/10 text-costa-green text-sm font-bold uppercase tracking-[0.2em] rounded-full">
                       <span className="relative flex h-2 w-2">
                         <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-costa-green opacity-75"></span>
                         <span className="relative inline-flex rounded-full h-2 w-2 bg-costa-green"></span>
@@ -176,7 +176,7 @@ export default function InteractiveEcosystem() {
                 
                 <button 
                   onClick={() => setSelectedBrand(null)}
-                  className="w-full bg-black text-white hover:bg-costa-green py-4 rounded-xl font-bold tracking-widest text-[11px] uppercase transition-colors duration-300 shadow-[0_10px_20px_rgba(0,0,0,0.1)] hover:shadow-[0_10px_20px_rgba(26,175,93,0.2)]"
+                  className="w-full bg-black text-white hover:bg-costa-green py-4 rounded-xl font-bold tracking-widest text-sm uppercase transition-colors duration-300 shadow-[0_10px_20px_rgba(0,0,0,0.1)] hover:shadow-[0_10px_20px_rgba(26,175,93,0.2)]"
                 >
                   Close Details
                 </button>

@@ -7,9 +7,10 @@ import SmoothScroll from "@/components/layout/SmoothScroll";
 import ScrollProgress from "@/components/layout/ScrollProgress";
 import ScrollToTop from "@/components/layout/ScrollToTop";
 import WhatsAppButton from "@/components/ui/WhatsAppButton";
-import Preloader from "@/components/ui/Preloader";
+
 import { Toaster } from "sonner";
 import CookieConsent from "@/components/ui/CookieConsent";
+import CommandPalette from "@/components/ui/CommandPalette";
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -54,8 +55,16 @@ export const metadata: Metadata = {
     description: "India's trusted distributor for mission-critical circuit protection for EV, Energy Storage & Industrial Power.",
     url: "https://www.costadevices.com",
     siteName: "Costa Devices",
+    images: [
+      {
+        url: "/api/og?title=Costa Devices Global",
+        width: 1200,
+        height: 630,
+      },
+    ],
     type: "website",
   },
+  manifest: "/manifest.webmanifest",
 };
 
 export default function RootLayout({
@@ -108,10 +117,9 @@ export default function RootLayout({
         />
       </head>
       <body className="antialiased bg-bg-primary transition-colors duration-500 font-body" suppressHydrationWarning>
-        <Preloader />
+
         <SmoothScroll>
-          {/* Global Matte Noise Overlay for Physical Texture */}
-          <div className="pointer-events-none fixed inset-0 z-50 opacity-[0.02] dark:opacity-[0.04] mix-blend-multiply dark:mix-blend-screen" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }}></div>
+          {/* Subtle global texture */}
           
           <a href="#main-content" className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[200] focus:px-4 focus:py-2 focus:rounded-lg focus:text-sm focus:font-semibold" style={{ background: "var(--brand-green)", color: "#fff" }}>
             Skip to main content
@@ -127,6 +135,7 @@ export default function RootLayout({
           <Footer />
           <WhatsAppButton />
           <ScrollToTop />
+          <CommandPalette />
           
           <Toaster 
             position="bottom-right" 

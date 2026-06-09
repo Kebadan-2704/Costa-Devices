@@ -127,7 +127,7 @@ export const BRANDS = [
   { name: "ABB", products: "VFDs, Breakers, Safety Relays, Contactors", logo: "/logos/abb.svg", image: "/images/ABB.png", description: "Electrification & automation" },
   { name: "Schneider", products: "Breakers, Safety Relays, Contactors", logo: "/logos/schneider.svg", image: "/images/Schneider.png", description: "Energy management" },
   { name: "Littelfuse", products: "Fuses", logo: "/logos/littelfuse.svg", image: "/images/littlelfuse.png", description: "Circuit protection solutions" },
-  { name: "Mersen", products: "Fuses", logo: "/logos/mersen.svg", image: "/images/mersen.png", description: "Electrical power expertise" },
+  { name: "Mersen", products: "Fuses", logo: "/logos/mersen.svg", image: "/images/mersen.png", description: "Passive Components power expertise" },
   { name: "Cooper Power", products: "Fuse, Switch, Tap Changer, Bushing", logo: "/logos/cooper-power.svg", image: "/images/cooper power.png", description: "Smart grid solutions" },
   { name: "HPS", products: "Transformers", logo: "/logos/hps.svg", image: "/images/hps.png", description: "Transformer manufacturing" },
   { name: "SNC", products: "Transformers", logo: "/logos/snc.svg", image: "/images/snc.jpg", description: "Custom magnetics" },
@@ -141,7 +141,7 @@ export const BRANDS = [
 ];
 
 export const DISTRIBUTOR_BRANDS = [
-  "PKC Group", "Ohmite", "Kyocera", "Sensata Technologies", "KOA Speer Electronics", "Diodes Incorporated",
+  "PKC Group", "Ohmite", "Kyocera", "Sensata Technologies", "KOA Speer Active Components", "Diodes Incorporated",
   "IODE Corp", "Knowles", "Glenair", "Honeywell", "Chemi-Con", "Aptiv", "AirBorn", "Abracon", "SK hynix",
   "Macronix", "Winbond", "Texas Instruments", "Fujitsu", "Walsin", "TE Connectivity", "Pulse", "TSMC",
   "OSRAM", "Micro Commercial Components", "Coilcraft", "ROHM Semiconductor", "Nichicon", "KEL", "Bourns",
@@ -473,37 +473,44 @@ export const STATS = [
 
 export const NAV_LINKS = [
   { label: "Home", href: "/" },
-  { 
-    label: "Products", 
-    href: "/electronics",
+  {
+    label: "Products",
+    href: "/active-components",
     megaMenu: {
       categories: [
-        { 
-          label: "Electronic Components", 
-          href: "/electronics",
+        {
+          label: "Electronic Components",
+          href: "/active-components",
           products: [
-            { label: "IC", href: "/electronics" },
-            { label: "Memory", href: "/electronics" },
-            { label: "CPU / HDD / LCD", href: "/electronics" }
+            { label: "IC", href: "/active-components" },
+            { label: "Memory", href: "/active-components" },
+            { label: "CPU / HDD / LCD", href: "/active-components" }
           ]
         },
-        { 
-          label: "Electrical Components", 
-          href: "/electrical",
+        {
+          label: "Electrical Components",
+          href: "/passive-components",
           products: [
-            { label: "Fuses", href: "/electrical" },
-            { label: "Contactors", href: "/electrical" },
-            { label: "Relays", href: "/electrical" },
-            { label: "Switches", href: "/electrical" }
+            { label: "Fuses", href: "/passive-components" },
+            { label: "Contactors", href: "/passive-components" },
+            { label: "Relays", href: "/passive-components" },
+            { label: "Switches", href: "/passive-components" }
           ]
         }
       ]
     }
   },
   { label: "Services", href: "/services" },
-  { label: "Company", href: "/company" },
-  { 
-    label: "Quality", 
+  {
+    label: "Company",
+    href: "/company",
+    dropdown: [
+      { label: "About Us", href: "/company" },
+      { label: "Blog", href: "/blog" }
+    ]
+  },
+  {
+    label: "Quality",
     href: "/quality",
     dropdown: [
       { label: "Certifications", href: "/quality" },
@@ -521,7 +528,7 @@ export const COUNTERFEIT_STEPS = [
   { step: 5, title: "Marking Test", description: "MIL-STD-883G compliance verification of component markings" },
   { step: 6, title: "Decapsulation Test", description: "Die analysis and verification with original manufacturer" },
   { step: 7, title: "X-Ray Inspection", description: "Internal structure validation to detect tampering or mismatched die" },
-  { step: 8, title: "Electrical Test", description: "Full functional and parametric testing to ensure specifications are met" },
+  { step: 8, title: "Passive Components Test", description: "Full functional and parametric testing to ensure specifications are met" },
 ];
 
 export const MANUFACTURERS = [

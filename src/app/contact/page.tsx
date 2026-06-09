@@ -100,35 +100,41 @@ export default function ContactPage() {
                   </div>
                 ) : (
                   <form onSubmit={handleSubmit} className="bg-bg-secondary border border-glass-border p-10 lg:p-12 transition-colors duration-500 rounded-2xl">
-                    <h3 className="font-heading text-2xl font-black mb-8 text-text-primary tracking-tighter transition-colors duration-500">CONTACT US</h3>
+                    <div className="flex items-center justify-between mb-8 flex-wrap gap-4">
+                      <h3 className="font-heading text-2xl font-black text-text-primary tracking-tighter transition-colors duration-500">CONTACT US</h3>
+                      <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-costa-green/10 border border-costa-green/20 text-costa-green text-xs font-bold tracking-widest uppercase">
+                        <Clock size={12} />
+                        Avg. Response: 4 Hours
+                      </div>
+                    </div>
                     
                     {/* Honeypot field - hidden from users */}
                     <input type="text" name="website" value={honeypot} onChange={(e) => setHoneypot(e.target.value)} className="hidden" tabIndex={-1} autoComplete="off" aria-hidden="true" />
                     
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                       <div>
-                        <label className="font-mono text-[10px] text-text-muted uppercase tracking-widest block mb-2 transition-colors duration-500">Your Name *</label>
+                        <label className="font-mono text-xs text-text-muted uppercase tracking-widest block mb-2 transition-colors duration-500">Your Name *</label>
                         <input name="name" value={formData.name} onChange={handleChange} required className="w-full bg-bg-primary border border-glass-border text-text-primary font-mono text-sm p-4 rounded-xl focus:outline-none focus:border-costa-green transition-colors duration-500 shadow-sm" placeholder="Name" />
                       </div>
                       <div>
-                        <label className="font-mono text-[10px] text-text-muted uppercase tracking-widest block mb-2 transition-colors duration-500">Organization</label>
+                        <label className="font-mono text-xs text-text-muted uppercase tracking-widest block mb-2 transition-colors duration-500">Organization</label>
                         <input name="company" value={formData.company} onChange={handleChange} className="w-full bg-bg-primary border border-glass-border text-text-primary font-mono text-sm p-4 rounded-xl focus:outline-none focus:border-costa-green transition-colors duration-500 shadow-sm" placeholder="Company Name" />
                       </div>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                       <div>
-                        <label className="font-mono text-[10px] text-text-muted uppercase tracking-widest block mb-2 transition-colors duration-500">Email Address *</label>
+                        <label className="font-mono text-xs text-text-muted uppercase tracking-widest block mb-2 transition-colors duration-500">Email Address *</label>
                         <input name="email" type="email" value={formData.email} onChange={handleChange} required className="w-full bg-bg-primary border border-glass-border text-text-primary font-mono text-sm p-4 rounded-xl focus:outline-none focus:border-costa-green transition-colors duration-500 shadow-sm" placeholder="Email Address" />
                       </div>
                       <div>
-                        <label className="font-mono text-[10px] text-text-muted uppercase tracking-widest block mb-2 transition-colors duration-500">Phone Number</label>
+                        <label className="font-mono text-xs text-text-muted uppercase tracking-widest block mb-2 transition-colors duration-500">Phone Number</label>
                         <input name="phone" type="tel" value={formData.phone} onChange={handleChange} className="w-full bg-bg-primary border border-glass-border text-text-primary font-mono text-sm p-4 rounded-xl focus:outline-none focus:border-costa-green transition-colors duration-500 shadow-sm" placeholder="Phone Number" />
                       </div>
                     </div>
 
                     <div className="mb-6">
-                      <label className="font-mono text-[10px] text-text-muted uppercase tracking-widest block mb-2 transition-colors duration-500">Subject</label>
+                      <label className="font-mono text-xs text-text-muted uppercase tracking-widest block mb-2 transition-colors duration-500">Subject</label>
                       <select name="subject" value={formData.subject} onChange={handleChange} className="w-full bg-bg-primary border border-glass-border text-text-primary font-mono text-sm p-4 rounded-xl focus:outline-none focus:border-costa-green transition-colors duration-500 cursor-pointer appearance-none shadow-sm">
                         <option value="general">General Inquiry</option>
                         <option value="quote">Hardware Sourcing (RFQ)</option>
@@ -138,11 +144,11 @@ export default function ContactPage() {
                     </div>
 
                     <div className="mb-10">
-                      <label className="font-mono text-[10px] text-text-muted uppercase tracking-widest block mb-2 transition-colors duration-500">Message *</label>
+                      <label className="font-mono text-xs text-text-muted uppercase tracking-widest block mb-2 transition-colors duration-500">Message *</label>
                       <textarea name="message" value={formData.message} onChange={handleChange} required rows={5} className="w-full bg-bg-primary border border-glass-border text-text-primary font-mono text-sm p-4 rounded-xl focus:outline-none focus:border-costa-green transition-colors duration-500 resize-none shadow-sm" placeholder="Provide your requirements..." />
                     </div>
 
-                    <button type="submit" disabled={formState === "submitting"} className="btn-primary w-full rounded-lg py-5 text-sm tracking-[0.15em] group disabled:opacity-50">
+                    <button type="submit" disabled={formState === "submitting"} className="rounded-lg bg-[#111111] text-white hover:bg-costa-green transition-colors w-full rounded-lg py-5 text-sm tracking-[0.15em] group disabled:opacity-50">
                       {formState === "submitting" ? (
                         <>
                           <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
@@ -187,7 +193,7 @@ export default function ContactPage() {
                     <div className="flex items-center gap-4 mb-6 pb-6 border-b border-glass-border transition-colors duration-500">
                       <div>
                         <h4 className="font-heading text-lg font-black text-text-primary tracking-tighter transition-colors duration-500">{office.city.toUpperCase()} OFFICE</h4>
-                        <span className="font-mono text-[10px] text-costa-green font-bold uppercase tracking-[0.2em]">{office.label}</span>
+                        <span className="font-mono text-xs text-costa-green font-bold uppercase tracking-[0.2em]">{office.label}</span>
                       </div>
                     </div>
                     <div className="space-y-4 font-mono text-xs text-text-secondary transition-colors duration-500">
@@ -217,7 +223,7 @@ export default function ContactPage() {
         <ScrollReveal className="w-full">
           <div className="w-full h-[500px] relative grayscale hover:grayscale-0 transition-all duration-1000">
             <iframe 
-              src="https://www.google.com/maps?q=Coimbatore&output=embed" 
+              src="https://www.google.com/maps?q=Dubai+Silicon+Oasis&output=embed" 
               width="100%" 
               height="100%" 
               style={{ border: 0 }} 

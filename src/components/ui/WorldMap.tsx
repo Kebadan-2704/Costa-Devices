@@ -73,7 +73,7 @@ export default function WorldMap() {
             <div className="relative top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 md:w-4 md:h-4 bg-bg-primary rounded-full shadow-[0_0_15px_rgba(13,107,61,0.7)] border-[3px] border-costa-green" />
             
             {/* Tooltip Label */}
-            <div className={`absolute whitespace-nowrap px-3 py-1.5 bg-bg-elevated text-text-primary border border-glass-border text-[10px] font-bold tracking-widest uppercase rounded-lg opacity-0 transition-all duration-300 transform scale-90
+            <div className={`absolute whitespace-nowrap px-3 py-1.5 bg-bg-elevated text-text-primary border border-glass-border text-xs font-bold tracking-widest uppercase rounded-lg opacity-0 transition-all duration-300 transform scale-90
               ${i === 0 ? "bottom-full mb-3 left-1/2 -translate-x-1/2" : ""}
               ${i === 1 ? "left-full ml-3 top-1/2 -translate-y-1/2" : ""}
               ${i === 2 ? "top-full mt-3 left-1/2 -translate-x-1/2" : ""}

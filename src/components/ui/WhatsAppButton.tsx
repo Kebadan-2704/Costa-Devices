@@ -12,14 +12,16 @@ export default function WhatsAppButton() {
         href={whatsappUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="group flex items-center gap-2.5 bg-white text-text-primary pr-5 pl-2 py-2 rounded-full shadow-[0_8px_30px_rgba(0,0,0,0.08)] border border-black/5 hover:border-[#25D366]/30 hover:-translate-y-1 hover:shadow-[0_15px_40px_rgba(37,211,102,0.12)] transition-all duration-300"
-        aria-label="Chat on WhatsApp"
+        className="group flex items-center gap-3 bg-bg-primary/90 backdrop-blur-md text-text-primary pr-4 pl-1.5 py-1.5 rounded-lg border border-glass-border shadow-sm hover:border-costa-green/50 hover:-translate-y-0.5 hover:shadow-md transition-all duration-300"
+        aria-label="Contact Support"
       >
-        <div className="relative flex items-center justify-center w-9 h-9 bg-[#25D366]/10 rounded-full group-hover:bg-[#25D366] transition-colors duration-300">
-          <MessageCircle size={18} className="text-[#25D366] group-hover:text-white relative z-10 transition-colors duration-300" />
-          <span className="absolute w-full h-full rounded-full border border-[#25D366] animate-ping opacity-20"></span>
+        <div className="flex items-center justify-center w-8 h-8 bg-bg-secondary rounded-md group-hover:bg-costa-green/10 transition-colors duration-300">
+          <MessageCircle size={16} className="text-text-muted group-hover:text-costa-green transition-colors duration-300" />
         </div>
-        <span className="text-[13px] font-semibold tracking-tight">WhatsApp</span>
+        <div className="flex flex-col items-start pr-1">
+          <span className="text-xs font-bold tracking-widest uppercase text-text-muted group-hover:text-costa-green transition-colors leading-none mb-0.5">Live Support</span>
+          <span className="text-sm font-medium leading-none">Message Team</span>
+        </div>
       </a>
     </div>
   );

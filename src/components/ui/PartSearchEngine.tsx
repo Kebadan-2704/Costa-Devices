@@ -102,7 +102,7 @@ export default function PartSearchEngine({ variant = "default" }: { variant?: "d
                 className="flex-1 bg-transparent border-none outline-none text-text-primary placeholder-text-muted/60 font-medium min-w-0"
               />
               {!isOpen && (
-                <div className="flex items-center gap-0.5 opacity-50 text-[10px] shrink-0">
+                <div className="flex items-center gap-0.5 opacity-50 text-xs shrink-0">
                   <Command size={10} />
                   <span className="font-mono font-bold">K</span>
                 </div>
@@ -121,7 +121,7 @@ export default function PartSearchEngine({ variant = "default" }: { variant?: "d
                   <div className="max-h-[60vh] overflow-y-auto custom-scrollbar p-2">
                     {results.length > 0 ? (
                       <>
-                        <p className="px-3 py-2 font-mono text-[10px] text-text-muted uppercase tracking-widest">{results.length} result{results.length !== 1 ? 's' : ''} found</p>
+                        <p className="px-3 py-2 font-mono text-xs text-text-muted uppercase tracking-widest">{results.length} result{results.length !== 1 ? 's' : ''} found</p>
                         {results.map((part) => (
                           <Link
                             href={`/request-quote?part=${part.partNumber}`}
@@ -137,7 +137,7 @@ export default function PartSearchEngine({ variant = "default" }: { variant?: "d
                                 <div className="flex items-center gap-2">
                                   <span className="font-mono font-bold text-text-primary text-sm truncate">{part.partNumber}</span>
                                 </div>
-                                <p className="text-[10px] text-text-muted mt-0.5 truncate">{part.manufacturer} • {part.category}</p>
+                                <p className="text-xs text-text-muted mt-0.5 truncate">{part.manufacturer} • {part.category}</p>
                               </div>
                             </div>
                             <ArrowRight size={14} className="text-costa-green opacity-0 group-hover:opacity-100 transition-opacity -translate-x-2 group-hover:translate-x-0 duration-300 shrink-0" />
@@ -146,20 +146,21 @@ export default function PartSearchEngine({ variant = "default" }: { variant?: "d
                       </>
                     ) : (
                       <div className="p-8 text-center text-text-muted">
-                        <p className="text-sm">No components found for &ldquo;<span className="font-bold text-text-primary">{query}</span>&rdquo;</p>
-                        <Link href="/contact" onClick={() => setIsOpen(false)} className="inline-block mt-3 text-xs font-bold text-costa-green hover:underline">
-                          Request Custom Sourcing
+                        <p className="text-sm font-medium mb-3">Part <span className="font-bold text-text-primary">&ldquo;{query}&rdquo;</span> is not in our public catalog.</p>
+                        <p className="text-xs mb-4">We can source it via our global supplier network within 24 hours.</p>
+                        <Link href={`/request-quote?part=${query}`} onClick={() => { setIsOpen(false); setQuery(""); }} className="inline-flex items-center gap-2 px-4 py-2 bg-costa-green text-white rounded-lg text-xs font-bold hover:bg-emerald-600 transition-colors">
+                          <Package size={14} /> Request Quote for {query}
                         </Link>
                       </div>
                     )}
                   </div>
                 ) : (
                   <div className="p-6 bg-black/5">
-                    <p className="text-[10px] font-bold text-text-muted uppercase tracking-widest mb-3">Suggested Searches</p>
+                    <p className="text-xs font-bold text-text-muted uppercase tracking-widest mb-3">Suggested Searches</p>
                     <div className="flex flex-wrap gap-2">
-                      <span onClick={() => setQuery("FWP-50B")} className="text-[10px] font-mono font-bold bg-white text-text-secondary px-2.5 py-1.5 rounded-full border border-black/5 cursor-pointer hover:border-costa-green hover:text-costa-green transition-colors">FWP-50B</span>
-                      <span onClick={() => setQuery("Eaton")} className="text-[10px] font-mono font-bold bg-white text-text-secondary px-2.5 py-1.5 rounded-full border border-black/5 cursor-pointer hover:border-costa-green hover:text-costa-green transition-colors">Eaton Bussmann</span>
-                      <span onClick={() => setQuery("IGBT")} className="text-[10px] font-mono font-bold bg-white text-text-secondary px-2.5 py-1.5 rounded-full border border-black/5 cursor-pointer hover:border-costa-green hover:text-costa-green transition-colors">IGBT</span>
+                      <span onClick={() => setQuery("FWP-50B")} className="text-xs font-mono font-bold bg-white text-text-secondary px-2.5 py-1.5 rounded-full border border-black/5 cursor-pointer hover:border-costa-green hover:text-costa-green transition-colors">FWP-50B</span>
+                      <span onClick={() => setQuery("Eaton")} className="text-xs font-mono font-bold bg-white text-text-secondary px-2.5 py-1.5 rounded-full border border-black/5 cursor-pointer hover:border-costa-green hover:text-costa-green transition-colors">Eaton Bussmann</span>
+                      <span onClick={() => setQuery("IGBT")} className="text-xs font-mono font-bold bg-white text-text-secondary px-2.5 py-1.5 rounded-full border border-black/5 cursor-pointer hover:border-costa-green hover:text-costa-green transition-colors">IGBT</span>
                     </div>
                   </div>
                 )}
@@ -211,9 +212,9 @@ export default function PartSearchEngine({ variant = "default" }: { variant?: "d
                   <p className="text-sm font-medium opacity-80 text-text-secondary">Search across millions of verified components</p>
                   
                   <div className="mt-8 flex flex-wrap justify-center gap-2">
-                    <span className="text-[10px] font-mono font-bold uppercase tracking-widest bg-black/5 text-text-secondary px-3 py-1.5 rounded-full border border-black/5">FWP-50B</span>
-                    <span className="text-[10px] font-mono font-bold uppercase tracking-widest bg-black/5 text-text-secondary px-3 py-1.5 rounded-full border border-black/5">Eaton Bussmann</span>
-                    <span className="text-[10px] font-mono font-bold uppercase tracking-widest bg-black/5 text-text-secondary px-3 py-1.5 rounded-full border border-black/5">IGBT Modules</span>
+                    <span className="text-xs font-mono font-bold uppercase tracking-widest bg-black/5 text-text-secondary px-3 py-1.5 rounded-full border border-black/5">FWP-50B</span>
+                    <span className="text-xs font-mono font-bold uppercase tracking-widest bg-black/5 text-text-secondary px-3 py-1.5 rounded-full border border-black/5">Eaton Bussmann</span>
+                    <span className="text-xs font-mono font-bold uppercase tracking-widest bg-black/5 text-text-secondary px-3 py-1.5 rounded-full border border-black/5">IGBT Modules</span>
                   </div>
                 </div>
               </div>
@@ -224,7 +225,7 @@ export default function PartSearchEngine({ variant = "default" }: { variant?: "d
               <div className="max-h-[60vh] overflow-y-auto custom-scrollbar">
                 {results.length > 0 ? (
                   <div className="p-2 space-y-1">
-                    <p className="px-3 py-2 font-mono text-[10px] text-text-muted uppercase tracking-widest">{results.length} result{results.length !== 1 ? 's' : ''} found</p>
+                    <p className="px-3 py-2 font-mono text-xs text-text-muted uppercase tracking-widest">{results.length} result{results.length !== 1 ? 's' : ''} found</p>
                     {results.map((part) => (
                       <Link
                         href={`/request-quote?part=${part.partNumber}`}
@@ -240,9 +241,9 @@ export default function PartSearchEngine({ variant = "default" }: { variant?: "d
                             <div className="flex items-center gap-2">
                               <span className="font-mono font-bold text-text-primary">{part.partNumber}</span>
                               {part.inStock ? (
-                                <span className="text-[10px] font-bold tracking-widest uppercase px-2 py-0.5 rounded-full bg-costa-green/10 text-costa-green border border-costa-green/20">In Stock</span>
+                                <span className="text-xs font-bold tracking-widest uppercase px-2 py-0.5 rounded-full bg-costa-green/10 text-costa-green border border-costa-green/20">In Stock</span>
                               ) : (
-                                <span className="text-[10px] font-bold tracking-widest uppercase px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20">Backordered</span>
+                                <span className="text-xs font-bold tracking-widest uppercase px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20">Backordered</span>
                               )}
                             </div>
                             <p className="text-xs text-text-muted mt-1">{part.manufacturer} • {part.category}</p>
@@ -255,11 +256,11 @@ export default function PartSearchEngine({ variant = "default" }: { variant?: "d
                     ))}
                   </div>
                 ) : (
-                  <div className="p-12 text-center text-text-muted">
-                    <p>No components found for &ldquo;<span className="font-bold text-text-primary">{query}</span>&rdquo;</p>
-                    <p className="text-xs mt-2 opacity-70">If it&apos;s not cataloged, we can still source it through our Global Network.</p>
-                    <Link href="/contact" onClick={() => setIsOpen(false)} className="inline-block mt-4 text-xs font-bold text-costa-green hover:underline">
-                      Request Custom Sourcing
+                  <div className="p-12 text-center text-text-muted bg-black/5 rounded-xl border border-black/5 m-4">
+                    <p className="text-lg font-medium mb-2">Part <span className="font-bold text-text-primary">&ldquo;{query}&rdquo;</span> is not in our public catalog.</p>
+                    <p className="text-sm mt-2 opacity-80 mb-6 max-w-md mx-auto">We have access to 1B+ components globally. Submit an RFQ and our team will check worldwide availability and pricing within 4 hours.</p>
+                    <Link href={`/request-quote?part=${query}`} onClick={() => setIsOpen(false)} className="inline-flex items-center gap-2 px-6 py-3 bg-costa-green text-white rounded-lg text-sm font-bold hover:bg-emerald-600 shadow-md hover:shadow-lg transition-all">
+                      <Package size={16} /> Request Quote for {query} <ArrowRight size={16} />
                     </Link>
                   </div>
                 )}

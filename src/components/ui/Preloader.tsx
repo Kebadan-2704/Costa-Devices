@@ -14,11 +14,16 @@ const BOOT_MESSAGES = [
 ];
 
 export default function Preloader() {
-  const [isLoading, setIsLoading] = useState(true);
-  const [messageIndex, setMessageIndex] = useState(0);
   const pathname = usePathname();
+  const [isLoading, setIsLoading] = useState(pathname !== "/");
+  const [messageIndex, setMessageIndex] = useState(0);
 
   useEffect(() => {
+    if (pathname === "/") {
+      setIsLoading(false);
+      return;
+    }
+
     setIsLoading(true);
     setMessageIndex(0);
 
@@ -89,7 +94,7 @@ export default function Preloader() {
 
             <div className="w-full relative">
               {/* Header Info */}
-              <div className="flex justify-between items-center w-full text-[11px] md:text-sm font-black tracking-widest uppercase text-black/80 mb-3 border-b border-black/10 pb-3">
+              <div className="flex justify-between items-center w-full text-sm md:text-sm font-black tracking-widest uppercase text-black/80 mb-3 border-b border-black/10 pb-3">
                 <span className="flex items-center gap-2 text-costa-green">
                   <span className="w-2.5 h-2.5 bg-costa-green animate-pulse rounded-full" />
                   SYSTEM ONLINE
