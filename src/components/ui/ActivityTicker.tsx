@@ -65,7 +65,7 @@ export default function ActivityTicker() {
   }, []);
 
   return (
-    <div className="w-full bg-white text-gray-900 border-b border-gray-100 flex items-center h-11 relative shadow-sm pointer-events-auto z-40">
+    <div className="fixed bottom-0 left-0 right-0 w-full bg-white text-gray-900 border-t border-gray-100 flex items-center h-[52px] shadow-[0_-4px_10px_rgba(0,0,0,0.03)] pointer-events-auto z-[101]">
       <div className="h-full flex items-center px-4 flex-shrink-0 relative z-10 bg-white shadow-[4px_0_10px_rgba(0,0,0,0.03)] border-r border-gray-100">
         <div className="flex items-center bg-gray-50 border border-gray-200 rounded-full px-3 py-1">
           <span className="w-1.5 h-1.5 bg-costa-green rounded-full animate-pulse mr-2"></span>
@@ -79,16 +79,16 @@ export default function ActivityTicker() {
         
         <Marquee speed="slowest" direction="left" className="overflow-y-hidden">
           {events.map((event, idx) => (
-            <div key={idx} className="flex items-center mx-6 gap-2">
+            <div key={idx} className="flex items-center mx-8 gap-4">
               <span className="flex-shrink-0">{event.icon}</span>
-              <span className="text-[10px] font-black tracking-widest text-gray-900 uppercase whitespace-nowrap drop-shadow-sm">
+              <span className="text-[11px] font-black tracking-[0.15em] text-gray-900 uppercase whitespace-nowrap drop-shadow-sm">
                 {event.text}
               </span>
               <span className="text-[9px] text-gray-400 font-bold ml-1">
                 {event.time}
               </span>
-              {/* Separator dot */}
-              <span className="w-1 h-1 bg-gray-300 rounded-full ml-6"></span>
+              {/* Bold vertical line separator */}
+              <div className="w-[3px] h-4 bg-gray-200 rounded-full ml-8"></div>
             </div>
           ))}
         </Marquee>

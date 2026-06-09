@@ -11,6 +11,7 @@ import WhatsAppButton from "@/components/ui/WhatsAppButton";
 import { Toaster } from "sonner";
 import CookieConsent from "@/components/ui/CookieConsent";
 import CommandPalette from "@/components/ui/CommandPalette";
+import ActivityTicker from "@/components/ui/ActivityTicker";
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -149,6 +150,8 @@ export default function RootLayout({
           />
           <CookieConsent />
         </SmoothScroll>
+        {/* Bottom global Activity Ticker */}
+        <ActivityTicker />
       </body>
     </html>
   );
