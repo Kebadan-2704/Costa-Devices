@@ -26,8 +26,8 @@ export default function BOMUploadZone() {
       onClick={handleFakeDrop}
       className={`relative w-full max-w-md rounded-2xl border-2 border-dashed transition-all duration-300 cursor-pointer overflow-hidden ${
         isHovered 
-          ? 'border-costa-green bg-costa-green/5 shadow-[0_0_30px_rgba(26,175,93,0.15)]' 
-          : 'border-gray-300 bg-white hover:border-costa-green'
+          ? 'border-costa-green bg-white shadow-[0_10px_40px_rgba(26,175,93,0.12)]' 
+          : 'border-gray-200 bg-gray-50/50 hover:border-costa-green'
       }`}
     >
       {/* Background animated pulse when hovered */}
@@ -35,11 +35,11 @@ export default function BOMUploadZone() {
         <motion.div 
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
-          className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(26,175,93,0.1)_0%,transparent_70%)]"
+          className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(26,175,93,0.08)_0%,transparent_70%)] pointer-events-none"
         />
       )}
 
-      <div className="p-6 flex flex-col items-center justify-center text-center relative z-10 min-h-[140px]">
+      <div className="p-8 flex flex-col items-center justify-center text-center relative z-10 min-h-[160px]">
         {isUploading ? (
           <motion.div 
             initial={{ opacity: 0, y: 10 }}
@@ -63,12 +63,12 @@ export default function BOMUploadZone() {
             <motion.div 
               animate={{ y: isHovered ? -5 : 0 }}
               transition={{ duration: 0.3 }}
-              className="w-12 h-12 rounded-full bg-gray-50 border border-gray-100 flex items-center justify-center mb-3 shadow-sm group-hover:bg-white"
+              className="w-14 h-14 rounded-full bg-white border border-gray-100 flex items-center justify-center mb-4 shadow-[0_4px_14px_rgba(0,0,0,0.05)] group-hover:shadow-costa-green/20"
             >
-              <UploadCloud size={24} className={isHovered ? "text-costa-green" : "text-gray-400"} />
+              <UploadCloud size={28} className={isHovered ? "text-costa-green" : "text-gray-400"} />
             </motion.div>
-            <h3 className="font-bold text-gray-900 mb-1">Drag & Drop BOM Payload</h3>
-            <p className="text-xs text-gray-500 font-medium mb-3">Upload Excel or CSV for instant algorithmic sourcing.</p>
+            <h3 className="text-lg font-bold text-gray-900 mb-1.5">Drag & Drop BOM Payload</h3>
+            <p className="text-sm text-gray-500 font-medium mb-5">Upload Excel or CSV for instant algorithmic sourcing.</p>
             
             <div className="flex items-center gap-3">
               <div className="flex items-center gap-1.5 px-2 py-1 rounded bg-gray-100 text-[9px] font-bold text-gray-500 uppercase tracking-wider">

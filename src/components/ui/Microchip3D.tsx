@@ -18,13 +18,13 @@ function ChipModel() {
 
   return (
     <group ref={groupRef}>
-      {/* Main Body (Black Epoxy) */}
+      {/* Main Body (White Ceramic) */}
       <mesh position={[0, 0, 0]} castShadow>
         <boxGeometry args={[3, 0.4, 3]} />
         <meshStandardMaterial 
-          color="#0f172a" 
-          roughness={0.7} 
-          metalness={0.2} 
+          color="#ffffff" 
+          roughness={0.2} 
+          metalness={0.1} 
         />
       </mesh>
 
@@ -32,9 +32,9 @@ function ChipModel() {
       <mesh position={[0, 0.21, 0]}>
         <planeGeometry args={[2.5, 2.5]} />
         <meshStandardMaterial 
-          color="#1e293b" 
+          color="#f1f5f9" 
           roughness={0.4} 
-          metalness={0.8}
+          metalness={0.5}
         />
       </mesh>
 
@@ -58,22 +58,22 @@ function ChipModel() {
             {/* Left Pins */}
             <mesh position={[-1.6, -0.1, offset]}>
               <boxGeometry args={[0.4, 0.1, 0.15]} />
-              <meshStandardMaterial color="#cbd5e1" metalness={1} roughness={0.2} />
+              <meshStandardMaterial color="#fbbf24" metalness={0.8} roughness={0.2} />
             </mesh>
             {/* Right Pins */}
             <mesh position={[1.6, -0.1, offset]}>
               <boxGeometry args={[0.4, 0.1, 0.15]} />
-              <meshStandardMaterial color="#cbd5e1" metalness={1} roughness={0.2} />
+              <meshStandardMaterial color="#fbbf24" metalness={0.8} roughness={0.2} />
             </mesh>
             {/* Top Pins */}
             <mesh position={[offset, -0.1, -1.6]}>
               <boxGeometry args={[0.15, 0.1, 0.4]} />
-              <meshStandardMaterial color="#cbd5e1" metalness={1} roughness={0.2} />
+              <meshStandardMaterial color="#fbbf24" metalness={0.8} roughness={0.2} />
             </mesh>
             {/* Bottom Pins */}
             <mesh position={[offset, -0.1, 1.6]}>
               <boxGeometry args={[0.15, 0.1, 0.4]} />
-              <meshStandardMaterial color="#cbd5e1" metalness={1} roughness={0.2} />
+              <meshStandardMaterial color="#fbbf24" metalness={0.8} roughness={0.2} />
             </mesh>
           </group>
         );
@@ -86,9 +86,9 @@ export default function Microchip3D() {
   return (
     <div className="w-full h-full min-h-[400px] cursor-grab active:cursor-grabbing">
       <Canvas camera={{ position: [0, 4, 6], fov: 45 }}>
-        <ambientLight intensity={0.5} />
-        <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} intensity={1} castShadow />
-        <pointLight position={[-10, -10, -10]} intensity={0.5} />
+        <ambientLight intensity={1.5} />
+        <spotLight position={[10, 10, 10]} angle={0.2} penumbra={1} intensity={2} castShadow color="#ffffff" />
+        <pointLight position={[-10, -10, -10]} intensity={1} color="#e2e8f0" />
         
         <PresentationControls
           global

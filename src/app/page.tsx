@@ -72,7 +72,7 @@ export default function HomePage() {
       </div>
 
       {/* 1. HERO — Split Layout (Text Left, Premium Search Right) */}
-      <section className="relative w-full py-16 lg:py-20 overflow-hidden border-b border-gray-100">
+      <section className="relative w-full pt-6 pb-16 lg:pt-8 lg:pb-20 overflow-hidden border-b border-gray-100">
         
         {/* Stunning Animated Enterprise Background */}
         <TechBackground />
@@ -80,7 +80,7 @@ export default function HomePage() {
         <div className="relative z-10 max-w-[1400px] mx-auto px-6 md:px-16">
           
           {/* Split Content: Text Left, Search Right — perfectly vertically centered */}
-          <div className="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-20 min-h-[58vh] py-4">
+          <div className="flex flex-col lg:flex-row items-center lg:items-start justify-between gap-12 lg:gap-20 min-h-[58vh] py-4 lg:pt-12">
             
             {/* ─── LEFT COLUMN: Text Content ─── */}
             <motion.div
@@ -419,12 +419,12 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 1.5 DEEP-TECH HARDWARE & MARKET INTELLIGENCE */}
-      <section className="py-24 bg-[#0f172a] text-white relative overflow-hidden border-b border-white/10">
+      {/* 1.5 DEEP-TECH HARDWARE LAYER (Market Intel & 3D Microchip) */}
+      <section className="relative overflow-hidden py-24 bg-white text-gray-900 border-y border-gray-100">
         
-        {/* Subtle grid bg for dark section */}
-        <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(rgba(255,255,255,0.1) 1px, transparent 1px)', backgroundSize: '24px 24px' }}></div>
-        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-costa-green/10 rounded-full blur-[150px] pointer-events-none"></div>
+        {/* Subtle grid bg for light section */}
+        <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(#10b981 1px, transparent 1px)', backgroundSize: '24px 24px' }}></div>
+        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-costa-green/5 rounded-full blur-[150px] pointer-events-none"></div>
 
         <div className="max-w-[1400px] mx-auto px-6 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -441,10 +441,10 @@ export default function HomePage() {
                   <Activity size={12} />
                   Live Component Data
                 </div>
-                <h2 className="font-heading text-4xl md:text-5xl font-black leading-[1.1] tracking-tight mb-4 text-white">
+                <h2 className="font-heading text-4xl md:text-5xl font-black leading-[1.1] tracking-tight mb-4 text-gray-900">
                   Algorithmic Market Intelligence.
                 </h2>
-                <p className="text-gray-400 font-medium">
+                <p className="text-gray-600 font-medium">
                   We don't guess. We scrape global spot markets, OEM excess inventory, and franchised lines to give you real-time visibility into lead times, price trends, and availability.
                 </p>
               </div>
@@ -458,7 +458,7 @@ export default function HomePage() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 1, delay: 0.2 }}
-              className="relative h-[500px] rounded-3xl bg-[#080c17] border border-white/10 overflow-hidden"
+              className="relative h-[500px] rounded-3xl bg-gray-50 border border-gray-100 overflow-hidden shadow-2xl"
             >
               <div className="absolute top-5 left-5 z-20 flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-costa-green animate-pulse"></span>
