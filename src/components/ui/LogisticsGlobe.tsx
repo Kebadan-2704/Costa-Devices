@@ -6,7 +6,7 @@ import dynamic from "next/dynamic";
 const Globe = dynamic(() => import("react-globe.gl"), { ssr: false });
 
 export default function LogisticsGlobe() {
-  const globeRef = useRef<any>();
+  const globeRef = useRef<any>(null);
   const [dimensions, setDimensions] = useState({ width: 500, height: 500 });
   const [isMounted, setIsMounted] = useState(false);
 
