@@ -191,8 +191,7 @@ export default function Navbar() {
                 {/* Divider */}
                 <div className="w-px h-8 bg-black/8 mx-2" />
 
-                {/* Search */}
-                <PartSearchEngine />
+                {/* Search removed */}
 
                 {/* CTA Button */}
                 <Link
@@ -206,7 +205,6 @@ export default function Navbar() {
 
               {/* Mobile Right */}
               <div className="flex lg:hidden items-center gap-2">
-                <PartSearchEngine />
                 <button
                   onClick={() => setMobileOpen(!mobileOpen)}
                   className="relative z-[110] w-10 h-10 flex items-center justify-center rounded-lg hover:bg-black/5 transition-colors"
@@ -250,12 +248,7 @@ export default function Navbar() {
           </div>
 
           <div className="px-6 py-6 flex flex-col gap-2">
-            {/* Mobile Search */}
-            <div className="mb-4">
-              <PartSearchEngine />
-            </div>
-
-            {/* Nav Links */}
+            {/* Mobile Search removed */}            {/* Nav Links */}
             <nav className="flex flex-col">
               {NAV_LINKS.map((link) => (
                 <div key={link.label} className="flex flex-col border-b border-black/5">

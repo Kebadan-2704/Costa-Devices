@@ -63,61 +63,10 @@ export default function HomePage() {
     <div className="min-h-screen bg-bg-primary text-text-primary overflow-hidden" ref={containerRef}>
 
       {/* 1. HERO — Split Layout (Text Left, Premium Search Right) */}
-      <section className="relative w-full pt-24 pb-16 lg:pt-28 lg:pb-20 overflow-hidden border-b border-gray-100" style={{ background: 'linear-gradient(135deg, #f0fdf8 0%, #ffffff 40%, #f0fdf8 70%, #e6faf2 100%)' }}>
+      <section className="relative w-full pt-24 pb-16 lg:pt-28 lg:pb-20 overflow-hidden border-b border-gray-100">
         
-        {/* ── Premium Background Layer 1: Dot-grid ── */}
-        <div 
-          className="absolute inset-0 z-0"
-          style={{ 
-            backgroundImage: `radial-gradient(circle, rgba(26,175,93,0.12) 1px, transparent 1px)`,
-            backgroundSize: '28px 28px'
-          }}
-        ></div>
-
-        {/* ── Premium Background Layer 2: Circuit lines SVG ── */}
-        <svg className="absolute inset-0 w-full h-full z-0 opacity-[0.07]" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <pattern id="circuit" x="0" y="0" width="120" height="120" patternUnits="userSpaceOnUse">
-              {/* Horizontal lines */}
-              <line x1="0" y1="30" x2="40" y2="30" stroke="#1aaf5d" strokeWidth="1.5"/>
-              <line x1="80" y1="30" x2="120" y2="30" stroke="#1aaf5d" strokeWidth="1.5"/>
-              {/* Vertical lines */}
-              <line x1="40" y1="0" x2="40" y2="30" stroke="#1aaf5d" strokeWidth="1.5"/>
-              <line x1="80" y1="30" x2="80" y2="60" stroke="#1aaf5d" strokeWidth="1.5"/>
-              <line x1="60" y1="60" x2="60" y2="120" stroke="#1aaf5d" strokeWidth="1.5"/>
-              {/* Corner dots */}
-              <circle cx="40" cy="30" r="3" fill="#1aaf5d"/>
-              <circle cx="80" cy="30" r="3" fill="#1aaf5d"/>
-              <circle cx="80" cy="60" r="3" fill="#1aaf5d"/>
-              <circle cx="60" cy="60" r="3" fill="#1aaf5d"/>
-              {/* Small node squares */}
-              <rect x="37" y="57" width="6" height="6" fill="none" stroke="#1aaf5d" strokeWidth="1.2"/>
-              <rect x="77" y="87" width="6" height="6" fill="none" stroke="#1aaf5d" strokeWidth="1.2"/>
-              {/* Cross junction */}
-              <line x1="20" y1="90" x2="50" y2="90" stroke="#1aaf5d" strokeWidth="1.5"/>
-              <line x1="35" y1="75" x2="35" y2="105" stroke="#1aaf5d" strokeWidth="1.5"/>
-              <circle cx="35" cy="90" r="2.5" fill="#1aaf5d"/>
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#circuit)"/>
-        </svg>
-
-        {/* ── Background Glowing Orbs ── */}
-        {/* Large left mint orb */}
-        <div className="absolute -top-32 -left-32 w-[600px] h-[600px] rounded-full pointer-events-none z-0" style={{ background: 'radial-gradient(circle, rgba(26,175,93,0.12) 0%, transparent 70%)' }}></div>
-        {/* Smaller right teal orb */}
-        <div className="absolute top-1/2 -right-24 w-[400px] h-[400px] rounded-full pointer-events-none z-0" style={{ background: 'radial-gradient(circle, rgba(20,184,166,0.08) 0%, transparent 70%)' }}></div>
-        {/* Center white soft bloom */}
-        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] rounded-full pointer-events-none z-0" style={{ background: 'radial-gradient(ellipse, rgba(255,255,255,0.95) 0%, transparent 65%)' }}></div>
-        {/* Bottom left accent */}
-        <div className="absolute bottom-0 left-1/4 w-[300px] h-[200px] rounded-full pointer-events-none z-0" style={{ background: 'radial-gradient(ellipse, rgba(26,175,93,0.07) 0%, transparent 70%)' }}></div>
-
-        {/* ── Animated floating particles ── */}
-        <div className="absolute top-[18%] left-[8%] w-1.5 h-1.5 rounded-full bg-costa-green animate-ping opacity-30 z-0"></div>
-        <div className="absolute top-[60%] left-[15%] w-1 h-1 rounded-full bg-emerald-400 animate-pulse opacity-50 z-0"></div>
-        <div className="absolute top-[30%] right-[12%] w-2 h-2 rounded-full bg-costa-green animate-ping opacity-20 z-0" style={{ animationDelay: '1s' }}></div>
-        <div className="absolute top-[70%] right-[20%] w-1.5 h-1.5 rounded-full bg-teal-400 animate-pulse opacity-40 z-0"></div>
-        <div className="absolute top-[45%] left-[45%] w-1 h-1 rounded-full bg-costa-green animate-ping opacity-25 z-0" style={{ animationDelay: '2s' }}></div>
+        {/* Stunning Animated Enterprise Background */}
+        <TechBackground />
 
         <div className="relative z-10 max-w-[1400px] mx-auto px-6 md:px-16">
           
