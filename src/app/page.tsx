@@ -65,11 +65,8 @@ export default function HomePage() {
   return (
     <div className="min-h-screen bg-bg-primary text-text-primary overflow-hidden" ref={containerRef}>
       
-      {/* Spacer for fixed Navbar */}
-      <div className="pt-[72px] lg:pt-[88px]"></div>
-
       {/* 1. HERO — Split Layout (Text Left, Premium Search Right) */}
-      <section className="relative w-full pt-6 pb-16 lg:pt-8 lg:pb-20 overflow-hidden border-b border-gray-100">
+      <section className="relative w-full pt-[96px] pb-16 lg:pt-[120px] lg:pb-20 overflow-hidden border-b border-gray-100">
         
         {/* Stunning Animated Enterprise Background */}
         <TechBackground />
@@ -77,7 +74,7 @@ export default function HomePage() {
         <div className="relative z-10 max-w-[1400px] mx-auto px-6 md:px-16">
           
           {/* Split Content: Text Left, Search Right — perfectly vertically centered */}
-          <div className="flex flex-col lg:flex-row items-center lg:items-start justify-between gap-12 lg:gap-20 min-h-[58vh] py-4 lg:pt-12">
+          <div className="flex flex-col lg:flex-row items-center lg:items-start justify-between gap-12 lg:gap-20 min-h-[58vh] pb-4">
             
             {/* ─── LEFT COLUMN: Text Content ─── */}
             <motion.div
