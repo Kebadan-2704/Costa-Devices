@@ -5,13 +5,17 @@ import { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, ShieldCheck, Cpu, Zap, ArrowUpRight, ArrowUp, CheckCircle2, Clock, Search } from "lucide-react";
+import { ArrowRight, ShieldCheck, Cpu, Zap, ArrowUpRight, ArrowUp, CheckCircle2, Clock, Search, Activity } from "lucide-react";
 import { motion, Variants, useScroll, useTransform } from "framer-motion";
 import Marquee from "@/components/ui/Marquee";
 import AnimatedNumber from "@/components/ui/AnimatedNumber";
 import TechBackground from "@/components/ui/TechBackground";
 import LogisticsGlobe from "@/components/ui/LogisticsGlobe";
 import MagneticWrapper from "@/components/ui/MagneticWrapper";
+import ActivityTicker from "@/components/ui/ActivityTicker";
+import MarketIntelligence from "@/components/ui/MarketIntelligence";
+import BOMUploadZone from "@/components/ui/BOMUploadZone";
+import Microchip3D from "@/components/ui/Microchip3D";
 
 const fadeUpVariant: Variants = {
   hidden: { opacity: 0, y: 30 },
@@ -61,6 +65,9 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-bg-primary text-text-primary overflow-hidden" ref={containerRef}>
+      
+      {/* 0. LIVE ACTIVITY TICKER */}
+      <ActivityTicker />
 
       {/* 1. HERO — Split Layout (Text Left, Premium Search Right) */}
       <section className="relative w-full pt-24 pb-16 lg:pt-28 lg:pb-20 overflow-hidden border-b border-gray-100">
@@ -165,25 +172,14 @@ export default function HomePage() {
                 ))}
               </div>
 
-              {/* CTA Buttons — pop in together */}
+              {/* BOM Drag & Drop Zone */}
               <motion.div
                 initial={{ opacity: 0, y: 24 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 1.0, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-                className="flex flex-col sm:flex-row items-start gap-3"
+                className="mt-2 w-full max-w-md"
               >
-                <MagneticWrapper>
-                  <Link href="/request-quote" className="group inline-flex items-center justify-center gap-2.5 px-7 py-3.5 bg-[#0f172a] text-white rounded-xl font-bold text-sm tracking-wide hover:bg-costa-green transition-all duration-300 shadow-xl shadow-gray-900/20 hover:-translate-y-1 hover:shadow-costa-green/25">
-                    <span>Submit BOM Payload</span>
-                    <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform" />
-                  </Link>
-                </MagneticWrapper>
-                <MagneticWrapper>
-                  <Link href="/services" className="group inline-flex items-center justify-center gap-2.5 px-7 py-3.5 bg-white/80 backdrop-blur-sm text-[#0f172a] border border-gray-200/80 rounded-xl font-bold text-sm tracking-wide hover:border-costa-green/50 hover:text-costa-green transition-all duration-300 hover:-translate-y-1">
-                    <Cpu size={15} className="text-[#94a3b8] group-hover:text-costa-green transition-colors" />
-                    <span>Explore Services</span>
-                  </Link>
-                </MagneticWrapper>
+                <BOMUploadZone />
               </motion.div>
             </motion.div>
 
@@ -421,7 +417,59 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* 1.5 DEEP-TECH HARDWARE & MARKET INTELLIGENCE */}
+      <section className="py-24 bg-[#0f172a] text-white relative overflow-hidden border-b border-white/10">
+        
+        {/* Subtle grid bg for dark section */}
+        <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(rgba(255,255,255,0.1) 1px, transparent 1px)', backgroundSize: '24px 24px' }}></div>
+        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-costa-green/10 rounded-full blur-[150px] pointer-events-none"></div>
 
+        <div className="max-w-[1400px] mx-auto px-6 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            
+            {/* Left: Market Intelligence Widget */}
+            <motion.div
+              initial={{ opacity: 0, x: -40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
+              <div className="mb-8">
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-costa-green/10 border border-costa-green/20 text-[10px] font-bold text-costa-green tracking-[0.2em] uppercase w-fit mb-4">
+                  <Activity size={12} />
+                  Live Component Data
+                </div>
+                <h2 className="font-heading text-4xl md:text-5xl font-black leading-[1.1] tracking-tight mb-4 text-white">
+                  Algorithmic Market Intelligence.
+                </h2>
+                <p className="text-gray-400 font-medium">
+                  We don't guess. We scrape global spot markets, OEM excess inventory, and franchised lines to give you real-time visibility into lead times, price trends, and availability.
+                </p>
+              </div>
+              
+              <MarketIntelligence />
+            </motion.div>
+
+            {/* Right: Interactive 3D Microchip */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1, delay: 0.2 }}
+              className="relative h-[500px] rounded-3xl bg-black/40 border border-white/10 backdrop-blur-sm overflow-hidden"
+            >
+              <div className="absolute top-5 left-5 z-20 flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-costa-green animate-pulse"></span>
+                <span className="text-[10px] text-gray-400 font-bold uppercase tracking-widest">Interactive 3D Model</span>
+              </div>
+              <div className="absolute inset-0 z-10 pointer-events-auto">
+                <Microchip3D />
+              </div>
+            </motion.div>
+            
+          </div>
+        </div>
+      </section>
 
       {/* 2. SOCIAL PROOF — Bold marquee */}
       <section className="relative overflow-hidden py-16 border-y border-gray-100" style={{ background: 'linear-gradient(135deg, #f0fdf8 0%, #ffffff 35%, #f7fffe 65%, #edfcf5 100%)' }}>
