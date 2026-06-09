@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { NAV_LINKS, COMPANY } from "@/lib/constants";
 import { Menu, X, ArrowRight, Phone, Cpu, Zap, ShieldCheck } from "lucide-react";
 import PartSearchEngine from "@/components/ui/PartSearchEngine";
+import ActivityTicker from "@/components/ui/ActivityTicker";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -218,6 +219,10 @@ export default function Navbar() {
             </div>
           </div>
         </nav>
+        {/* Ticker mounted globally inside the fixed Navbar wrapper */}
+        <div className="pointer-events-auto w-full">
+          <ActivityTicker />
+        </div>
       </div>
 
       {/* Mobile Menu Drawer */}

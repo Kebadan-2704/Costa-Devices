@@ -65,43 +65,37 @@ export default function ActivityTicker() {
   }, []);
 
   return (
-    <>
-      {/* Placeholder to prevent layout shift since ticker is fixed */}
-      <div className="h-11 w-full shrink-0" />
-      
-      {/* Fixed Ticker */}
-      <div className="fixed top-[72px] lg:top-[88px] left-0 right-0 w-full bg-white text-gray-900 border-b border-gray-100 flex items-center h-11 z-40 shadow-sm">
-        <div className="h-full flex items-center px-4 flex-shrink-0 relative z-10 bg-white shadow-[4px_0_10px_rgba(0,0,0,0.03)] border-r border-gray-100">
-          <div className="flex items-center bg-gray-50 border border-gray-200 rounded-full px-3 py-1">
-            <span className="w-1.5 h-1.5 bg-costa-green rounded-full animate-pulse mr-2"></span>
-            <span className="text-[10px] font-black tracking-widest uppercase text-gray-800">Live Feed</span>
-          </div>
-        </div>
-        
-        <div className="flex-1 overflow-hidden relative">
-          {/* Left fade */}
-          <div className="absolute left-0 top-0 bottom-0 w-12 bg-gradient-to-r from-white to-transparent z-10"></div>
-          
-          <Marquee speed="slowest" direction="left" className="overflow-y-hidden">
-            {events.map((event, idx) => (
-              <div key={idx} className="flex items-center mx-6 gap-2">
-                <span className="flex-shrink-0">{event.icon}</span>
-                <span className="text-[10px] font-black tracking-widest text-gray-900 uppercase whitespace-nowrap drop-shadow-sm">
-                  {event.text}
-                </span>
-                <span className="text-[9px] text-gray-400 font-bold ml-1">
-                  {event.time}
-                </span>
-                {/* Separator dot */}
-                <span className="w-1 h-1 bg-gray-300 rounded-full ml-6"></span>
-              </div>
-            ))}
-          </Marquee>
-          
-          {/* Right fade */}
-          <div className="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-white to-transparent z-10"></div>
+    <div className="w-full bg-white text-gray-900 border-b border-gray-100 flex items-center h-11 relative shadow-sm pointer-events-auto z-40">
+      <div className="h-full flex items-center px-4 flex-shrink-0 relative z-10 bg-white shadow-[4px_0_10px_rgba(0,0,0,0.03)] border-r border-gray-100">
+        <div className="flex items-center bg-gray-50 border border-gray-200 rounded-full px-3 py-1">
+          <span className="w-1.5 h-1.5 bg-costa-green rounded-full animate-pulse mr-2"></span>
+          <span className="text-[10px] font-black tracking-widest uppercase text-gray-800">Live Feed</span>
         </div>
       </div>
-    </>
+      
+      <div className="flex-1 overflow-hidden relative">
+        {/* Left fade */}
+        <div className="absolute left-0 top-0 bottom-0 w-12 bg-gradient-to-r from-white to-transparent z-10"></div>
+        
+        <Marquee speed="slowest" direction="left" className="overflow-y-hidden">
+          {events.map((event, idx) => (
+            <div key={idx} className="flex items-center mx-6 gap-2">
+              <span className="flex-shrink-0">{event.icon}</span>
+              <span className="text-[10px] font-black tracking-widest text-gray-900 uppercase whitespace-nowrap drop-shadow-sm">
+                {event.text}
+              </span>
+              <span className="text-[9px] text-gray-400 font-bold ml-1">
+                {event.time}
+              </span>
+              {/* Separator dot */}
+              <span className="w-1 h-1 bg-gray-300 rounded-full ml-6"></span>
+            </div>
+          ))}
+        </Marquee>
+        
+        {/* Right fade */}
+        <div className="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-white to-transparent z-10"></div>
+      </div>
+    </div>
   );
 }

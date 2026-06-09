@@ -12,7 +12,6 @@ import AnimatedNumber from "@/components/ui/AnimatedNumber";
 import TechBackground from "@/components/ui/TechBackground";
 import LogisticsGlobe from "@/components/ui/LogisticsGlobe";
 import MagneticWrapper from "@/components/ui/MagneticWrapper";
-import ActivityTicker from "@/components/ui/ActivityTicker";
 import MarketIntelligence from "@/components/ui/MarketIntelligence";
 import BOMUploadZone from "@/components/ui/BOMUploadZone";
 import Microchip3D from "@/components/ui/Microchip3D";
@@ -66,10 +65,8 @@ export default function HomePage() {
   return (
     <div className="min-h-screen bg-bg-primary text-text-primary overflow-hidden" ref={containerRef}>
       
-      {/* 0. LIVE ACTIVITY TICKER */}
-      <div className="pt-[72px] lg:pt-[88px]">
-        <ActivityTicker />
-      </div>
+      {/* Spacer for fixed Navbar + Ticker */}
+      <div className="pt-[116px] lg:pt-[132px]"></div>
 
       {/* 1. HERO — Split Layout (Text Left, Premium Search Right) */}
       <section className="relative w-full pt-6 pb-16 lg:pt-8 lg:pb-20 overflow-hidden border-b border-gray-100">
