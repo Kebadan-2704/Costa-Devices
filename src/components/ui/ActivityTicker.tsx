@@ -10,57 +10,58 @@ const LIVE_EVENTS = [
   { icon: <Globe size={12} className="text-blue-500" />, text: "New Supplier Onboarded: Shenzhen, CN (Tier-1)", time: "12m ago" },
   { icon: <TrendingUp size={12} className="text-emerald-500" />, text: "Market Alert: FPGA Lead Times Dropping 15%", time: "18m ago" },
   { icon: <Zap size={12} className="text-amber-500" />, text: "AOG Response: 50x Obsolete Connectors shipped to CDG", time: "22m ago" },
-  { icon: <CheckCircle2 size={12} className="text-costa-green" />, text: "QA Passed: 10,000x Microchip AS6081 Batch", time: "31m ago" },
 ];
-
-// Placeholder for your future backend API or WebSocket URL
-// You can set this in your .env.local file: NEXT_PUBLIC_TICKER_API_URL=wss://api.costadevices.com/ticker
-const API_URL = process.env.NEXT_PUBLIC_TICKER_API_URL || null;
 
 export default function ActivityTicker() {
   const [events, setEvents] = React.useState(LIVE_EVENTS);
 
   React.useEffect(() => {
-    // If no API URL is provided, we just use the fallback LIVE_EVENTS array.
-    if (!API_URL) return;
-
-    // ==========================================
-    // OPTION 1: Polling a REST API (Uncomment to use)
-    // ==========================================
-    /*
-    const fetchEvents = async () => {
+    // Generate AI Events endlessly using the provided API
+    const fetchAITickerEvent = async () => {
       try {
-        const res = await fetch(API_URL);
+        const promptText = "Generate exactly one short, realistic supply chain alert for an electronics sourcing company. Like: 'RFQ Fulfilled: 2,500x Texas Instruments DSPs' or 'Market Alert: Lead Times Dropping'. Return ONLY the message string, no quotes or intro.";
+        const encodedPrompt = encodeURIComponent(promptText);
+        const res = await fetch(`https://chatbot.codexapi.workers.dev/?prompt=${encodedPrompt}&model=gpt-5.1`);
         const data = await res.json();
-        // Assuming your API returns an array of events
-        setEvents(data);
+        
+        if (data && data.answer) {
+          const newText = data.answer.replace(/["*]/g, '').trim();
+          
+          // Assign a random icon based on keywords or randomly
+          const isPositive = newText.toLowerCase().includes('fulfilled') || newText.toLowerCase().includes('passed');
+          const isAlert = newText.toLowerCase().includes('alert') || newText.toLowerCase().includes('dropping');
+          
+          let icon = <Globe size={12} className="text-blue-500" />;
+          if (isPositive) icon = <CheckCircle2 size={12} className="text-costa-green" />;
+          else if (isAlert) icon = <TrendingUp size={12} className="text-emerald-500" />;
+          else icon = <Zap size={12} className="text-amber-500" />;
+          
+          const newEvent = {
+            icon,
+            text: newText,
+            time: "Just now"
+          };
+          
+          setEvents((prev) => {
+            // Age the previous events slightly
+            const agedEvents = prev.map(e => ({
+              ...e,
+              time: e.time === "Just now" ? "1m ago" : e.time
+            }));
+            return [newEvent, ...agedEvents].slice(0, 15);
+          });
+        }
       } catch (err) {
-        console.error("Failed to fetch ticker events:", err);
+        console.error("Failed to generate AI ticker event:", err);
       }
     };
     
-    // Fetch immediately, then every 30 seconds
-    fetchEvents();
-    const intervalId = setInterval(fetchEvents, 30000);
-    return () => clearInterval(intervalId);
-    */
-
-    // ==========================================
-    // OPTION 2: WebSocket for true real-time (Uncomment to use)
-    // ==========================================
-    /*
-    const ws = new WebSocket(API_URL);
+    // Fetch a new AI generated event every 15 seconds
+    const intervalId = setInterval(fetchAITickerEvent, 15000);
+    // Fetch one immediately on mount after 2 seconds to not block UI load
+    setTimeout(fetchAITickerEvent, 2000);
     
-    ws.onmessage = (event) => {
-      const newEvent = JSON.parse(event.data);
-      // Prepend the new event and keep a maximum of 20 items in the ticker
-      setEvents((prevEvents) => [newEvent, ...prevEvents].slice(0, 20));
-    };
-
-    ws.onerror = (error) => console.error("Ticker WebSocket Error:", error);
-
-    return () => ws.close();
-    */
+    return () => clearInterval(intervalId);
   }, []);
 
   return (
