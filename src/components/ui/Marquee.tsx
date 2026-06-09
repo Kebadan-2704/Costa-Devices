@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 interface MarqueeProps {
   children: React.ReactNode;
   direction?: "left" | "right";
-  speed?: "fast" | "normal" | "slow";
+  speed?: "fast" | "normal" | "slow" | "slower" | "slowest";
   pauseOnHover?: boolean;
   className?: string;
 }
@@ -20,7 +20,9 @@ export default function Marquee({
   const duration = 
     speed === "fast" ? "20s" : 
     speed === "normal" ? "40s" : 
-    "80s";
+    speed === "slow" ? "80s" :
+    speed === "slower" ? "150s" :
+    "300s"; // slowest
 
   return (
     <div className={cn("overflow-hidden whitespace-nowrap flex w-full", className)}>
