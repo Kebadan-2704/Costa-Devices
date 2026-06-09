@@ -82,7 +82,7 @@ export default function CaseStudiesPage() {
             Proven Results.
           </h1>
           <p className="text-xl text-text-secondary leading-relaxed mb-8">
-            How the world's most demanding procurement teams use Costa Devices to solve supply chain emergencies, bypass shortages, and guarantee quality.
+            How the world&apos;s most demanding procurement teams use Costa Devices to solve supply chain emergencies, bypass shortages, and guarantee quality.
           </p>
         </div>
       </section>

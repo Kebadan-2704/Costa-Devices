@@ -36,7 +36,7 @@ export default function ROIWidget() {
           <h3 className="font-heading text-2xl font-bold">ROI Calculator</h3>
         </div>
         <p className="relative z-10 text-gray-400 font-medium">
-          Estimate your supply chain savings by utilizing Costa Devices' algorithmic sourcing and consolidated procurement.
+          Estimate your supply chain savings by utilizing Costa Devices&apos; algorithmic sourcing and consolidated procurement.
         </p>
       </div>
 

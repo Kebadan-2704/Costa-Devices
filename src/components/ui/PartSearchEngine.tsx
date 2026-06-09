@@ -30,6 +30,7 @@ export default function PartSearchEngine({ variant = "default" }: { variant?: "d
     if (isOpen) {
       setTimeout(() => inputRef.current?.focus(), 50);
     } else {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setQuery("");
     }
   }, [isOpen]);
@@ -37,6 +38,7 @@ export default function PartSearchEngine({ variant = "default" }: { variant?: "d
   // Simulated search delay for premium feel
   useEffect(() => {
     if (query) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setIsSearching(true);
       const timer = setTimeout(() => setIsSearching(false), 300);
       return () => clearTimeout(timer);

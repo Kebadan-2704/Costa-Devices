@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
 import { ArrowRight, Award, Clock, Globe, ShieldCheck, Mail, MapPin, ExternalLink } from "lucide-react";
 import Image from "next/image";

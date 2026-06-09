@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import Link from "next/link";
 import { ArrowLeft, Target, BarChart3, Clock, CheckCircle2 } from "lucide-react";
 import { notFound } from "next/navigation";

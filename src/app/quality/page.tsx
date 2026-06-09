@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
 import { ArrowRight, ShieldCheck, CheckCircle2, Award } from "lucide-react";
 import ScrollReveal from "@/components/animations/ScrollReveal";

@@ -439,7 +439,7 @@ export default function HomePage() {
                   Algorithmic Market Intelligence.
                 </h2>
                 <p className="text-gray-600 font-medium">
-                  We don't guess. We scrape global spot markets, OEM excess inventory, and franchised lines to give you real-time visibility into lead times, price trends, and availability.
+                  We don&apos;t guess. We scrape global spot markets, OEM excess inventory, and franchised lines to give you real-time visibility into lead times, price trends, and availability.
                 </p>
               </div>
               
@@ -603,34 +603,37 @@ export default function HomePage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.1 }} className="bg-[#fafafa] border border-gray-200 p-8 rounded-3xl shadow-sm hover:shadow-[0_20px_40px_rgba(0,0,0,0.05)] transition-all duration-300 relative group hover:border-costa-green/30">
-              <div className="text-costa-green mb-6">
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.1 }} className="bg-[#fafafa] border border-gray-200 p-8 rounded-3xl shadow-sm hover:shadow-[0_20px_40px_rgba(0,0,0,0.05)] transition-all duration-300 relative group hover:border-costa-green/30 overflow-hidden flex flex-col">
+              <div className="absolute inset-0 z-0 opacity-10 group-hover:opacity-20 transition-opacity duration-500 pointer-events-none mix-blend-multiply" style={{ backgroundImage: "url('/images/industries/electric-vehicles.png')", backgroundSize: 'cover', backgroundPosition: 'center' }}></div>
+              <div className="relative z-10 text-costa-green mb-6">
                 <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M14.017 21L16.439 14C16.439 14 15.228 14 14.808 14C12.75 14 12.181 12.585 12.181 10.923C12.181 9.261 13.596 8 15.257 8C16.918 8 18 9.261 18 10.923C18 12.585 15.228 21 15.228 21H14.017ZM6.017 21L8.439 14C8.439 14 7.228 14 6.808 14C4.75 14 4.181 12.585 4.181 10.923C4.181 9.261 5.596 8 7.257 8C8.918 8 10 9.261 10 10.923C10 12.585 7.228 21 7.228 21H6.017Z" /></svg>
               </div>
-              <p className="text-gray-700 font-medium mb-8 leading-relaxed">&ldquo;Costa Devices was able to secure 10,000 obsolete IGBT modules for our legacy wind turbine controllers when franchised distributors quoted a 52-week lead time. Their lab testing reports gave us 100% confidence.&rdquo;</p>
-              <div className="border-t border-gray-200 pt-6 mt-auto">
+              <p className="relative z-10 text-gray-700 font-medium mb-8 leading-relaxed">&ldquo;Costa Devices was able to secure 10,000 obsolete IGBT modules for our legacy wind turbine controllers when franchised distributors quoted a 52-week lead time. Their lab testing reports gave us 100% confidence.&rdquo;</p>
+              <div className="relative z-10 border-t border-gray-200 pt-6 mt-auto">
                 <p className="font-bold text-sm text-gray-900">Procurement Lead</p>
                 <p className="text-xs text-costa-green font-bold uppercase tracking-wider mt-1">Ather Energy</p>
               </div>
             </motion.div>
 
-            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.2 }} className="bg-costa-green border border-costa-green p-8 rounded-3xl shadow-sm hover:shadow-[0_20px_40px_rgba(26,175,93,0.2)] transition-all duration-300 relative group transform md:-translate-y-4">
-              <div className="text-white mb-6 opacity-50">
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.2 }} className="bg-costa-green border border-costa-green p-8 rounded-3xl shadow-sm hover:shadow-[0_20px_40px_rgba(26,175,93,0.2)] transition-all duration-300 relative group transform md:-translate-y-4 overflow-hidden flex flex-col">
+              <div className="absolute inset-0 z-0 opacity-10 group-hover:opacity-20 transition-opacity duration-500 pointer-events-none mix-blend-overlay" style={{ backgroundImage: "url('/images/industries/ev-charging.png')", backgroundSize: 'cover', backgroundPosition: 'center' }}></div>
+              <div className="relative z-10 text-white mb-6 opacity-50">
                 <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M14.017 21L16.439 14C16.439 14 15.228 14 14.808 14C12.75 14 12.181 12.585 12.181 10.923C12.181 9.261 13.596 8 15.257 8C16.918 8 18 9.261 18 10.923C18 12.585 15.228 21 15.228 21H14.017ZM6.017 21L8.439 14C8.439 14 7.228 14 6.808 14C4.75 14 4.181 12.585 4.181 10.923C4.181 9.261 5.596 8 7.257 8C8.918 8 10 9.261 10 10.923C10 12.585 7.228 21 7.228 21H6.017Z" /></svg>
               </div>
-              <p className="text-white font-medium mb-8 leading-relaxed text-lg">&ldquo;The level of technical expertise is unmatched. We needed a drop-in replacement for a critical Eaton Bussmann EV fuse for our new charger line. Costa provided the parts in 3 days with complete traceability.&rdquo;</p>
-              <div className="border-t border-white/20 pt-6 mt-auto">
+              <p className="relative z-10 text-white font-medium mb-8 leading-relaxed text-lg">&ldquo;The level of technical expertise is unmatched. We needed a drop-in replacement for a critical Eaton Bussmann EV fuse for our new charger line. Costa provided the parts in 3 days with complete traceability.&rdquo;</p>
+              <div className="relative z-10 border-t border-white/20 pt-6 mt-auto">
                 <p className="font-bold text-sm text-white">Supply Chain Manager</p>
                 <p className="text-xs text-emerald-100 uppercase font-bold tracking-wider mt-1">Kaynes Technology</p>
               </div>
             </motion.div>
 
-            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.3 }} className="bg-[#fafafa] border border-gray-200 p-8 rounded-3xl shadow-sm hover:shadow-[0_20px_40px_rgba(0,0,0,0.05)] transition-all duration-300 relative group hover:border-costa-green/30">
-              <div className="text-costa-green mb-6">
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.3 }} className="bg-[#fafafa] border border-gray-200 p-8 rounded-3xl shadow-sm hover:shadow-[0_20px_40px_rgba(0,0,0,0.05)] transition-all duration-300 relative group hover:border-costa-green/30 overflow-hidden flex flex-col">
+              <div className="absolute inset-0 z-0 opacity-10 group-hover:opacity-20 transition-opacity duration-500 pointer-events-none mix-blend-multiply" style={{ backgroundImage: "url('/images/industries/energy-storage.png')", backgroundSize: 'cover', backgroundPosition: 'center' }}></div>
+              <div className="relative z-10 text-costa-green mb-6">
                 <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M14.017 21L16.439 14C16.439 14 15.228 14 14.808 14C12.75 14 12.181 12.585 12.181 10.923C12.181 9.261 13.596 8 15.257 8C16.918 8 18 9.261 18 10.923C18 12.585 15.228 21 15.228 21H14.017ZM6.017 21L8.439 14C8.439 14 7.228 14 6.808 14C4.75 14 4.181 12.585 4.181 10.923C4.181 9.261 5.596 8 7.257 8C8.918 8 10 9.261 10 10.923C10 12.585 7.228 21 7.228 21H6.017Z" /></svg>
               </div>
-              <p className="text-gray-700 font-medium mb-8 leading-relaxed">&ldquo;We consolidated our fuse and contactor sourcing with Costa Devices and reduced shipping costs by 35%. Their combined shipping program is a game-changer for our production line.&rdquo;</p>
-              <div className="border-t border-gray-200 pt-6 mt-auto">
+              <p className="relative z-10 text-gray-700 font-medium mb-8 leading-relaxed">&ldquo;We consolidated our fuse and contactor sourcing with Costa Devices and reduced shipping costs by 35%. Their combined shipping program is a game-changer for our production line.&rdquo;</p>
+              <div className="relative z-10 border-t border-gray-200 pt-6 mt-auto">
                 <p className="font-bold text-sm text-gray-900">VP of Operations</p>
                 <p className="text-xs text-costa-green uppercase font-bold tracking-wider mt-1">GIGA</p>
               </div>
@@ -730,7 +733,7 @@ export default function HomePage() {
               <div className="absolute right-0 bottom-0 opacity-5 group-hover:opacity-10 transition-opacity duration-700 pointer-events-none w-2/3 h-full z-0" style={{ backgroundImage: 'radial-gradient(circle, rgba(26,175,93,1) 1.5px, transparent 1.5px)', backgroundSize: '16px 16px' }}></div>
 
               {/* The Interactive Globe */}
-              <div className="absolute right-[-100px] top-[-50px] md:top-[-100px] opacity-80 group-hover:opacity-100 transition-opacity duration-700 scale-75 md:scale-100 origin-top-right">
+              <div className="absolute right-[-20px] top-[-20px] md:right-[-30px] md:top-[-30px] opacity-80 group-hover:opacity-100 transition-opacity duration-700 pointer-events-auto z-10 origin-center">
                 <LogisticsGlobe />
               </div>
 
@@ -768,10 +771,10 @@ export default function HomePage() {
 
           <div className="flex flex-col gap-5">
             {[
-              { num: "01", title: "DISCOVERY", desc: "Share BOM requirements. Real-time global availability assessment across 50+ data sources." },
-              { num: "02", title: "SOURCING", desc: "Algorithmic scan of franchised, OEM excess, and spot markets globally." },
-              { num: "03", title: "VERIFICATION", desc: "AS6081 testing: 200x magnification, XRF, decapsulation, and heated solvent testing." },
-              { num: "04", title: "DISPATCH", desc: "Class 1 ESD-safe packaging. Certificate of Conformance included. Sub-24h global dispatch." }
+              { num: "01", title: "DISCOVERY", desc: "Share BOM requirements. Real-time global availability assessment across 50+ data sources.", bg: "/images/industries/industrial-automation.png" },
+              { num: "02", title: "SOURCING", desc: "Algorithmic scan of franchised, OEM excess, and spot markets globally.", bg: "/images/industries/power-distribution.png" },
+              { num: "03", title: "VERIFICATION", desc: "AS6081 testing: 200x magnification, XRF, decapsulation, and heated solvent testing.", bg: "/images/industries/ups-systems.png" },
+              { num: "04", title: "DISPATCH", desc: "Class 1 ESD-safe packaging. Certificate of Conformance included. Sub-24h global dispatch.", bg: "/images/industries/electric-vehicles.png" }
             ].map((step, i) => (
               <motion.div
                 key={i}
@@ -783,6 +786,9 @@ export default function HomePage() {
               >
                 {/* Full-card link */}
                 <Link href="/contact" className="absolute inset-0 z-20" aria-label={`Proceed to ${step.title}`} />
+
+                {/* Subtle Background Image */}
+                <div className="absolute inset-0 z-0 opacity-[0.03] group-hover:opacity-[0.08] transition-opacity duration-500 rounded-3xl pointer-events-none mix-blend-multiply" style={{ backgroundImage: `url('${step.bg}')`, backgroundSize: 'cover', backgroundPosition: 'center' }}></div>
 
                 {/* Glowing subtle background on hover */}
                 <div className="absolute inset-0 z-0 bg-gradient-to-r from-costa-green/0 via-costa-green/0 to-costa-green/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl pointer-events-none"></div>
@@ -836,22 +842,24 @@ export default function HomePage() {
 
             {/* The Dossier File */}
             <motion.div
-              initial={{ x: -50, opacity: 0 }}
+              initial={{ x: -20, opacity: 0 }}
               whileInView={{ x: 0, opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              className="lg:col-span-8 bg-gradient-to-br from-bg-elevated to-bg-secondary border border-glass-border p-10 md:p-14 rounded-3xl relative group shadow-[0_8px_30px_rgb(0,0,0,0.04)]"
+              className="lg:col-span-8 bg-gradient-to-br from-bg-elevated to-bg-secondary border border-glass-border p-10 md:p-14 rounded-3xl relative group shadow-[0_8px_30px_rgb(0,0,0,0.04)] overflow-hidden"
             >
+              <div className="absolute inset-0 z-0 opacity-[0.05] group-hover:opacity-10 transition-opacity duration-500 pointer-events-none mix-blend-multiply" style={{ backgroundImage: "url('/images/industries/electric-vehicles.png')", backgroundSize: 'cover', backgroundPosition: 'center' }}></div>
+
               {/* Premium Pill tab */}
-              <div className="bg-bg-tertiary text-text-primary border-glass-border text-xs font-bold px-4 py-1.5 rounded-full tracking-widest uppercase w-fit mb-8 border">
+              <div className="relative z-10 bg-bg-tertiary text-text-primary border-glass-border text-xs font-bold px-4 py-1.5 rounded-full tracking-widest uppercase w-fit mb-8 border">
                 CASE STUDY #CD-8842-EV
               </div>
 
-              <h3 className="font-heading text-3xl md:text-5xl font-black leading-[1.1] tracking-tighter uppercase mb-10 mt-4 text-text-primary transition-all duration-700">
+              <h3 className="relative z-10 font-heading text-3xl md:text-5xl font-black leading-[1.1] tracking-tighter uppercase mb-10 mt-4 text-text-primary transition-all duration-700">
                 &quot;Sourced 12,000 obsolete MCUs for our EV controller board when others failed. Saved <span className="text-costa-green">$2.4M</span> in downtime.&quot;
               </h3>
 
-              <div className="flex items-center gap-4 mt-8">
+              <div className="relative z-10 flex items-center gap-4 mt-8">
                 <div>
                   <span className="text-sm text-text-secondary tracking-widest uppercase">VP Engineering • Ather Energy</span>
                 </div>

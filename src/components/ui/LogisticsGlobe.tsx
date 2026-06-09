@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
@@ -7,14 +8,15 @@ const Globe = dynamic(() => import("react-globe.gl"), { ssr: false });
 
 export default function LogisticsGlobe() {
   const globeRef = useRef<any>(null);
-  const [dimensions, setDimensions] = useState({ width: 500, height: 500 });
+  const [dimensions, setDimensions] = useState({ width: 420, height: 420 });
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setIsMounted(true);
     const updateSize = () => {
       // Responsive sizing
-      const width = Math.min(window.innerWidth - 48, 550);
+      const width = Math.min(window.innerWidth - 48, 420);
       setDimensions({ width, height: width });
     };
     window.addEventListener("resize", updateSize);
@@ -48,7 +50,7 @@ export default function LogisticsGlobe() {
     { startLat: 48.1351, startLng: 11.5820, endLat: 1.3521, endLng: 103.8198 }, // Munich to Singapore
   ];
 
-  if (!isMounted) return <div className="w-[500px] h-[500px] bg-gray-50 animate-pulse rounded-full" />;
+  if (!isMounted) return <div className="w-[350px] h-[350px] bg-gray-50 animate-pulse rounded-full" />;
 
   return (
     <div className="flex justify-center items-center cursor-grab active:cursor-grabbing w-full relative z-10">

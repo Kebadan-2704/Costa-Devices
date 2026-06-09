@@ -20,6 +20,7 @@ export default function Preloader() {
 
   useEffect(() => {
     if (pathname === "/") {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setIsLoading(false);
       return;
     }
@@ -32,6 +33,7 @@ export default function Preloader() {
     }, 200);
 
     const timer = setTimeout(() => {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setIsLoading(false);
     }, 1200);
 

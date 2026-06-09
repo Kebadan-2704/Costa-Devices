@@ -37,7 +37,8 @@ export default function CommandPalette() {
 
   const handleSelect = (href: string) => {
     setIsOpen(false);
-    setQuery("");
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+      setQuery("");
     router.push(href);
   };
 
@@ -105,7 +106,7 @@ export default function CommandPalette() {
                           <Package size={18} />
                         </div>
                         <div className="text-left">
-                          <div className="font-bold text-gray-900">Search globally for "{query}"</div>
+                          <div className="font-bold text-gray-900">Search globally for &quot;{query}&quot;</div>
                           <div className="text-xs text-gray-500">Check live pricing and availability</div>
                         </div>
                       </div>

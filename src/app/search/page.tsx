@@ -56,7 +56,7 @@ function SearchResults() {
                 Search Results
               </h1>
               <p className="text-gray-500 font-medium">
-                Showing availability for <span className="text-costa-green font-bold">"{query}"</span> across 50+ global nodes.
+                Showing availability for <span className="text-costa-green font-bold">&quot;{query}&quot;</span> across 50+ global nodes.
               </p>
             </div>
             <div className="flex items-center gap-4">

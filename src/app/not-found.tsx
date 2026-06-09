@@ -39,7 +39,7 @@ export default function NotFound() {
           </h1>
           
           <p className="text-gray-500 text-lg mb-10 max-w-md mx-auto font-medium leading-relaxed">
-            The page or supply route you are looking for has either been moved, discontinued, or doesn't exist in our global registry.
+            The page or supply route you are looking for has either been moved, discontinued, or doesn&apos;t exist in our global registry.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">

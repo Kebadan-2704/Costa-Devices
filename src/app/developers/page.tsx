@@ -125,7 +125,7 @@ console.log(\`Estimated Turnaround: \${quote.eta}\`);`;
                   <div className="w-8 h-8 rounded-full bg-costa-green/20 text-costa-green flex items-center justify-center shrink-0 font-bold">3</div>
                   <div>
                     <h4 className="text-white font-bold mb-1">Receive Webhook</h4>
-                    <p className="text-sm text-gray-400">We'll push the verified quote directly to your endpoint when ready.</p>
+                    <p className="text-sm text-gray-400">We&apos;ll push the verified quote directly to your endpoint when ready.</p>
                   </div>
                 </div>
               </div>

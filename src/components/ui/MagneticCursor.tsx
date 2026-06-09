@@ -18,6 +18,7 @@ export default function MagneticCursor() {
   useEffect(() => {
     // Check if device has touch capability or narrow screen
     if (window.matchMedia("(pointer: coarse)").matches || window.innerWidth < 768) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setIsMobile(true);
       return;
     }

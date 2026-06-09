@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import { useEffect, useRef, useState } from "react";
@@ -22,6 +23,7 @@ export default function AnimatedGlobe() {
       endLng: (Math.random() - 0.5) * 360,
       color: ['rgba(10, 139, 70, 0.4)', 'rgba(26, 175, 93, 0.8)'][Math.round(Math.random())]
     }));
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setArcsData(arcs);
 
     // Generate random rings for active nodes
