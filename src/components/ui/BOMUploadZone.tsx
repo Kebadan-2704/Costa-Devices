@@ -39,14 +39,14 @@ export default function BOMUploadZone() {
         />
       )}
 
-      <div className="p-8 flex flex-col items-center justify-center text-center relative z-10 min-h-[160px]">
+      <div className="p-5 flex items-center gap-4 relative z-10">
         {isUploading ? (
           <motion.div 
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="flex flex-col items-center gap-3"
+            initial={{ opacity: 0, x: 10 }}
+            animate={{ opacity: 1, x: 0 }}
+            className="flex items-center gap-4 w-full"
           >
-            <div className="w-10 h-10 rounded-full bg-emerald-100 flex items-center justify-center">
+            <div className="w-10 h-10 shrink-0 rounded-full bg-emerald-100 flex items-center justify-center">
               <motion.div
                 animate={{ rotate: 360 }}
                 transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
@@ -54,28 +54,31 @@ export default function BOMUploadZone() {
               />
             </div>
             <div>
-              <p className="text-sm font-bold text-gray-900">Processing BOM Payload...</p>
-              <p className="text-[10px] text-gray-500 uppercase tracking-widest mt-1">Extracting Line Items</p>
+              <p className="text-sm font-bold text-gray-900">Processing Payload...</p>
+              <p className="text-[10px] text-gray-500 uppercase tracking-widest mt-0.5">Extracting Line Items</p>
             </div>
           </motion.div>
         ) : (
           <>
             <motion.div 
-              animate={{ y: isHovered ? -5 : 0 }}
+              animate={{ y: isHovered ? -2 : 0 }}
               transition={{ duration: 0.3 }}
-              className="w-14 h-14 rounded-full bg-white border border-gray-100 flex items-center justify-center mb-4 shadow-[0_4px_14px_rgba(0,0,0,0.05)] group-hover:shadow-costa-green/20"
+              className="w-12 h-12 shrink-0 rounded-full bg-white border border-gray-100 flex items-center justify-center shadow-[0_4px_14px_rgba(0,0,0,0.05)] group-hover:shadow-costa-green/20"
             >
-              <UploadCloud size={28} className={isHovered ? "text-costa-green" : "text-gray-400"} />
+              <UploadCloud size={20} className={isHovered ? "text-costa-green" : "text-gray-400"} />
             </motion.div>
-            <h3 className="text-lg font-bold text-gray-900 mb-1.5">Drag & Drop BOM Payload</h3>
-            <p className="text-sm text-gray-500 font-medium mb-5">Upload Excel or CSV for instant algorithmic sourcing.</p>
             
-            <div className="flex items-center gap-3">
-              <div className="flex items-center gap-1.5 px-2 py-1 rounded bg-gray-100 text-[9px] font-bold text-gray-500 uppercase tracking-wider">
-                <FileSpreadsheet size={10} /> .XLSX
-              </div>
-              <div className="flex items-center gap-1.5 px-2 py-1 rounded bg-gray-100 text-[9px] font-bold text-gray-500 uppercase tracking-wider">
-                <FileText size={10} /> .CSV
+            <div className="flex-1 text-left">
+              <h3 className="text-[15px] font-bold text-gray-900 mb-0.5">Drag & Drop BOM Payload</h3>
+              <p className="text-xs text-gray-500 font-medium mb-2">Upload Excel or CSV for algorithmic sourcing.</p>
+              
+              <div className="flex items-center gap-2">
+                <div className="flex items-center gap-1.5 px-2 py-0.5 rounded bg-gray-100 text-[9px] font-bold text-gray-500 uppercase tracking-wider">
+                  <FileSpreadsheet size={10} /> .XLSX
+                </div>
+                <div className="flex items-center gap-1.5 px-2 py-0.5 rounded bg-gray-100 text-[9px] font-bold text-gray-500 uppercase tracking-wider">
+                  <FileText size={10} /> .CSV
+                </div>
               </div>
             </div>
           </>
