@@ -115,7 +115,7 @@ export default function HeroSection() {
               {[
                 { icon: <ShieldCheck size={14} />, label: "AS6081 Certified" },
                 { icon: <CheckCircle2 size={14} />, label: "ISO 9001:2015" },
-                { icon: <Zap size={14} />, label: "1B+ Components" },
+                { icon: <ShieldCheck size={14} />, label: "AS 9120:2016 B" },
               ].map((item, i) => (
                 <motion.div
                   key={item.label}

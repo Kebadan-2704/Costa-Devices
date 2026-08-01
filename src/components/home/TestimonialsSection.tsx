@@ -24,7 +24,7 @@ export default function TestimonialsSection() {
             <p className="relative z-10 text-gray-700 font-medium mb-8 leading-relaxed">&ldquo;Costa Devices was able to secure 10,000 obsolete IGBT modules for our legacy wind turbine controllers when franchised distributors quoted a 52-week lead time. Their lab testing reports gave us 100% confidence.&rdquo;</p>
             <div className="relative z-10 border-t border-gray-200 pt-6 mt-auto">
               <p className="font-bold text-sm text-gray-900">Procurement Lead</p>
-              <p className="text-xs text-costa-green font-bold uppercase tracking-wider mt-1">Ather Energy</p>
+              <p className="text-xs text-costa-green font-bold uppercase tracking-wider mt-1">Global Renewable Energy OEM</p>
             </div>
           </motion.div>
 
@@ -35,7 +35,7 @@ export default function TestimonialsSection() {
             <p className="relative z-10 text-white font-medium mb-8 leading-relaxed text-lg">&ldquo;The level of technical expertise is unmatched. We needed a drop-in replacement for a critical Eaton Bussmann EV fuse for our new charger line. Costa provided the parts in 3 days with complete traceability.&rdquo;</p>
             <div className="relative z-10 border-t border-white/20 pt-6 mt-auto">
               <p className="font-bold text-sm text-white">Supply Chain Manager</p>
-              <p className="text-xs text-emerald-100 uppercase font-bold tracking-wider mt-1">Kaynes Technology</p>
+              <p className="text-xs text-emerald-100 uppercase font-bold tracking-wider mt-1">Tier-1 EV Infrastructure</p>
             </div>
           </motion.div>
 
@@ -46,7 +46,7 @@ export default function TestimonialsSection() {
             <p className="relative z-10 text-gray-700 font-medium mb-8 leading-relaxed">&ldquo;We consolidated our fuse and contactor sourcing with Costa Devices and reduced shipping costs by 35%. Their combined shipping program is a game-changer for our production line.&rdquo;</p>
             <div className="relative z-10 border-t border-gray-200 pt-6 mt-auto">
               <p className="font-bold text-sm text-gray-900">VP of Operations</p>
-              <p className="text-xs text-costa-green uppercase font-bold tracking-wider mt-1">GIGA</p>
+              <p className="text-xs text-costa-green uppercase font-bold tracking-wider mt-1">Multinational Industrial OEM</p>
             </div>
           </motion.div>
         </div>

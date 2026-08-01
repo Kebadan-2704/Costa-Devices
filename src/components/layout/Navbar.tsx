@@ -73,65 +73,61 @@ export default function Navbar() {
     <>
       <div className="fixed top-0 left-0 right-0 z-[100] pointer-events-none">
         <nav className="pointer-events-auto w-full">
-          
-          {/* SINGLE ROW: Logo | Search | Get Quote */}
-          <div className={`transition-all duration-500 border-b ${
-            scrolled 
-              ? "bg-white/95 backdrop-blur-xl border-black/8 shadow-[0_1px_3px_rgba(0,0,0,0.04)]" 
-              : "bg-white/80 backdrop-blur-md border-transparent"
+          <div className={`transition-all duration-500 border-b border-black/5 ${
+            scrolled ? "bg-white/95 backdrop-blur-xl shadow-sm" : "bg-white/90 backdrop-blur-lg"
           }`}>
-            <div className="max-w-[1400px] mx-auto px-6 py-3 flex items-center justify-between lg:justify-start gap-6">
+            <div className="max-w-[1400px] mx-auto flex flex-col lg:flex-row">
               
-              {/* Logo */}
-              <Link href="/" className="flex items-center group relative shrink-0">
-                <div className={`relative transition-all duration-500 ${
-                  scrolled 
-                    ? "h-10 w-[160px] md:h-12 md:w-[180px]" 
-                    : "h-12 w-[180px] md:h-14 md:w-[220px]"
-                }`}>
-                  <Image 
-                    src="/logos/logo.png" 
-                    alt="Costa Devices Logo" 
-                    fill
-                    sizes="(max-width: 768px) 180px, 220px"
-                    className="object-contain object-left group-hover:brightness-110 transition-all duration-300"
-                    priority
-                  />
-                </div>
-              </Link>
+              {/* Mobile Header / Desktop Logo Column */}
+              <div className="flex items-center justify-between lg:justify-start px-4 lg:px-6 py-3 lg:py-0 lg:border-r border-black/5 lg:w-auto lg:pr-8 shrink-0">
+                <Link href="/" className="flex items-center group relative">
+                  <div className={`relative transition-all duration-500 ${
+                    scrolled 
+                      ? "h-12 w-[180px] lg:h-16 lg:w-[220px]" 
+                      : "h-14 w-[200px] lg:h-18 lg:w-[240px]"
+                  }`}>
+                    <Image 
+                      src="/logos/logo.png" 
+                      alt="Costa Devices Logo" 
+                      fill
+                      sizes="(max-width: 1024px) 200px, 240px"
+                      className="object-contain object-left group-hover:brightness-110 transition-all duration-300"
+                      priority
+                    />
+                  </div>
+                </Link>
 
-              {/* Search Bar — Takes up the center */}
-              <div className="hidden lg:flex flex-1 items-center">
-                <GlobalSearchBar />
+                {/* Mobile Hamburger */}
+                <button
+                  onClick={() => setMobileOpen(!mobileOpen)}
+                  className="lg:hidden relative z-[110] w-10 h-10 flex items-center justify-center rounded-lg hover:bg-black/5 transition-colors"
+                  style={{ color: "var(--text-primary)" }}
+                  aria-label="Toggle menu"
+                  aria-expanded={mobileOpen}
+                >
+                  {mobileOpen ? <X size={22} /> : <Menu size={22} />}
+                </button>
               </div>
 
-              {/* Get Quote CTA */}
-              <Link
-                href="/request-quote"
-                className="group hidden sm:inline-flex items-center gap-2 bg-costa-green text-white text-xs font-bold tracking-[0.1em] uppercase py-3 px-6 rounded-md hover:bg-costa-green-dark transition-all duration-300 shadow-[0_4px_14px_rgba(26,175,93,0.3)] hover:shadow-[0_6px_20px_rgba(26,175,93,0.4)] hover:-translate-y-0.5 shrink-0 whitespace-nowrap"
-              >
-                Get Quote
-                <ArrowRight size={13} className="group-hover:translate-x-0.5 transition-transform shrink-0" />
-              </Link>
+              {/* Right Column: Search + Nav */}
+              <div className="hidden lg:flex flex-col flex-1">
+                
+                {/* Top Row: Search + CTA */}
+                <div className="flex items-center justify-between px-6 py-3 border-b border-black/5 gap-6">
+                  <div className="flex-1 flex items-center">
+                    <GlobalSearchBar />
+                  </div>
+                  <Link
+                    href="/request-quote"
+                    className="group inline-flex items-center gap-2 bg-costa-green text-white text-xs font-bold tracking-[0.1em] uppercase py-3 px-6 rounded-md hover:bg-costa-green-dark transition-all duration-300 shadow-[0_4px_14px_rgba(26,175,93,0.3)] hover:shadow-[0_6px_20px_rgba(26,175,93,0.4)] hover:-translate-y-0.5 shrink-0 whitespace-nowrap"
+                  >
+                    Get Quote
+                    <ArrowRight size={13} className="group-hover:translate-x-0.5 transition-transform shrink-0" />
+                  </Link>
+                </div>
 
-              {/* Mobile Hamburger */}
-              <button
-                onClick={() => setMobileOpen(!mobileOpen)}
-                className="lg:hidden relative z-[110] w-10 h-10 flex items-center justify-center rounded-lg hover:bg-black/5 transition-colors"
-                style={{ color: "var(--text-primary)" }}
-                aria-label="Toggle menu"
-                aria-expanded={mobileOpen}
-              >
-                {mobileOpen ? <X size={22} /> : <Menu size={22} />}
-              </button>
-            </div>
-          </div>
-
-          {/* NAV LINKS ROW — Below the search */}
-          <div className={`transition-all duration-500 border-b border-black/5 ${
-            scrolled ? "bg-white/98 backdrop-blur-xl shadow-sm" : "bg-white/95 backdrop-blur-lg"
-          }`}>
-            <div className="max-w-[1400px] mx-auto px-6 hidden lg:flex items-center justify-center gap-1">
+                {/* Bottom Row: Nav Links */}
+                <div className="flex items-center justify-start px-4 lg:px-6 py-1 gap-1">
               {NAV_LINKS.map((link: any) => (
                 <div key={link.label} className="group relative flex items-center">
                   <Link
@@ -248,6 +244,8 @@ export default function Navbar() {
               ))}
             </div>
           </div>
+        </div>
+        </div>
 
         </nav>
       </div>

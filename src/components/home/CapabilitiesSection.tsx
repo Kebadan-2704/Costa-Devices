@@ -108,13 +108,17 @@ export default function CapabilitiesSection() {
           <motion.div
             variants={fadeUpVariant}
             whileHover={shouldReduceMotion ? {} : { y: -8 }}
-            className="md:col-span-8 relative overflow-hidden group p-10 flex flex-col justify-between bg-white border border-gray-200 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all duration-300 hover:shadow-[0_20px_40px_rgba(26,175,93,0.1)] hover:border-costa-green/30"
+            className="md:col-span-8 relative group p-10 flex flex-col justify-between bg-white border border-gray-200 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all duration-300 hover:shadow-[0_20px_40px_rgba(26,175,93,0.1)] hover:border-costa-green/30"
           >
-            <div className="text-sm text-gray-500 font-bold tracking-[0.2em] uppercase bg-gray-50 px-4 py-1.5 rounded-full border border-gray-100 w-fit relative z-10">04 — GLOBAL REACH</div>
-            <div className="absolute right-0 bottom-0 opacity-5 group-hover:opacity-10 transition-opacity duration-700 pointer-events-none w-2/3 h-full z-0" style={{ backgroundImage: 'radial-gradient(circle, rgba(26,175,93,1) 1.5px, transparent 1.5px)', backgroundSize: '16px 16px' }}></div>
+            {/* Background elements clipped to border radius */}
+            <div className="absolute inset-0 overflow-hidden rounded-3xl pointer-events-none z-0">
+              <div className="absolute right-0 bottom-0 opacity-5 group-hover:opacity-10 transition-opacity duration-700 w-2/3 h-full" style={{ backgroundImage: 'radial-gradient(circle, rgba(26,175,93,1) 1.5px, transparent 1.5px)', backgroundSize: '16px 16px' }}></div>
+            </div>
 
-            {/* The Interactive Globe */}
-            <div className="absolute right-[-20px] top-[-20px] md:right-[-30px] md:top-[-30px] opacity-80 group-hover:opacity-100 transition-opacity duration-700 pointer-events-auto z-10 origin-center">
+            <div className="text-sm text-gray-500 font-bold tracking-[0.2em] uppercase bg-gray-50 px-4 py-1.5 rounded-full border border-gray-100 w-fit relative z-10">04 — GLOBAL REACH</div>
+
+            {/* The Interactive Globe - allowed to overflow outside the card */}
+            <div className="absolute right-[-20px] top-[-40px] md:right-[-30px] md:top-[-60px] opacity-90 group-hover:opacity-100 transition-opacity duration-700 pointer-events-auto z-10 origin-center scale-90 md:scale-100">
               <LogisticsGlobe />
             </div>
 

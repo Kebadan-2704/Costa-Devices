@@ -88,7 +88,7 @@ export default function ActivityTicker() {
         <div className="h-full flex items-center px-4 flex-shrink-0 relative z-10 bg-bg-elevated shadow-[4px_0_10px_rgba(0,0,0,0.03)] border-r border-glass-border">
           <div className="flex items-center bg-bg-secondary border border-glass-border rounded-full px-3 py-1">
             <span className="w-1.5 h-1.5 bg-costa-green rounded-full animate-pulse mr-2"></span>
-            <span className="text-xs font-black tracking-widest uppercase text-text-primary">Live Feed</span>
+            <span className="text-xs font-bold tracking-wider uppercase text-text-primary">Live Feed</span>
           </div>
         </div>
         
@@ -100,14 +100,14 @@ export default function ActivityTicker() {
             {events.map((event, idx) => (
               <div key={idx} className="flex items-center mx-8 gap-4">
                 <span className="flex-shrink-0">{event.icon}</span>
-                <span className="text-xs font-black tracking-[0.15em] text-text-primary uppercase whitespace-nowrap drop-shadow-sm">
+                <span className="text-xs font-semibold tracking-wider text-text-primary uppercase whitespace-nowrap">
                   {event.text}
                 </span>
-                <span className="text-xs text-text-muted font-bold ml-1">
+                <span className="text-xs text-text-muted font-medium ml-1">
                   {event.time}
                 </span>
-                {/* Bold vertical line separator */}
-                <div className="w-[3px] h-4 bg-glass-border rounded-full ml-8"></div>
+                {/* Vertical line separator */}
+                <div className="w-[1px] h-4 bg-glass-border rounded-full ml-8"></div>
               </div>
             ))}
           </Marquee>

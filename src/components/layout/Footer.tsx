@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowUpRight, ArrowUp, CheckCircle2 } from "lucide-react";
+import { ArrowUpRight, ArrowUp, CheckCircle2, Mail } from "lucide-react";
 import { toast } from "sonner";
 import { COMPANY, CERTIFICATIONS, OFFICES } from "@/lib/constants";
 
@@ -72,7 +72,7 @@ export default function Footer() {
               {OFFICES.map(office => (
                 <li key={office.id} className="flex items-center gap-3">
                   <span className="w-1.5 h-1.5 rounded-full bg-costa-green"></span>
-                  {office.city}, {office.country}
+                  {(office as any).displayLocation || `${office.city}, ${office.country}`}
                 </li>
               ))}
             </ul>
@@ -83,13 +83,22 @@ export default function Footer() {
             <h4 className="text-sm font-bold text-costa-green tracking-widest uppercase mb-8">
               Direct Contact
             </h4>
-            <div className="flex flex-col gap-2 mb-10">
-              <a href={`mailto:${COMPANY.email}`} className="text-base font-semibold text-text-secondary hover:text-costa-green transition-colors break-words">
+            <div className="flex flex-col gap-4 mb-10">
+              <a href={`mailto:${COMPANY.email}`} className="flex items-center gap-3 text-base font-semibold text-text-secondary hover:text-costa-green transition-colors break-words group">
+                <Mail size={18} className="text-costa-green/70 group-hover:text-costa-green transition-colors" />
                 {COMPANY.email}
               </a>
-              <a href={`tel:${COMPANY.phone.replace(/[^0-9+]/g, '')}`} className="text-xl md:text-2xl font-bold text-text-primary hover:text-costa-green transition-colors mt-1 whitespace-nowrap">
-                {COMPANY.phone}
-              </a>
+              
+              <div className="flex flex-col gap-3 mt-1">
+                <a href={`tel:${COMPANY.phone.replace(/[^0-9+]/g, '')}`} className="flex items-center gap-3 text-xl md:text-2xl font-bold text-text-primary hover:text-costa-green transition-colors whitespace-nowrap group">
+                  <span className="text-xl grayscale group-hover:grayscale-0 transition-all opacity-80 group-hover:opacity-100">🇮🇳</span>
+                  {COMPANY.phone}
+                </a>
+                <a href="tel:+971503413793" className="flex items-center gap-3 text-xl md:text-2xl font-bold text-text-primary hover:text-costa-green transition-colors whitespace-nowrap group">
+                  <span className="text-xl grayscale group-hover:grayscale-0 transition-all opacity-80 group-hover:opacity-100">🇦🇪</span>
+                  +971 50 341 3793
+                </a>
+              </div>
             </div>
             
             {/* Premium Light Theme Certification Badges */}

@@ -46,7 +46,7 @@ export default function CaseStudySection() {
 
             <div className="relative z-10 flex items-center gap-4 mt-8">
               <div>
-                <span className="text-sm text-text-secondary tracking-widest uppercase">VP Engineering • Ather Energy</span>
+                <span className="text-sm text-text-secondary tracking-widest uppercase">VP Engineering • Global EV Manufacturer</span>
               </div>
             </div>
           </motion.div>

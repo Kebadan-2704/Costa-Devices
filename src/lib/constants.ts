@@ -70,6 +70,7 @@ export const OFFICES = [
     email: "info@costadevices.com",
     timezone: "GMT+4",
     coordinates: { lat: 25.1173, lng: 55.3834 },
+    displayLocation: "Dubai, UAE",
   },
   {
     id: "india",
@@ -82,6 +83,7 @@ export const OFFICES = [
     email: "info@costadevices.com",
     timezone: "GMT+5:30",
     coordinates: { lat: 11.0168, lng: 76.9558 },
+    displayLocation: "Tamil Nadu, India",
   },
   {
     id: "hongkong",
@@ -94,6 +96,7 @@ export const OFFICES = [
     email: "hk@costadevices.com",
     timezone: "GMT+8",
     coordinates: { lat: 22.3193, lng: 114.1694 },
+    displayLocation: "Hong Kong",
   },
   {
     id: "israel",
@@ -106,6 +109,7 @@ export const OFFICES = [
     email: "info@costadevices.com",
     timezone: "GMT+2",
     coordinates: { lat: 32.0853, lng: 34.7818 },
+    displayLocation: "Israel",
   },
 ];
 
@@ -331,21 +335,21 @@ export const TESTIMONIALS = [
     id: "t1",
     quote: "Costa Devices has been our go-to supplier for EV-grade Bussmann fuses. Their 24-hour turnaround on spot quotes has saved us from multiple production delays.",
     author: "Procurement Lead",
-    company: "Ather Energy",
+    company: "Global EV Manufacturer",
     rating: 5,
   },
   {
     id: "t2",
     quote: "The counterfeit detection pipeline from Costa Devices gives us complete confidence. Every component is authentic, tested, and traceable. Zero issues in 3 years.",
     author: "Supply Chain Manager",
-    company: "Kaynes Technology",
+    company: "Tier-1 EMS Provider",
     rating: 5,
   },
   {
     id: "t3",
     quote: "We consolidated our fuse and contactor sourcing with Costa Devices and reduced shipping costs by 35%. Their combined shipping program is a game-changer.",
     author: "VP of Operations",
-    company: "GIGA",
+    company: "Multinational Energy OEM",
     rating: 5,
   },
 ];
@@ -451,7 +455,7 @@ export const PART_CATALOG = [
 ];
 
 export const TIMELINE = [
-  { year: 2011, title: "Company Founded", description: "Established in Coimbatore, India. Secured first major contract sourcing $250k of obsolete TI microcontrollers." },
+  { year: 2011, title: "Company Founded", description: "Established in Tamil Nadu, India. Secured first major contract sourcing $250k of obsolete TI microcontrollers." },
   { year: 2013, title: "Authorized Distributor", description: "Became authorized Bussmann & Eaton Moeller distributor, securing Tier-1 pricing access." },
   { year: 2015, title: "APAC Expansion", description: "Opened Hong Kong logistics hub. Surpassed $2M in annual distributed inventory for industrial automation clients." },
   { year: 2017, title: "ISO 9001:2015 Certification", description: "Audited and awarded ISO 9001 certification. Implemented our proprietary 8-step counterfeit mitigation pipeline." },

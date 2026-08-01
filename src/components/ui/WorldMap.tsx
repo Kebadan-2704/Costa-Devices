@@ -28,9 +28,9 @@ export default function WorldMap() {
   }, []);
 
   const locations = [
-    { id: "il", name: "Tel Aviv, Israel", top: "39.5%", left: "58.5%" },
+    { id: "il", name: "Israel", top: "39.5%", left: "58.5%" },
     { id: "uae", name: "Dubai, UAE", top: "42.5%", left: "64%" },
-    { id: "india", name: "Coimbatore, India", top: "49%", left: "69.6%" },
+    { id: "india", name: "Tamil Nadu, India", top: "49%", left: "69.6%" },
     { id: "hk", name: "Hong Kong", top: "44%", left: "79.5%" },
   ];
 

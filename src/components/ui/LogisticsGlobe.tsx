@@ -9,7 +9,7 @@ const Globe = dynamic(() => import("react-globe.gl"), { ssr: false });
 
 export default function LogisticsGlobe() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(containerRef, { once: true, margin: "200px" });
+  const isInView = useInView(containerRef, { once: true, margin: "50px" });
   const globeRef = useRef<any>(null);
   const [dimensions, setDimensions] = useState({ width: 420, height: 420 });
   const [isMounted, setIsMounted] = useState(false);

@@ -2,7 +2,6 @@ import Link from "next/link";
 import { ArrowRight, Clock } from "lucide-react";
 import dynamic from "next/dynamic";
 import HeroSection from "@/components/home/HeroSection";
-import DeepTechSection from "@/components/home/DeepTechSection";
 
 // Dynamically import below-the-fold components to reduce initial JS payload
 const SocialProofSection = dynamic(() => import("@/components/home/SocialProofSection"), { ssr: true });
@@ -15,12 +14,8 @@ const CaseStudySection = dynamic(() => import("@/components/home/CaseStudySectio
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-bg-primary text-text-primary overflow-hidden">
-      
       {/* 1. HERO */}
       <HeroSection />
-
-      {/* 1.5 DEEP-TECH HARDWARE LAYER */}
-      <DeepTechSection />
 
       {/* 2. SOCIAL PROOF */}
       <SocialProofSection />
