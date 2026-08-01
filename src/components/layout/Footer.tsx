@@ -91,11 +91,11 @@ export default function Footer() {
               
               <div className="flex flex-col gap-3 mt-1">
                 <a href={`tel:${COMPANY.phone.replace(/[^0-9+]/g, '')}`} className="flex items-center gap-3 text-xl md:text-2xl font-bold text-text-primary hover:text-costa-green transition-colors whitespace-nowrap group">
-                  <span className="text-xl grayscale group-hover:grayscale-0 transition-all opacity-80 group-hover:opacity-100">🇮🇳</span>
+                  <img src="https://flagcdn.com/w40/in.png" alt="IN" className="w-6 h-auto grayscale group-hover:grayscale-0 transition-all opacity-80 group-hover:opacity-100 rounded-[2px] shadow-sm" />
                   {COMPANY.phone}
                 </a>
                 <a href="tel:+971503413793" className="flex items-center gap-3 text-xl md:text-2xl font-bold text-text-primary hover:text-costa-green transition-colors whitespace-nowrap group">
-                  <span className="text-xl grayscale group-hover:grayscale-0 transition-all opacity-80 group-hover:opacity-100">🇦🇪</span>
+                  <img src="https://flagcdn.com/w40/ae.png" alt="AE" className="w-6 h-auto grayscale group-hover:grayscale-0 transition-all opacity-80 group-hover:opacity-100 rounded-[2px] shadow-sm" />
                   +971 50 341 3793
                 </a>
               </div>
