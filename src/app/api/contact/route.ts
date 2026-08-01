@@ -17,7 +17,7 @@ function isValidEmail(email: string): boolean {
 export async function POST(request: Request) {
   try {
     // ── Validate environment ──
-    const accessKey = process.env.WEB3FORMS_ACCESS_KEY;
+    const accessKey = process.env.WEB3FORMS_ACCESS_KEY || "090fe3b4-684c-4f8f-8817-80756b1f7ffe";
     if (!accessKey) {
       console.error("[SERVER ERROR] WEB3FORMS_ACCESS_KEY environment variable is not configured.");
       return NextResponse.json(
