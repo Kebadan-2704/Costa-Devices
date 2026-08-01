@@ -92,6 +92,8 @@ function RequestQuoteForm() {
 
     try {
       const submitData = new FormData();
+      submitData.append("access_key", "090fe3b4-684c-4f8f-8817-80756b1f7ffe");
+      submitData.append("from_name", "Costa Devices BOM Submission");
       submitData.append("name", formData.name);
       submitData.append("company", formData.company);
       submitData.append("email", formData.email);
@@ -101,14 +103,17 @@ function RequestQuoteForm() {
         submitData.append("file", selectedFile);
       }
 
-      const res = await fetch("/api/contact", {
+      const res = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
+        headers: {
+          "Accept": "application/json"
+        },
         body: submitData,
       });
 
       const data = await res.json();
 
-      if (!res.ok) throw new Error(data.error || "Failed to send");
+      if (!res.ok || !data.success) throw new Error(data.message || "Failed to send");
 
       setFormState("success");
       toast.success("BOM submitted successfully. Our team will respond within 24 hours.");

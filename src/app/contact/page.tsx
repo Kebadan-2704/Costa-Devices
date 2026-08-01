@@ -22,15 +22,24 @@ export default function ContactPage() {
     setFormState("submitting");
 
     try {
-      const res = await fetch("/api/contact", {
+      const payload = {
+        ...formData,
+        access_key: "090fe3b4-684c-4f8f-8817-80756b1f7ffe",
+        from_name: "Costa Devices Contact Form",
+      };
+
+      const res = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        headers: { 
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify(payload),
       });
       
       const data = await res.json();
       
-      if (!res.ok) throw new Error(data.error || "Failed to send");
+      if (!res.ok || !data.success) throw new Error(data.message || "Failed to send");
       
       setFormState("success");
       toast.success("Message sent. Our sales team has been notified.");
