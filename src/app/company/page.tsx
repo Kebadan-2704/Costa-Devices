@@ -8,6 +8,7 @@ import AnimatedCounter from "@/components/ui/AnimatedCounter";
 import WorldMap from "@/components/ui/WorldMap";
 import { COMPANY, TEAM, OFFICES, TIMELINE, STATS } from "@/lib/constants";
 import type { Metadata } from "next";
+import CompanyStructuredData from "@/components/CompanyStructuredData";
 
 export const metadata: Metadata = {
   title: "Company — 14+ Years of Global Operations",
@@ -296,10 +297,12 @@ export default function CompanyPage() {
                   <div className="relative z-10 flex flex-col h-full justify-between">
                     <div>
                       <div className="w-16 h-16 mx-auto bg-bg-secondary border border-glass-border rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500 group-hover:border-costa-green/30 shadow-sm">
-                        <img 
+                        <Image 
                           src={`https://flagcdn.com/w80/${office.id === 'dubai' ? 'ae' : office.id === 'india' ? 'in' : office.id === 'hongkong' ? 'hk' : 'il'}.png`} 
                           alt={office.country} 
-                          className="w-8 h-auto rounded-[2px] grayscale group-hover:grayscale-0 transition-all" 
+                          width={32}
+                          height={24}
+                          className="rounded-[2px] grayscale group-hover:grayscale-0 transition-all" 
                         />
                       </div>
                       

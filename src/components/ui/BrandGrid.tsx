@@ -4,6 +4,7 @@
 
 import { BRANDS } from "@/lib/constants";
 import { motion, Variants } from "framer-motion";
+import Image from "next/image";
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -45,10 +46,12 @@ export default function BrandGrid() {
              
              {/* Logo Container */}
              <div className="w-full h-[100px] relative z-10 flex items-center justify-center mb-4 transition-transform duration-500 group-hover:scale-110">
-               <img 
+               <Image 
                  src={encodeURI(brand.image)} 
                  alt={`${brand.name} logo`}
-                 className="max-w-[160px] max-h-[80px] object-contain mix-blend-multiply filter opacity-100 transition-all duration-500"
+                 fill
+                 sizes="(max-width: 768px) 160px, 160px"
+                 className="object-contain mix-blend-multiply filter opacity-100 transition-all duration-500 !p-4"
                />
              </div>
              

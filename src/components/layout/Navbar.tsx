@@ -12,6 +12,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
+  const drawerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -20,6 +21,43 @@ export default function Navbar() {
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Focus trap for mobile drawer
+  useEffect(() => {
+    if (!mobileOpen) return;
+    const drawer = drawerRef.current;
+    if (!drawer) return;
+
+    const focusable = drawer.querySelectorAll<HTMLElement>(
+      'a[href], button:not([disabled]), input:not([disabled]), [tabindex]:not([tabindex="-1"])'
+    );
+    if (focusable.length === 0) return;
+
+    const firstElement = focusable[0];
+    const lastElement = focusable[focusable.length - 1];
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setMobileOpen(false);
+      } else if (e.key === "Tab") {
+        if (e.shiftKey) {
+          if (document.activeElement === firstElement) {
+            lastElement.focus();
+            e.preventDefault();
+          }
+        } else {
+          if (document.activeElement === lastElement) {
+            firstElement.focus();
+            e.preventDefault();
+          }
+        }
+      }
+    };
+
+    firstElement.focus();
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [mobileOpen]);
 
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect
@@ -42,7 +80,7 @@ export default function Navbar() {
               ? "bg-white/95 backdrop-blur-xl border-black/8 shadow-[0_1px_3px_rgba(0,0,0,0.04)]" 
               : "bg-white/80 backdrop-blur-md border-transparent"
           }`}>
-            <div className="max-w-[1400px] mx-auto px-6 py-3 flex items-center gap-6">
+            <div className="max-w-[1400px] mx-auto px-6 py-3 flex items-center justify-between lg:justify-start gap-6">
               
               {/* Logo */}
               <Link href="/" className="flex items-center group relative shrink-0">
@@ -98,12 +136,14 @@ export default function Navbar() {
                 <div key={link.label} className="group relative flex items-center">
                   <Link
                     href={link.href}
-                    className={`relative text-[14px] font-semibold transition-all duration-300 px-5 py-3 rounded-lg
+                    className={`relative text-sm font-semibold transition-all duration-300 px-6 py-3 rounded-lg
                       ${pathname === link.href 
                         ? "text-costa-green bg-costa-green/5" 
                         : "text-text-secondary hover:text-text-primary hover:bg-black/[0.03]"
                       }
                     `}
+                    aria-haspopup={(link.megaMenu || link.dropdown) ? "true" : undefined}
+                    aria-expanded={(link.megaMenu || link.dropdown) ? "false" : undefined}
                   >
                     {link.label}
                   </Link>
@@ -115,7 +155,7 @@ export default function Navbar() {
 
                   {/* Premium Mega Menu */}
                   {link.megaMenu && (
-                    <div className="absolute top-[calc(100%+8px)] left-1/2 -translate-x-1/2 w-[600px] bg-white/95 backdrop-blur-xl border border-black/10 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 rounded-2xl overflow-hidden before:absolute before:-top-4 before:left-0 before:w-full before:h-4 origin-top group-hover:scale-100 scale-95">
+                    <div className="absolute top-[calc(100%+8px)] left-1/2 -translate-x-1/2 w-[600px] bg-white/95 backdrop-blur-xl border border-black/10 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)] opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible group-focus-within:scale-100 transition-all duration-300 z-50 rounded-2xl overflow-hidden before:absolute before:-top-4 before:left-0 before:w-full before:h-4 origin-top group-hover:scale-100 scale-95">
                       <div className="grid grid-cols-2 p-4 gap-4 relative z-10">
                         {link.megaMenu.categories.map((cat: any) => (
                           <div key={cat.label} className="bg-[#FAFAFA] hover:bg-black/[0.03] transition-colors duration-300 rounded-xl p-6 border border-black/5 group/cat flex flex-col">
@@ -123,14 +163,14 @@ export default function Navbar() {
                               <div className="w-12 h-12 rounded-full bg-white shadow-sm border border-black/5 flex items-center justify-center text-costa-green shrink-0">
                                 {cat.label.includes('Electronic') ? <Cpu size={24} strokeWidth={1.5} /> : <Zap size={24} strokeWidth={1.5} />}
                               </div>
-                              <Link href={cat.href} className="text-[15px] font-black text-text-primary group-hover/cat:text-costa-green transition-colors uppercase tracking-tight leading-tight">
+                              <Link href={cat.href} className="text-base font-black text-text-primary group-hover/cat:text-costa-green transition-colors uppercase tracking-tight leading-tight">
                                 {cat.label}
                               </Link>
                             </div>
                             <ul className="flex flex-col gap-3">
                               {cat.products.map((prod: any) => (
                                 <li key={prod.label}>
-                                  <Link href={prod.href} className="text-[13px] font-semibold text-text-secondary hover:text-costa-green transition-colors flex items-center gap-2.5 group/item">
+                                  <Link href={prod.href} className="text-sm font-semibold text-text-secondary hover:text-costa-green transition-colors flex items-center gap-2 group/item">
                                     <div className="w-1.5 h-1.5 rounded-full bg-black/15 group-hover/item:bg-costa-green group-hover/item:scale-150 transition-all duration-300" />
                                     {prod.label}
                                   </Link>
@@ -162,21 +202,21 @@ export default function Navbar() {
 
                   {/* Simple Dropdown */}
                   {link.dropdown && (
-                    <div className="absolute top-[calc(100%+8px)] left-1/2 -translate-x-1/2 w-[340px] bg-white/95 backdrop-blur-xl border border-black/10 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 rounded-2xl overflow-hidden before:absolute before:-top-4 before:left-0 before:w-full before:h-4 origin-top group-hover:scale-100 scale-95">
+                    <div className="absolute top-[calc(100%+8px)] left-1/2 -translate-x-1/2 w-[340px] bg-white/95 backdrop-blur-xl border border-black/10 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)] opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible group-focus-within:scale-100 transition-all duration-300 z-50 rounded-2xl overflow-hidden before:absolute before:-top-4 before:left-0 before:w-full before:h-4 origin-top group-hover:scale-100 scale-95">
                       <div className="p-4">
-                        <div className="bg-[#FAFAFA] hover:bg-black/[0.03] transition-colors duration-300 rounded-xl p-6 border border-black/5 flex flex-col">
+                        <div className="bg-bg-secondary hover:bg-black/[0.03] transition-colors duration-300 rounded-xl p-6 border border-glass-border flex flex-col">
                           <div className="flex items-center gap-4 mb-5">
                             <div className="w-12 h-12 rounded-full bg-white shadow-sm border border-black/5 flex items-center justify-center text-costa-green shrink-0">
                               <ShieldCheck size={24} strokeWidth={1.5} />
                             </div>
-                            <span className="text-[15px] font-black text-text-primary uppercase tracking-tight leading-tight">
+                            <span className="text-base font-black text-text-primary uppercase tracking-tight leading-tight">
                               {link.label} Assurance
                             </span>
                           </div>
                           <ul className="flex flex-col gap-3">
                             {link.dropdown.map((item: any) => (
                               <li key={item.label}>
-                                <Link href={item.href} className="text-[13px] font-semibold text-text-secondary hover:text-costa-green transition-colors flex items-center gap-2.5 group/item">
+                                <Link href={item.href} className="text-sm font-semibold text-text-secondary hover:text-costa-green transition-colors flex items-center gap-2 group/item">
                                   <div className="w-1.5 h-1.5 rounded-full bg-black/15 group-hover/item:bg-costa-green group-hover/item:scale-150 transition-all duration-300" />
                                   {item.label}
                                 </Link>
@@ -214,7 +254,8 @@ export default function Navbar() {
 
       {/* Mobile Menu Drawer */}
       <div
-        className={`fixed inset-0 bg-white lg:hidden transition-all duration-400 origin-top overflow-auto pointer-events-auto z-[105] ${
+        ref={drawerRef}
+        className={`fixed inset-0 bg-white lg:hidden transition-all duration-[400ms] origin-top overflow-auto pointer-events-auto z-[105] ${
           mobileOpen ? "opacity-100 visible" : "opacity-0 invisible pointer-events-none"
         }`}
       >

@@ -33,6 +33,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.costadevices.com"),
   title: {
     default: "Costa Devices Electric Ltd — Powering The Future of Electric Mobility",
     template: "%s | Costa Devices",
@@ -51,6 +52,9 @@ export const metadata: Metadata = {
     "semiconductor sourcing",
     "Costa Devices",
   ],
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     title: "Costa Devices Electric Ltd — Powering The Future of Electric Mobility",
     description: "India's trusted distributor for mission-critical circuit protection for EV, Energy Storage & Industrial Power.",
@@ -64,6 +68,12 @@ export const metadata: Metadata = {
       },
     ],
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Costa Devices Electric Ltd",
+    description: "Global distributor for mission-critical circuit protection.",
+    images: ["/api/og?title=Costa Devices Global"],
   },
   manifest: "/manifest.webmanifest",
 };

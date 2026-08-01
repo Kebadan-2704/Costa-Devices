@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowUpRight, ArrowUp, CheckCircle2 } from "lucide-react";
+import { toast } from "sonner";
 import { COMPANY, CERTIFICATIONS, OFFICES } from "@/lib/constants";
 
 export default function Footer() {
@@ -37,8 +38,9 @@ export default function Footer() {
 
             <div className="mt-8 pt-8 border-t border-black/10 w-full max-w-[340px]">
               <h4 className="text-xs font-bold text-text-primary tracking-widest uppercase mb-4">Market Insights Newsletter</h4>
-              <form className="flex flex-col gap-3" onSubmit={(e) => { e.preventDefault(); alert("Subscribed successfully!"); }}>
-                <input type="email" required placeholder="Enter work email..." className="w-full bg-[#FAFAFA] border border-black/10 px-4 py-3 rounded-lg text-sm outline-none focus:border-costa-green focus:bg-white transition-all placeholder:text-text-muted font-medium" />
+              <form className="flex flex-col gap-3" onSubmit={(e) => { e.preventDefault(); toast.success("Subscribed successfully!"); }}>
+                <label htmlFor="newsletter-email" className="sr-only">Work Email</label>
+                <input id="newsletter-email" type="email" required placeholder="Enter work email..." className="w-full bg-[#FAFAFA] border border-black/10 px-4 py-3 rounded-lg text-sm outline-none focus:border-costa-green focus:bg-white transition-all placeholder:text-text-muted font-medium" />
                 <button type="submit" className="w-full bg-[#111] text-white font-bold uppercase tracking-widest text-xs px-4 py-3 rounded-lg hover:bg-costa-green transition-colors">Subscribe</button>
               </form>
             </div>

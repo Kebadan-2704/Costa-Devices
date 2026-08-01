@@ -2,7 +2,7 @@
 
 import React from "react";
 import Marquee from "@/components/ui/Marquee";
-import { CheckCircle2, Globe, TrendingUp, Zap } from "lucide-react";
+import { CheckCircle2, Globe, TrendingUp, Zap, X } from "lucide-react";
 
 const LIVE_EVENTS = [
   { icon: <Zap size={12} className="text-amber-500" />, text: "Just Sourced: 15,000x STM32F4 in Munich, DE", time: "2m ago" },
@@ -14,6 +14,17 @@ const LIVE_EVENTS = [
 
 export default function ActivityTicker() {
   const [events, setEvents] = React.useState(LIVE_EVENTS);
+  const [latestEventText, setLatestEventText] = React.useState("");
+  const [isVisible, setIsVisible] = React.useState(true);
+  const [isMounted, setIsMounted] = React.useState(false);
+
+  React.useEffect(() => {
+    setIsMounted(true);
+    const dismissed = localStorage.getItem("costa_ticker_dismissed");
+    if (dismissed === "true") {
+      setIsVisible(false);
+    }
+  }, []);
 
   React.useEffect(() => {
     const PENDING_EVENTS = [
@@ -42,6 +53,8 @@ export default function ActivityTicker() {
         time: "Just now"
       };
       
+      setLatestEventText(randomEvent.text);
+
       setEvents((prev) => {
         const agedEvents = prev.map(e => ({
           ...e,
@@ -59,38 +72,59 @@ export default function ActivityTicker() {
     return () => clearInterval(intervalId);
   }, []);
 
+  const dismissTicker = () => {
+    setIsVisible(false);
+    localStorage.setItem("costa_ticker_dismissed", "true");
+  };
+
+  if (!isMounted || !isVisible) return null;
+
   return (
-    <div className="fixed bottom-0 left-0 right-0 w-full bg-white text-gray-900 border-t border-gray-100 flex items-center h-[52px] shadow-[0_-4px_10px_rgba(0,0,0,0.03)] pointer-events-auto z-[101]">
-      <div className="h-full flex items-center px-4 flex-shrink-0 relative z-10 bg-white shadow-[4px_0_10px_rgba(0,0,0,0.03)] border-r border-gray-100">
-        <div className="flex items-center bg-gray-50 border border-gray-200 rounded-full px-3 py-1">
-          <span className="w-1.5 h-1.5 bg-costa-green rounded-full animate-pulse mr-2"></span>
-          <span className="text-[10px] font-black tracking-widest uppercase text-gray-800">Live Feed</span>
+    <>
+      <div aria-live="polite" className="sr-only">
+        {latestEventText}
+      </div>
+      <div className="fixed bottom-0 left-0 right-0 w-full bg-bg-elevated text-text-primary border-t border-glass-border flex items-center h-[52px] shadow-[0_-4px_10px_rgba(0,0,0,0.03)] pointer-events-auto z-[101]">
+        <div className="h-full flex items-center px-4 flex-shrink-0 relative z-10 bg-bg-elevated shadow-[4px_0_10px_rgba(0,0,0,0.03)] border-r border-glass-border">
+          <div className="flex items-center bg-bg-secondary border border-glass-border rounded-full px-3 py-1">
+            <span className="w-1.5 h-1.5 bg-costa-green rounded-full animate-pulse mr-2"></span>
+            <span className="text-xs font-black tracking-widest uppercase text-text-primary">Live Feed</span>
+          </div>
         </div>
-      </div>
-      
-      <div className="flex-1 overflow-hidden relative">
-        {/* Left fade */}
-        <div className="absolute left-0 top-0 bottom-0 w-12 bg-gradient-to-r from-white to-transparent z-10"></div>
         
-        <Marquee speed="slowest" direction="left" className="overflow-y-hidden">
-          {events.map((event, idx) => (
-            <div key={idx} className="flex items-center mx-8 gap-4">
-              <span className="flex-shrink-0">{event.icon}</span>
-              <span className="text-[11px] font-black tracking-[0.15em] text-gray-900 uppercase whitespace-nowrap drop-shadow-sm">
-                {event.text}
-              </span>
-              <span className="text-[9px] text-gray-400 font-bold ml-1">
-                {event.time}
-              </span>
-              {/* Bold vertical line separator */}
-              <div className="w-[3px] h-4 bg-gray-200 rounded-full ml-8"></div>
-            </div>
-          ))}
-        </Marquee>
-        
-        {/* Right fade */}
-        <div className="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-white to-transparent z-10"></div>
+        <div className="flex-1 overflow-hidden relative">
+          {/* Left fade */}
+          <div className="absolute left-0 top-0 bottom-0 w-12 bg-gradient-to-r from-bg-elevated to-transparent z-10"></div>
+          
+          <Marquee speed="slowest" direction="left" className="overflow-y-hidden">
+            {events.map((event, idx) => (
+              <div key={idx} className="flex items-center mx-8 gap-4">
+                <span className="flex-shrink-0">{event.icon}</span>
+                <span className="text-xs font-black tracking-[0.15em] text-text-primary uppercase whitespace-nowrap drop-shadow-sm">
+                  {event.text}
+                </span>
+                <span className="text-xs text-text-muted font-bold ml-1">
+                  {event.time}
+                </span>
+                {/* Bold vertical line separator */}
+                <div className="w-[3px] h-4 bg-glass-border rounded-full ml-8"></div>
+              </div>
+            ))}
+          </Marquee>
+          
+          {/* Right fade */}
+          <div className="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-bg-elevated to-transparent z-10"></div>
+        </div>
+
+        {/* Mobile Dismiss Button */}
+        <button 
+          onClick={dismissTicker}
+          className="md:hidden h-full px-4 flex items-center justify-center border-l border-glass-border bg-bg-secondary hover:bg-black/5"
+          aria-label="Dismiss activity ticker"
+        >
+          <X size={16} className="text-text-muted" />
+        </button>
       </div>
-    </div>
+    </>
   );
 }

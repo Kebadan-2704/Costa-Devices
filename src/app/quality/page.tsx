@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
 import { ArrowRight, ShieldCheck, CheckCircle2, Award } from "lucide-react";
+import Image from "next/image";
 import ScrollReveal from "@/components/animations/ScrollReveal";
 import ProcessFlowchart from "@/components/ui/ProcessFlowchart";
 import { CERTIFICATIONS } from "@/lib/constants";
@@ -80,7 +81,7 @@ export default function QualityPage() {
                     </div>
                     <div className="flex items-center gap-2 px-3 py-1.5 bg-costa-green/10 border border-costa-green/20 rounded-full">
                       <div className="w-1.5 h-1.5 rounded-full bg-costa-green" />
-                      <span className="font-mono text-[9px] text-costa-green font-bold uppercase tracking-wider">Verified</span>
+                      <span className="font-mono text-xs text-costa-green font-bold uppercase tracking-wider">Verified</span>
                     </div>
                   </div>
                   
@@ -133,7 +134,7 @@ export default function QualityPage() {
             <ScrollReveal delay={0.1}>
               <div className="bg-bg-primary border border-glass-border rounded-2xl overflow-hidden shadow-sm group hover:shadow-xl transition-all duration-500 hover:-translate-y-1">
                 <div className="h-48 relative flex flex-col items-center justify-center overflow-hidden">
-                   <img src="/images/testing/x_ray.png" alt="X-Ray Inspection" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-[1.5s]" />
+                   <Image src="/images/testing/x_ray.png" alt="X-Ray Inspection" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover group-hover:scale-105 transition-transform duration-[1.5s]" />
                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-costa-green/20" />
                    <p className="font-mono text-white/20 text-6xl font-black tracking-tighter z-10 group-hover:scale-110 transition-transform duration-700 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 mix-blend-overlay">X-RAY</p>
                    <p className="font-heading font-bold text-white text-lg mt-12 z-10">Real-Time X-Ray Inspection</p>
@@ -146,7 +147,7 @@ export default function QualityPage() {
             <ScrollReveal delay={0.2}>
               <div className="bg-bg-primary border border-glass-border rounded-2xl overflow-hidden shadow-sm group hover:shadow-xl transition-all duration-500 hover:-translate-y-1">
                 <div className="h-48 relative flex flex-col items-center justify-center overflow-hidden">
-                   <img src="/images/testing/decap.png" alt="Chemical Decapsulation" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-[1.5s]" />
+                   <Image src="/images/testing/decap.png" alt="Chemical Decapsulation" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover group-hover:scale-105 transition-transform duration-[1.5s]" />
                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-costa-green/20" />
                    <p className="font-mono text-white/20 text-6xl font-black tracking-tighter z-10 group-hover:scale-110 transition-transform duration-700 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 mix-blend-overlay">DECAP</p>
                    <p className="font-heading font-bold text-white text-lg mt-12 z-10">Chemical Decapsulation</p>
@@ -159,7 +160,7 @@ export default function QualityPage() {
             <ScrollReveal delay={0.3}>
               <div className="bg-bg-primary border border-glass-border rounded-2xl overflow-hidden shadow-sm group hover:shadow-xl transition-all duration-500 hover:-translate-y-1">
                 <div className="h-48 relative flex flex-col items-center justify-center overflow-hidden">
-                   <img src="/images/testing/solder.png" alt="Solderability Testing" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-[1.5s]" />
+                   <Image src="/images/testing/solder.png" alt="Solderability Testing" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover group-hover:scale-105 transition-transform duration-[1.5s]" />
                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-costa-green/20" />
                    <p className="font-mono text-white/20 text-6xl font-black tracking-tighter z-10 group-hover:scale-110 transition-transform duration-700 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 mix-blend-overlay">SOLDER</p>
                    <p className="font-heading font-bold text-white text-lg mt-12 z-10">Solderability Testing</p>

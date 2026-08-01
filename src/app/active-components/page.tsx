@@ -133,19 +133,19 @@ export default function ActiveComponentsPage() {
                   {/* Technical Specs Grid */}
                   <div className="grid grid-cols-2 gap-3 w-full shrink-0 mb-8">
                     <div className="bg-gray-50 p-4 rounded-xl border border-gray-100 group-hover/card:bg-costa-green/5 group-hover/card:border-costa-green/20 transition-colors">
-                      <div className="font-mono text-[9px] text-gray-400 font-bold uppercase tracking-wider mb-1">Max Layers</div>
+                      <div className="font-mono text-xs text-gray-400 font-bold uppercase tracking-wider mb-1">Max Layers</div>
                       <div className="font-mono text-lg font-bold text-costa-green">32+</div>
                     </div>
                     <div className="bg-gray-50 p-4 rounded-xl border border-gray-100 group-hover/card:bg-costa-green/5 group-hover/card:border-costa-green/20 transition-colors">
-                      <div className="font-mono text-[9px] text-gray-400 font-bold uppercase tracking-wider mb-1">High-Speed</div>
+                      <div className="font-mono text-xs text-gray-400 font-bold uppercase tracking-wider mb-1">High-Speed</div>
                       <div className="font-mono text-lg font-bold text-costa-green">56 Gbps</div>
                     </div>
                     <div className="bg-gray-50 p-4 rounded-xl border border-gray-100 group-hover/card:bg-costa-green/5 group-hover/card:border-costa-green/20 transition-colors">
-                      <div className="font-mono text-[9px] text-gray-400 font-bold uppercase tracking-wider mb-1">Standards</div>
+                      <div className="font-mono text-xs text-gray-400 font-bold uppercase tracking-wider mb-1">Standards</div>
                       <div className="font-mono text-lg font-bold text-costa-green">IPC Class 3</div>
                     </div>
                     <div className="bg-gray-50 p-4 rounded-xl border border-gray-100 group-hover/card:bg-costa-green/5 group-hover/card:border-costa-green/20 transition-colors">
-                      <div className="font-mono text-[9px] text-gray-400 font-bold uppercase tracking-wider mb-1">HDI Tech</div>
+                      <div className="font-mono text-xs text-gray-400 font-bold uppercase tracking-wider mb-1">HDI Tech</div>
                       <div className="font-mono text-lg font-bold text-costa-green">Microvias</div>
                     </div>
                   </div>

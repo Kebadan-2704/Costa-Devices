@@ -3,10 +3,13 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
+import { useInView } from "framer-motion";
 
 const Globe = dynamic(() => import("react-globe.gl"), { ssr: false });
 
 export default function LogisticsGlobe() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(containerRef, { once: true, margin: "200px" });
   const globeRef = useRef<any>(null);
   const [dimensions, setDimensions] = useState({ width: 420, height: 420 });
   const [isMounted, setIsMounted] = useState(false);
@@ -56,27 +59,29 @@ export default function LogisticsGlobe() {
     { startLat: 48.1351, startLng: 11.5820, endLat: 1.3521, endLng: 103.8198 }, // Munich to Singapore
   ];
 
-  if (!isMounted) return <div className="w-[350px] h-[350px] bg-gray-50 animate-pulse rounded-full" />;
+  if (!isMounted) return <div ref={containerRef} className="w-[350px] h-[350px] bg-gray-50 animate-pulse rounded-full" />;
 
   return (
-    <div className="flex justify-center items-center cursor-grab active:cursor-grabbing w-full relative z-10">
-      <Globe
-        ref={globeRef}
-        width={dimensions.width}
-        height={dimensions.height}
-        globeImageUrl="//unpkg.com/three-globe/example/img/earth-day.jpg"
-        bumpImageUrl="//unpkg.com/three-globe/example/img/earth-topology.png"
-        backgroundColor="rgba(0,0,0,0)"
-        showAtmosphere={true}
-        atmosphereColor="#1AAF5D"
-        atmosphereAltitude={0.15}
-        arcsData={arcsData}
-        arcColor={() => "#1AAF5D"}
-        arcDashLength={0.4}
-        arcDashGap={0.2}
-        arcDashAnimateTime={1500}
-        arcStroke={1.5}
-      />
+    <div ref={containerRef} className="flex justify-center items-center cursor-grab active:cursor-grabbing w-full relative z-10 min-h-[350px]">
+      {isInView && (
+        <Globe
+          ref={globeRef}
+          width={dimensions.width}
+          height={dimensions.height}
+          globeImageUrl="//unpkg.com/three-globe/example/img/earth-day.jpg"
+          bumpImageUrl="//unpkg.com/three-globe/example/img/earth-topology.png"
+          backgroundColor="rgba(0,0,0,0)"
+          showAtmosphere={true}
+          atmosphereColor="#1AAF5D"
+          atmosphereAltitude={0.15}
+          arcsData={arcsData}
+          arcColor={() => "#1AAF5D"}
+          arcDashLength={0.4}
+          arcDashGap={0.2}
+          arcDashAnimateTime={1500}
+          arcStroke={1.5}
+        />
+      )}
     </div>
   );
 }
