@@ -485,7 +485,7 @@ export const NAV_LINKS = [
         {
           label: "Electronic Components",
           href: "/active-components",
-          catalogHref: "/pdfs/Costa%20Devices%20Co%20PPT.pdf",
+          catalogHref: "/pdfs/Costa-Devices-Co-PPT.pdf",
           products: [
             { label: "IC", href: "/active-components" },
             { label: "Memory", href: "/active-components" },
@@ -499,7 +499,7 @@ export const NAV_LINKS = [
         {
           label: "Electrical Components",
           href: "/passive-components",
-          catalogHref: "/pdfs/COSTA%20DEVICES%20ELECTRIC%20%20LTD%20Co%20PPT.pdf",
+          catalogHref: "/pdfs/Costa-Devices-Electric-LTD-Co-PPT.pdf",
           products: [
             { label: "Fuses", href: "/passive-components" },
             { label: "Contactors", href: "/passive-components" },

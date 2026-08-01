@@ -10,7 +10,7 @@ export default function ProcessFlowchart() {
     <div className="relative py-12 max-w-5xl mx-auto w-full">
       {/* Background Image - Full Bleed */}
       <div className="absolute inset-y-0 z-0 opacity-75 pointer-events-none w-[100vw] left-1/2 -translate-x-1/2 overflow-hidden">
-        <img src="/images/electronics-hero-bg.png" alt="" className="w-full h-full object-cover filter grayscale mix-blend-luminosity" />
+        <img src="/images/electronics-hero-bg.png" alt="" loading="lazy" className="w-full h-full object-cover filter grayscale mix-blend-luminosity" />
         <div className="absolute inset-0 bg-gradient-to-b from-bg-primary via-transparent to-bg-primary" />
       </div>
 

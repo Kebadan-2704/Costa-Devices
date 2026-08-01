@@ -195,7 +195,7 @@ export default function CompanyPage() {
       <section className="relative py-8 border-b border-glass-border transition-colors duration-500 overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0 z-0 opacity-75 pointer-events-none">
-          <img src="/images/electronics-hero-bg.png" alt="" className="w-full h-full object-cover filter grayscale mix-blend-luminosity" />
+          <img src="/images/electronics-hero-bg.png" alt="" loading="lazy" className="w-full h-full object-cover filter grayscale mix-blend-luminosity" />
           <div className="absolute inset-0 bg-gradient-to-b from-bg-primary via-transparent to-bg-primary" />
         </div>
         <div className="max-w-[800px] mx-auto px-6">
