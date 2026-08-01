@@ -117,7 +117,11 @@ export async function POST(request: Request) {
     const data = await response.json();
 
     if (!response.ok || !data.success) {
-      throw new Error(data.message || "Failed to submit to Web3Forms");
+      console.error("[WEB3FORMS ERROR]", data);
+      return NextResponse.json(
+        { success: false, error: data.message || "Failed to submit to Web3Forms" },
+        { status: 400 }
+      );
     }
 
     return NextResponse.json(

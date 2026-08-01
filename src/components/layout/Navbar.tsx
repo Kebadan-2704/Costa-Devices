@@ -186,15 +186,25 @@ export default function Navbar() {
                                 </li>
                               ))}
                             </ul>
-                            <Link 
-                              href={cat.catalogHref || cat.href} 
-                              onClick={closeDesktopMenu} 
-                              target={cat.catalogHref ? "_blank" : undefined}
-                              rel={cat.catalogHref ? "noopener noreferrer" : undefined}
-                              className="mt-8 inline-flex items-center gap-1.5 text-sm font-bold uppercase tracking-widest text-text-muted hover:text-costa-green active:opacity-40 transition-all duration-300 w-max group/btn"
-                            >
-                              View Catalog <ArrowRight size={12} className="group-hover/btn:translate-x-1 transition-transform" />
-                            </Link>
+                            {cat.catalogHref ? (
+                              <a 
+                                href={cat.catalogHref} 
+                                onClick={closeDesktopMenu} 
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="mt-8 inline-flex items-center gap-1.5 text-sm font-bold uppercase tracking-widest text-text-muted hover:text-costa-green active:opacity-40 transition-all duration-300 w-max group/btn"
+                              >
+                                View Catalog <ArrowRight size={12} className="group-hover/btn:translate-x-1 transition-transform" />
+                              </a>
+                            ) : (
+                              <Link 
+                                href={cat.href} 
+                                onClick={closeDesktopMenu} 
+                                className="mt-8 inline-flex items-center gap-1.5 text-sm font-bold uppercase tracking-widest text-text-muted hover:text-costa-green active:opacity-40 transition-all duration-300 w-max group/btn"
+                              >
+                                View Catalog <ArrowRight size={12} className="group-hover/btn:translate-x-1 transition-transform" />
+                              </Link>
+                            )}
                           </div>
                         ))}
                       </div>

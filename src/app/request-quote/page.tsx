@@ -106,12 +106,14 @@ function RequestQuoteForm() {
         body: submitData,
       });
 
-      if (!res.ok) throw new Error("Failed to send");
+      const data = await res.json();
+
+      if (!res.ok) throw new Error(data.error || "Failed to send");
 
       setFormState("success");
       toast.success("BOM submitted successfully. Our team will respond within 24 hours.");
-    } catch {
-      toast.error("Failed to submit. Please try again or email info@costadevices.com directly.");
+    } catch (error: any) {
+      toast.error(error.message || "Failed to submit. Please try again or email info@costadevices.com directly.");
       setFormState("idle");
     }
   };

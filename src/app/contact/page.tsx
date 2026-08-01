@@ -28,12 +28,14 @@ export default function ContactPage() {
         body: JSON.stringify(formData),
       });
       
-      if (!res.ok) throw new Error("Failed to send");
+      const data = await res.json();
+      
+      if (!res.ok) throw new Error(data.error || "Failed to send");
       
       setFormState("success");
       toast.success("Message sent. Our sales team has been notified.");
-    } catch (error) {
-      toast.error("Failed to send message. Please try again.");
+    } catch (error: any) {
+      toast.error(error.message || "Failed to send message. Please try again.");
       setFormState("idle");
     }
   };
