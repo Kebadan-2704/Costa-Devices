@@ -5,7 +5,7 @@ import Marquee from "@/components/ui/Marquee";
 
 export default function SocialProofSection() {
   return (
-    <section className="relative overflow-hidden py-16 border-y border-gray-100" style={{ background: 'linear-gradient(135deg, #f0fdf8 0%, #ffffff 35%, #f7fffe 65%, #edfcf5 100%)' }}>
+    <section className="relative overflow-hidden py-4 border-y border-gray-100" style={{ background: 'linear-gradient(135deg, #f0fdf8 0%, #ffffff 35%, #f7fffe 65%, #edfcf5 100%)' }}>
 
       {/* BG Layer 1: Fine grid lines */}
       <svg className="absolute inset-0 w-full h-full z-0" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -32,7 +32,7 @@ export default function SocialProofSection() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.55 }}
-        className="relative z-10 text-center mb-12 px-6"
+        className="relative z-10 text-center mb-6 px-6"
       >
         <p className="text-xs font-bold text-costa-green tracking-[0.3em] uppercase mb-2">Vetted Partner Network</p>
         <p className="text-2xl font-black text-gray-900 tracking-tight">Trusted by the Best in the Industry</p>
@@ -67,28 +67,6 @@ export default function SocialProofSection() {
       </div>
 
       {/* Stats strip */}
-      <motion.div
-        initial={{ opacity: 0, y: 10 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ delay: 0.2, duration: 0.5 }}
-        className="relative z-10 flex flex-wrap items-center justify-center gap-0 mt-12 border-t border-gray-100/80 pt-8"
-      >
-        {[
-          { value: "1,402", label: "Active Suppliers" },
-          { value: "1B+", label: "Components Sourced" },
-          { value: "50+", label: "Countries" },
-          { value: "15+", label: "Years Experience" },
-        ].map((s, i) => (
-          <div key={s.label} className="flex items-center">
-            {i > 0 && <span className="w-px h-8 bg-gray-200 mx-4 md:mx-8"></span>}
-            <div className="text-center">
-              <p className="text-xl font-black text-gray-900">{s.value}</p>
-              <p className="text-xs font-bold text-gray-400 uppercase tracking-[0.18em] mt-0.5">{s.label}</p>
-            </div>
-          </div>
-        ))}
-      </motion.div>
     </section>
   );
 }

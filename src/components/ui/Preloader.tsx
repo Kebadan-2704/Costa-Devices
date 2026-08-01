@@ -77,7 +77,7 @@ export default function Preloader() {
           <div className="absolute bottom-12 right-12 w-16 h-16 border-b-[3px] border-r-[3px] border-black/80 z-10" />
 
           {/* Main Content Block */}
-          <div className="relative z-10 flex flex-col items-center w-full max-w-3xl px-12 bg-[#FAFAFA]/95 backdrop-blur-md py-16 border border-black/10 shadow-2xl">
+          <div className="relative z-10 flex flex-col items-center w-full max-w-3xl px-12 bg-[#FAFAFA]/95 backdrop-blur-md py-8 border border-black/10 shadow-2xl">
             
             <motion.div 
               initial={{ scale: 0.9, filter: "blur(5px)", opacity: 0 }}

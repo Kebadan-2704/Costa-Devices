@@ -69,10 +69,23 @@ export default function Navbar() {
     return () => { document.body.style.overflow = ""; };
   }, [mobileOpen]);
 
+  const closeDesktopMenu = () => {
+    if (document.activeElement instanceof HTMLElement) {
+      document.activeElement.blur();
+    }
+    const nav = document.getElementById("desktop-nav");
+    if (nav) {
+      nav.style.pointerEvents = "none";
+      setTimeout(() => {
+        nav.style.pointerEvents = "";
+      }, 50);
+    }
+  };
+
   return (
     <>
       <div className="fixed top-0 left-0 right-0 z-[100] pointer-events-none">
-        <nav className="pointer-events-auto w-full">
+        <nav id="desktop-nav" className="pointer-events-auto w-full">
           <div className={`transition-all duration-500 border-b border-black/5 ${
             scrolled ? "bg-white/95 backdrop-blur-xl shadow-sm" : "bg-white/90 backdrop-blur-lg"
           }`}>
@@ -132,7 +145,7 @@ export default function Navbar() {
                 <div key={link.label} className="group relative flex items-center">
                   <Link
                     href={link.href}
-                    className={`relative text-sm font-semibold transition-all duration-300 px-6 py-3 rounded-lg
+                    className={`relative text-lg font-semibold transition-all duration-300 px-6 py-3 rounded-lg
                       ${pathname === link.href 
                         ? "text-costa-green bg-costa-green/5" 
                         : "text-text-secondary hover:text-text-primary hover:bg-black/[0.03]"
@@ -159,21 +172,27 @@ export default function Navbar() {
                               <div className="w-12 h-12 rounded-full bg-white shadow-sm border border-black/5 flex items-center justify-center text-costa-green shrink-0">
                                 {cat.label.includes('Electronic') ? <Cpu size={24} strokeWidth={1.5} /> : <Zap size={24} strokeWidth={1.5} />}
                               </div>
-                              <Link href={cat.href} className="text-base font-black text-text-primary group-hover/cat:text-costa-green transition-colors uppercase tracking-tight leading-tight">
+                              <Link href={cat.href} onClick={closeDesktopMenu} className="text-base font-black text-text-primary group-hover/cat:text-costa-green transition-colors uppercase tracking-tight leading-tight">
                                 {cat.label}
                               </Link>
                             </div>
                             <ul className="flex flex-col gap-3">
                               {cat.products.map((prod: any) => (
                                 <li key={prod.label}>
-                                  <Link href={prod.href} className="text-sm font-semibold text-text-secondary hover:text-costa-green transition-colors flex items-center gap-2 group/item">
-                                    <div className="w-1.5 h-1.5 rounded-full bg-black/15 group-hover/item:bg-costa-green group-hover/item:scale-150 transition-all duration-300" />
-                                    {prod.label}
+                                  <Link href={prod.href} onClick={closeDesktopMenu} className="text-sm font-semibold text-text-secondary hover:text-costa-green active:opacity-40 transition-all duration-300 flex items-start gap-2 group/item">
+                                    <div className="w-1.5 h-1.5 rounded-full bg-black/15 group-hover/item:bg-costa-green group-hover/item:scale-150 transition-all duration-300 mt-[6px] shrink-0" />
+                                    <span className="text-left leading-snug">{prod.label}</span>
                                   </Link>
                                 </li>
                               ))}
                             </ul>
-                            <Link href={cat.href} className="mt-8 inline-flex items-center gap-1.5 text-sm font-bold uppercase tracking-widest text-text-muted hover:text-costa-green transition-colors w-max group/btn">
+                            <Link 
+                              href={cat.catalogHref || cat.href} 
+                              onClick={closeDesktopMenu} 
+                              target={cat.catalogHref ? "_blank" : undefined}
+                              rel={cat.catalogHref ? "noopener noreferrer" : undefined}
+                              className="mt-8 inline-flex items-center gap-1.5 text-sm font-bold uppercase tracking-widest text-text-muted hover:text-costa-green active:opacity-40 transition-all duration-300 w-max group/btn"
+                            >
                               View Catalog <ArrowRight size={12} className="group-hover/btn:translate-x-1 transition-transform" />
                             </Link>
                           </div>
@@ -189,7 +208,7 @@ export default function Navbar() {
                           </span>
                           Global Sourcing &amp; Fast Delivery
                         </div>
-                        <Link href="/request-quote" className="text-xs font-bold uppercase tracking-wider text-text-primary hover:text-costa-green transition-colors flex items-center gap-1">
+                        <Link href="/request-quote" onClick={closeDesktopMenu} className="text-xs font-bold uppercase tracking-wider text-text-primary hover:text-costa-green transition-colors flex items-center gap-1">
                           Get Quote <ArrowRight size={12} />
                         </Link>
                       </div>
@@ -212,14 +231,14 @@ export default function Navbar() {
                           <ul className="flex flex-col gap-3">
                             {link.dropdown.map((item: any) => (
                               <li key={item.label}>
-                                <Link href={item.href} className="text-sm font-semibold text-text-secondary hover:text-costa-green transition-colors flex items-center gap-2 group/item">
-                                  <div className="w-1.5 h-1.5 rounded-full bg-black/15 group-hover/item:bg-costa-green group-hover/item:scale-150 transition-all duration-300" />
-                                  {item.label}
+                                <Link href={item.href} onClick={closeDesktopMenu} className="text-sm font-semibold text-text-secondary hover:text-costa-green active:opacity-40 transition-all duration-300 flex items-start gap-2 group/item">
+                                  <div className="w-1.5 h-1.5 rounded-full bg-black/15 group-hover/item:bg-costa-green group-hover/item:scale-150 transition-all duration-300 mt-[6px] shrink-0" />
+                                  <span className="text-left leading-snug">{item.label}</span>
                                 </Link>
                               </li>
                             ))}
                           </ul>
-                          <Link href={link.href} className="mt-8 inline-flex items-center gap-1.5 text-sm font-bold uppercase tracking-widest text-text-muted hover:text-costa-green transition-colors w-max group/btn">
+                          <Link href={link.href} onClick={closeDesktopMenu} className="mt-8 inline-flex items-center gap-1.5 text-sm font-bold uppercase tracking-widest text-text-muted hover:text-costa-green active:opacity-40 transition-all duration-300 w-max group/btn">
                             View Details <ArrowRight size={12} className="group-hover/btn:translate-x-1 transition-transform" />
                           </Link>
                         </div>
@@ -234,7 +253,7 @@ export default function Navbar() {
                           </span>
                           Global Sourcing
                         </div>
-                        <Link href="/request-quote" className="text-xs sm:text-xs font-bold uppercase tracking-wider text-text-primary hover:text-costa-green transition-colors flex items-center gap-1 shrink-0">
+                        <Link href="/request-quote" onClick={closeDesktopMenu} className="text-xs sm:text-xs font-bold uppercase tracking-wider text-text-primary hover:text-costa-green transition-colors flex items-center gap-1 shrink-0">
                           Get Quote <ArrowRight size={12} />
                         </Link>
                       </div>

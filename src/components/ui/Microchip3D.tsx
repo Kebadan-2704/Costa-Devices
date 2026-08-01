@@ -178,21 +178,23 @@ function ChipModel() {
       <HologramLogo />
 
       {/* ─── CORNER MOUNTING NODES ─── */}
-      {[-1.3, 1.3].map((x) => 
-        [-1.3, 1.3].map((z) => (
-          <group key={`node-${x}-${z}`} position={[x, 0.05, z]}>
-            <mesh>
-              <cylinderGeometry args={[0.1, 0.1, 0.12, 16]} />
-              <meshStandardMaterial color="#fbbf24" metalness={1} roughness={0.2} />
-            </mesh>
-            {/* Glowing dot in center of mounting node */}
-            <mesh position={[0, 0.065, 0]} rotation={[-Math.PI / 2, 0, 0]}>
-               <circleGeometry args={[0.04, 16]} />
-               <meshBasicMaterial color="#34d399" toneMapped={false} />
-            </mesh>
-          </group>
-        ))
-      )}
+      {[-1.3, 1.3].map((x) => (
+        <React.Fragment key={`row-${x}`}>
+          {[-1.3, 1.3].map((z) => (
+            <group key={`node-${x}-${z}`} position={[x, 0.05, z]}>
+              <mesh>
+                <cylinderGeometry args={[0.1, 0.1, 0.12, 16]} />
+                <meshStandardMaterial color="#fbbf24" metalness={1} roughness={0.2} />
+              </mesh>
+              {/* Glowing dot in center of mounting node */}
+              <mesh position={[0, 0.065, 0]} rotation={[-Math.PI / 2, 0, 0]}>
+                 <circleGeometry args={[0.04, 16]} />
+                 <meshBasicMaterial color="#34d399" toneMapped={false} />
+              </mesh>
+            </group>
+          ))}
+        </React.Fragment>
+      ))}
 
       {/* ─── HIGH-DENSITY GOLD PINS ─── */}
       {Array.from({ length: 18 }).map((_, i) => {

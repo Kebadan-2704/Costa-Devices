@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 export default function PrivacyPage() {
   return (
     <>
-      <section className="relative pt-32 pb-16 overflow-hidden" style={{ backgroundColor: "var(--bg-primary)" }}>
+      <section className="relative pt-32 pb-8 overflow-hidden" style={{ backgroundColor: "var(--bg-primary)" }}>
         <div className="absolute inset-0 bg-gradient-to-b from-costa-green/5 to-transparent" />
         <div className="max-w-[1400px] mx-auto px-6 relative z-10">
           <ScrollReveal>

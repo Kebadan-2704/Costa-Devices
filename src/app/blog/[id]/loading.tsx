@@ -1,6 +1,6 @@
 export default function BlogLoading() {
   return (
-    <div className="max-w-[800px] mx-auto px-6 py-24 animate-pulse">
+    <div className="max-w-[800px] mx-auto px-6 py-8 animate-pulse">
       {/* Title Skeleton */}
       <div className="h-12 bg-black/10 rounded-lg w-3/4 mb-6"></div>
       

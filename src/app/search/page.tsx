@@ -45,7 +45,7 @@ function SearchResults() {
   ];
 
   return (
-    <div className="min-h-screen pt-32 pb-24 bg-[#fafafa] text-gray-900">
+    <div className="min-h-screen pt-8 pb-8 bg-[#fafafa] text-gray-900">
       <div className="max-w-[1400px] mx-auto px-6">
         
         {/* Header Section */}
@@ -157,7 +157,7 @@ function SearchResults() {
 
 export default function SearchPage() {
   return (
-    <Suspense fallback={<div className="min-h-screen pt-32 text-center text-gray-500">Loading search...</div>}>
+    <Suspense fallback={<div className="min-h-screen pt-8 text-center text-gray-500">Loading search...</div>}>
       <SearchResults />
     </Suspense>
   );

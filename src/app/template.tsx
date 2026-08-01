@@ -10,7 +10,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
       className="w-full"
     >
-      {children}
+      <>{children}</>
     </motion.div>
   );
 }

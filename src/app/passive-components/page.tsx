@@ -15,7 +15,7 @@ export default function PassiveComponentsPage() {
   return (
     <div className="min-h-screen bg-white text-gray-900 overflow-hidden">
       {/* Hero Section */}
-      <section className="relative pt-40 pb-24 overflow-hidden bg-[#fafafa]">
+      <section className="relative pt-40 pb-8 overflow-hidden bg-[#fafafa]">
         {/* Subtle animated background elements */}
         <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
           <div className="absolute top-[10%] left-[-10%] w-[600px] h-[600px] rounded-full bg-costa-green/5 blur-[120px] animate-pulse" />
@@ -92,7 +92,7 @@ export default function PassiveComponentsPage() {
       </section>
 
       {/* Product Categories */}
-      <section className="py-24 relative bg-white border-t border-gray-100">
+      <section className="py-8 relative bg-white border-t border-gray-100">
         <div className="absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_top_right,rgba(26,175,93,0.03),transparent_50%)]" />
         <div className="max-w-[1400px] mx-auto px-6 relative z-10">
           <ScrollReveal>
@@ -153,7 +153,7 @@ export default function PassiveComponentsPage() {
       </section>
 
       {/* Target Industries */}
-      <section className="py-32 bg-[#fafafa] relative border-y border-gray-100">
+      <section className="py-8 bg-[#fafafa] relative border-y border-gray-100">
         <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
           <div className="absolute top-[20%] right-[-10%] w-[600px] h-[600px] rounded-full bg-costa-green/5 blur-[120px]" />
           <div className="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] rounded-full bg-[#0D6B3D]/5 blur-[100px]" />
@@ -213,7 +213,7 @@ export default function PassiveComponentsPage() {
       </section>
 
       {/* Authorized Brands */}
-      <section className="py-32 relative overflow-hidden bg-white">
+      <section className="py-8 relative overflow-hidden bg-white">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-costa-green/5 rounded-full blur-[100px] pointer-events-none" />
         
         <div className="max-w-[1400px] mx-auto px-6 relative z-10">
@@ -230,7 +230,7 @@ export default function PassiveComponentsPage() {
       </section>
 
       {/* Linecard Download CTA */}
-      <section className="relative py-32 overflow-hidden border-t border-gray-100">
+      <section className="relative py-8 overflow-hidden border-t border-gray-100">
         <div className="absolute inset-0 bg-gradient-to-br from-costa-green to-[#0D6B3D] z-0" />
         
         {/* Animated circuit lines overlay */}

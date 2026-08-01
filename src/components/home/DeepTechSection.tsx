@@ -16,7 +16,7 @@ const Microchip3D = dynamic(() => import("@/components/ui/Microchip3D"), {
 
 export default function DeepTechSection() {
   return (
-    <section className="relative overflow-hidden py-24 bg-white text-gray-900 border-y border-gray-100">
+    <section className="relative overflow-hidden py-8 bg-white text-gray-900 border-y border-gray-100">
       
       {/* Subtle grid bg */}
       <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(#10b981 1px, transparent 1px)', backgroundSize: '24px 24px' }}></div>

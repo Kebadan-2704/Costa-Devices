@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export default function TestimonialsSection() {
   return (
-    <section className="py-24 bg-white border-b border-gray-100 relative overflow-hidden" aria-label="Client testimonials">
+    <section className="py-8 bg-white border-b border-gray-100 relative overflow-hidden" aria-label="Client testimonials">
       <div className="max-w-[1400px] mx-auto px-6">
         <div className="mb-16 border-l-4 border-costa-green pl-6 flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
           <div>

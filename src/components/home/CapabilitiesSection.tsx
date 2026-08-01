@@ -31,7 +31,7 @@ export default function CapabilitiesSection() {
   };
 
   return (
-    <section id="divisions" className="py-24 bg-[#fafafa] border-b border-gray-100">
+    <section id="divisions" className="py-8 bg-[#fafafa] border-b border-gray-100">
       <div className="max-w-[1400px] mx-auto px-6">
         <div className="mb-16 border-l-4 border-gray-900 pl-6">
           <h2 className="font-heading text-[clamp(2.5rem,5vw,4rem)] font-black leading-none tracking-tighter uppercase text-gray-900">
@@ -63,7 +63,7 @@ export default function CapabilitiesSection() {
               </div>
             </div>
             <div className="absolute inset-0 z-0 opacity-[0.03] group-hover:opacity-[0.05] transition-opacity duration-700 mix-blend-multiply" style={{ backgroundImage: "url('/images/products/circuit-protection.png')", backgroundSize: 'cover', backgroundPosition: 'center' }}></div>
-            <div className="relative z-10 mt-auto">
+            <div className="relative z-10 my-auto flex flex-col items-center text-center">
               <h3 className="font-heading text-4xl md:text-5xl font-black mb-4 tracking-tight group-hover:text-costa-green transition-colors duration-300 text-gray-900">Active & Obsolete Parts</h3>
               <p className="text-sm text-gray-500 leading-relaxed max-w-lg font-medium">
                 Direct access to franchised lines, OEMs, and EMS excess inventory. Specialized in EOL (End-of-Life) components.
@@ -79,8 +79,8 @@ export default function CapabilitiesSection() {
           >
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(26,175,93,0.05),transparent_70%)] group-hover:opacity-100 transition-opacity duration-700 z-0"></div>
             <div className="text-sm text-costa-green font-bold tracking-[0.2em] uppercase bg-costa-green/5 px-4 py-1.5 rounded-full w-fit relative z-10 border border-costa-green/20">02 — QA LAB</div>
-            <div className="relative z-10 mt-auto">
-              <h3 className="font-heading text-3xl md:text-4xl font-black mb-4 tracking-tight text-gray-900 group-hover:-translate-y-2 transition-transform duration-300">Counterfeit Detection</h3>
+            <div className="relative z-10 my-auto flex flex-col items-center text-center">
+              <h3 className="font-heading text-3xl md:text-4xl font-black mb-4 tracking-tight text-gray-900 group-hover:-translate-y-2 group-hover:text-costa-green transition-all duration-300">Counterfeit Detection</h3>
               <p className="text-xs text-gray-500 font-medium leading-relaxed mb-2 group-hover:-translate-y-2 transition-transform duration-300 delay-75">
                 <span className="text-costa-green font-bold">AS6081 Certified</span> • X-Ray
               </p>
@@ -92,12 +92,12 @@ export default function CapabilitiesSection() {
           <motion.div
             variants={fadeUpVariant}
             whileHover={shouldReduceMotion ? {} : { y: -8 }}
-            className="md:col-span-4 relative overflow-hidden group p-10 flex flex-col justify-between bg-white border border-gray-200 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all duration-300 hover:shadow-[0_20px_40px_rgba(26,175,93,0.1)] hover:border-costa-green/30"
+            className="md:col-span-4 relative overflow-hidden group p-10 flex flex-col justify-start bg-white border border-gray-200 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all duration-300 hover:shadow-[0_20px_40px_rgba(26,175,93,0.1)] hover:border-costa-green/30"
           >
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(26,175,93,0.05),transparent_70%)] group-hover:opacity-100 transition-opacity duration-700 z-0"></div>
             <div className="text-sm text-costa-green font-bold tracking-[0.2em] uppercase bg-costa-green/5 px-4 py-1.5 rounded-full w-fit border border-costa-green/20 relative z-10">03 — SPEED</div>
-            <div className="relative z-10 mt-auto">
-              <h3 className="font-heading text-3xl md:text-4xl font-black mb-4 tracking-tight text-gray-900 group-hover:translate-x-2 transition-transform duration-300">Sub-24h Dispatch</h3>
+            <div className="relative z-10 mt-12">
+              <h3 className="font-heading text-3xl md:text-4xl font-black mb-4 tracking-tight text-gray-900 group-hover:translate-x-2 group-hover:text-costa-green transition-all duration-300">Sub-24h Dispatch</h3>
               <p className="text-sm text-gray-500 font-medium leading-relaxed group-hover:translate-x-2 transition-transform duration-300 delay-75">
                 AOG (Aircraft on Ground) and Line-Down specialist response times.
               </p>
@@ -108,7 +108,7 @@ export default function CapabilitiesSection() {
           <motion.div
             variants={fadeUpVariant}
             whileHover={shouldReduceMotion ? {} : { y: -8 }}
-            className="md:col-span-8 relative group p-10 flex flex-col justify-between bg-white border border-gray-200 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all duration-300 hover:shadow-[0_20px_40px_rgba(26,175,93,0.1)] hover:border-costa-green/30"
+            className="md:col-span-8 relative group p-10 flex flex-col justify-start bg-white border border-gray-200 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all duration-300 hover:shadow-[0_20px_40px_rgba(26,175,93,0.1)] hover:border-costa-green/30"
           >
             {/* Background elements clipped to border radius */}
             <div className="absolute inset-0 overflow-hidden rounded-3xl pointer-events-none z-0">
@@ -122,8 +122,8 @@ export default function CapabilitiesSection() {
               <LogisticsGlobe />
             </div>
 
-            <div className="relative z-10 max-w-sm mt-auto">
-              <h3 className="font-heading text-4xl md:text-5xl font-black mb-4 tracking-tight text-gray-900 group-hover:translate-y-[-5px] transition-transform duration-300">Secure Supply Chain</h3>
+            <div className="relative z-10 max-w-sm mt-12">
+              <h3 className="font-heading text-4xl md:text-5xl font-black mb-4 tracking-tight text-gray-900 group-hover:translate-y-[-5px] group-hover:text-costa-green transition-all duration-300">Secure Supply Chain</h3>
               <p className="text-sm text-gray-500 font-medium leading-relaxed group-hover:translate-y-[-5px] transition-transform duration-300 delay-75">
                 Vetted Tier-1 vendors only. Full traceability and ISO 9001:2015 compliance on every single order.
               </p>

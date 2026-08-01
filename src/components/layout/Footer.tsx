@@ -13,10 +13,10 @@ export default function Footer() {
 
   return (
     <footer className="bg-white text-text-primary relative overflow-hidden border-t border-black/10">
-      <div className="max-w-[1500px] mx-auto px-8 pt-16 pb-8">
+      <div className="max-w-[1500px] mx-auto px-8 pt-8 pb-8">
         
         {/* Main Footer Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-16 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-16 mb-6">
           
           {/* Column 1: Brand & Bio (Spans 4) */}
           <div className="md:col-span-12 lg:col-span-4 flex flex-col">
@@ -30,7 +30,7 @@ export default function Footer() {
               />
             </Link>
             <p className="text-base text-text-secondary leading-relaxed max-w-[340px] mb-8 font-medium">
-              Powering The Future of Electric Mobility. Global distributor for mission-critical circuit protection, EV components, and industrial automation.
+              Powering The Future of  Electronic & Electric Mobility, Global distributor for mission-critical components.
             </p>
             <a href={COMPANY.linkedin} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-text-primary hover:text-costa-green transition-all w-fit border border-black/10 bg-[#FAFAFA] px-8 py-4 rounded-lg hover:border-costa-green/50 hover:bg-costa-green/5 shadow-sm">
               Follow LinkedIn <ArrowUpRight size={16} />

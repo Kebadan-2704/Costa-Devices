@@ -36,7 +36,7 @@ const BLOG_POSTS = [
 
 export default function BlogPage() {
   return (
-    <div className="min-h-screen bg-[#FAFAFA] text-text-primary pt-32 pb-24">
+    <div className="min-h-screen bg-[#FAFAFA] text-text-primary pt-8 pb-8">
       {/* Header */}
       <section className="max-w-[1200px] mx-auto px-6 mb-24">
         <div className="max-w-3xl">

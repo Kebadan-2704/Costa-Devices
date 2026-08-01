@@ -76,10 +76,10 @@ export const OFFICES = [
     id: "india",
     country: "India",
     flag: "🇮🇳",
-    city: "Coimbatore",
+    city: "India",
     label: "India Operations",
     address: "688/1 A, V.S.J Holdings, AIC RAISE Business Incubation Centre, Eachanari, Coimbatore – 641 021, Tamil Nadu, India",
-    phone: "+91 8248982286",
+    phone: "+91 824 898 2286",
     email: "info@costadevices.com",
     timezone: "GMT+5:30",
     coordinates: { lat: 11.0168, lng: 76.9558 },
@@ -91,9 +91,9 @@ export const OFFICES = [
     flag: "🇭🇰",
     city: "Hong Kong",
     label: "APAC Operations",
-    address: "SAN-LEGEND LIMITED, Unit A1, 3/F, Roxy Industrial Centre, 58-66 Tai Lin Pai Road, Kwai Chung, New Territories, Hong Kong",
-    phone: "+91 824 898 2286",
-    email: "hk@costadevices.com",
+    address: "Costa Devices FZCO, C/O San-Legend Ltd,\nUnit B1-B2 & B5-B6, 12/F, Po Yip Building,\n 62–70 Texaco Road, Tsuen Wan, N.T.,\n Hong Kong",
+    phone: "+852 2341 7755",
+    email: "adamfok@san-legend.com",
     timezone: "GMT+8",
     coordinates: { lat: 22.3193, lng: 114.1694 },
     displayLocation: "Hong Kong",
@@ -102,7 +102,7 @@ export const OFFICES = [
     id: "israel",
     country: "Israel",
     flag: "🇮🇱",
-    city: "Tel Aviv",
+    city: "Israel",
     label: "EMEA Operations",
     address: "Tel Aviv, Israel",
     phone: "+91 824 898 2286",
@@ -372,7 +372,7 @@ export const CERTIFICATIONS = [
     description: "Meets the highest quality standards required for distributing components to the aerospace, space, and defense industries.",
     entity: "COSTA DEVICES FZCO",
     year: 2024,
-    image: "/images/certificates/as9120b.jpg",
+    image: "/images/certificates/as9120b_aviation.png",
     pdf: "/pdfs/AS 9120B OF EU COSTA DEVICES FZCO.pdf",
   },
   {
@@ -485,20 +485,28 @@ export const NAV_LINKS = [
         {
           label: "Electronic Components",
           href: "/active-components",
+          catalogHref: "/pdfs/Costa%20Devices%20Co%20PPT.pdf",
           products: [
             { label: "IC", href: "/active-components" },
             { label: "Memory", href: "/active-components" },
-            { label: "CPU / HDD / LCD", href: "/active-components" }
+            { label: "CPU / HDD / LCD", href: "/active-components" },
+            { label: "Capacitors / Resistors / Inductors", href: "/active-components#capacitors" },
+            { label: "Diodes / MOSFETs", href: "/active-components#diodes" },
+            { label: "Connectors", href: "/active-components#connectors" },
+            { label: "RF Components", href: "/active-components" }
           ]
         },
         {
           label: "Electrical Components",
           href: "/passive-components",
+          catalogHref: "/pdfs/COSTA%20DEVICES%20ELECTRIC%20%20LTD%20Co%20PPT.pdf",
           products: [
             { label: "Fuses", href: "/passive-components" },
             { label: "Contactors", href: "/passive-components" },
             { label: "Relays", href: "/passive-components" },
-            { label: "Switches", href: "/passive-components" }
+            { label: "Switches", href: "/passive-components" },
+            { label: "Load Breakers", href: "/passive-components#load-breakers" },
+            { label: "Transformers", href: "/passive-components#transformers" }
           ]
         }
       ]

@@ -7,7 +7,13 @@ import { ShieldCheck } from "lucide-react";
 
 export default function ProcessFlowchart() {
   return (
-    <div className="relative py-12 max-w-5xl mx-auto">
+    <div className="relative py-12 max-w-5xl mx-auto w-full">
+      {/* Background Image - Full Bleed */}
+      <div className="absolute inset-y-0 z-0 opacity-75 pointer-events-none w-[100vw] left-1/2 -translate-x-1/2 overflow-hidden">
+        <img src="/images/electronics-hero-bg.png" alt="" className="w-full h-full object-cover filter grayscale mix-blend-luminosity" />
+        <div className="absolute inset-0 bg-gradient-to-b from-bg-primary via-transparent to-bg-primary" />
+      </div>
+
       {/* Central Line */}
       <div className="absolute left-[27px] md:left-1/2 top-0 bottom-0 w-[2px] bg-glass-border -translate-x-1/2" />
       

@@ -86,7 +86,7 @@ export default async function BlogPostPage({ params }: { params: { id: string } 
   }
 
   return (
-    <div className="min-h-screen bg-white text-gray-900 pt-32 pb-24">
+    <div className="min-h-screen bg-white text-gray-900 pt-8 pb-8">
       {/* Header */}
       <section className="max-w-[800px] mx-auto px-6 mb-16">
         <Link href="/blog" className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-gray-500 hover:text-costa-green transition-colors mb-12">

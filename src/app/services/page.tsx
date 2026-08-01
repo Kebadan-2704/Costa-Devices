@@ -37,7 +37,7 @@ export default function ServicesPage() {
   return (
     <div className="min-h-screen bg-white text-gray-900 overflow-hidden">
       {/* Hero Section */}
-      <section className="relative pt-40 pb-20 overflow-hidden bg-[#fafafa]">
+      <section className="relative pt-40 pb-8 overflow-hidden bg-[#fafafa]">
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-[linear-gradient(#e5e7eb_1px,transparent_1px),linear-gradient(90deg,#e5e7eb_1px,transparent_1px)] bg-[size:40px_40px] opacity-50 [mask-image:radial-gradient(ellipse_100%_100%_at_50%_0%,#000_80%,transparent_100%)]" />
           <div className="absolute top-[10%] left-[20%] w-[600px] h-[600px] rounded-full bg-costa-green/5 blur-[100px]" />
@@ -79,7 +79,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Services Grid Section */}
-      <section className="py-24 relative z-10 bg-white">
+      <section className="py-8 relative z-10 bg-white">
         <div className="max-w-[1400px] mx-auto px-6">
           <ScrollReveal>
              <div className="mb-16 text-center">
@@ -138,7 +138,7 @@ export default function ServicesPage() {
       </section>
 
       {/* ROI Calculator Section */}
-      <section className="py-24 bg-[#fafafa] relative border-y border-gray-100">
+      <section className="py-8 bg-[#fafafa] relative border-y border-gray-100">
         <div className="max-w-[1400px] mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <ScrollReveal>
             <h2 className="font-heading text-sm font-bold tracking-[0.3em] text-costa-green uppercase mb-4">Value Proposition</h2>
@@ -170,7 +170,7 @@ export default function ServicesPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="relative py-32 overflow-hidden border-t border-gray-100">
+      <section className="relative py-8 overflow-hidden border-t border-gray-100">
         <div className="absolute inset-0 bg-gradient-to-br from-costa-green to-[#0D6B3D] z-0" />
         <div className="absolute inset-0 opacity-10 z-0 pointer-events-none" style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
 

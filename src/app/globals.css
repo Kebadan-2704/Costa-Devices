@@ -33,8 +33,8 @@
   --color-input-border: var(--input-border);
 
   /* Fonts */
-  --font-heading: var(--font-body); /* Unified font */
-  --font-body: var(--font-body);
+  --font-heading: var(--font-inter);
+  --font-body: Calibri, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --font-mono: var(--font-mono);
 }
 

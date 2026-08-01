@@ -16,7 +16,7 @@ export default function ActiveComponentsPage() {
   return (
     <div className="min-h-screen bg-white text-gray-900 overflow-hidden">
       {/* Hero Section */}
-      <section className="relative pt-40 pb-20 overflow-hidden">
+      <section className="relative pt-40 pb-8 overflow-hidden">
         {/* Subtle Background Elements */}
         <div className="absolute inset-0 z-0 bg-[#FAFAFA] overflow-hidden">
           <div className="absolute inset-0 bg-[linear-gradient(#e5e7eb_1px,transparent_1px),linear-gradient(90deg,#e5e7eb_1px,transparent_1px)] bg-[size:40px_40px] opacity-50 [mask-image:radial-gradient(ellipse_100%_100%_at_50%_0%,#000_80%,transparent_100%)]" />
@@ -94,7 +94,7 @@ export default function ActiveComponentsPage() {
       </section>
 
       {/* Core Services Section */}
-      <section id="capabilities" className="py-20 relative bg-[#fafafa]">
+      <section id="capabilities" className="py-8 relative bg-[#fafafa]">
         <div className="max-w-[1400px] mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* Service 1 */}
@@ -182,7 +182,7 @@ export default function ActiveComponentsPage() {
       </section>
 
       {/* Visual Break / Linecard */}
-      <section className="py-24 bg-white relative border-y border-gray-100">
+      <section className="py-8 bg-white relative border-y border-gray-100">
         <div className="max-w-[1400px] mx-auto px-6">
            <ScrollReveal>
              <div className="text-center mb-16">
@@ -198,7 +198,7 @@ export default function ActiveComponentsPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-24 text-center px-6 bg-[#fafafa]">
+      <section className="py-8 text-center px-6 bg-[#fafafa]">
         <ScrollReveal>
           <h2 className="font-heading text-3xl font-black mb-8 text-gray-900">Need an electronic component quoted?</h2>
           <div className="flex flex-wrap justify-center gap-4">

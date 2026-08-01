@@ -46,7 +46,7 @@ export default function ProductFilterGrid() {
         </div>
       </section>
 
-      <section className="py-24 bg-bg-secondary border-t border-glass-border transition-colors duration-500">
+      <section className="py-8 bg-bg-secondary border-t border-glass-border transition-colors duration-500">
         <div className="max-w-[1600px] mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredCategories.map((cat, i) => (
@@ -103,7 +103,7 @@ export default function ProductFilterGrid() {
           </div>
 
           {filteredCategories.length === 0 && (
-            <div className="text-center py-32">
+            <div className="text-center py-8">
               <Search size={48} className="mx-auto text-text-muted/30 mb-8 transition-colors duration-500" strokeWidth={1} />
               <h3 className="font-heading text-3xl font-black text-text-primary tracking-tighter mb-4 transition-colors duration-500">NO HARDWARE LOCATED</h3>
               <p className="text-text-secondary font-light max-w-md mx-auto mb-8 transition-colors duration-500">

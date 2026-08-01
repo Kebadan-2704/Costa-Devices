@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 
 export default function ProtocolSection() {
   return (
-    <section className="py-32 bg-white text-gray-900 border-b border-gray-100 relative overflow-hidden">
+    <section className="pt-8 pb-8 bg-white text-gray-900 border-b border-gray-100 relative overflow-hidden">
 
       {/* Soft ambient glowing orbs */}
       <div className="absolute top-[-10%] left-[-10%] w-[600px] h-[600px] bg-costa-green/[0.04] rounded-full blur-[100px] pointer-events-none"></div>
@@ -16,13 +16,23 @@ export default function ProtocolSection() {
       <div className="absolute inset-0 opacity-[0.015] pointer-events-none" style={{ backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 39px, black 39px, black 40px), repeating-linear-gradient(90deg, transparent, transparent 39px, black 39px, black 40px)' }}></div>
 
       <div className="max-w-[1400px] mx-auto px-6 relative z-10">
-        <div className="mb-24 md:w-1/2">
-          <h2 className="font-heading text-[clamp(2rem,4vw,3.5rem)] font-black uppercase tracking-tighter leading-none mb-6">
-            The Protocol.
-          </h2>
-          <p className="text-sm text-gray-500 uppercase tracking-widest leading-relaxed">
-            Our military-grade process for securing obsolete components when OEM supply chains fail.
-          </p>
+        <div className="mb-16 relative overflow-hidden bg-white border border-gray-200 rounded-[2.5rem] shadow-sm flex flex-col md:flex-row items-center justify-between group">
+          <div className="p-10 md:p-16 md:w-3/5 relative z-10">
+            <h2 className="font-heading text-[clamp(2.5rem,5vw,4.5rem)] font-black uppercase tracking-tighter leading-none mb-6 text-gray-900">
+              The Protocol.
+            </h2>
+            <p className="text-sm md:text-base text-gray-500 uppercase tracking-widest leading-relaxed font-bold max-w-lg">
+              Our military-grade process for securing obsolete components when OEM supply chains fail.
+            </p>
+          </div>
+          
+          <div className="relative w-full h-[250px] md:h-auto md:absolute md:right-0 md:top-0 md:bottom-0 md:w-2/5 flex items-center justify-center overflow-hidden">
+            {/* Gradient fade to blend image smoothly */}
+            <div className="absolute inset-0 bg-gradient-to-b md:bg-gradient-to-r from-white via-white/80 to-transparent z-10"></div>
+            {/* The decorative picture */}
+            <img src="/images/testing/x_ray.png" alt="X-Ray Protocol Testing" className="object-cover w-full h-full opacity-60 mix-blend-luminosity group-hover:mix-blend-normal group-hover:opacity-90 group-hover:scale-105 transition-all duration-700 z-0" />
+            <div className="absolute inset-0 bg-costa-green/5 mix-blend-multiply z-0"></div>
+          </div>
         </div>
 
         <div className="flex flex-col gap-5">
@@ -51,7 +61,7 @@ export default function ProtocolSection() {
               </div>
 
               <div className="flex-1 relative z-10">
-                <h3 className="font-heading text-2xl md:text-3xl font-black mb-2 tracking-tight group-hover:translate-x-2 transition-transform duration-300 text-gray-900">{step.title}</h3>
+                <h3 className="font-heading text-2xl md:text-3xl font-black mb-2 tracking-tight group-hover:translate-x-2 group-hover:text-costa-green transition-all duration-300 text-gray-900">{step.title}</h3>
               </div>
 
               <div className="md:w-[450px] relative z-10">

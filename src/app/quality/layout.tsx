@@ -6,7 +6,7 @@ export const metadata: Metadata = {
 };
 
 export default function QualityLayout({ children }: { children: React.ReactNode }) {
-  return children;
+  return <>{children}</>;
 }
 
 

@@ -19,8 +19,12 @@ export default function CompanyPage() {
   return (
     <div className="min-h-screen bg-transparent text-text-primary overflow-hidden">
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 overflow-hidden border-b border-glass-border transition-colors duration-500">
-        <div className="absolute inset-0 bg-transparent transition-colors duration-500" />
+      <section className="relative pt-40 pb-8 overflow-hidden border-b border-glass-border transition-colors duration-500">
+        <div className="absolute inset-0 z-0 bg-bg-secondary transition-colors duration-500">
+          <div className="absolute inset-0 bg-[linear-gradient(#e5e7eb_1px,transparent_1px),linear-gradient(90deg,#e5e7eb_1px,transparent_1px)] bg-[size:40px_40px] opacity-50 [mask-image:radial-gradient(ellipse_100%_100%_at_50%_0%,#000_80%,transparent_100%)] transition-opacity duration-500" />
+          <div className="absolute top-[10%] left-[20%] w-[600px] h-[600px] rounded-full bg-costa-green/5 blur-[100px]" />
+          <div className="absolute bottom-0 w-full h-[30%] bg-gradient-to-t from-bg-primary to-transparent" />
+        </div>
         <div className="max-w-[1400px] mx-auto px-6 relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           <ScrollReveal className="lg:col-span-6 relative z-20">
             <p className="font-mono text-xs text-costa-green tracking-[0.2em] uppercase mb-4 flex items-center gap-2">
@@ -55,7 +59,7 @@ export default function CompanyPage() {
       </section>
 
       {/* Corporate Mission & Values */}
-      <section className="py-24 bg-white border-b border-glass-border">
+      <section className="py-8 bg-white border-b border-glass-border">
         <div className="max-w-[1400px] mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <ScrollReveal>
@@ -98,7 +102,7 @@ export default function CompanyPage() {
       </section>
 
       {/* Service Level Agreement (SLA) */}
-      <section className="py-24 bg-bg-secondary border-b border-glass-border transition-colors duration-500">
+      <section className="py-8 bg-bg-secondary border-b border-glass-border transition-colors duration-500">
         <div className="max-w-[1400px] mx-auto px-6">
           <div className="mb-12">
             <h2 className="font-heading text-sm font-bold tracking-[0.3em] text-costa-green uppercase mb-4">Fulfillment SLA</h2>
@@ -148,7 +152,7 @@ export default function CompanyPage() {
       </section>
 
       {/* Value-Added Services (VAS) */}
-      <section className="py-24 bg-white border-b border-glass-border">
+      <section className="py-8 bg-white border-b border-glass-border">
         <div className="max-w-[1400px] mx-auto px-6">
           <ScrollReveal>
             <div className="text-center mb-16">
@@ -188,7 +192,12 @@ export default function CompanyPage() {
       </section>
 
       {/* Timeline */}
-      <section className="py-24 border-b border-glass-border transition-colors duration-500">
+      <section className="relative py-8 border-b border-glass-border transition-colors duration-500 overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0 opacity-75 pointer-events-none">
+          <img src="/images/electronics-hero-bg.png" alt="" className="w-full h-full object-cover filter grayscale mix-blend-luminosity" />
+          <div className="absolute inset-0 bg-gradient-to-b from-bg-primary via-transparent to-bg-primary" />
+        </div>
         <div className="max-w-[800px] mx-auto px-6">
           <ScrollReveal>
             <div className="text-center mb-24">
@@ -231,7 +240,7 @@ export default function CompanyPage() {
 
 
       {/* ESG & Corporate Governance */}
-      <section className="py-24 bg-white border-b border-glass-border">
+      <section className="py-8 bg-white border-b border-glass-border">
         <div className="max-w-[1400px] mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="font-heading text-sm font-bold tracking-[0.3em] text-costa-green uppercase mb-4">Corporate Governance</h2>
@@ -273,7 +282,7 @@ export default function CompanyPage() {
       </section>
 
       {/* Global Offices */}
-      <section className="py-24 border-b border-glass-border overflow-hidden transition-colors duration-500">
+      <section className="py-8 border-b border-glass-border overflow-hidden transition-colors duration-500">
         <div className="max-w-[1400px] mx-auto px-6">
           <ScrollReveal>
             <div className="text-center mb-16">
@@ -294,7 +303,7 @@ export default function CompanyPage() {
                 <div className="bg-bg-primary border border-glass-border p-8 text-center h-full group hover:border-costa-green/30 transition-all duration-700 rounded-2xl relative overflow-hidden hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(13,107,61,0.08)]">
                   <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-costa-green/10 via-costa-green/80 to-costa-green/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-10" />
 
-                  <div className="relative z-10 flex flex-col h-full justify-between">
+                    <div className="relative z-10 flex flex-col h-full justify-between">
                     <div>
                       <div className="w-16 h-16 mx-auto bg-bg-secondary border border-glass-border rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500 group-hover:border-costa-green/30 shadow-sm">
                         <Image 
@@ -302,17 +311,17 @@ export default function CompanyPage() {
                           alt={office.country} 
                           width={32}
                           height={24}
-                          className="rounded-[2px] grayscale group-hover:grayscale-0 transition-all" 
+                          className="rounded-[2px] grayscale group-hover:grayscale-0 transition-all shadow-sm" 
                         />
                       </div>
                       
-                      <h3 className="font-heading text-2xl lg:text-3xl font-black mb-2 text-text-primary tracking-tight">{office.city.toUpperCase()}</h3>
-                      <span className="font-mono text-xs text-costa-green font-bold uppercase tracking-[0.2em] block mb-6">{office.label}</span>
+                      <h3 className="font-heading text-2xl font-semibold mb-2 text-text-primary tracking-tight transition-colors duration-500 uppercase">{office.city}</h3>
+                      <span className="text-sm text-costa-green font-medium tracking-wide block mb-6 transition-colors duration-500">{office.label}</span>
                       
-                      <p className="text-text-secondary text-sm mt-4 mb-8 font-light min-h-[60px] line-clamp-3">{office.address}</p>
+                      <p className="text-text-secondary text-[15px] mt-4 mb-8 leading-relaxed min-h-[72px] whitespace-pre-line transition-colors duration-500">{office.address}</p>
                     </div>
                     
-                    <div className="flex items-center justify-center gap-2 text-xs text-text-muted font-mono border-t border-glass-border pt-6 group-hover:text-costa-green transition-colors duration-500">
+                    <div className="flex items-center justify-center gap-2 text-sm text-text-muted font-medium border-t border-glass-border pt-6 group-hover:text-costa-green transition-colors duration-500">
                       <Clock size={14} className="text-costa-green/50 group-hover:text-costa-green transition-colors" />
                       <span>{office.timezone}</span>
                     </div>
@@ -325,7 +334,7 @@ export default function CompanyPage() {
       </section>
 
       {/* Stats Board */}
-      <section className="py-24 bg-bg-secondary border-b border-glass-border transition-colors duration-500">
+      <section className="py-8 bg-bg-secondary border-b border-glass-border transition-colors duration-500">
         <div className="max-w-[1400px] mx-auto px-6 relative z-10">
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-y-12 gap-x-6 lg:gap-x-0 lg:divide-x divide-glass-border">
             {STATS.map((stat, i) => (
@@ -343,7 +352,7 @@ export default function CompanyPage() {
       </section>
 
       {/* CTA */}
-      <section className="relative py-40 bg-bg-elevated overflow-hidden border-t border-glass-border">
+      <section className="relative py-16 bg-bg-elevated overflow-hidden border-t border-glass-border">
         <div className="absolute inset-0 z-0 opacity-[0.025] pointer-events-none" style={{ backgroundImage: "linear-gradient(var(--text-primary) 1px, transparent 1px), linear-gradient(90deg, var(--text-primary) 1px, transparent 1px)", backgroundSize: "60px 60px" }} />
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-1/2 bg-costa-green/8 blur-[150px] z-0 rounded-t-full pointer-events-none" />
         

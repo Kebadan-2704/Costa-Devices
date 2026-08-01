@@ -32,7 +32,7 @@ export default function HeroSection() {
   const opacityVideo = useTransform(scrollY, [0, 600], [1, shouldReduceMotion ? 1 : 0.8]);
 
   return (
-    <section className="relative w-full pt-[130px] pb-4 lg:pt-[150px] lg:pb-8 overflow-hidden border-b border-gray-100">
+    <section className="relative w-full pt-[130px] pb-2 lg:pt-[150px] lg:pb-4 overflow-hidden border-b border-gray-100">
       
       {/* Stunning Animated Enterprise Background */}
       <motion.div style={{ y: yBg }} className="absolute inset-0 z-0">

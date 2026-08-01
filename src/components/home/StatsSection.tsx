@@ -4,7 +4,7 @@ import AnimatedNumber from "@/components/ui/AnimatedNumber";
 
 export default function StatsSection() {
   return (
-    <section className="py-24 bg-[#fafafa] relative z-20 border-b border-gray-100" aria-label="Company statistics">
+    <section className="py-8 bg-[#fafafa] relative z-20 border-b border-gray-100" aria-label="Company statistics">
       <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
         <div className="flex flex-col items-center text-center group bg-white p-8 rounded-3xl border border-gray-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:-translate-y-1 transition-transform duration-300">
           <div className="text-4xl md:text-5xl font-black text-gray-900 mb-3 flex items-center justify-center">

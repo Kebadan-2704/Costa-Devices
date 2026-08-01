@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export default function CaseStudySection() {
   return (
-    <section className="py-32 relative bg-bg-primary text-text-primary border-b border-glass-border overflow-hidden" aria-label="Enterprise case study">
+    <section className="py-8 relative bg-bg-primary text-text-primary border-b border-glass-border overflow-hidden" aria-label="Enterprise case study">
 
       {/* Topographic Map Background */}
       <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(rgba(0,0,0,0.05) 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>

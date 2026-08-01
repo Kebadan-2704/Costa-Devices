@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+import "@/suppress-key-warning";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import SmoothScroll from "@/components/layout/SmoothScroll";
@@ -22,7 +23,7 @@ export const viewport: Viewport = {
 
 const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-body",
+  variable: "--font-inter",
   display: "swap",
 });
 
@@ -85,8 +86,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable}`} data-scroll-behavior="smooth" suppressHydrationWarning>
-      <head>
-        {/* Cinematic Dark Mode enforced natively via CSS :root */}
+      <body className="antialiased bg-bg-primary transition-colors duration-500 font-body" suppressHydrationWarning>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -126,40 +126,39 @@ export default function RootLayout({
             }),
           }}
         />
-      </head>
-      <body className="antialiased bg-bg-primary transition-colors duration-500 font-body" suppressHydrationWarning>
 
-        <SmoothScroll>
-          {/* Subtle global texture */}
-          
-          <a href="#main-content" className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[200] focus:px-4 focus:py-2 focus:rounded-lg focus:text-sm focus:font-semibold" style={{ background: "var(--brand-green)", color: "#fff" }}>
-            Skip to main content
-          </a>
+        <SmoothScroll />
+        
+        {/* Subtle global texture */}
+        
+        <a href="#main-content" className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[200] focus:px-4 focus:py-2 focus:rounded-lg focus:text-sm focus:font-semibold" style={{ background: "var(--brand-green)", color: "#fff" }}>
+          Skip to main content
+        </a>
 
-          <ScrollProgress />
-          <Navbar />
-          
-          <main id="main-content" className="flex-grow min-h-screen relative z-10">
-            {children}
-          </main>
-          
-          <Footer />
-          <WhatsAppButton />
-          <ScrollToTop />
-          <CommandPalette />
-          
-          <Toaster 
-            position="bottom-right" 
-            toastOptions={{
-              style: {
-                background: 'var(--bg-elevated)',
-                color: 'var(--text-primary)',
-                border: '1px solid var(--glass-border)'
-              }
-            }}
-          />
-          <CookieConsent />
-        </SmoothScroll>
+        <ScrollProgress />
+        <Navbar />
+        
+        <main id="main-content" className="flex-grow min-h-screen relative z-10">
+          {children}
+        </main>
+        
+        <Footer />
+        <WhatsAppButton />
+        <ScrollToTop />
+        <CommandPalette />
+        
+        <Toaster 
+          position="bottom-right" 
+          toastOptions={{
+            style: {
+              background: 'var(--bg-elevated)',
+              color: 'var(--text-primary)',
+              border: '1px solid var(--glass-border)'
+            }
+          }}
+        />
+        <CookieConsent />
+
         {/* Bottom global Activity Ticker */}
         <ActivityTicker />
       </body>

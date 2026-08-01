@@ -36,7 +36,7 @@ export default function HomePage() {
       <CaseStudySection />
 
       {/* 8. FINAL CTA — Server-rendered (no client JS needed) */}
-      <section className="py-32 bg-costa-green text-bg-primary relative overflow-hidden">
+      <section className="py-8 bg-costa-green text-bg-primary relative overflow-hidden">
         <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#FFFFFF_1px,transparent_1px)] [background-size:20px_20px]"></div>
 
         <div className="max-w-[1000px] mx-auto px-6 text-center relative z-10 flex flex-col items-center">

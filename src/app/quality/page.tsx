@@ -16,9 +16,12 @@ export default function QualityPage() {
   return (
     <div className="min-h-screen bg-transparent text-text-primary overflow-hidden">
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 overflow-hidden border-b border-glass-border transition-colors duration-500">
-        <div className="absolute inset-0 bg-gradient-to-b from-bg-secondary to-bg-primary transition-colors duration-500" />
-        <div className="absolute top-1/4 right-0 w-3/4 h-3/4 bg-gradient-to-bl from-costa-green/5 to-transparent rounded-full blur-3xl pointer-events-none" aria-hidden="true" />
+      <section className="relative pt-40 pb-8 overflow-hidden border-b border-glass-border transition-colors duration-500">
+        <div className="absolute inset-0 z-0 bg-bg-secondary transition-colors duration-500">
+          <div className="absolute inset-0 bg-[linear-gradient(#e5e7eb_1px,transparent_1px),linear-gradient(90deg,#e5e7eb_1px,transparent_1px)] bg-[size:40px_40px] opacity-50 [mask-image:radial-gradient(ellipse_100%_100%_at_50%_0%,#000_80%,transparent_100%)] transition-opacity duration-500" />
+          <div className="absolute top-[10%] left-[20%] w-[600px] h-[600px] rounded-full bg-costa-green/5 blur-[100px]" />
+          <div className="absolute bottom-0 w-full h-[30%] bg-gradient-to-t from-bg-primary to-transparent" />
+        </div>
         <div className="max-w-[1400px] mx-auto px-6 relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           <ScrollReveal className="lg:col-span-6 relative z-20">
             <p className="font-mono text-xs text-costa-green tracking-[0.2em] uppercase mb-4 flex items-center gap-2">
@@ -53,7 +56,7 @@ export default function QualityPage() {
       </section>
 
       {/* Certification Cards */}
-      <section className="py-24 bg-bg-secondary transition-colors duration-500">
+      <section className="py-8 bg-bg-secondary transition-colors duration-500">
         <div className="max-w-[1400px] mx-auto px-6">
           <ScrollReveal>
             <h2 className="font-heading text-sm font-bold tracking-[0.3em] text-costa-green uppercase mb-12">Internationally Recognized Certifications</h2>
@@ -69,7 +72,7 @@ export default function QualityPage() {
                   className="group bg-bg-primary border border-glass-border h-full flex flex-col relative overflow-hidden transition-all duration-500 hover:border-costa-green/50 hover:shadow-xl hover:-translate-y-1 cursor-pointer rounded-xl block"
                 >
                   {/* Background Image */}
-                  <div className="absolute inset-0 z-0 opacity-[0.03] group-hover:opacity-[0.15] transition-opacity duration-700 mix-blend-multiply" style={{ backgroundImage: `url('${['/images/products/automation.png', '/images/industries/power-distribution.png', '/images/products/capacitors.png'][idx % 3]}')`, backgroundSize: 'cover', backgroundPosition: 'center' }}></div>
+                  <div className="absolute inset-0 z-0 opacity-20 group-hover:opacity-40 transition-opacity duration-700 mix-blend-multiply filter grayscale" style={{ backgroundImage: `url('${['/images/products/automation.png', '/images/certificates/as9120b_aviation_dark.png', '/images/products/capacitors.png'][idx % 3]}')`, backgroundSize: 'cover', backgroundPosition: 'center' }}></div>
 
                   {/* Top accent bar */}
                   <div className="absolute top-0 left-0 w-full h-1 bg-glass-border group-hover:bg-costa-green transition-colors duration-500 z-10" />
@@ -110,7 +113,7 @@ export default function QualityPage() {
       </section>
 
       {/* Counterfeit Detection Pipeline */}
-      <section className="py-24 border-t border-glass-border transition-colors duration-500">
+      <section className="py-8 border-t border-glass-border transition-colors duration-500">
         <div className="max-w-[1200px] mx-auto px-6">
           <ScrollReveal>
             <div className="text-center mb-16">
@@ -179,7 +182,7 @@ export default function QualityPage() {
       </section>
 
       {/* Quality Commitment */}
-      <section className="py-24 text-center bg-bg-secondary transition-colors duration-500">
+      <section className="py-8 text-center bg-bg-secondary transition-colors duration-500">
         <div className="max-w-[800px] mx-auto px-6">
           <ScrollReveal>
             <Award size={48} strokeWidth={1} className="text-costa-green mx-auto mb-8" />
@@ -201,7 +204,7 @@ export default function QualityPage() {
       </section>
 
       {/* CTA */}
-      <section className="relative py-40 bg-bg-elevated overflow-hidden border-t border-glass-border">
+      <section className="relative py-16 bg-bg-elevated overflow-hidden border-t border-glass-border">
         <div className="absolute inset-0 z-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: "linear-gradient(var(--text-primary) 1px, transparent 1px), linear-gradient(90deg, var(--text-primary) 1px, transparent 1px)", backgroundSize: "60px 60px" }} />
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-1/2 bg-costa-green/10 blur-[150px] z-0 rounded-t-full pointer-events-none" />
         
