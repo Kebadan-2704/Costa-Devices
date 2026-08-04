@@ -35,9 +35,24 @@ const bgImages = [
 
 export default function ServicesPage() {
   return (
-    <div className="min-h-screen bg-white text-gray-900 overflow-hidden">
+    <div className="min-h-screen bg-bg-primary text-text-primary overflow-hidden">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "serviceType": "Electronic Component Distribution",
+            "provider": {
+              "@type": "Organization",
+              "name": "Costa Devices"
+            },
+            "description": "Global distribution and supply chain services for mission-critical electronic components."
+          })
+        }}
+      />
       {/* Hero Section */}
-      <section className="relative pt-40 pb-8 overflow-hidden bg-[#fafafa]">
+      <section className="relative pt-40 pb-8 overflow-hidden bg-bg-secondary">
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-[linear-gradient(#e5e7eb_1px,transparent_1px),linear-gradient(90deg,#e5e7eb_1px,transparent_1px)] bg-[size:40px_40px] opacity-50 [mask-image:radial-gradient(ellipse_100%_100%_at_50%_0%,#000_80%,transparent_100%)]" />
           <div className="absolute top-[10%] left-[20%] w-[600px] h-[600px] rounded-full bg-costa-green/5 blur-[100px]" />
@@ -138,7 +153,7 @@ export default function ServicesPage() {
       </section>
 
       {/* ROI Calculator Section */}
-      <section className="py-8 bg-[#fafafa] relative border-y border-gray-100">
+      <section className="py-8 bg-bg-secondary relative border-y border-gray-100">
         <div className="max-w-[1400px] mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <ScrollReveal>
             <h2 className="font-heading text-sm font-bold tracking-[0.3em] text-costa-green uppercase mb-4">Value Proposition</h2>

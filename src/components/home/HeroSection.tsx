@@ -63,7 +63,7 @@ export default function HeroSection() {
             </motion.div>
 
             {/* Headline */}
-            <h1 className="font-heading text-[clamp(3rem,5.5vw,5.2rem)] font-black leading-[1.0] tracking-tight text-[#0f172a] mb-6">
+            <h1 className="font-heading text-[clamp(3rem,5.5vw,5.2rem)] font-black leading-[1.0] tracking-tight text-text-primary mb-6">
               <motion.span
                 initial={{ opacity: 0, y: 40, filter: 'blur(12px)' }}
                 animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
@@ -105,7 +105,7 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6, ...SPRING_CONFIG }}
-              className="text-[#64748b] text-base md:text-lg font-normal leading-[1.75] max-w-lg mb-10"
+              className="text-text-secondary text-base md:text-lg font-normal leading-[1.75] max-w-lg mb-10"
             >
               Securing obsolete, Active &amp; Passive electronic components, heavy electrical, active high-voltage components, Aerospace, and Industrial infrastructure. Sub-24h dispatch.
             </motion.p>
@@ -122,7 +122,7 @@ export default function HeroSection() {
                   initial={{ opacity: 0, x: -16 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.7 + i * 0.1, ...SPRING_BOUNCY }}
-                  className="flex items-center gap-2 text-[#64748b]"
+                  className="flex items-center gap-2 text-text-secondary"
                 >
                   <span className="text-costa-green">{item.icon}</span>
                   <span className="text-xs font-bold tracking-wider uppercase">{item.label}</span>

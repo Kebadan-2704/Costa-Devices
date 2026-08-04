@@ -45,7 +45,7 @@ function SearchResults() {
   ];
 
   return (
-    <div className="min-h-screen pt-8 pb-8 bg-[#fafafa] text-gray-900">
+    <div className="min-h-screen pt-8 pb-8 bg-bg-secondary text-gray-900">
       <div className="max-w-[1400px] mx-auto px-6">
         
         {/* Header Section */}

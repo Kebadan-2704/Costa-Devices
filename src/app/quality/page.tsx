@@ -137,7 +137,7 @@ export default function QualityPage() {
             <ScrollReveal delay={0.1}>
               <div className="bg-bg-primary border border-glass-border rounded-2xl overflow-hidden shadow-sm group hover:shadow-xl transition-all duration-500 hover:-translate-y-1">
                 <div className="h-48 relative flex flex-col items-center justify-center overflow-hidden">
-                   <Image src="/images/testing/x_ray.png" alt="X-Ray Inspection" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover group-hover:scale-105 transition-transform duration-[1.5s]" />
+                   <Image src="/images/testing/x_ray.png" alt="X-Ray Inspection" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover group-hover:scale-105 transition-transform duration-[1.5s]" priority />
                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-costa-green/20" />
                    <p className="font-mono text-white/20 text-6xl font-black tracking-tighter z-10 group-hover:scale-110 transition-transform duration-700 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 mix-blend-overlay">X-RAY</p>
                    <p className="font-heading font-bold text-white text-lg mt-12 z-10">Real-Time X-Ray Inspection</p>

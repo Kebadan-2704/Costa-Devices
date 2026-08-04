@@ -1,5 +1,6 @@
 "use client";
-import { useRef, useEffect } from "react";
+
+import { motion, useReducedMotion } from "framer-motion";
 
 interface ScrollRevealProps {
   children: React.ReactNode;
@@ -8,47 +9,34 @@ interface ScrollRevealProps {
   direction?: "up" | "down" | "left" | "right";
 }
 
-export default function ScrollReveal({ children, className = "", delay = 0, direction = "up" }: ScrollRevealProps) {
-  const ref = useRef<HTMLDivElement>(null);
+export default function ScrollReveal({
+  children,
+  className = "",
+  delay = 0,
+  direction = "up",
+}: ScrollRevealProps) {
+  const shouldReduceMotion = useReducedMotion();
 
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-
-    // Mark as ready for animation (hides element)
-    el.classList.add("sr-hidden");
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          // Small delay then reveal
-          setTimeout(() => {
-            el.classList.remove("sr-hidden");
-            el.classList.add("sr-visible");
-          }, delay * 1000);
-          observer.unobserve(el);
-        }
-      },
-      { threshold: 0.05, rootMargin: "50px" }
-    );
-
-    observer.observe(el);
-
-    // Safety fallback - always show after 2s
-    const fallback = setTimeout(() => {
-      el.classList.remove("sr-hidden");
-      el.classList.add("sr-visible");
-    }, 2000 + delay * 1000);
-
-    return () => {
-      observer.disconnect();
-      clearTimeout(fallback);
-    };
-  }, [delay]);
+  const directionMap = {
+    up: { y: shouldReduceMotion ? 0 : 24 },
+    down: { y: shouldReduceMotion ? 0 : -24 },
+    left: { x: shouldReduceMotion ? 0 : 24 },
+    right: { x: shouldReduceMotion ? 0 : -24 },
+  };
 
   return (
-    <div ref={ref} className={className} data-sr-direction={direction}>
+    <motion.div
+      initial={{ opacity: 0, ...directionMap[direction] }}
+      whileInView={{ opacity: 1, x: 0, y: 0 }}
+      viewport={{ once: true, margin: "-60px" }}
+      transition={{
+        duration: 0.6,
+        delay,
+        ease: [0.22, 1, 0.36, 1],
+      }}
+      className={className}
+    >
       {children}
-    </div>
+    </motion.div>
   );
 }

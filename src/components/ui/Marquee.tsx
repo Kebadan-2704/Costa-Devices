@@ -25,7 +25,11 @@ export default function Marquee({
     "300s"; // slowest
 
   return (
-    <div className={cn("overflow-hidden whitespace-nowrap flex w-full", className)}>
+    <div 
+      className={cn("overflow-hidden whitespace-nowrap flex w-full", className)}
+      role="marquee"
+      aria-live="polite"
+    >
       <div 
         className={cn(
           "flex shrink-0 min-w-full items-center justify-around gap-8 py-4",

@@ -34,7 +34,7 @@ export default function GlobalSearchBar() {
 
       <button
         type="submit"
-        className="flex items-center gap-2 bg-costa-green text-white py-2.5 px-5 rounded-full font-bold text-xs tracking-widest uppercase hover:bg-emerald-500 transition-all shadow-[0_4px_12px_rgba(26,175,93,0.3)] hover:shadow-[0_6px_16px_rgba(26,175,93,0.4)] whitespace-nowrap shrink-0"
+        className="btn-pulse flex items-center gap-2 bg-costa-green text-white py-2.5 px-5 rounded-full font-bold text-xs tracking-widest uppercase hover:bg-emerald-500 transition-all shadow-[0_4px_12px_rgba(26,175,93,0.3)] hover:shadow-[0_6px_16px_rgba(26,175,93,0.4)] whitespace-nowrap shrink-0"
       >
         Scan Global
         <ArrowRight size={14} />

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -30,7 +31,7 @@ export default function ProtocolSection() {
             {/* Gradient fade to blend image smoothly */}
             <div className="absolute inset-0 bg-gradient-to-b md:bg-gradient-to-r from-white via-white/80 to-transparent z-10"></div>
             {/* The decorative picture */}
-            <img src="/images/testing/x_ray.png" alt="X-Ray Protocol Testing" className="object-cover w-full h-full opacity-60 mix-blend-luminosity group-hover:mix-blend-normal group-hover:opacity-90 group-hover:scale-105 transition-all duration-700 z-0" />
+            <Image src="/images/testing/x_ray.png" alt="X-Ray Protocol Testing" fill className="object-cover opacity-60 mix-blend-luminosity group-hover:mix-blend-normal group-hover:opacity-90 group-hover:scale-105 transition-all duration-700 z-0" sizes="(max-width: 768px) 100vw, 40vw" priority />
             <div className="absolute inset-0 bg-costa-green/5 mix-blend-multiply z-0"></div>
           </div>
         </div>

@@ -15,7 +15,7 @@ export default function PassiveComponentsPage() {
   return (
     <div className="min-h-screen bg-white text-gray-900 overflow-hidden">
       {/* Hero Section */}
-      <section className="relative pt-40 pb-8 overflow-hidden bg-[#fafafa]">
+      <section className="relative pt-40 pb-8 overflow-hidden bg-bg-secondary">
         {/* Subtle animated background elements */}
         <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
           <div className="absolute top-[10%] left-[-10%] w-[600px] h-[600px] rounded-full bg-costa-green/5 blur-[120px] animate-pulse" />
@@ -153,7 +153,7 @@ export default function PassiveComponentsPage() {
       </section>
 
       {/* Target Industries */}
-      <section className="py-8 bg-[#fafafa] relative border-y border-gray-100">
+      <section className="py-8 bg-bg-secondary relative border-y border-gray-100">
         <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
           <div className="absolute top-[20%] right-[-10%] w-[600px] h-[600px] rounded-full bg-costa-green/5 blur-[120px]" />
           <div className="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] rounded-full bg-[#0D6B3D]/5 blur-[100px]" />

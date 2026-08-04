@@ -8,19 +8,25 @@ import { NAV_LINKS, COMPANY } from "@/lib/constants";
 import { Menu, X, ArrowRight, Phone, Cpu, Zap, ShieldCheck } from "lucide-react";
 import GlobalSearchBar from "@/components/ui/GlobalSearchBar";
 
+import { useScroll, useMotionValueEvent } from "framer-motion";
+
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
   const drawerRef = useRef<HTMLDivElement>(null);
+  const { scrollY } = useScroll();
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    const previous = scrollY.getPrevious() ?? 0;
+    if (latest > 100 && latest > previous) {
+      setHidden(true);
+    } else {
+      setHidden(false);
+    }
+    setScrolled(latest > 50);
+  });
 
   // Focus trap for mobile drawer
   useEffect(() => {
@@ -84,7 +90,7 @@ export default function Navbar() {
 
   return (
     <>
-      <div className="fixed top-0 left-0 right-0 z-[100] pointer-events-none">
+      <div className={`fixed top-0 left-0 right-0 z-[100] pointer-events-none transition-transform duration-300 ${hidden ? "-translate-y-full" : "translate-y-0"}`}>
         <nav id="desktop-nav" className="pointer-events-auto w-full">
           <div className={`transition-all duration-500 border-b border-black/5 ${
             scrolled ? "bg-white/95 backdrop-blur-xl shadow-sm" : "bg-white/90 backdrop-blur-lg"
@@ -132,7 +138,7 @@ export default function Navbar() {
                   </div>
                   <Link
                     href="/request-quote"
-                    className="group inline-flex items-center gap-2 bg-costa-green text-white text-xs font-bold tracking-[0.1em] uppercase py-3 px-6 rounded-md hover:bg-costa-green-dark transition-all duration-300 shadow-[0_4px_14px_rgba(26,175,93,0.3)] hover:shadow-[0_6px_20px_rgba(26,175,93,0.4)] hover:-translate-y-0.5 shrink-0 whitespace-nowrap"
+                    className="btn-pulse group inline-flex items-center gap-2 bg-costa-green text-white text-xs font-bold tracking-[0.1em] uppercase py-3 px-6 rounded-md hover:bg-costa-green-dark transition-all duration-300 shadow-[0_4px_14px_rgba(26,175,93,0.3)] hover:shadow-[0_6px_20px_rgba(26,175,93,0.4)] hover:-translate-y-0.5 shrink-0 whitespace-nowrap"
                   >
                     Get Quote
                     <ArrowRight size={13} className="group-hover:translate-x-0.5 transition-transform shrink-0" />

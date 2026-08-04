@@ -7,7 +7,11 @@ import dynamic from "next/dynamic";
 
 const LogisticsGlobe = dynamic(() => import("@/components/ui/LogisticsGlobe"), {
   ssr: false,
-  loading: () => <div className="w-[350px] h-[350px] bg-gray-50 animate-pulse rounded-full" />,
+  loading: () => (
+    <div className="absolute inset-0 flex items-center justify-center">
+      <div className="w-64 h-64 rounded-full border border-black/5 animate-pulse bg-black/5" />
+    </div>
+  ),
 });
 
 const SPRING_CONFIG = { type: "spring", stiffness: 100, damping: 20 } as const;
@@ -31,7 +35,7 @@ export default function CapabilitiesSection() {
   };
 
   return (
-    <section id="divisions" className="py-8 bg-[#fafafa] border-b border-gray-100">
+    <section id="divisions" className="py-8 bg-bg-secondary border-b border-gray-100">
       <div className="max-w-[1400px] mx-auto px-6">
         <div className="mb-16 border-l-4 border-gray-900 pl-6">
           <h2 className="font-heading text-[clamp(2.5rem,5vw,4rem)] font-black leading-none tracking-tighter uppercase text-gray-900">

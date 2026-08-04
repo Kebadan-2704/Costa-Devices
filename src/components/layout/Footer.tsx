@@ -32,7 +32,7 @@ export default function Footer() {
             <p className="text-base text-text-secondary leading-relaxed max-w-[340px] mb-8 font-medium">
               Powering The Future of  Electronic & Electric Mobility, Global distributor for mission-critical components.
             </p>
-            <a href={COMPANY.linkedin} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-text-primary hover:text-costa-green transition-all w-fit border border-black/10 bg-[#FAFAFA] px-8 py-4 rounded-lg hover:border-costa-green/50 hover:bg-costa-green/5 shadow-sm">
+            <a href={COMPANY.linkedin} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-text-primary hover:text-costa-green transition-all w-fit border border-black/10 bg-bg-secondary px-8 py-4 rounded-lg hover:border-costa-green/50 hover:bg-costa-green/5 shadow-sm">
               Follow LinkedIn <ArrowUpRight size={16} />
             </a>
 
@@ -40,7 +40,7 @@ export default function Footer() {
               <h4 className="text-xs font-bold text-text-primary tracking-widest uppercase mb-4">Market Insights Newsletter</h4>
               <form className="flex flex-col gap-3" onSubmit={(e) => { e.preventDefault(); toast.success("Subscribed successfully!"); }}>
                 <label htmlFor="newsletter-email" className="sr-only">Work Email</label>
-                <input id="newsletter-email" type="email" required placeholder="Enter work email..." className="w-full bg-[#FAFAFA] border border-black/10 px-4 py-3 rounded-lg text-sm outline-none focus:border-costa-green focus:bg-white transition-all placeholder:text-text-muted font-medium" />
+                <input id="newsletter-email" type="email" required placeholder="Enter work email..." className="w-full bg-bg-secondary border border-black/10 px-4 py-3 rounded-lg text-sm outline-none focus:border-costa-green focus:bg-white transition-all placeholder:text-text-muted font-medium" />
                 <button type="submit" className="w-full bg-[#111] text-white font-bold uppercase tracking-widest text-xs px-4 py-3 rounded-lg hover:bg-costa-green transition-colors">Subscribe</button>
               </form>
             </div>
@@ -58,7 +58,7 @@ export default function Footer() {
               <li><Link href="/services" className="hover:text-costa-green transition-colors">Services</Link></li>
               <li><Link href="/company" className="hover:text-costa-green transition-colors">Company</Link></li>
               <li><Link href="/quality" className="hover:text-costa-green transition-colors">Quality Policy</Link></li>
-              <li className="pt-2"><a href="/pdfs/costa-devices-linecard.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-costa-green transition-colors flex items-center gap-1.5 text-costa-green font-bold">Download Linecard <ArrowUpRight size={14} /></a></li>
+              <li className="pt-2"><a href="/pdfs/Costa-Devices-Co-PPT.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-costa-green transition-colors flex items-center gap-1.5 text-costa-green font-bold">Download Linecard <ArrowUpRight size={14} /></a></li>
             </ul>
           </div>
 
@@ -91,11 +91,11 @@ export default function Footer() {
               
               <div className="flex flex-col gap-3 mt-1">
                 <a href={`tel:${COMPANY.phone.replace(/[^0-9+]/g, '')}`} className="flex items-center gap-3 text-xl md:text-2xl font-bold text-text-primary hover:text-costa-green transition-colors whitespace-nowrap group">
-                  <img src="https://flagcdn.com/w40/in.png" alt="IN" className="w-6 h-auto grayscale group-hover:grayscale-0 transition-all opacity-80 group-hover:opacity-100 rounded-[2px] shadow-sm" />
+                  <Image src="https://flagcdn.com/w40/in.png" alt="India" width={40} height={27} style={{ width: "auto", height: "auto" }} className="w-6 h-auto grayscale group-hover:grayscale-0 transition-all opacity-80 group-hover:opacity-100 rounded-[2px] shadow-sm" />
                   {COMPANY.phone}
                 </a>
                 <a href="tel:+971503413793" className="flex items-center gap-3 text-xl md:text-2xl font-bold text-text-primary hover:text-costa-green transition-colors whitespace-nowrap group">
-                  <img src="https://flagcdn.com/w40/ae.png" alt="AE" className="w-6 h-auto grayscale group-hover:grayscale-0 transition-all opacity-80 group-hover:opacity-100 rounded-[2px] shadow-sm" />
+                  <Image src="https://flagcdn.com/w40/ae.png" alt="United Arab Emirates" width={40} height={27} style={{ width: "auto", height: "auto" }} className="w-6 h-auto grayscale group-hover:grayscale-0 transition-all opacity-80 group-hover:opacity-100 rounded-[2px] shadow-sm" />
                   +971 50 341 3793
                 </a>
               </div>

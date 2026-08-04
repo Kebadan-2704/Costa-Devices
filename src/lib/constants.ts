@@ -91,7 +91,7 @@ export const OFFICES = [
     flag: "🇭🇰",
     city: "Hong Kong",
     label: "APAC Operations",
-    address: "Costa Devices FZCO, C/O San-Legend Ltd,\nUnit B1-B2 & B5-B6, 12/F, Po Yip Building,\n 62–70 Texaco Road, Tsuen Wan, N.T.,\n Hong Kong",
+    address: "Costa Devices FZCO,\nUnit B1-B2 & B5-B6, 12/F, Po Yip Building,\n 62–70 Texaco Road, Tsuen Wan, N.T.,\n Hong Kong",
     phone: "+852 2341 7755",
     email: "adamfok@san-legend.com",
     timezone: "GMT+8",

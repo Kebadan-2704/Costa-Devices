@@ -99,7 +99,7 @@ export default function CommandPalette() {
                     <div className="text-xs font-bold uppercase tracking-widest text-gray-400 px-4 mb-2">Part Inventory</div>
                     <button 
                       onClick={() => handleSelect(`/search?q=${encodeURIComponent(query)}`)}
-                      className="w-full flex items-center justify-between p-4 hover:bg-[#fafafa] rounded-2xl group transition-all"
+                      className="w-full flex items-center justify-between p-4 hover:bg-bg-secondary rounded-2xl group transition-all"
                     >
                       <div className="flex items-center gap-4">
                         <div className="w-10 h-10 rounded-xl bg-costa-green/10 flex items-center justify-center text-costa-green group-hover:scale-110 transition-transform">
@@ -121,7 +121,7 @@ export default function CommandPalette() {
                     <div>
                       <div className="text-xs font-bold uppercase tracking-widest text-gray-400 px-4 mb-2">Quick Actions</div>
                       <div className="grid gap-1">
-                        <button onClick={() => handleSelect('/request-quote')} className="w-full flex items-center justify-between p-4 hover:bg-[#fafafa] rounded-2xl group transition-all">
+                        <button onClick={() => handleSelect('/request-quote')} className="w-full flex items-center justify-between p-4 hover:bg-bg-secondary rounded-2xl group transition-all">
                           <div className="flex items-center gap-4">
                             <div className="w-10 h-10 rounded-xl bg-gray-100 flex items-center justify-center text-gray-600 group-hover:bg-costa-green group-hover:text-white transition-colors">
                               <Search size={18} />
@@ -132,7 +132,7 @@ export default function CommandPalette() {
                             </div>
                           </div>
                         </button>
-                        <button onClick={() => handleSelect('/services')} className="w-full flex items-center justify-between p-4 hover:bg-[#fafafa] rounded-2xl group transition-all">
+                        <button onClick={() => handleSelect('/services')} className="w-full flex items-center justify-between p-4 hover:bg-bg-secondary rounded-2xl group transition-all">
                           <div className="flex items-center gap-4">
                             <div className="w-10 h-10 rounded-xl bg-gray-100 flex items-center justify-center text-gray-600 group-hover:bg-costa-green group-hover:text-white transition-colors">
                               <Globe size={18} />
@@ -149,7 +149,7 @@ export default function CommandPalette() {
                     <div>
                       <div className="text-xs font-bold uppercase tracking-widest text-gray-400 px-4 mb-2">Divisions</div>
                       <div className="grid gap-1">
-                        <button onClick={() => handleSelect('/active-components')} className="w-full flex items-center justify-between p-4 hover:bg-[#fafafa] rounded-2xl group transition-all">
+                        <button onClick={() => handleSelect('/active-components')} className="w-full flex items-center justify-between p-4 hover:bg-bg-secondary rounded-2xl group transition-all">
                           <div className="flex items-center gap-4">
                             <div className="w-10 h-10 rounded-xl bg-costa-green/5 border border-costa-green/20 flex items-center justify-center text-costa-green">
                               <Cpu size={18} />
@@ -157,7 +157,7 @@ export default function CommandPalette() {
                             <div className="font-bold text-gray-900">Electronics Components</div>
                           </div>
                         </button>
-                        <button onClick={() => handleSelect('/passive-components')} className="w-full flex items-center justify-between p-4 hover:bg-[#fafafa] rounded-2xl group transition-all">
+                        <button onClick={() => handleSelect('/passive-components')} className="w-full flex items-center justify-between p-4 hover:bg-bg-secondary rounded-2xl group transition-all">
                           <div className="flex items-center gap-4">
                             <div className="w-10 h-10 rounded-xl bg-[#0D6B3D]/5 border border-[#0D6B3D]/20 flex items-center justify-center text-[#0D6B3D]">
                               <Server size={18} />

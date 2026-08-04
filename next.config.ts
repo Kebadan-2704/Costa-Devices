@@ -49,7 +49,7 @@ const nextConfig: NextConfig = {
           },
           {
             key: "Content-Security-Policy",
-            value: "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://logo.clearbit.com https://images.unsplash.com https://unpkg.com http://unpkg.com https://flagcdn.com; connect-src 'self' ws: wss: https://raw.githack.com https://raw.githubusercontent.com https://api.web3forms.com; worker-src 'self' blob:; frame-src 'self';",
+            value: `default-src 'self'; script-src 'self' 'unsafe-inline'${process.env.NODE_ENV !== "production" ? " 'unsafe-eval'" : ""}; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://logo.clearbit.com https://images.unsplash.com https://unpkg.com http://unpkg.com https://flagcdn.com; connect-src 'self' ws: wss: https://raw.githack.com https://raw.githubusercontent.com https://api.web3forms.com; worker-src 'self' blob:; frame-src 'self';`,
           },
         ],
       },

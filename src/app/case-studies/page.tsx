@@ -74,7 +74,7 @@ const CASE_STUDIES = [
 
 export default function CaseStudiesPage() {
   return (
-    <div className="min-h-screen bg-[#FAFAFA] text-text-primary pt-8 pb-8">
+    <div className="min-h-screen bg-bg-secondary text-text-primary pt-8 pb-8">
       {/* Header */}
       <section className="max-w-[1200px] mx-auto px-6 mb-24">
         <div className="max-w-3xl">

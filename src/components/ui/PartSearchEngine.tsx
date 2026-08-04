@@ -10,13 +10,9 @@ export default function PartSearchEngine({ variant = "default" }: { variant?: "d
   const [isSearching, setIsSearching] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  // Toggle with Cmd+K or Ctrl+K
+  // Close on Escape (Cmd+K is handled globally by CommandPalette)
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if ((e.metaKey || e.ctrlKey) && e.key === "k") {
-        e.preventDefault();
-        setIsOpen((open) => !open);
-      }
       if (e.key === "Escape") {
         setIsOpen(false);
       }
@@ -160,9 +156,9 @@ export default function PartSearchEngine({ variant = "default" }: { variant?: "d
                   <div className="p-6 bg-black/5">
                     <p className="text-xs font-bold text-text-muted uppercase tracking-widest mb-3">Suggested Searches</p>
                     <div className="flex flex-wrap gap-2">
-                      <span onClick={() => setQuery("FWP-50B")} className="text-xs font-mono font-bold bg-white text-text-secondary px-2.5 py-1.5 rounded-full border border-black/5 cursor-pointer hover:border-costa-green hover:text-costa-green transition-colors">FWP-50B</span>
-                      <span onClick={() => setQuery("Eaton")} className="text-xs font-mono font-bold bg-white text-text-secondary px-2.5 py-1.5 rounded-full border border-black/5 cursor-pointer hover:border-costa-green hover:text-costa-green transition-colors">Eaton Bussmann</span>
-                      <span onClick={() => setQuery("IGBT")} className="text-xs font-mono font-bold bg-white text-text-secondary px-2.5 py-1.5 rounded-full border border-black/5 cursor-pointer hover:border-costa-green hover:text-costa-green transition-colors">IGBT</span>
+                      <button type="button" onClick={() => setQuery("FWP-50B")} className="text-xs font-mono font-bold bg-white text-text-secondary px-2.5 py-1.5 rounded-full border border-black/5 hover:border-costa-green hover:text-costa-green transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-costa-green">FWP-50B</button>
+                      <button type="button" onClick={() => setQuery("Eaton")} className="text-xs font-mono font-bold bg-white text-text-secondary px-2.5 py-1.5 rounded-full border border-black/5 hover:border-costa-green hover:text-costa-green transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-costa-green">Eaton Bussmann</button>
+                      <button type="button" onClick={() => setQuery("IGBT")} className="text-xs font-mono font-bold bg-white text-text-secondary px-2.5 py-1.5 rounded-full border border-black/5 hover:border-costa-green hover:text-costa-green transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-costa-green">IGBT</button>
                     </div>
                   </div>
                 )}

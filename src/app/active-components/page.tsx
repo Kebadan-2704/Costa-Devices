@@ -14,11 +14,26 @@ export const metadata: Metadata = {
 
 export default function ActiveComponentsPage() {
   return (
-    <div className="min-h-screen bg-white text-gray-900 overflow-hidden">
+    <div className="min-h-screen bg-bg-primary text-text-primary overflow-hidden">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Product",
+            "name": "Active Electronic Components",
+            "description": "Microcontrollers, DSPs, FPGAs, and robust memory ICs.",
+            "brand": {
+              "@type": "Brand",
+              "name": "Costa Devices"
+            }
+          })
+        }}
+      />
       {/* Hero Section */}
       <section className="relative pt-40 pb-8 overflow-hidden">
         {/* Subtle Background Elements */}
-        <div className="absolute inset-0 z-0 bg-[#FAFAFA] overflow-hidden">
+        <div className="absolute inset-0 z-0 bg-bg-secondary overflow-hidden">
           <div className="absolute inset-0 bg-[linear-gradient(#e5e7eb_1px,transparent_1px),linear-gradient(90deg,#e5e7eb_1px,transparent_1px)] bg-[size:40px_40px] opacity-50 [mask-image:radial-gradient(ellipse_100%_100%_at_50%_0%,#000_80%,transparent_100%)]" />
           <div className="absolute top-[10%] left-[20%] w-[300px] h-[300px] bg-costa-green/10 rounded-full blur-[80px]" />
           <div className="absolute bottom-0 w-full h-[30%] bg-gradient-to-t from-white to-transparent" />
@@ -94,7 +109,7 @@ export default function ActiveComponentsPage() {
       </section>
 
       {/* Core Services Section */}
-      <section id="capabilities" className="py-8 relative bg-[#fafafa]">
+      <section id="capabilities" className="py-8 relative bg-bg-secondary">
         <div className="max-w-[1400px] mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* Service 1 */}
@@ -198,7 +213,7 @@ export default function ActiveComponentsPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-8 text-center px-6 bg-[#fafafa]">
+      <section className="py-8 text-center px-6 bg-bg-secondary">
         <ScrollReveal>
           <h2 className="font-heading text-3xl font-black mb-8 text-gray-900">Need an electronic component quoted?</h2>
           <div className="flex flex-wrap justify-center gap-4">

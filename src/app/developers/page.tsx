@@ -43,7 +43,7 @@ console.log(\`Quote ID: \${quote.id}\`);
 console.log(\`Estimated Turnaround: \${quote.eta}\`);`;
 
   return (
-    <div className="min-h-screen bg-[#FAFAFA] text-text-primary pt-8 pb-8">
+    <div className="min-h-screen bg-bg-secondary text-text-primary pt-8 pb-8">
       {/* Hero */}
       <section className="max-w-[1200px] mx-auto px-6 mb-24">
         <div className="max-w-3xl">

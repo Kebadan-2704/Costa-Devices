@@ -8,7 +8,6 @@ import AnimatedCounter from "@/components/ui/AnimatedCounter";
 import WorldMap from "@/components/ui/WorldMap";
 import { COMPANY, TEAM, OFFICES, TIMELINE, STATS } from "@/lib/constants";
 import type { Metadata } from "next";
-import CompanyStructuredData from "@/components/CompanyStructuredData";
 
 export const metadata: Metadata = {
   title: "Company — 14+ Years of Global Operations",
@@ -18,6 +17,24 @@ export const metadata: Metadata = {
 export default function CompanyPage() {
   return (
     <div className="min-h-screen bg-transparent text-text-primary overflow-hidden">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            name: "Costa Devices",
+            url: "https://www.costadevices.com",
+            logo: "https://www.costadevices.com/logos/logo.png",
+            description: "ISO 9001:2015 certified global distributor for mission-critical electronic and electrical components.",
+            contactPoint: {
+              "@type": "ContactPoint",
+              telephone: "+97148243640",
+              contactType: "customer service"
+            }
+          })
+        }}
+      />
       {/* Hero Section */}
       <section className="relative pt-40 pb-8 overflow-hidden border-b border-glass-border transition-colors duration-500">
         <div className="absolute inset-0 z-0 bg-bg-secondary transition-colors duration-500">
@@ -311,6 +328,7 @@ export default function CompanyPage() {
                           alt={office.country} 
                           width={32}
                           height={24}
+                          style={{ width: "auto", height: "auto" }}
                           className="rounded-[2px] grayscale group-hover:grayscale-0 transition-all shadow-sm" 
                         />
                       </div>

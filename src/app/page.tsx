@@ -2,14 +2,33 @@ import Link from "next/link";
 import { ArrowRight, Clock } from "lucide-react";
 import dynamic from "next/dynamic";
 import HeroSection from "@/components/home/HeroSection";
+import { ErrorBoundary } from "@/components/ui/ErrorBoundary";
 
-// Dynamically import below-the-fold components to reduce initial JS payload
-const SocialProofSection = dynamic(() => import("@/components/home/SocialProofSection"), { ssr: true });
-const StatsSection = dynamic(() => import("@/components/home/StatsSection"), { ssr: true });
-const TestimonialsSection = dynamic(() => import("@/components/home/TestimonialsSection"), { ssr: true });
-const CapabilitiesSection = dynamic(() => import("@/components/home/CapabilitiesSection"), { ssr: true });
-const ProtocolSection = dynamic(() => import("@/components/home/ProtocolSection"), { ssr: true });
-const CaseStudySection = dynamic(() => import("@/components/home/CaseStudySection"), { ssr: true });
+// Dynamically import below-the-fold components with Loading fallbacks
+const SocialProofSection = dynamic(() => import("@/components/home/SocialProofSection"), { 
+  ssr: true, 
+  loading: () => <div className="h-[200px] w-full animate-pulse bg-black/5" /> 
+});
+const StatsSection = dynamic(() => import("@/components/home/StatsSection"), { 
+  ssr: true,
+  loading: () => <div className="h-[300px] w-full animate-pulse bg-black/5" /> 
+});
+const TestimonialsSection = dynamic(() => import("@/components/home/TestimonialsSection"), { 
+  ssr: true,
+  loading: () => <div className="h-[600px] w-full animate-pulse bg-black/5" /> 
+});
+const CapabilitiesSection = dynamic(() => import("@/components/home/CapabilitiesSection"), { 
+  ssr: true,
+  loading: () => <div className="h-[800px] w-full animate-pulse bg-black/5" /> 
+});
+const ProtocolSection = dynamic(() => import("@/components/home/ProtocolSection"), { 
+  ssr: true,
+  loading: () => <div className="h-[600px] w-full animate-pulse bg-black/5" /> 
+});
+const CaseStudySection = dynamic(() => import("@/components/home/CaseStudySection"), { 
+  ssr: true,
+  loading: () => <div className="h-[400px] w-full animate-pulse bg-black/5" /> 
+});
 
 export default function HomePage() {
   return (
@@ -18,22 +37,34 @@ export default function HomePage() {
       <HeroSection />
 
       {/* 2. SOCIAL PROOF */}
-      <SocialProofSection />
+      <ErrorBoundary>
+        <SocialProofSection />
+      </ErrorBoundary>
 
       {/* 3. PERFORMANCE STATS */}
-      <StatsSection />
+      <ErrorBoundary>
+        <StatsSection />
+      </ErrorBoundary>
 
       {/* 4. TESTIMONIALS */}
-      <TestimonialsSection />
+      <ErrorBoundary>
+        <TestimonialsSection />
+      </ErrorBoundary>
 
       {/* 5. CAPABILITIES & INFRASTRUCTURE */}
-      <CapabilitiesSection />
+      <ErrorBoundary>
+        <CapabilitiesSection />
+      </ErrorBoundary>
 
       {/* 6. PROCUREMENT PROTOCOL */}
-      <ProtocolSection />
+      <ErrorBoundary>
+        <ProtocolSection />
+      </ErrorBoundary>
 
       {/* 7. ENTERPRISE CASE STUDY */}
-      <CaseStudySection />
+      <ErrorBoundary>
+        <CaseStudySection />
+      </ErrorBoundary>
 
       {/* 8. FINAL CTA — Server-rendered (no client JS needed) */}
       <section className="py-8 bg-costa-green text-bg-primary relative overflow-hidden">

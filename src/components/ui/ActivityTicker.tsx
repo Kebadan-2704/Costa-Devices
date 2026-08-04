@@ -1,130 +1,110 @@
 "use client";
 
-import React from "react";
-import Marquee from "@/components/ui/Marquee";
+import React, { useState, useEffect } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import { CheckCircle2, Globe, TrendingUp, Zap, X } from "lucide-react";
 
-const LIVE_EVENTS = [
-  { icon: <Zap size={12} className="text-amber-500" />, text: "Just Sourced: 15,000x STM32F4 in Munich, DE", time: "2m ago" },
-  { icon: <CheckCircle2 size={12} className="text-costa-green" />, text: "RFQ Fulfilled: 2,500x Texas Instruments DSPs", time: "5m ago" },
-  { icon: <Globe size={12} className="text-blue-500" />, text: "New Supplier Onboarded: Shenzhen, CN (Tier-1)", time: "12m ago" },
-  { icon: <TrendingUp size={12} className="text-emerald-500" />, text: "Market Alert: FPGA Lead Times Dropping 15%", time: "18m ago" },
-  { icon: <Zap size={12} className="text-amber-500" />, text: "AOG Response: 50x Obsolete Connectors shipped to CDG", time: "22m ago" },
+const PENDING_EVENTS = [
+  { text: "Just Sourced: 4,000x NXP Processors in Taiwan", type: "sourced" },
+  { text: "RFQ Fulfilled: 1,200x Analog Devices ADCs", type: "fulfilled" },
+  { text: "Market Alert: Automotive MCU Shortage Easing", type: "alert" },
+  { text: "New Supplier Onboarded: Tokyo, JP (AS6081)", type: "supplier" },
+  { text: "AOG Response: 120x Mil-Spec Relays shipped to LHR", type: "sourced" },
+  { text: "Quality Lab: 50,000x Capacitors Passed Inspection", type: "fulfilled" },
+  { text: "Just Sourced: 8,500x Broadcom Switches in USA", type: "sourced" },
+  { text: "Market Alert: Copper Prices Impacting Lead Times", type: "alert" },
+  { text: "RFQ Fulfilled: 300x Xilinx FPGAs Delivered", type: "fulfilled" }
 ];
 
 export default function ActivityTicker() {
-  const [events, setEvents] = React.useState(LIVE_EVENTS);
-  const [latestEventText, setLatestEventText] = React.useState("");
-  const [isVisible, setIsVisible] = React.useState(true);
-  const [isMounted, setIsMounted] = React.useState(false);
+  const [activeEvent, setActiveEvent] = useState<{ text: string; type: string; id: number } | null>(null);
+  const [isMounted, setIsMounted] = useState(false);
 
-  React.useEffect(() => {
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setIsMounted(true);
-    const dismissed = localStorage.getItem("costa_ticker_dismissed");
-    if (dismissed === "true") {
-      setIsVisible(false);
-    }
   }, []);
 
-  React.useEffect(() => {
-    const PENDING_EVENTS = [
-      { text: "Just Sourced: 4,000x NXP Processors in Taiwan", type: "sourced" },
-      { text: "RFQ Fulfilled: 1,200x Analog Devices ADCs", type: "fulfilled" },
-      { text: "Market Alert: Automotive MCU Shortage Easing", type: "alert" },
-      { text: "New Supplier Onboarded: Tokyo, JP (AS6081)", type: "supplier" },
-      { text: "AOG Response: 120x Mil-Spec Relays shipped to LHR", type: "sourced" },
-      { text: "Quality Lab: 50,000x Capacitors Passed Inspection", type: "fulfilled" },
-      { text: "Just Sourced: 8,500x Broadcom Switches in USA", type: "sourced" },
-      { text: "Market Alert: Copper Prices Impacting Lead Times", type: "alert" },
-      { text: "RFQ Fulfilled: 300x Xilinx FPGAs Delivered", type: "fulfilled" }
-    ];
+  useEffect(() => {
+    if (!isMounted) return;
 
-    const generateLocalEvent = () => {
+    const showNextEvent = () => {
       const randomEvent = PENDING_EVENTS[Math.floor(Math.random() * PENDING_EVENTS.length)];
+      setActiveEvent({ ...randomEvent, id: Date.now() });
       
-      let icon = <Globe size={12} className="text-blue-500" />;
-      if (randomEvent.type === "fulfilled") icon = <CheckCircle2 size={12} className="text-costa-green" />;
-      else if (randomEvent.type === "alert") icon = <TrendingUp size={12} className="text-emerald-500" />;
-      else if (randomEvent.type === "sourced") icon = <Zap size={12} className="text-amber-500" />;
-      
-      const newEvent = {
-        icon,
-        text: randomEvent.text,
-        time: "Just now"
-      };
-      
-      setLatestEventText(randomEvent.text);
-
-      setEvents((prev) => {
-        const agedEvents = prev.map(e => ({
-          ...e,
-          time: e.time === "Just now" ? "1m ago" : e.time
-        }));
-        return [newEvent, ...agedEvents].slice(0, 15);
-      });
+      // Auto dismiss after 6 seconds
+      setTimeout(() => {
+        setActiveEvent(null);
+      }, 6000);
     };
-    
-    // Generate a new local event every 15 seconds
-    const intervalId = setInterval(generateLocalEvent, 15000);
-    // Generate one immediately on mount after 2 seconds
-    setTimeout(generateLocalEvent, 2000);
-    
-    return () => clearInterval(intervalId);
-  }, []);
 
-  const dismissTicker = () => {
-    setIsVisible(false);
-    localStorage.setItem("costa_ticker_dismissed", "true");
-  };
+    // Show first event after 2 seconds
+    const initialTimeout = setTimeout(showNextEvent, 2000);
+    
+    // Then show a new event every 25 seconds
+    const interval = setInterval(showNextEvent, 25000);
 
-  if (!isMounted || !isVisible) return null;
+    return () => {
+      clearTimeout(initialTimeout);
+      clearInterval(interval);
+    };
+  }, [isMounted]);
+
+  if (!isMounted) return null;
 
   return (
-    <>
-      <div aria-live="polite" className="sr-only">
-        {latestEventText}
-      </div>
-      <div className="fixed bottom-0 left-0 right-0 w-full bg-bg-elevated text-text-primary border-t border-glass-border flex items-center h-[52px] shadow-[0_-4px_10px_rgba(0,0,0,0.03)] pointer-events-auto z-[101]">
-        <div className="h-full flex items-center px-4 flex-shrink-0 relative z-10 bg-bg-elevated shadow-[4px_0_10px_rgba(0,0,0,0.03)] border-r border-glass-border">
-          <div className="flex items-center bg-bg-secondary border border-glass-border rounded-full px-3 py-1">
-            <span className="w-1.5 h-1.5 bg-costa-green rounded-full animate-pulse mr-2"></span>
-            <span className="text-xs font-semibold tracking-wider uppercase text-text-primary">Live Feed</span>
-          </div>
-        </div>
-        
-        <div className="flex-1 overflow-hidden relative">
-          {/* Left fade */}
-          <div className="absolute left-0 top-0 bottom-0 w-12 bg-gradient-to-r from-bg-elevated to-transparent z-10"></div>
-          
-          <Marquee speed="slowest" direction="left" className="overflow-y-hidden">
-            {events.map((event, idx) => (
-              <div key={idx} className="flex items-center mx-8 gap-4">
-                <span className="flex-shrink-0">{event.icon}</span>
-                <span className="text-xs font-medium tracking-wide text-text-primary uppercase whitespace-nowrap">
-                  {event.text}
+    <div className="fixed bottom-4 left-4 z-[100] pointer-events-none flex flex-col justify-end">
+      <AnimatePresence mode="wait">
+        {activeEvent && (
+          <motion.div
+            key={activeEvent.id}
+            initial={{ opacity: 0, y: 20, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.95, transition: { duration: 0.2 } }}
+            transition={{ type: "spring", stiffness: 400, damping: 25 }}
+            className="pointer-events-auto relative flex items-start gap-3.5 p-4 pr-10 w-full max-w-[340px] bg-white/95 backdrop-blur-xl border border-gray-100 rounded-2xl shadow-[0_8px_30px_rgba(0,0,0,0.08)] group"
+          >
+            {/* Animated Left Border Line */}
+            <div className="absolute left-0 top-3 bottom-3 w-[3px] rounded-r-full bg-gradient-to-b from-costa-green to-emerald-300" />
+            
+            {/* Icon Container */}
+            <div className="relative flex items-center justify-center w-9 h-9 rounded-full bg-costa-green/10 text-costa-green shrink-0 mt-0.5">
+              {activeEvent.type === "fulfilled" ? <CheckCircle2 size={16} /> : 
+               activeEvent.type === "alert" ? <TrendingUp size={16} className="text-purple-500" /> : 
+               activeEvent.type === "sourced" ? <Zap size={16} className="text-amber-500 animate-pulse" /> : 
+               <Globe size={16} className="text-blue-500" />}
+            </div>
+            
+            {/* Content */}
+            <div className="flex flex-col gap-0.5 pt-0.5">
+              <span className="text-[13px] font-bold text-gray-900 tracking-tight leading-snug">
+                {activeEvent.text.split(": ")[0]}
+              </span>
+              <span className="text-[12px] font-medium text-gray-500 leading-snug">
+                {activeEvent.text.split(": ").slice(1).join(": ")}
+              </span>
+              
+              <div className="flex items-center gap-1.5 mt-2">
+                <span className="relative flex h-1.5 w-1.5">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-costa-green opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-costa-green"></span>
                 </span>
-                <span className="text-xs text-text-muted ml-1">
-                  {event.time}
+                <span className="text-[10px] font-bold text-costa-green uppercase tracking-widest">
+                  Live Update
                 </span>
-                {/* Vertical line separator */}
-                <div className="w-[1px] h-4 bg-glass-border rounded-full ml-8"></div>
               </div>
-            ))}
-          </Marquee>
-          
-          {/* Right fade */}
-          <div className="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-bg-elevated to-transparent z-10"></div>
-        </div>
-
-        {/* Mobile Dismiss Button */}
-        <button 
-          onClick={dismissTicker}
-          className="md:hidden h-full px-4 flex items-center justify-center border-l border-glass-border bg-bg-secondary hover:bg-black/5"
-          aria-label="Dismiss activity ticker"
-        >
-          <X size={16} className="text-text-muted" />
-        </button>
-      </div>
-    </>
+            </div>
+            
+            {/* Close Button */}
+            <button 
+              onClick={() => setActiveEvent(null)}
+              className="absolute top-2 right-2 p-1.5 text-gray-400 hover:text-gray-700 hover:bg-gray-100 rounded-full transition-colors"
+            >
+              <X size={14} />
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
   );
 }

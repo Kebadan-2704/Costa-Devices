@@ -128,7 +128,7 @@ function RequestQuoteForm() {
       <div className="flex-grow grid grid-cols-1 lg:grid-cols-2">
         
         {/* Left Side: Information & Trust Signals */}
-        <div className="bg-[#fafafa] p-8 md:p-16 lg:p-24 flex flex-col justify-between relative overflow-hidden border-r border-gray-200">
+        <div className="bg-bg-secondary p-8 md:p-16 lg:p-24 flex flex-col justify-between relative overflow-hidden border-r border-gray-200">
           {/* Subtle Light Mode Pattern */}
           <div className="absolute inset-0 z-0">
             <div className="absolute inset-0 bg-[linear-gradient(#e5e7eb_1px,transparent_1px),linear-gradient(90deg,#e5e7eb_1px,transparent_1px)] bg-[size:40px_40px] opacity-50" />
@@ -348,7 +348,7 @@ function RequestQuoteForm() {
 export default function RequestQuotePage() {
   return (
     <Suspense fallback={
-      <div className="min-h-screen pt-[100px] flex items-center justify-center bg-[#fafafa]">
+      <div className="min-h-screen pt-[100px] flex items-center justify-center bg-bg-secondary">
         <div className="w-8 h-8 border-2 border-costa-green/30 border-t-costa-green rounded-full animate-spin" />
       </div>
     }>
