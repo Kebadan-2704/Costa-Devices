@@ -14,6 +14,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [hidden, setHidden] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [hoveredLink, setHoveredLink] = useState<string | null>(null);
   const pathname = usePathname();
   const drawerRef = useRef<HTMLDivElement>(null);
   const { scrollY } = useScroll();
@@ -148,7 +149,12 @@ export default function Navbar() {
                 {/* Bottom Row: Nav Links */}
                 <div className="flex items-center justify-start px-4 lg:px-6 py-1 gap-1">
               {NAV_LINKS.map((link: any) => (
-                <div key={link.label} className="group relative flex items-center">
+                <div 
+                  key={link.label} 
+                  className="group relative flex items-center"
+                  onMouseEnter={() => setHoveredLink(link.label)}
+                  onMouseLeave={() => setHoveredLink(null)}
+                >
                   <Link
                     href={link.href}
                     className={`relative text-lg font-semibold transition-all duration-300 px-6 py-3 rounded-lg
@@ -158,7 +164,7 @@ export default function Navbar() {
                       }
                     `}
                     aria-haspopup={(link.megaMenu || link.dropdown) ? "true" : undefined}
-                    aria-expanded={(link.megaMenu || link.dropdown) ? "false" : undefined}
+                    aria-expanded={(link.megaMenu || link.dropdown) ? (hoveredLink === link.label ? "true" : "false") : undefined}
                   >
                     {link.label}
                   </Link>
@@ -170,7 +176,7 @@ export default function Navbar() {
 
                   {/* Premium Mega Menu */}
                   {link.megaMenu && (
-                    <div className="absolute top-[calc(100%+8px)] left-1/2 -translate-x-1/2 w-[600px] bg-white/95 backdrop-blur-xl border border-black/10 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)] opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible group-focus-within:scale-100 transition-all duration-300 z-50 rounded-2xl overflow-hidden before:absolute before:-top-4 before:left-0 before:w-full before:h-4 origin-top group-hover:scale-100 scale-95">
+                    <div className={`absolute top-[calc(100%+8px)] left-1/2 -translate-x-1/2 w-[600px] bg-white/95 backdrop-blur-xl border border-black/10 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)] transition-all duration-300 z-50 rounded-2xl overflow-hidden before:absolute before:-top-4 before:left-0 before:w-full before:h-4 origin-top ${hoveredLink === link.label ? 'opacity-100 visible scale-100' : 'opacity-0 invisible scale-95'}`}>
                       <div className="grid grid-cols-2 p-4 gap-4 relative z-10">
                         {link.megaMenu.categories.map((cat: any) => (
                           <div key={cat.label} className="bg-[#FAFAFA] hover:bg-black/[0.03] transition-colors duration-300 rounded-xl p-6 border border-black/5 group/cat flex flex-col">
@@ -233,7 +239,7 @@ export default function Navbar() {
 
                   {/* Simple Dropdown */}
                   {link.dropdown && (
-                    <div className="absolute top-[calc(100%+8px)] left-1/2 -translate-x-1/2 w-[340px] bg-white/95 backdrop-blur-xl border border-black/10 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)] opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible group-focus-within:scale-100 transition-all duration-300 z-50 rounded-2xl overflow-hidden before:absolute before:-top-4 before:left-0 before:w-full before:h-4 origin-top group-hover:scale-100 scale-95">
+                    <div className={`absolute top-[calc(100%+8px)] left-1/2 -translate-x-1/2 w-[340px] bg-white/95 backdrop-blur-xl border border-black/10 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)] transition-all duration-300 z-50 rounded-2xl overflow-hidden before:absolute before:-top-4 before:left-0 before:w-full before:h-4 origin-top ${hoveredLink === link.label ? 'opacity-100 visible scale-100' : 'opacity-0 invisible scale-95'}`}>
                       <div className="p-4">
                         <div className="bg-bg-secondary hover:bg-black/[0.03] transition-colors duration-300 rounded-xl p-6 border border-glass-border flex flex-col">
                           <div className="flex items-center gap-4 mb-5">

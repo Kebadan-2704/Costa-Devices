@@ -27,7 +27,7 @@ export default function CookieConsent() {
   if (!visible) return null;
 
   return (
-    <div className="fixed bottom-6 left-6 right-6 md:left-auto md:right-6 md:max-w-md z-[150] animate-in slide-in-from-bottom-4 fade-in duration-500">
+    <div className="fixed bottom-6 left-6 right-6 md:left-auto md:right-6 md:max-w-md z-[150] animate-in slide-in-from-bottom-full fade-in duration-500">
       <div className="bg-bg-elevated border border-glass-border rounded-2xl p-6 shadow-2xl backdrop-blur-xl">
         <div className="flex items-start gap-4">
           <div className="w-10 h-10 rounded-xl bg-costa-green/10 border border-costa-green/20 flex items-center justify-center shrink-0">

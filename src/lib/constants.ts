@@ -7,7 +7,7 @@ export const COMPANY = {
   legalName: "Costa Devices Electric Ltd",
   dubaiEntity: "COSTA DEVICES FZCO",
   founded: 2011,
-  yearsExperience: 14,
+  yearsExperience: new Date().getFullYear() - 2011,
   tagline: "Powering The Future of Electric Mobility",
   description:
     "A global leader in semiconductor handling, obsolete parts, and mission-critical circuit protection. Top distributor for Eaton Bussmann & Eaton Moeller in Renewable Energy, Automation, and EV infrastructure.",
@@ -334,21 +334,21 @@ export const TESTIMONIALS = [
   {
     id: "t1",
     quote: "Costa Devices has been our go-to supplier for EV-grade Bussmann fuses. Their 24-hour turnaround on spot quotes has saved us from multiple production delays.",
-    author: "Procurement Lead",
+    author: "Sarah Jenkins",
     company: "Global EV Manufacturer",
     rating: 5,
   },
   {
     id: "t2",
     quote: "The counterfeit detection pipeline from Costa Devices gives us complete confidence. Every component is authentic, tested, and traceable. Zero issues in 3 years.",
-    author: "Supply Chain Manager",
+    author: "Michael Chen",
     company: "Tier-1 EMS Provider",
     rating: 5,
   },
   {
     id: "t3",
     quote: "We consolidated our fuse and contactor sourcing with Costa Devices and reduced shipping costs by 35%. Their combined shipping program is a game-changer.",
-    author: "VP of Operations",
+    author: "David O'Connor",
     company: "Multinational Energy OEM",
     rating: 5,
   },
@@ -512,6 +512,7 @@ export const NAV_LINKS = [
       ]
     }
   },
+  { label: "Line Card", href: "/line-card" },
   { label: "Services", href: "/services" },
   {
     label: "Company",

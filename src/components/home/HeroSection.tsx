@@ -178,11 +178,7 @@ export default function HeroSection() {
                 {/* Gradient overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-black/30 pointer-events-none"></div>
 
-                {/* Live Feed Badge */}
-                <div className="absolute bottom-5 left-5 z-10 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs font-bold text-white tracking-[0.2em] uppercase shadow-lg">
-                  <span className="w-1.5 h-1.5 rounded-full bg-red-400 animate-pulse"></span>
-                  Live Feed
-                </div>
+
               </div>
             </div>
 

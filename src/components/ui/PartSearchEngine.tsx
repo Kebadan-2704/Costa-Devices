@@ -144,8 +144,8 @@ export default function PartSearchEngine({ variant = "default" }: { variant?: "d
                       </>
                     ) : (
                       <div className="p-8 text-center text-text-muted">
-                        <p className="text-sm font-medium mb-3">Part <span className="font-bold text-text-primary">&ldquo;{query}&rdquo;</span> is not in our public catalog.</p>
-                        <p className="text-xs mb-4">We can source it via our global supplier network within 24 hours.</p>
+                        <p className="text-sm font-medium mb-3">Part <span className="font-bold text-text-primary">&ldquo;{query}&rdquo;</span> not found in sample catalog.</p>
+                        <p className="text-xs mb-4">We source millions of parts globally. Request a quote directly.</p>
                         <Link href={`/request-quote?part=${query}`} onClick={() => { setIsOpen(false); setQuery(""); }} className="inline-flex items-center gap-2 px-4 py-2 bg-costa-green text-white rounded-lg text-xs font-bold hover:bg-emerald-600 transition-colors">
                           <Package size={14} /> Request Quote for {query}
                         </Link>
@@ -206,8 +206,8 @@ export default function PartSearchEngine({ variant = "default" }: { variant?: "d
                   <div className="w-16 h-16 mx-auto mb-6 rounded-2xl bg-costa-green/5 border border-costa-green/10 flex items-center justify-center">
                     <Search size={28} className="text-costa-green opacity-80" />
                   </div>
-                  <h3 className="font-heading text-2xl font-black tracking-tight text-text-primary mb-3">Costa Global Catalog</h3>
-                  <p className="text-sm font-medium opacity-80 text-text-secondary">Search across millions of verified components</p>
+                  <h3 className="font-heading text-2xl font-black tracking-tight text-text-primary mb-3">Sample Catalog Search</h3>
+                  <p className="text-sm font-medium opacity-80 text-text-secondary">Search a small sample of our components</p>
                   
                   <div className="mt-8 flex flex-wrap justify-center gap-2">
                     <span className="text-xs font-mono font-bold uppercase tracking-widest bg-black/5 text-text-secondary px-3 py-1.5 rounded-full border border-black/5">FWP-50B</span>
@@ -255,8 +255,8 @@ export default function PartSearchEngine({ variant = "default" }: { variant?: "d
                   </div>
                 ) : (
                   <div className="p-12 text-center text-text-muted bg-black/5 rounded-xl border border-black/5 m-4">
-                    <p className="text-lg font-medium mb-2">Part <span className="font-bold text-text-primary">&ldquo;{query}&rdquo;</span> is not in our public catalog.</p>
-                    <p className="text-sm mt-2 opacity-80 mb-6 max-w-md mx-auto">We have access to 1B+ components globally. Submit an RFQ and our team will check worldwide availability and pricing within 4 hours.</p>
+                    <p className="text-lg font-medium mb-2">Part <span className="font-bold text-text-primary">&ldquo;{query}&rdquo;</span> not found in sample catalog.</p>
+                    <p className="text-sm mt-2 opacity-80 mb-6 max-w-md mx-auto">We source millions of parts globally. Request a quote directly.</p>
                     <Link href={`/request-quote?part=${query}`} onClick={() => setIsOpen(false)} className="inline-flex items-center gap-2 px-6 py-3 bg-costa-green text-white rounded-lg text-sm font-bold hover:bg-emerald-600 shadow-md hover:shadow-lg transition-all">
                       <Package size={16} /> Request Quote for {query} <ArrowRight size={16} />
                     </Link>

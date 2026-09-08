@@ -54,7 +54,7 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="min-h-screen text-text-secondary transition-colors duration-500" style={{ fontFamily: 'Calibri, Carlito, "Segoe UI", system-ui, sans-serif' }}>
+    <div className="min-h-screen text-text-secondary transition-colors duration-500">
       {/* Hero */}
       <section className="relative pt-40 pb-8 overflow-hidden border-b border-glass-border transition-colors duration-500">
         <div className="absolute inset-0 z-0 bg-bg-secondary transition-colors duration-500">
@@ -69,7 +69,7 @@ export default function ContactPage() {
               <div className="w-1.5 h-1.5 rounded-full bg-costa-green animate-pulse" />
               Home / Contact
             </div>
-            <h1 className="font-heading text-[clamp(3rem,7vw,5.5rem)] font-bold uppercase leading-[1.1] mb-8 text-text-primary tracking-tight transition-colors duration-500" style={{ fontFamily: 'var(--font-body), sans-serif' }}>
+            <h1 className="font-heading text-[clamp(3rem,5.5vw,5.2rem)] font-black leading-[1.0] tracking-tight text-text-primary mb-8 transition-colors duration-500">
               Contact <span className="text-transparent bg-clip-text bg-gradient-to-r from-costa-green to-emerald-400 drop-shadow-sm">Sales.</span>
             </h1>
             <div className="relative p-6 rounded-2xl bg-bg-secondary/40 border border-glass-border backdrop-blur-md shadow-[0_8px_30px_rgb(0,0,0,0.04)]">

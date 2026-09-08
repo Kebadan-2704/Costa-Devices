@@ -15,6 +15,9 @@ function RequestQuoteForm() {
     name: "",
     company: "",
     email: "",
+    phone: "",
+    quantity: "",
+    targetPrice: "",
     timeline: "IMMEDIATE (LINE DOWN)",
     notes: prefilledPart ? `Part Number: ${prefilledPart}\n` : "",
   });
@@ -75,11 +78,11 @@ function RequestQuoteForm() {
     const newErrors = { name: "", email: "" };
     
     if (!formData.name) {
-      newErrors.name = "Operator Name is required.";
+      newErrors.name = "Full Name is required.";
       hasError = true;
     }
     if (!formData.email) {
-      newErrors.email = "Secure Comms (Email) is required.";
+      newErrors.email = "Work Email is required.";
       hasError = true;
     }
     
@@ -97,8 +100,9 @@ function RequestQuoteForm() {
       submitData.append("name", formData.name);
       submitData.append("company", formData.company);
       submitData.append("email", formData.email);
+      submitData.append("phone", formData.phone);
       submitData.append("subject", "BOM / RFQ Submission");
-      submitData.append("message", `Timeline: ${formData.timeline}\n\nAdditional Notes:\n${formData.notes}`);
+      submitData.append("message", `Quantity: ${formData.quantity}\nTarget Price: ${formData.targetPrice}\nTimeline: ${formData.timeline}\n\nAdditional Notes:\n${formData.notes}`);
       if (selectedFile) {
         submitData.append("file", selectedFile);
       }
@@ -142,11 +146,11 @@ function RequestQuoteForm() {
             </div>
             
             <h1 className="font-heading text-4xl md:text-5xl font-black leading-[1.05] tracking-tighter mb-8 uppercase text-gray-900">
-              TRANSMIT BILL OF MATERIALS
+              Submit Your Parts List
             </h1>
             
             <p className="font-mono text-sm text-gray-500 leading-relaxed mb-12 uppercase tracking-wider">
-              Submit your shortage list or full BOM. Our algorithmic sourcing network will scan global franchised and EMS excess inventory to secure your components in under 24 hours.
+              Submit your shortage list or full BOM. Our global sourcing network will scan franchised and EMS excess inventory to secure your components in under 24 hours.
             </p>
 
             <div className="space-y-8">
@@ -161,7 +165,7 @@ function RequestQuoteForm() {
               <div className="flex items-start gap-4">
                 <Lock className="text-costa-green mt-1 flex-shrink-0" size={20} />
                 <div>
-                  <h4 className="font-heading text-lg font-black text-gray-900 uppercase tracking-tight">End-to-End Encryption</h4>
+                  <h4 className="font-heading text-lg font-black text-gray-900 uppercase tracking-tight">Secure Form Transmission (HTTPS)</h4>
                   <p className="font-mono text-xs text-gray-400 mt-1 uppercase tracking-widest">Your IP and component requirements are strictly confidential under NDA protocols.</p>
                 </div>
               </div>
@@ -194,7 +198,7 @@ function RequestQuoteForm() {
                 Our sourcing team has been notified and will respond within 24 hours with availability and pricing.
               </p>
               <button 
-                onClick={() => { setFormState("idle"); setUploadState("idle"); setFormData({ name: "", company: "", email: "", timeline: "IMMEDIATE (LINE DOWN)", notes: "" }); setSelectedFile(null); }} 
+                onClick={() => { setFormState("idle"); setUploadState("idle"); setFormData({ name: "", company: "", email: "", phone: "", quantity: "", targetPrice: "", timeline: "IMMEDIATE (LINE DOWN)", notes: "" }); setSelectedFile(null); }} 
                 className="font-mono text-xs text-costa-green hover:underline uppercase tracking-[0.2em] transition-colors"
               >
                 Submit Another BOM →
@@ -207,22 +211,40 @@ function RequestQuoteForm() {
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <label className="font-mono text-xs font-bold text-gray-500 uppercase tracking-widest">Operator Name *</label>
-                    <input type="text" name="name" value={formData.name} onChange={handleChange} required className={`w-full bg-gray-50 border ${errors.name ? 'border-red-500' : 'border-gray-200'} rounded-xl text-gray-900 px-4 py-3 font-mono text-sm focus:border-costa-green focus:bg-white focus:outline-none transition-colors`} placeholder="JOHN DOE" />
+                    <label className="font-mono text-xs font-bold text-gray-500 uppercase tracking-widest">Full Name *</label>
+                    <input type="text" name="name" value={formData.name} onChange={handleChange} required className={`w-full bg-gray-50 border ${errors.name ? 'border-red-500' : 'border-gray-200'} rounded-xl text-gray-900 px-4 py-3 font-mono text-sm focus:border-costa-green focus:bg-white focus:outline-none transition-colors`} placeholder="John Doe" />
                     {errors.name && <p className="text-red-500 text-xs font-mono mt-1">{errors.name}</p>}
                   </div>
                   <div className="space-y-2">
-                    <label className="font-mono text-xs font-bold text-gray-500 uppercase tracking-widest">Organization ID</label>
-                    <input type="text" name="company" value={formData.company} onChange={handleChange} className="w-full bg-gray-50 border border-gray-200 rounded-xl text-gray-900 px-4 py-3 font-mono text-sm focus:border-costa-green focus:bg-white focus:outline-none transition-colors" placeholder="COMPANY INC." />
+                    <label className="font-mono text-xs font-bold text-gray-500 uppercase tracking-widest">Company Name</label>
+                    <input type="text" name="company" value={formData.company} onChange={handleChange} className="w-full bg-gray-50 border border-gray-200 rounded-xl text-gray-900 px-4 py-3 font-mono text-sm focus:border-costa-green focus:bg-white focus:outline-none transition-colors" placeholder="Company Inc." />
                   </div>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <label className="font-mono text-xs font-bold text-gray-500 uppercase tracking-widest">Secure Comms (Email) *</label>
-                    <input type="email" name="email" value={formData.email} onChange={handleChange} required className={`w-full bg-gray-50 border ${errors.email ? 'border-red-500' : 'border-gray-200'} rounded-xl text-gray-900 px-4 py-3 font-mono text-sm focus:border-costa-green focus:bg-white focus:outline-none transition-colors`} placeholder="J.DOE@COMPANY.COM" />
+                    <label className="font-mono text-xs font-bold text-gray-500 uppercase tracking-widest">Work Email *</label>
+                    <input type="email" name="email" value={formData.email} onChange={handleChange} required className={`w-full bg-gray-50 border ${errors.email ? 'border-red-500' : 'border-gray-200'} rounded-xl text-gray-900 px-4 py-3 font-mono text-sm focus:border-costa-green focus:bg-white focus:outline-none transition-colors`} placeholder="j.doe@company.com" />
                     {errors.email && <p className="text-red-500 text-xs font-mono mt-1">{errors.email}</p>}
                   </div>
+                  <div className="space-y-2">
+                    <label className="font-mono text-xs font-bold text-gray-500 uppercase tracking-widest">Phone Number</label>
+                    <input type="tel" name="phone" value={formData.phone} onChange={handleChange} className="w-full bg-gray-50 border border-gray-200 rounded-xl text-gray-900 px-4 py-3 font-mono text-sm focus:border-costa-green focus:bg-white focus:outline-none transition-colors" placeholder="+1 (555) 000-0000" />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="space-y-2">
+                    <label className="font-mono text-xs font-bold text-gray-500 uppercase tracking-widest">Target Quantity</label>
+                    <input type="text" name="quantity" value={formData.quantity} onChange={handleChange} className="w-full bg-gray-50 border border-gray-200 rounded-xl text-gray-900 px-4 py-3 font-mono text-sm focus:border-costa-green focus:bg-white focus:outline-none transition-colors" placeholder="1000" />
+                  </div>
+                  <div className="space-y-2">
+                    <label className="font-mono text-xs font-bold text-gray-500 uppercase tracking-widest">Target Price (Optional)</label>
+                    <input type="text" name="targetPrice" value={formData.targetPrice} onChange={handleChange} className="w-full bg-gray-50 border border-gray-200 rounded-xl text-gray-900 px-4 py-3 font-mono text-sm focus:border-costa-green focus:bg-white focus:outline-none transition-colors" placeholder="$5.00" />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <label className="font-mono text-xs font-bold text-gray-500 uppercase tracking-widest">Target Timeline</label>
                     <select name="timeline" value={formData.timeline} onChange={handleChange} className="w-full bg-gray-50 border border-gray-200 rounded-xl text-gray-900 px-4 py-3 font-mono text-sm focus:border-costa-green focus:bg-white focus:outline-none transition-colors appearance-none">
@@ -235,7 +257,7 @@ function RequestQuoteForm() {
 
                 {/* Upload Zone */}
                 <div className="space-y-2 pt-4">
-                  <label className="font-mono text-xs font-bold text-gray-500 uppercase tracking-widest">BOM Payload Upload</label>
+                  <label className="font-mono text-xs font-bold text-gray-500 uppercase tracking-widest">Upload BOM / Parts List</label>
                   <div 
                     className={`border-2 border-dashed rounded-2xl transition-all duration-300 p-12 flex flex-col items-center justify-center text-center relative overflow-hidden ${
                       dragActive ? "border-costa-green bg-costa-green/5" : uploadState !== "idle" ? "border-costa-green/30 bg-gray-50" : "border-gray-300 hover:border-costa-green bg-gray-50 cursor-pointer"
@@ -278,8 +300,8 @@ function RequestQuoteForm() {
                               className="absolute left-0 right-0 h-[2px] bg-costa-green shadow-[0_0_10px_#1AAF5D] z-10"
                             />
                           </div>
-                          <p className="font-mono text-sm font-bold text-gray-900 uppercase tracking-widest mb-2 animate-pulse">ALGORITHMIC SCAN IN PROGRESS...</p>
-                          <p className="font-mono text-xs text-costa-green uppercase tracking-widest">Parsing Manufacturer Part Numbers</p>
+                          <p className="font-mono text-sm font-bold text-gray-900 uppercase tracking-widest mb-2 animate-pulse">Processing file...</p>
+                          <p className="font-mono text-xs text-costa-green uppercase tracking-widest">Reading entries</p>
                           
                           {/* Progress Bar */}
                           <div className="w-full h-1.5 bg-gray-200 rounded-full mt-6 overflow-hidden">
@@ -314,7 +336,7 @@ function RequestQuoteForm() {
                 </div>
 
                 <div className="space-y-2 pt-2">
-                  <label className="font-mono text-xs font-bold text-gray-500 uppercase tracking-widest">Additional Parameters</label>
+                  <label className="font-mono text-xs font-bold text-gray-500 uppercase tracking-widest">Additional Notes</label>
                   <textarea name="notes" value={formData.notes} onChange={handleChange} rows={3} className="w-full bg-gray-50 border border-gray-200 rounded-xl text-gray-900 px-4 py-3 font-mono text-sm focus:border-costa-green focus:bg-white focus:outline-none transition-colors resize-none" placeholder="Enter target pricing, acceptable date codes, or specific manufacturer instructions..."></textarea>
                 </div>
 
@@ -331,7 +353,7 @@ function RequestQuoteForm() {
                   ) : (
                     <>
                       <Send size={16} />
-                      INITIATE SOURCING PROTOCOL
+                      Submit Quote Request
                     </>
                   )}
                 </button>

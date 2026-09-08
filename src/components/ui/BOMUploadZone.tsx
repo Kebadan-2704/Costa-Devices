@@ -13,7 +13,7 @@ export default function BOMUploadZone() {
     <motion.div
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      onClick={() => router.push('/contact?ref=bom_upload')}
+      onClick={() => router.push('/request-quote')}
       className={`relative w-full max-w-md rounded-3xl border border-white/40 bg-white/10 backdrop-blur-2xl transition-all duration-500 cursor-pointer overflow-hidden shadow-[0_8px_32px_0_rgba(31,38,135,0.07)] ${
         isHovered 
           ? 'border-costa-green/50 bg-white/20 shadow-[0_12px_48px_rgba(26,175,93,0.15)]' 
@@ -39,8 +39,8 @@ export default function BOMUploadZone() {
         </motion.div>
         
         <div className="flex-1 text-left">
-          <h3 className="text-[15px] font-bold text-gray-900 mb-0.5">Submit BOM Payload</h3>
-          <p className="text-[12px] text-gray-500 font-medium mb-2">Upload Excel or CSV for algorithmic sourcing.</p>
+          <h3 className="text-[15px] font-bold text-gray-900 mb-0.5">Upload BOM List</h3>
+          <p className="text-[12px] text-gray-500 font-medium mb-2">Upload Excel or CSV for fast turnaround.</p>
           
           <div className="flex items-center gap-2">
             <div className="flex items-center gap-1.5 px-2 py-0.5 rounded bg-gray-100 text-[12px] font-bold text-gray-500 uppercase tracking-wider">
