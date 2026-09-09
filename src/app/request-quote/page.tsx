@@ -353,10 +353,25 @@ function RequestQuoteForm() {
                   ) : (
                     <>
                       <Send size={16} />
-                      Submit Quote Request
+                      Get Pricing & Availability
                     </>
                   )}
                 </button>
+
+                <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-6 text-gray-400">
+                  <div className="flex items-center gap-1.5">
+                    <ShieldCheck size={14} className="text-costa-green" />
+                    <span className="font-mono text-[10px] font-bold uppercase tracking-widest">AS6081 Certified Partner</span>
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <Lock size={14} className="text-costa-green" />
+                    <span className="font-mono text-[10px] font-bold uppercase tracking-widest">Secure Transmission</span>
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <CheckCircle2 size={14} className="text-costa-green" />
+                    <span className="font-mono text-[10px] font-bold uppercase tracking-widest">No Minimum Order Quantity (MOQ)</span>
+                  </div>
+                </div>
 
               </form>
             </div>

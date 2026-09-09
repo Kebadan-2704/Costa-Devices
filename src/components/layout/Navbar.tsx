@@ -141,7 +141,7 @@ export default function Navbar() {
                     href="/request-quote"
                     className="btn-pulse group inline-flex items-center gap-2 bg-costa-green text-white text-xs font-bold tracking-[0.1em] uppercase py-3 px-6 rounded-md hover:bg-costa-green-dark transition-all duration-300 shadow-[0_4px_14px_rgba(26,175,93,0.3)] hover:shadow-[0_6px_20px_rgba(26,175,93,0.4)] hover:-translate-y-0.5 shrink-0 whitespace-nowrap"
                   >
-                    Get Quote
+                    Check Stock & Pricing
                     <ArrowRight size={13} className="group-hover:translate-x-0.5 transition-transform shrink-0" />
                   </Link>
                 </div>
@@ -378,7 +378,7 @@ export default function Navbar() {
                 onClick={() => setMobileOpen(false)}
                 className="bg-costa-green text-white text-sm font-bold uppercase py-4 text-center rounded-lg hover:bg-costa-green-dark transition-colors w-full"
               >
-                Request Quote
+                Check Stock & Pricing
               </Link>
 
               <div className="flex flex-col gap-3 mt-4 pt-4 border-t border-black/5">

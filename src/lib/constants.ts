@@ -145,17 +145,17 @@ export const BRANDS = [
 ];
 
 export const DISTRIBUTOR_BRANDS = [
-  "PKC Group", "Ohmite", "Kyocera", "Sensata Technologies", "KOA Speer Active Components", "Diodes Incorporated",
+  "PKC Group", "Ohmite", "Kyocera", "Sensata Technologies", "Diodes Incorporated",
   "IODE Corp", "Knowles", "Glenair", "Honeywell", "Chemi-Con", "Aptiv", "AirBorn", "Abracon", "SK hynix",
   "Macronix", "Winbond", "Texas Instruments", "Fujitsu", "Walsin", "TE Connectivity", "Pulse", "TSMC",
-  "OSRAM", "Micro Commercial Components", "Coilcraft", "ROHM Semiconductor", "Nichicon", "KEL", "Bourns",
-  "CoreCentric Solutions", "Biosense Webster", "Lite-On", "Atmel", "Taiyo Yuden", "Fairchild Semiconductor",
-  "Semtech", "Quectel", "Cavli Wireless", "STMicroelectronics", "Infineon", "Micron", "Amphenol", "Eaton",
-  "Sawnics", "Delta", "Diotec Semiconductor", "Dialog Semiconductor", "Nexperia", "NEC", "JST", "TDK",
+  "OSRAM", "Coilcraft", "Nichicon", "KEL", "Bourns",
+  "Atmel", "Taiyo Yuden",
+  "Semtech", "Quectel", "STMicroelectronics", "Infineon", "Micron", "Amphenol", "Eaton",
+  "Sawnics", "Delta", "Nexperia", "NEC", "JST", "TDK",
   "Murata", "DBwave", "Skyworks", "Toshiba", "Renesas", "Altera", "Quantic Evans", "Panasonic", "NXP",
   "NVIDIA", "Sunlord", "XP Power", "Vishay", "Yageo", "KEMET", "Allegro", "Molex", "Sumitomo",
   "Analog Devices", "Omron", "Moschip", "Broadcom", "Qualcomm", "Xilinx", "Intel", "GigaDevice",
-  "HP Indigo", "Kaynes Technology", "Foxconn", "UNO Minda", "OLA", "Ather", "Mersen", "Littelfuse",
+  "Ather", "Mersen", "Littelfuse",
   "Cooper Power", "HPS", "SNC", "ABB", "Schneider"
 ];
 
@@ -545,13 +545,13 @@ export const COUNTERFEIT_STEPS = [
 ];
 
 export const MANUFACTURERS = [
-  "NVIDIA", "Coilcraft", "Xilinx", "ROHM", "MCC", "Allegro", "Analog Devices", "NXP", "Altera", "Texas Instruments",
-  "Winbond", "OMRON", "Qualcomm", "OSRAM", "Intel", "Walsin", "Semtech", "Quantic Evans", "TSMC", "NEC", "MXIC",
+  "NVIDIA", "Coilcraft", "Xilinx", "Allegro", "Analog Devices", "NXP", "Altera", "Texas Instruments",
+  "Winbond", "OMRON", "Qualcomm", "OSRAM", "Intel", "Walsin", "Semtech", "Quantic Evans", "TSMC", "NEC",
   "TE Connectivity", "Broadcom", "Pulse", "Skyworks", "STMicroelectronics", "Toshiba", "KEL", "Murata", "Fujitsu",
-  "Moschip", "Micron", "XP Power", "Renesas", "Fairchild", "KOA", "Kyocera", "Sumitomo", "Abracon", "Sawnics",
-  "Diotec", "AirBorn", "Ohmite", "Dialog", "Yageo", "Amphenol", "Quectel", "Glenair", "Sensata", "Taiyo Yuden",
-  "Infineon", "Nichicon", "Knowles", "Delta", "Sunlord", "Atmel", "Liteon", "Vishay", "Honeywell", "TDK", "Molex",
-  "JST", "Kemet", "Eaton", "SK Hynix", "Chemi-Con", "PKC Group", "Onsemi", "Panasonic", "Nexperia", "Diodes Inc"
+  "Moschip", "Micron", "XP Power", "Renesas", "KOA", "Kyocera", "Sumitomo", "Abracon", "Sawnics",
+  "AirBorn", "Ohmite", "Yageo", "Amphenol", "Quectel", "Glenair", "Taiyo Yuden",
+  "Infineon", "Nichicon", "Knowles", "Delta", "Sunlord", "Atmel", "Vishay", "Honeywell", "TDK", "Molex",
+  "JST", "Kemet", "Eaton", "SK Hynix", "Chemi-Con", "PKC Group", "Onsemi", "Panasonic", "Nexperia"
 ];
 
 export const CUSTOMERS = [
