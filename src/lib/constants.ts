@@ -137,7 +137,6 @@ export const BRANDS = [
   { name: "SNC", products: "Transformers", logo: "/logos/snc.svg", image: "/images/snc.jpg", description: "Custom magnetics" },
   { name: "Siemens", products: "Contactors, PLCs", logo: "", image: "/images/Siemens.png", description: "Industrial technology" },
   { name: "Phoenix Contact", products: "Connectors, Relays", logo: "", image: "/images/Phoenix Contact.png", description: "Connection technology" },
-  { name: "Danfoss", products: "VFDs, Drives", logo: "", image: "/images/danfoss.jpg", description: "Engineering tomorrow" },
   { name: "TE Connectivity", products: "Connectors, Sensors", logo: "", image: "/images/Te Conectivity.jpg", description: "Sensors & connectivity" },
   { name: "Omron", products: "Relays, Switches", logo: "", image: "/images/omron.png", description: "Automation & sensing" },
   { name: "Panasonic", products: "Capacitors, Relays", logo: "", image: "/images/Panasonic.png", description: "Electronic components" },
@@ -153,9 +152,9 @@ export const DISTRIBUTOR_BRANDS = [
   "Semtech", "Quectel", "STMicroelectronics", "Infineon", "Micron", "Amphenol", "Eaton",
   "Sawnics", "Delta", "Nexperia", "NEC", "JST", "TDK",
   "Murata", "DBwave", "Skyworks", "Toshiba", "Renesas", "Altera", "Quantic Evans", "Panasonic", "NXP",
-  "NVIDIA", "Sunlord", "XP Power", "Vishay", "Yageo", "KEMET", "Allegro", "Molex", "Sumitomo",
+  "NVIDIA", "XP Power", "Vishay", "Yageo", "KEMET", "Allegro", "Molex", "Sumitomo",
   "Analog Devices", "Omron", "Moschip", "Broadcom", "Qualcomm", "Xilinx", "Intel", "GigaDevice",
-  "Ather", "Mersen", "Littelfuse",
+  "Mersen", "Littelfuse",
   "Cooper Power", "HPS", "SNC", "ABB", "Schneider"
 ];
 
@@ -550,7 +549,7 @@ export const MANUFACTURERS = [
   "TE Connectivity", "Broadcom", "Pulse", "Skyworks", "STMicroelectronics", "Toshiba", "KEL", "Murata", "Fujitsu",
   "Moschip", "Micron", "XP Power", "Renesas", "KOA", "Kyocera", "Sumitomo", "Abracon", "Sawnics",
   "AirBorn", "Ohmite", "Yageo", "Amphenol", "Quectel", "Glenair", "Taiyo Yuden",
-  "Infineon", "Nichicon", "Knowles", "Delta", "Sunlord", "Atmel", "Vishay", "Honeywell", "TDK", "Molex",
+  "Infineon", "Nichicon", "Knowles", "Delta", "Atmel", "Vishay", "Honeywell", "TDK", "Molex",
   "JST", "Kemet", "Eaton", "SK Hynix", "Chemi-Con", "PKC Group", "Onsemi", "Panasonic", "Nexperia"
 ];
 
